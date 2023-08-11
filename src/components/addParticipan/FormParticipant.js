@@ -1,5 +1,11 @@
 import React from 'react'
-import { InputField } from '../form/Fileds'
+import {
+  InputField,
+  RadioFields,
+  SelectField,
+  ButtonField
+} from '../form/Fileds'
+import { general, modalidad, category, categoryGroup } from './utils'
 export const FormParticipant = () => {
   return (
     <>
@@ -9,7 +15,29 @@ export const FormParticipant = () => {
         name="name"
       />
       <InputField label="Nombre de la Coreografia" type="text" name="name" />
-      <InputField label="Numero de participantes" type="text" name="name" />
+      <div>
+        <h3 className="is-size-4">Categoría</h3>
+      </div>
+      <div className="columns">
+        <div className="column">
+          <RadioFields options={category} name="category" />
+          <SelectField
+            label=""
+            name="categoria"
+            type="select"
+            options={general}
+          />
+        </div>
+        <div className="column">
+          <RadioFields options={categoryGroup} name="categoryGroup" />
+        </div>
+      </div>
+      <SelectField
+        label="Modalidad"
+        name="modalidad"
+        type="select"
+        options={modalidad}
+      />
       <InputField
         label="Nombre del profesor o Coreográfo"
         type="text"
@@ -17,6 +45,12 @@ export const FormParticipant = () => {
       />
       <InputField label="Telefono" type="text" name="name" />
       <InputField label="Correo electrónico" type="text" name="name" />
+
+      <ButtonField
+        type="submit"
+        addText="Registrar ahora"
+        classType="is-primary"
+      />
     </>
   )
 }

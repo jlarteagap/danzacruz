@@ -29,21 +29,23 @@ export const SelectField = ({ label, options, ...props }) => {
 
   return (
     <div className="field">
-      <div className="select is-fullwidth">
+      <div className="control">
         <label className="label">{label}</label>
-        <select
-          {...field}
-          {...props}
-          className={`${meta.touched && meta.error && 'is-danger'}`}
-        >
-          {options.map((option, index) => {
-            return (
-              <option value={option.value} label={option.name} key={index}>
-                {option.text}
-              </option>
-            )
-          })}
-        </select>
+        <div className="select is-fullwidth">
+          <select
+            {...field}
+            {...props}
+            className={`${meta.touched && meta.error && 'is-danger'}`}
+          >
+            {options.map((option, index) => {
+              return (
+                <option value={option.value} label={option.name} key={index}>
+                  {option.text}
+                </option>
+              )
+            })}
+          </select>
+        </div>
       </div>
       <ErrorMessage
         component="div"
@@ -80,6 +82,27 @@ export const TextareaField = ({ label, ...props }) => {
   )
 }
 
-export const buttonField = () => {
-  return 'Button'
+export const ButtonField = ({ type, addText, classType }) => {
+  return (
+    <button type={type} className={`button ${classType}`}>
+      {addText}
+    </button>
+  )
+}
+
+export const RadioFields = ({ options, name }) => {
+  return (
+    <div class="control">
+      {options.map(option => {
+        return (
+          <>
+            <label class="radio">
+              <input type="radio" name={name} />
+              {option}
+            </label>
+          </>
+        )
+      })}
+    </div>
+  )
 }
