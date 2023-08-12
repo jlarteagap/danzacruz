@@ -1,5 +1,5 @@
 import React from 'react'
-import { ErrorMessage, useField } from 'formik'
+import { ErrorMessage, Field, useField } from 'formik'
 
 export const InputField = ({ label, ...props }) => {
   const [field, meta] = useField(props)
@@ -56,10 +56,6 @@ export const SelectField = ({ label, options, ...props }) => {
   )
 }
 
-export const checkedField = () => {
-  return 'Checbox'
-}
-
 export const TextareaField = ({ label, ...props }) => {
   const [field, meta] = useField(props)
   return (
@@ -92,15 +88,13 @@ export const ButtonField = ({ type, addText, classType }) => {
 
 export const RadioFields = ({ options, name }) => {
   return (
-    <div class="control">
-      {options.map(option => {
+    <div className="control">
+      {options.map((option, i) => {
         return (
-          <>
-            <label class="radio">
-              <input type="radio" name={name} />
-              {option}
-            </label>
-          </>
+          <label className="radio" key={i}>
+            <Field type="radio" name={name} value={option} />
+            {option}
+          </label>
         )
       })}
     </div>

@@ -14,16 +14,20 @@ export const FormParticipant = () => {
         type="text"
         name="name"
       />
-      <InputField label="Nombre de la Coreografia" type="text" name="name" />
+      <InputField
+        label="Nombre de la Coreografia"
+        type="text"
+        name="coreografy"
+      />
       <div>
         <h3 className="is-size-4">Categoría</h3>
       </div>
       <div className="columns">
         <div className="column">
-          <RadioFields options={category} name="category" />
+          <RadioFields options={category} name="categoryType" />
           <SelectField
             label=""
-            name="categoria"
+            name="categoryAge"
             type="select"
             options={general}
           />
@@ -34,17 +38,17 @@ export const FormParticipant = () => {
       </div>
       <SelectField
         label="Modalidad"
-        name="modalidad"
+        name="modalidity"
         type="select"
         options={modalidad}
       />
       <InputField
         label="Nombre del profesor o Coreográfo"
         type="text"
-        name="name"
+        name="professor"
       />
-      <InputField label="Telefono" type="text" name="name" />
-      <InputField label="Correo electrónico" type="text" name="name" />
+      <InputField label="Telefono" type="text" name="phone" />
+      <InputField label="Correo electrónico" type="text" name="email" />
 
       <ButtonField
         type="submit"
