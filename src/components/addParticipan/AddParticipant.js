@@ -1,13 +1,13 @@
-import { Formik, Form, useFormikContext } from 'formik'
-import React from 'react'
+import { Formik, Form } from 'formik'
+import React, { useState, useEffect } from 'react'
 import { FormParticipant } from './FormParticipant'
 
 const initialValues = {
   name: '',
   coreografy: '',
-  categoryType: 'General',
+  categoryType: '',
   categoryAge: '',
-  categoryGroup: 'Grupo',
+  categoryGroup: '',
   modalidity: '',
   professor: '',
   phone: '',
@@ -15,18 +15,21 @@ const initialValues = {
 }
 
 export const AddParticipant = () => {
-  const { values } = useFormikContext()
-  console.log(values)
+  const [categoryType, setCategoryType] = useState('')
+  const [categoryGroup, setCategoryGroup] = useState('')
+
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={values => {
-        console.log(values)
+        console.log(values.categoryType)
       }}
     >
-      {formik => (
+      {({ values }) => (
         <Form>
           <FormParticipant />
+          {setCategoryType(values.categoryType)}
+          {setCategoryGroup(values.categoryGroup)}
         </Form>
       )}
     </Formik>
