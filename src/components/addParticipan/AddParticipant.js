@@ -1,7 +1,8 @@
 import { Formik, Form } from 'formik'
 import React, { useState } from 'react'
 import { FormParticipant } from './FormParticipant'
-
+import { collection, addDoc } from 'firebase/firestore'
+import { db } from '../../../firebase'
 const initialValues = {
   name: '',
   coreografy: '',
@@ -20,8 +21,16 @@ export const AddParticipant = () => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={values => {
-        console.log(values.categoryType)
+      onSubmit={async values => {
+        try {
+          const docRef = await addDoc(collection(db, 'users'), {
+            id: values.email,
+            ...values
+          })
+          console.log('Document written with ID: ', docRef.id)
+        } catch (e) {
+          console.error('Error adding document: ', e)
+        }
       }}
     >
       {({ values }) => (
