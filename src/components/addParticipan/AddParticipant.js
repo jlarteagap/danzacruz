@@ -1,13 +1,13 @@
 import { Formik, Form } from 'formik'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { FormParticipant } from './FormParticipant'
 
 const initialValues = {
   name: '',
   coreografy: '',
-  categoryType: '',
+  categoryType: 'General',
   categoryAge: '',
-  categoryGroup: '',
+  categoryGroup: 'Solo',
   modalidity: '',
   professor: '',
   phone: '',
@@ -16,7 +16,6 @@ const initialValues = {
 
 export const AddParticipant = () => {
   const [categoryType, setCategoryType] = useState('')
-  const [categoryGroup, setCategoryGroup] = useState('')
 
   return (
     <Formik
@@ -27,9 +26,8 @@ export const AddParticipant = () => {
     >
       {({ values }) => (
         <Form>
-          <FormParticipant />
+          <FormParticipant categoryTypeProp={categoryType} />
           {setCategoryType(values.categoryType)}
-          {setCategoryGroup(values.categoryGroup)}
         </Form>
       )}
     </Formik>

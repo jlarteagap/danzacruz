@@ -5,8 +5,8 @@ import {
   SelectField,
   ButtonField
 } from '../form/Fileds'
-import { general, modalidad, category, categoryGroup } from './utils'
-export const FormParticipant = () => {
+import { general, modalidad, category, categoryGroup, colegios } from './utils'
+export const FormParticipant = ({ categoryTypeProp }) => {
   return (
     <>
       <InputField
@@ -29,7 +29,7 @@ export const FormParticipant = () => {
             label=""
             name="categoryAge"
             type="select"
-            options={general}
+            options={categoryTypeProp === 'General' ? general : colegios}
           />
         </div>
         <div className="column">
