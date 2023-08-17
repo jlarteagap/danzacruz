@@ -3,17 +3,7 @@ import React, { useState } from 'react'
 import { FormParticipant } from './FormParticipant'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../../../firebase'
-const initialValues = {
-  name: '',
-  coreografy: '',
-  categoryType: 'General',
-  categoryAge: '',
-  categoryGroup: 'Solo',
-  modalidity: '',
-  professor: '',
-  phone: '',
-  email: ''
-}
+import { initialValues, validate } from './utils'
 
 export const AddParticipant = () => {
   const [categoryType, setCategoryType] = useState('')
@@ -21,6 +11,7 @@ export const AddParticipant = () => {
   return (
     <Formik
       initialValues={initialValues}
+      validationSchema={validate}
       onSubmit={async values => {
         try {
           const docRef = await addDoc(collection(db, 'users'), {
