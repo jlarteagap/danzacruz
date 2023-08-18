@@ -1,0 +1,14 @@
+:root{
+    --primary: #131313;
+    --secondary: #313131;
+    --text-color: #b5b5b5;
+}
+
+body{
+    background-color: var(--secondary);
+    color: var(--text-color);
+}
+
+.footer{
+    background-color: var(--primary);
+}
