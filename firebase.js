@@ -18,6 +18,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const db = getFirestore()
 
-export const saveForm = (value, collectionDB) => {
-  addDoc(collection(db, collectionDB), value)
+export const saveForm = async (values, collectionDB) => {
+  try {
+    const docRef = await addDoc(collection(db, collectionDB), {
+      id: values.email,
+      ...values
+    })
+    return docRef.id
+  } catch (e) {
+    console.error('Error adding document: ', e)
+  }
 }

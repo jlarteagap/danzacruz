@@ -11,17 +11,10 @@ export const AddParticipant = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validate}
-      onSubmit={async values => {
-        saveForm(values, 'user')
-        // try {
-        //   const docRef = await addDoc(collection(db, 'users'), {
-        //     id: values.email,
-        //     ...values
-        //   })
-        //   console.log('Document written with ID: ', docRef.id)
-        // } catch (e) {
-        //   console.error('Error adding document: ', e)
-        // }
+      onSubmit={async (values, { resetForm }) => {
+        const dataSave = await saveForm(values, 'user')
+        console.log(dataSave)
+        resetForm()
       }}
     >
       {({ values }) => (
