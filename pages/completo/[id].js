@@ -1,14 +1,28 @@
+import { useEffect, useState } from 'react'
 import { db } from '../../firebase'
 // import { usePathname } from 'next/navigation'
 
 import { doc, getDoc } from 'firebase/firestore'
 
 export default function RegComplete() {
-  const docRef = doc(db, 'users', '43E616QqLvC1rzJiMqEg')
-  const docSnap = getDoc(docRef)
+  const [data, setData] = useState()
+  const getUserdetails = async () => {
+    const docRef = doc(db, 'user', '3dnPA092l7RxeegLdR9i')
+    const docSnap = await getDoc(docRef)
 
-  // const pathname = usePathname()
-  console.log('Document data:', docSnap.data())
+    if (docSnap.exists()) {
+      // console.log("Document data:", docSnap.data())
+      setData(docSnap.data())
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!')
+    }
+  }
+  useEffect(() => {
+    getUserdetails()
+  }, [])
+
+  console.log(data)
   // const data = getRegister(pathname.replace('/completo/', ''))
   // console.log(data)
   return (
@@ -18,12 +32,13 @@ export default function RegComplete() {
       </div>
       <div className="card">
         <div className="card-header">
-          <p className="card-header-title is-justify-content-center is-flex is-size-4">
-            <strong>
-              ¡Bienvenido/a al XXII Festival Internacional de danza - DANZACRUZ
-              2023!
-            </strong>
-          </p>
+          <div className="card-header-title is-justify-content-center is-flex is-flex-direction-column">
+            <p>¡Bienvenido/a {data.name}</p>
+            <h3 className="is-size-4 has-text-weight-bold has-text-centered">
+              XXIII Festival Internacional de danza
+              <br /> DANZACRUZ 2023!
+            </h3>
+          </div>
         </div>
         <div className="card-content is-size-5 has-text-centered">
           <p>

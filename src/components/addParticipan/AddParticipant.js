@@ -1,11 +1,13 @@
-import { Formik, Form } from 'formik'
 import React, { useState } from 'react'
+import { Formik, Form } from 'formik'
 import { FormParticipant } from './FormParticipant'
 import { saveForm } from '../../../firebase'
 import { initialValues, validate } from './utils'
+import { useRouter } from 'next/router'
 
 export const AddParticipant = () => {
   const [categoryType, setCategoryType] = useState('')
+  const router = useRouter()
 
   return (
     <Formik
@@ -13,8 +15,8 @@ export const AddParticipant = () => {
       validationSchema={validate}
       onSubmit={async (values, { resetForm }) => {
         const dataSave = await saveForm(values, 'user')
-        console.log(dataSave)
         resetForm()
+        router.push(`completo/${dataSave}`)
       }}
     >
       {({ values }) => (

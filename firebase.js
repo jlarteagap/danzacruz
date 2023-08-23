@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
-const db = getFirestore()
+export const db = getFirestore()
 
 export const saveForm = async (values, collectionDB) => {
   try {
