@@ -1,30 +1,24 @@
-import { useEffect, useState } from 'react'
 import { db } from '../../firebase'
 // import { usePathname } from 'next/navigation'
-
 import { doc, getDoc } from 'firebase/firestore'
 
-export default function RegComplete() {
-  const [data, setData] = useState()
-  const getUserdetails = async () => {
-    const docRef = doc(db, 'user', '3dnPA092l7RxeegLdR9i')
-    const docSnap = await getDoc(docRef)
-
-    if (docSnap.exists()) {
-      // console.log("Document data:", docSnap.data())
-      setData(docSnap.data())
-    } else {
-      // doc.data() will be undefined in this case
-      console.log('No such document!')
-    }
-  }
-  useEffect(() => {
-    getUserdetails()
-  }, [])
-
-  console.log(data)
+export const getServerSideProps = async () => {
+  const data = []
+  const docRef = doc(db, 'user', '91x5bu6Zeg0MZ7jdC6xK')
+  const docSnap = await getDoc(docRef)
   // const data = getRegister(pathname.replace('/completo/', ''))
-  // console.log(data)
+
+  if (docSnap.exists()) {
+    data.push(docSnap.data())
+  } else {
+    console.log('No such document!')
+  }
+  return {
+    props: { data }
+  }
+}
+
+const RegComplete = ({ data }) => {
   return (
     <>
       <div className="is-flex is-justify-content-center has-text-weight-bold">
@@ -33,7 +27,7 @@ export default function RegComplete() {
       <div className="card">
         <div className="card-header">
           <div className="card-header-title is-justify-content-center is-flex is-flex-direction-column">
-            <p>¡Bienvenido/a {data.name}</p>
+            <p>¡Bienvenido/a {data[0].name}</p>
             <h3 className="is-size-4 has-text-weight-bold has-text-centered">
               XXIII Festival Internacional de danza
               <br /> DANZACRUZ 2023!
@@ -67,3 +61,5 @@ export default function RegComplete() {
     </>
   )
 }
+
+export default RegComplete
