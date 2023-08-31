@@ -2,9 +2,10 @@ import { db } from '../../firebase'
 // import { usePathname } from 'next/navigation'
 import { doc, getDoc } from 'firebase/firestore'
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async context => {
+  const path = context.req.url
   const data = []
-  const docRef = doc(db, 'user', '91x5bu6Zeg0MZ7jdC6xK')
+  const docRef = doc(db, 'user', path.replace('/completo/', ''))
   const docSnap = await getDoc(docRef)
   // const data = getRegister(pathname.replace('/completo/', ''))
 
