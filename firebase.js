@@ -1,6 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-import { collection, addDoc, getFirestore } from 'firebase/firestore'
+import {
+  collection,
+  addDoc,
+  getFirestore,
+  doc,
+  getDoc
+} from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,4 +34,11 @@ export const saveForm = async (values, collectionDB) => {
   } catch (e) {
     console.error('Error adding document: ', e)
   }
+}
+
+export const getRegister = async (id, collectionDB) => {
+  const docRef = doc(db, collectionDB, id)
+  const docSnap = await getDoc(docRef)
+
+  return docSnap
 }
