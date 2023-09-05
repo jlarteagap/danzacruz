@@ -1,5 +1,4 @@
 import 'bulma/css/bulma.min.css'
-import '../../../public/css/style.css'
 
 export const Layout = ({ children }) => {
   return (
