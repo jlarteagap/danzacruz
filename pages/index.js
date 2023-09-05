@@ -1,4 +1,4 @@
-import { AddParticipant } from '../src/components/addParticipan/addParticipant'
+import { AddParticipant } from '../src/components/addParticipan/AddParticipant'
 
 export default function Home() {
   return (
