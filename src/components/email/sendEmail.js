@@ -1,16 +1,9 @@
 import emailjs from '@emailjs/browser'
-import { Certificade } from '../pdf/certificade'
-import { pdf } from '@react-pdf/renderer'
 
 export const SendEmail = values => {
-  const certificade = <Certificade name={values.name} />
-  const attachCertificade = pdf(certificade).toBlob()
-  const transformedAttach = attachCertificade.toDataURL()
-
   const dataEmail = {
     to_name: values.name,
-    reply_to: values.email,
-    content: transformedAttach
+    reply_to: values.email
   }
 
   emailjs
