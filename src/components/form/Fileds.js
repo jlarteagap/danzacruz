@@ -91,7 +91,7 @@ export const ButtonField = ({ type, addText, classType }) => {
 
 export const RadioFields = ({ options, name }) => {
   return (
-    <div className="control is-flex">
+    <div className="control">
       {options.map((option, i) => {
         return (
           <label className="dc__label" key={i}>

@@ -8,7 +8,7 @@ import {
 import { general, modalidad, category, categoryGroup, colegios } from './utils'
 export const FormParticipant = ({ categoryTypeProp }) => {
   return (
-    <div className="card m-auto" style={{ width: '50%', mixWidth: '350px' }}>
+    <div className="card m-auto dc__wrapper">
       <div className="card-content">
         <InputField
           label="Nombre del participante o agrupación"
@@ -27,7 +27,7 @@ export const FormParticipant = ({ categoryTypeProp }) => {
           <div className="column">
             <RadioFields options={category} name="categoryType" />
             <SelectField
-              label=""
+              label="División"
               name="categoryAge"
               type="select"
               options={categoryTypeProp === 'General' ? general : colegios}

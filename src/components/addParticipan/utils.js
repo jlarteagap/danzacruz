@@ -12,7 +12,9 @@ export const modalidad = [
   { value: 'Street Dance', name: 'Street Dance' },
   { value: 'Folklore Departamental', name: 'Folklore Departamental' },
   { value: 'Folklore Nacional', name: 'Folklore Nacional' },
-  { value: 'Folklore Internacional', name: 'Folklore Internacional' }
+  { value: 'Folklore Internacional', name: 'Folklore Internacional' },
+  { value: 'Folklore Etnico y de Raíz', name: 'Folklore Etnico y de Raíz' },
+  { value: 'K Pop', name: 'K Pop' }
 ]
 
 export const colegios = [
@@ -48,14 +50,20 @@ export const general = [
   }
 ]
 export const category = ['General', 'Colegios']
-export const categoryGroup = ['Solo', 'Duo', 'Grupo']
+export const categoryGroup = [
+  'Solo',
+  'Duo',
+  'trio',
+  'Grupo pequeño',
+  'Grupo grande'
+]
 
 export const initialValues = {
   name: '',
   coreografy: '',
   categoryType: 'General',
   categoryAge: '',
-  categoryGroup: 'Grupo',
+  categoryGroup: 'Grupo pequeño',
   modalidity: '',
   professor: '',
   phone: '',
