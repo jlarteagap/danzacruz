@@ -43,7 +43,7 @@ export const SelectField = ({ label, options, ...props }) => {
             {options.map((option, index) => {
               return (
                 <option value={option.value} label={option.name} key={index}>
-                  {option.text}
+                  {option.value}
                 </option>
               )
             })}
