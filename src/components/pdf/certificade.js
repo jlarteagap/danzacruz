@@ -14,14 +14,16 @@ export const Certificade = ({ name }) => (
   <Document style={{ width: '100%', display: 'block' }}>
     <Page size="A4" style={styles.page} orientation="landscape">
       <View style={styles.section}>
+        <Image style={styles.decorDown} src="/img/1.png" alt="decoracion" />
+        <Image style={styles.decorUp} src="/img/1.png" alt="decoracion" />
         <Text style={styles.header}>CERTIFICADO DE PARTICIPACIÓN</Text>
-        <Text
-          style={(styles.text, { paddingTop: '30px', textAlign: 'center' })}
-        >
+        <Text style={(styles.text, { paddingTop: '0px', textAlign: 'center' })}>
           El Festival Internacional de Danza "Danzacruz 2023" se complace en
           otorgar este certificado a:
         </Text>
-        <Text style={{ fontSize: '30pt', padding: '20px 0' }}>{name}</Text>
+        <Text style={{ fontSize: '30pt', padding: '20px 0', color: '#790965' }}>
+          {name}
+        </Text>
         <Text style={styles.text}>
           Por su destacada participación en el Festival Internacional de Danza
           "Danzacruz 2023" que se llevó a cabo del 5 al 8 de Octubre en la
@@ -38,7 +40,7 @@ export const Certificade = ({ name }) => (
         </Text>
         <Image
           style={styles.signature}
-          src="/img/signature.jpeg"
+          src="/img/signature.jpg"
           alt="Adhemar Añez"
         />
         <Text style={{ marginTop: '10px', textAlign: 'center' }}>
@@ -67,7 +69,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '90vh',
     backgroundColor: '#f7f7f7',
-    fontFamily: 'Oswald'
+    fontFamily: 'Oswald',
+    position: 'relative'
   },
   header: {
     fontSize: '36pt',
@@ -85,5 +88,18 @@ const styles = StyleSheet.create({
   signature: {
     width: '50px',
     marginTop: '10px'
+  },
+  decorDown: {
+    position: 'absolute',
+    left: '-50px',
+    bottom: '-52px',
+    width: '150px'
+  },
+  decorUp: {
+    position: 'absolute',
+    top: '-52px',
+    right: '-50px',
+    width: '150px',
+    transform: 'rotate(180deg)'
   }
 })
