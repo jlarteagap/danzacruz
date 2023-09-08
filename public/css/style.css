@@ -1,11 +1,13 @@
 :root {
-    --primary: #131313;
-    --secondary: #313131;
-    --text-color: #b5b5b5;
+    --primary:  rgba(2,0,36,1);
+    --secondary: rgba(187,29,92,1);
+    --terciary: rgba(121,9,101,1);
+    --text-color: #ffffff;
 }
 
 body {
-    background-color: var(--secondary);
+    background: var(--primary) ;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 66%, var(--terciary)  73%, var(--primary)  100%);
     color: var(--text-color);
 }
 .dc__label{
