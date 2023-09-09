@@ -57,6 +57,13 @@ body {
 .dc__wrapper{
     width: 50%;
 }
+
+/* list particpante */
+.list__content{
+    display: grid;
+    grid-template-columns: 1rem repeat(9, 1fr);
+    gap: 1rem;
+}
 .footer {
     background-color: var(--primary);
 }

@@ -5,7 +5,11 @@ import {
   addDoc,
   getFirestore,
   doc,
-  getDoc
+  getDocs,
+  getDoc,
+  query,
+  deleteDoc,
+  updateDoc
 } from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -27,13 +31,21 @@ export const db = getFirestore()
 export const saveForm = async (values, collectionDB) => {
   try {
     const docRef = await addDoc(collection(db, collectionDB), {
-      id: values.email,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      status: false,
       ...values
     })
     return docRef.id
   } catch (e) {
     console.error('Error adding document: ', e)
   }
+}
+export const getSubscribers = () => {
+  const data = query(collection(db, 'user'))
+  const subscribers = getDocs(data)
+
+  return subscribers
 }
 
 export const getRegister = async (id, collectionDB) => {
@@ -42,3 +54,9 @@ export const getRegister = async (id, collectionDB) => {
 
   return docSnap
 }
+
+export const deleteRegister = async (id, collectionDB) =>
+  deleteDoc(doc(db, collectionDB, id))
+
+export const updateRegister = (id, newfields, collectionDB) =>
+  updateDoc(doc(db, collectionDB, id), newfields)
