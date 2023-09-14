@@ -12,8 +12,6 @@ import {
   deleteDoc,
   updateDoc
 } from 'firebase/firestore'
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -38,6 +36,7 @@ export const saveForm = async (values, collectionDB) => {
       status: false,
       ...values
     })
+
     return docRef.id
   } catch (e) {
     console.error('Error adding document: ', e)
@@ -64,7 +63,7 @@ export const updateRegister = (id, newfields, collectionDB) =>
   updateDoc(doc(db, collectionDB, id), newfields)
 
 export const uploadFile = async (file, name) => {
-  const storageRef = ref(storage, `danzacruz/${name.replaceAll(' ', '-')}`)
+  const storageRef = ref(storage, `registros/${name.replaceAll(' ', '-')}`)
   await uploadBytes(storageRef, file)
   const url = await getDownloadURL(storageRef)
 

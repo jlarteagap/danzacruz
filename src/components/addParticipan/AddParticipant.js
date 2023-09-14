@@ -16,13 +16,11 @@ export const AddParticipant = () => {
       initialValues={initialValues}
       validationSchema={validate}
       onSubmit={async (values, { resetForm }) => {
-        console.log(values)
-        const urlLogoUploaded = await uploadFile(values.logo, values.name)
-        console.log(urlLogoUploaded)
-        // const dataSave = await saveForm(values, 'user')
-        // SendEmail(values)
-        // resetForm()
-        // router.push(`completo/${dataSave}`)
+        values.logo = await uploadFile(values.logo, values.name)
+        const dataSave = await saveForm(values, 'user')
+        SendEmail(values)
+        resetForm()
+        router.push(`completo/${dataSave}`)
       }}
     >
       {({ values, setFieldValue }) => (
