@@ -3,10 +3,11 @@ import {
   InputField,
   RadioFields,
   SelectField,
-  ButtonField
+  ButtonField,
+  InputFile
 } from '../form/Fileds'
 import { general, modalidad, category, categoryGroup, colegios } from './utils'
-export const FormParticipant = ({ categoryTypeProp }) => {
+export const FormParticipant = ({ categoryTypeProp, setFieldValue }) => {
   return (
     <div className="card m-auto dc__wrapper">
       <div className="card-content">
@@ -15,6 +16,7 @@ export const FormParticipant = ({ categoryTypeProp }) => {
           type="text"
           name="name"
         />
+
         <InputField
           label="Nombre de la Coreografia"
           type="text"
@@ -50,6 +52,13 @@ export const FormParticipant = ({ categoryTypeProp }) => {
         />
         <InputField label="Telefono" type="text" name="phone" />
         <InputField label="Correo electrónico" type="text" name="email" />
+        <InputFile
+          name="logo"
+          type="file"
+          onChange={event => {
+            setFieldValue('logo', event.currentTarget.files[0])
+          }}
+        />
         <div className="is-flex is-justify-content-center pt-3">
           <ButtonField
             type="submit"

@@ -103,3 +103,25 @@ export const RadioFields = ({ options, name }) => {
     </div>
   )
 }
+
+export const InputFile = ({ ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+    <div className="file">
+      <label className="file-label">
+        <input
+          className={`file-input ${meta.touched && meta.error && 'is-danger'}`}
+          {...props}
+        />
+        <span className="file-cta">
+          <span className="file-label">Subir logo...</span>
+        </span>
+      </label>
+      <ErrorMessage
+        component="div"
+        name={field.name}
+        className="is-flex help is-danger"
+      />
+    </div>
+  )
+}

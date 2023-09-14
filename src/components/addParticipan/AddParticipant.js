@@ -15,15 +15,19 @@ export const AddParticipant = () => {
       initialValues={initialValues}
       validationSchema={validate}
       onSubmit={async (values, { resetForm }) => {
-        const dataSave = await saveForm(values, 'user')
-        SendEmail(values)
-        resetForm()
-        router.push(`completo/${dataSave}`)
+        console.log(values)
+        // const dataSave = await saveForm(values, 'user')
+        // SendEmail(values)
+        // resetForm()
+        // router.push(`completo/${dataSave}`)
       }}
     >
-      {({ values }) => (
+      {({ values, setFieldValue }) => (
         <Form>
-          <FormParticipant categoryTypeProp={categoryType} />
+          <FormParticipant
+            categoryTypeProp={categoryType}
+            setFieldValue={setFieldValue}
+          />
           {setCategoryType(values.categoryType)}
         </Form>
       )}
