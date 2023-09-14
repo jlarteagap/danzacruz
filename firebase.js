@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import {
   collection,
   addDoc,
@@ -26,6 +27,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
+export const storage = getStorage(app)
 export const db = getFirestore()
 
 export const saveForm = async (values, collectionDB) => {
@@ -60,3 +62,11 @@ export const deleteRegister = async (id, collectionDB) =>
 
 export const updateRegister = (id, newfields, collectionDB) =>
   updateDoc(doc(db, collectionDB, id), newfields)
+
+export const uploadFile = async (file, name) => {
+  const storageRef = ref(storage, `danzacruz/${name.replaceAll(' ', '-')}`)
+  await uploadBytes(storageRef, file)
+  const url = await getDownloadURL(storageRef)
+
+  return url
+}
