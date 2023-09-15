@@ -1,6 +1,6 @@
 import React from 'react'
 import { updateRegister } from '../../../firebase'
-
+import Image from 'next/image'
 export const ListSubscribers = ({ data }) => {
   const updateDoc = (id, status) => {
     updateRegister(id, { status }, 'user')
@@ -28,7 +28,13 @@ export const ListSubscribers = ({ data }) => {
             }`}
           >
             <div>{i + 1}</div>
-            <div>{sub.name}</div>
+            <div>
+              {sub.logo ? (
+                <Image src={sub.logo} width="50" height="50" alt={sub.name} />
+              ) : null}
+
+              {sub.name}
+            </div>
             <div>
               {sub.email} <br /> {sub.phone}
             </div>
