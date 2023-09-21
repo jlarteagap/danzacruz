@@ -41,8 +41,8 @@ export const ListSubscribers = ({ data }) => {
             <div>{sub.modalidity}</div>
             <div>{sub.coreografy}</div>
             <div> {sub.categoryType}</div>
-            <div>{sub.categoryGroup}</div>
-            <div>{sub.categoryAge}</div>
+            <div>{sub.subDivision}</div>
+            <div>{sub.division}</div>
             <div>{sub.professor}</div>
             <button
               className={`button is-small ${

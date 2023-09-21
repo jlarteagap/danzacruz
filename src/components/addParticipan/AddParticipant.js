@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import { SendEmail } from '../email/sendEmail'
 
 export const AddParticipant = () => {
-  const [categoryType, setCategoryType] = useState('')
+  const [category, setCategory] = useState('')
   const router = useRouter()
 
   return (
@@ -26,10 +26,10 @@ export const AddParticipant = () => {
       {({ values, setFieldValue }) => (
         <Form>
           <FormParticipant
-            categoryTypeProp={categoryType}
+            categoryProp={category}
             setFieldValue={setFieldValue}
           />
-          {setCategoryType(values.categoryType)}
+          {setCategory(values.category)}
         </Form>
       )}
     </Formik>

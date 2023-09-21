@@ -6,8 +6,8 @@ import {
   ButtonField,
   InputFile
 } from '../form/Fileds'
-import { general, modalidad, category, categoryGroup, colegios } from './utils'
-export const FormParticipant = ({ categoryTypeProp, setFieldValue }) => {
+import { general, modalidad, category, subDivision, colegios } from './utils'
+export const FormParticipant = ({ categoryProp, setFieldValue }) => {
   return (
     <div className="card m-auto dc__wrapper">
       <div className="card-content">
@@ -27,16 +27,16 @@ export const FormParticipant = ({ categoryTypeProp, setFieldValue }) => {
         </div>
         <div className="columns">
           <div className="column">
-            <RadioFields options={category} name="categoryType" />
+            <RadioFields options={category} name="category" />
             <SelectField
               label="División"
-              name="categoryAge"
+              name="division"
               type="select"
-              options={categoryTypeProp === 'General' ? general : colegios}
+              options={categoryProp === 'General' ? general : colegios}
             />
           </div>
           <div className="column">
-            <RadioFields options={categoryGroup} name="categoryGroup" />
+            <RadioFields options={subDivision} name="subDivision" />
           </div>
         </div>
         <SelectField

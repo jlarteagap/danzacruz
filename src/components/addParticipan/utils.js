@@ -2,19 +2,29 @@ import * as Yup from 'yup'
 
 export const modalidad = [
   { value: 'Ballet Clásico', name: 'Ballet Clásico' },
-  { value: 'Ballet Neo-Clásico', name: 'Ballet Neo-Clásico' },
-  { value: 'Danza Moderna', name: 'Danza Moderna' },
-  { value: 'Danza Contemporánea', name: 'Danza Contemporánea' },
-  { value: 'Danzas Tropicales', name: 'Danzas Tropicales' },
-  { value: 'Modalidad Libre', name: 'Modalidad Libre' },
-  { value: 'Musical', name: 'Musical' },
+  {
+    value: 'Danza Moderna y Contemporánea',
+    name: 'Danza Moderna y Contemporánea'
+  },
   { value: 'Jazz', name: 'Jazz' },
+  { value: 'Musical', name: 'Musical' },
+  { value: 'Tap Dance', name: 'Tap Dance' },
   { value: 'Street Dance', name: 'Street Dance' },
-  { value: 'Folk Departamental', name: 'Folklore Departamental' },
-  { value: 'Folk Nacional', name: 'Folklore Nacional' },
-  { value: 'Folk Internacional', name: 'Folklore Internacional' },
-  { value: 'Folk Etnico y de Raíz', name: 'Folklore Etnico y de Raíz' },
-  { value: 'K Pop', name: 'K Pop' }
+  { value: 'Bailes Tropicales y Salón', name: 'Bailes Tropicales y Salón' },
+  { value: 'Folk de Raíz', name: 'Folklore de Raíz' },
+  { value: 'Modalidad Libre', name: 'Modalidad Libre' },
+  {
+    value: 'Folk Nacional e Internacinal',
+    name: 'Folklore Nacional e Internacinal'
+  },
+  {
+    value: 'Folk Nacional e Internacinal de Proyección',
+    name: 'Folklore Nacional e Internacinal de Proyección'
+  },
+  { value: 'Danzas populares', name: 'Danzas populares' },
+  { value: 'K Pop', name: 'K Pop' },
+  { value: 'Retro Dance', name: 'Retro Dance' },
+  { value: 'Cosplay', name: 'Cosplay' }
 ]
 
 export const colegios = [
@@ -45,12 +55,12 @@ export const general = [
     name: 'Juvenil'
   },
   {
-    value: 'Adulto',
-    name: 'Adulto'
+    value: 'Mayores',
+    name: 'Mayores'
   }
 ]
-export const category = ['General', 'Colegios']
-export const categoryGroup = [
+export const category = ['General', 'Colegios o Universidad']
+export const subDivision = [
   'Solo',
   'Duo',
   'trio',
@@ -61,9 +71,9 @@ export const categoryGroup = [
 export const initialValues = {
   name: '',
   coreografy: '',
-  categoryType: 'General',
-  categoryAge: '',
-  categoryGroup: 'Grupo pequeño',
+  category: 'General',
+  division: '',
+  subDivision: 'Grupo pequeño',
   modalidity: '',
   professor: '',
   phone: '',
@@ -71,7 +81,7 @@ export const initialValues = {
   logo: ''
 }
 
-const MAX_FILE_SIZE = 102400 // 100KB
+const MAX_FILE_SIZE = 602400 // 500KB
 
 const validFileExtensions = {
   image: ['jpg', 'gif', 'png', 'jpeg', 'webp']
@@ -88,9 +98,9 @@ export const validate = Yup.object().shape({
   coreografy: Yup.string()
     .required('Introduzca el nombre de la coreografía')
     .min(4, 'Se necesita mínimo 5 carácteres'),
-  categoryType: Yup.string().required('Seleccione una categoría'),
-  categoryAge: Yup.string().required('Seleccione una categoría'),
-  categoryGroup: Yup.string().required('Seleccione una categoridad'),
+  category: Yup.string().required('Seleccione una categoría'),
+  division: Yup.string().required('Seleccione una categoría'),
+  subDivision: Yup.string().required('Seleccione una categoridad'),
   modalidity: Yup.string().required('Seleccione una modalidad del festival'),
   professor: Yup.string()
     .required('Introduzca un nombre del coreográfo o profesor responsable')
@@ -109,7 +119,7 @@ export const validate = Yup.object().shape({
     )
     .test(
       'is-valid-size',
-      'Pero maximo de imagen permitido es de 150Kb',
+      'Pero maximo de imagen permitido es de 600Kb',
       value => value && value.size <= MAX_FILE_SIZE
     )
 })
