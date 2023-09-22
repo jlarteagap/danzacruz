@@ -1,7 +1,7 @@
-import { PDFDownloadLink } from '@react-pdf/renderer'
+// import { PDFDownloadLink } from '@react-pdf/renderer'
 import { getRegister } from '../../firebase'
-import { useEffect, useState } from 'react'
-import { Certificade } from '../../src/components/pdf/certificade'
+// import { useEffect, useState } from 'react'
+// import { Certificade } from '../../src/components/pdf/certificade'
 
 export const getServerSideProps = async context => {
   const path = context.req.url
@@ -16,9 +16,9 @@ export const getServerSideProps = async context => {
 }
 
 const RegComplete = ({ data }) => {
-  const [isClient, setIsClient] = useState(false)
+  // const [isClient, setIsClient] = useState(false)
 
-  useEffect(() => setIsClient(true), [])
+  // useEffect(() => setIsClient(true), [])
   return (
     <>
       <div className="is-flex is-justify-content-center has-text-weight-bold">
@@ -36,20 +36,57 @@ const RegComplete = ({ data }) => {
         </div>
         <div className="card-content is-size-5 has-text-centered">
           <p>
-            Queremos expresar nuestro sincero agradecimiento por registrarte y
-            ser parte de este emocionante evento.
+            Agradecemos sinceramente tu interés y entusiasmo por ser parte del
+            XXIII Festival Internacional de Danzacruz 2023. Nos complace
+            informarte que tu registro ha sido recibido con éxito.
           </p>
 
           <p>
-            Tu pasión por la danza es lo que hace que este festival sea
-            especial, y no podemos esperar para ver tu talento brillar en
-            nuestro escenario. Tu participación enriquecerá la experiencia de
-            todos nosotros.
+            El evento se llevará a cabo del 5 al 8 de octubre en la hermosa
+            ciudad de Santa Cruz, y estamos emocionados por contar con tu
+            participación. Pronto, el equipo de la organización se comunicará
+            contigo para completar el proceso de registro correspondiente y
+            brindarte todos los detalles necesarios para tu participación.
           </p>
+          <div
+            className="message is-primary my-4"
+            style={{ maxWidth: '400px', margin: 'auto' }}
+          >
+            <div class="message-header">
+              <p className="has-text-centered">Datos del registro</p>
+            </div>
+            <div class="message-body has-text-justified">
+              <ul>
+                <li>
+                  <strong>Participante: </strong>
+                  {data[0].name}
+                </li>
+                <li>
+                  <strong>Coreografia: </strong>
+                  {data[0].coreografy}
+                </li>
+                <li>
+                  <strong>Profesor/ Coreográfo: </strong>
+                  {data[0].professor}
+                </li>
+                <li>
+                  <strong>Categoria: </strong>
+                  {data[0].category} - {data[0].division} -{' '}
+                  {data[0].subDivision}
+                </li>
+                <li>
+                  <strong>Modalidad: </strong>
+                  {data[0].modalidity}
+                </li>
+              </ul>
+            </div>
+          </div>
           <p>
-            Mantente atento/a a las actualizaciones que compartiremos pronto. Si
-            tienes alguna pregunta, no dudes en contactarnos.
+            Esperamos que este festival sea una experiencia enriquecedora y
+            llena de momentos memorables en el mundo de la danza. ¡No podemos
+            esperar a verte brillar en nuestro escenario!
           </p>
+
           <p className="mt-6">
             ¡Nos vemos pronto!
             <br />
@@ -60,7 +97,7 @@ const RegComplete = ({ data }) => {
             className="mt-5 is-flex is-justify-content-center"
             style={{ gap: '2rem' }}
           >
-            {isClient ? (
+            {/* {isClient ? (
               <PDFDownloadLink
                 fileName="registro-danzacruz.pdf"
                 document={<Certificade name={data[0].name} />}
@@ -69,7 +106,7 @@ const RegComplete = ({ data }) => {
                   Descargar Certificado de participación
                 </button>
               </PDFDownloadLink>
-            ) : null}
+            ) : null} */}
 
             <a className="button is-warning">Ir a la página principal</a>
           </div>

@@ -5,7 +5,7 @@ import { saveForm, uploadFile } from '../../../firebase'
 
 import { initialValues, validate } from './utils'
 import { useRouter } from 'next/router'
-import { SendEmail } from '../email/sendEmail'
+// import { SendEmail } from '../email/sendEmail'
 
 export const AddParticipant = () => {
   const [category, setCategory] = useState('')
@@ -18,7 +18,7 @@ export const AddParticipant = () => {
       onSubmit={async (values, { resetForm }) => {
         values.logo = await uploadFile(values.logo, values.name)
         const dataSave = await saveForm(values, 'user')
-        SendEmail(values)
+        // SendEmail(values)
         resetForm()
         router.push(`completo/${dataSave}`)
       }}
