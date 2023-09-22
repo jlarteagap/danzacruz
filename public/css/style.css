@@ -61,7 +61,7 @@ body {
 /* list particpante */
 .list__content{
     display: grid;
-    grid-template-columns: 1rem repeat(9, 1fr);
+    grid-template-columns: minmax(64px, 64px) repeat(auto-fit, minmax(150px, 1fr));
     gap: 1rem;
 }
 .footer {
