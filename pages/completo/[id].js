@@ -34,7 +34,7 @@ const RegComplete = ({ data }) => {
             </h3>
           </div>
         </div>
-        <div className="card-content is-size-5 has-text-centered">
+        <div className="card-content is-size-5 is-size-6-mobile has-text-centered">
           <p>
             Agradecemos sinceramente tu interés y entusiasmo por ser parte del
             XXIII Festival Internacional de Danzacruz 2023. Nos complace
@@ -108,7 +108,12 @@ const RegComplete = ({ data }) => {
               </PDFDownloadLink>
             ) : null} */}
 
-            <a className="button is-warning">Ir a la página principal</a>
+            <a
+              href="http://festivaldanzacruz.com"
+              className="button is-warning"
+            >
+              Ir a la página principal
+            </a>
           </div>
         </div>
       </div>
