@@ -55,45 +55,12 @@ export const ListSubscribers = ({ data }) => {
                     onClick={() => updateDoc(sub.id, !sub.status)}
                     disabled={sub.status}
                   >
-                    {sub.status ? 'No confirmado' : 'Sin Confirmar'}
+                    {sub.status ? 'Confirmado' : 'Sin Confirmar'}
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          // <div
-          //   key={i}
-          //   className={`list__content notification is-light is-align-items-center ${
-          //     sub.status ? 'is-info' : 'is-secondary'
-          //   }`}
-          // >
-          //   <div>{i + 1}</div>
-          //   <div>
-          //     {sub.logo ? (
-          //       <Image src={sub.logo} width="50" height="50" alt={sub.name} />
-          //     ) : null}
-
-          //     {sub.name}
-          //   </div>
-          //   <div>
-          //     {sub.email} <br /> {sub.phone}
-          //   </div>
-          //   <div>{sub.modalidity}</div>
-          //   <div>{sub.coreografy}</div>
-          //   <div> {sub.categoryType}</div>
-          //   <div>{sub.subDivision}</div>
-          //   <div>{sub.division}</div>
-          //   <div>{sub.professor}</div>
-          //   <button
-          //     className={`button is-small ${
-          //       sub.status ? 'is-success' : 'is-secondary is-outlined'
-          //     }`}
-          //     onClick={() => updateDoc(sub.id, !sub.status)}
-          //     disabled={sub.status}
-          //   >
-          //     {sub.status ? 'Registrado' : 'Sin Registrar'}
-          //   </button>
-          // </div>
         )
       })}
     </>
