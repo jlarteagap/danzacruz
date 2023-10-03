@@ -48,6 +48,9 @@ const RegComplete = ({ data }) => {
             contigo para completar el proceso de registro correspondiente y
             brindarte todos los detalles necesarios para tu participación.
           </p>
+          <p className="messages is-danger">
+            Necesitaremos que nos envien 1 foto de 3x3 para la credencial.
+          </p>
           <div
             className="message is-primary my-4"
             style={{ maxWidth: '400px', margin: 'auto' }}
