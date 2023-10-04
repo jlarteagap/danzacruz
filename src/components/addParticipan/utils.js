@@ -113,7 +113,6 @@ export const validate = Yup.object().shape({
     .required('Necesitamos un correo electrónico'),
 
   logo: Yup.mixed()
-    .required('Required')
     .test('is-valid-type', 'No es una tipo de imagen valida', value =>
       isValidFileType(value && value.name.toLowerCase(), 'image')
     )
