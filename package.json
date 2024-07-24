@@ -21,6 +21,8 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
+    "@types/node": "^20.14.12",
+    "@types/react": "^18.3.3",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
@@ -30,6 +32,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.1",
     "prettier": "^3.0.1",
-    "standard": "^17.1.0"
+    "standard": "^17.1.0",
+    "typescript": "^5.5.4"
   }
 }
