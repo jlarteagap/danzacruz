@@ -1,5 +1,6 @@
 import React from 'react'
 import { monserrat } from './ui/fonts'
+import './ui/global.css'
 
 export default function RootLayout({
   children
