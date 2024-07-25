@@ -1,6 +1,7 @@
 import React from 'react'
 import { monserrat } from './ui/fonts'
 import './ui/global.css'
+import { Footer } from '../src/components/footer'
 
 export default function RootLayout({
   children
@@ -9,7 +10,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${monserrat.className} antialiased`}>{children}</body>
+      <body className={`${monserrat.className} antialiased`}>
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
