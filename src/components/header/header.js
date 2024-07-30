@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 // import Image from 'next/image'
 // import Link from 'next/link'
 export const Header = () => {
@@ -7,14 +7,14 @@ export const Header = () => {
       <nav className="flex justify-between items-center mx-auto max-w-screen-xl">
         <a href="/" className="">
           <h1 className="text-3xl font-semibold">Danzacruz</h1>
-          <span class="self-center whitespace-nowrap leading-3">
+          <span className="self-center whitespace-nowrap leading-3">
             Festival Internacional de Danza
           </span>
         </a>
         <button
           data-collapse-toggle="navbar-default"
           type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-default"
           aria-expanded="false"
         >

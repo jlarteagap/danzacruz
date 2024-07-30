@@ -55,10 +55,10 @@ const RegComplete = ({ data }) => {
             className="message is-primary my-4"
             style={{ maxWidth: '400px', margin: 'auto' }}
           >
-            <div class="message-header">
+            <div className="message-header">
               <p className="has-text-centered">Datos del registro</p>
             </div>
-            <div class="message-body has-text-justified">
+            <div className="message-body has-text-justified">
               <ul>
                 <li>
                   <strong>Participante: </strong>
