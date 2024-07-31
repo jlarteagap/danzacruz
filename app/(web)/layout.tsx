@@ -1,10 +1,10 @@
 import React from 'react'
-import { monserrat } from './ui/fonts'
-import './ui/global.css'
-import { Footer } from '../src/components/footer'
-import { Header } from '../src/components/header/header'
+import { monserrat } from '../ui/fonts'
+import '../ui/global.css'
+import { Footer } from '../../src/components/footer'
+import { Header } from '../../src/components/header/header'
 
-export default function RootLayout({
+export default function DashboardLayout({
   children
 }: {
   children: React.ReactNode

@@ -21,7 +21,7 @@ export default function Page() {
           </div>
           <div className="flex gap-3">
             <Button variant="outline">
-              <FileDown className="w-5 h-5 mr-2" />
+              <FileDown className="w-5 h-5 mr-2" stroke="1" />
               Convocatoria
             </Button>
             <Button>
