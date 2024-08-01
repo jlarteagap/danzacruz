@@ -4,6 +4,6 @@ export const dataGeneralSidebar = [
   {
     icon: Settings2,
     label: 'Settings',
-    href: '/settings'
+    href: '/panel'
   }
 ]
