@@ -14,7 +14,7 @@ export default function RootLayout({
         <div className="hidden xl:block w-80 h-full xl:fixed">
           <Sidebar />
         </div>
-        <div className="w-full xl:ml-80">
+        <div className="xl:ml-80">
           <Nabvar />
           <div className="p-6 bg-[#fafbfc]">{children}</div>
         </div>
