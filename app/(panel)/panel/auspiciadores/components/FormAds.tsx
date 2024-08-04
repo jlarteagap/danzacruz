@@ -1,8 +1,28 @@
 'use client'
 
-import { ButtonField, InputField } from '@/components/form/Fields'
+import {
+  ButtonField,
+  InputField,
+  InputFile,
+  SelectField
+} from '@/components/form/Fields'
 import { Form, Formik } from 'formik'
 import { initialValues } from './utils'
+
+const selectAds = [
+  {
+    value: 'Auspiciador',
+    name: 'Auspiciador'
+  },
+  {
+    value: 'Colaborador',
+    name: 'Colaborador'
+  },
+  {
+    value: 'Apoyo',
+    name: 'Apoyo'
+  }
+]
 
 export default function FormAds() {
   return (
@@ -22,7 +42,14 @@ export default function FormAds() {
               name="company"
               placeholder="Agregar nomnbre auspiciador"
             />
-            <ButtonField type="submit" classType="bg-black" addText="Agregar" />
+            <SelectField
+              label="Tipo de auspiciador"
+              name="type"
+              type="select"
+              options={selectAds}
+            />
+            <InputFile type="file" name="logo" />
+            <ButtonField type="submit" addText="Agregar" />
           </Form>
         )}
       </Formik>
