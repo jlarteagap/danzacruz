@@ -1,3 +1,5 @@
 export const initialValues = {
-  company: ''
+  logo: '',
+  company: '',
+  type: ''
 }

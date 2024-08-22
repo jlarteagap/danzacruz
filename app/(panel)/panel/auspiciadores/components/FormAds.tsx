@@ -8,7 +8,7 @@ import {
 } from '@/components/form/Fields'
 import { Form, Formik } from 'formik'
 import { initialValues } from './utils'
-
+import { saveForm, uploadFile } from '@/lib/firebase'
 const selectAds = [
   {
     value: 'Auspiciador',
@@ -31,10 +31,12 @@ export default function FormAds() {
         initialValues={initialValues}
         // validationSchema={validate}
         onSubmit={async (values, { resetForm }) => {
-          console.log(values)
+          values.logo = await uploadFile(values.logo, values.company, 'ads')
+          await saveForm(values, 'ads')
+          resetForm()
         }}
       >
-        {({ values }) => (
+        {({ values, setFieldValue }) => (
           <Form>
             <InputField
               label="Nombre de la empresa o organización"
@@ -48,7 +50,13 @@ export default function FormAds() {
               type="select"
               options={selectAds}
             />
-            <InputFile type="file" name="logo" />
+            <InputFile
+              type="file"
+              name="logo"
+              onChange={e => {
+                setFieldValue('logo', e.currentTarget.files[0])
+              }}
+            />
             <ButtonField type="submit" addText="Agregar" />
           </Form>
         )}
