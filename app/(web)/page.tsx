@@ -1,4 +1,7 @@
 // import { Button } from '@/components/ui/button'
+
+import Cta from '@/components/CTA/cta'
+
 // import { ArrowUpRight, FileDown } from 'lucide-react'
 export default function Page() {
   return (
@@ -9,29 +12,10 @@ export default function Page() {
           <span className="text-xl">Festival Internacional de danza</span>
         </div>
       </div>
-      {/* <section className="bg-slate-200">
-        <div className="flex justify-center h-[200px] items-center gap-7">
-          <div>
-            <h3 className="">
-              3 días de talleres, competencias y exhibiciones
-            </h3>
-            <p className="text-3xl font-semibold">
-              ¡INSCRIBE TU GRUPO O SOLISTA HOY!
-            </p>
-          </div>
-          <div className="flex gap-3">
-            <Button variant="outline">
-              <FileDown className="w-5 h-5 mr-2" stroke="1" />
-              Convocatoria
-            </Button>
-            <Button>
-              <ArrowUpRight className="w-5 h-5 mr-2" />
-              Registrarte
-            </Button>
-          </div>
-        </div>
-      </section>
-      <section className="bg-black">
+
+      <Cta />
+
+      {/* <section className="bg-black">
         <div className="container text-white px-4 py-10">
           <div className="text-center my-10">
             <h2 className="text-3xl font-semibold">Talleres</h2>
