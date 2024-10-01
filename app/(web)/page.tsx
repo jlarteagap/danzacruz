@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button'
-import { ArrowUpRight, FileDown } from 'lucide-react'
+// import { Button } from '@/components/ui/button'
+// import { ArrowUpRight, FileDown } from 'lucide-react'
 export default function Page() {
   return (
     <>
@@ -9,7 +9,7 @@ export default function Page() {
           <span className="text-xl">Festival Internacional de danza</span>
         </div>
       </div>
-      <section className="bg-slate-200">
+      {/* <section className="bg-slate-200">
         <div className="flex justify-center h-[200px] items-center gap-7">
           <div>
             <h3 className="">
@@ -160,7 +160,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   )
 }
