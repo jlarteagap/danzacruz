@@ -5,14 +5,16 @@ import Link from 'next/link'
 export default function Cta() {
   return (
     <section className="bg-slate-200">
-      <div className="flex justify-center h-[200px] items-center gap-7">
-        <div>
-          <h3 className="">3 días de talleres, competencias y exhibiciones</h3>
+      <div className="flex justify-center h-[200px] items-center gap-7 flex-col md:flex-row">
+        <div className="text-center md:text-left">
+          <h3 className="mb-4">
+            3 días de talleres, competencias y exhibiciones
+          </h3>
           <p className="text-3xl font-semibold">
-            ¡INSCRIBE TU GRUPO O SOLISTA HOY!
+            ¡INSCRIBE TÚ CON TU GRUPO O COMO SOLISTA!
           </p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-3 ">
           <Button variant="outline" asChild>
             <Link href="/pdf/dc-2024.pdf" target="_blank">
               <FileDown className="mr-2" />

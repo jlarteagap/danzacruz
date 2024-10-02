@@ -1,19 +1,71 @@
 // import { Button } from '@/components/ui/button'
 
 import Cta from '@/components/CTA/cta'
+import Image from 'next/image'
 
 // import { ArrowUpRight, FileDown } from 'lucide-react'
 export default function Page() {
   return (
     <>
-      <div className="container flex justify-center items-center w-full h-screen">
+      {/* <div className="container flex justify-center items-center w-full h-screen">
         <div className="block mx-auto text-center">
           <h1 className="text-4xl sm:text-7xl font-bold">DANZACRUZ</h1>
           <span className="text-xl">Festival Internacional de danza</span>
         </div>
+      </div> */}
+      <div className="container flex justify-center items-center flex-col">
+        <Image
+          src="/img/dc-1.jpeg"
+          alt="Danzacruz 2024"
+          width="600"
+          height="600"
+        />
       </div>
-
       <Cta />
+      <div className="container flex justify-center items-center flex-col">
+        <Image
+          src="/img/dc-2.jpeg"
+          alt="Danzacruz 2024"
+          width="600"
+          height="600"
+        />
+        <Image
+          src="/img/dc-3.jpeg"
+          alt="Danzacruz 2024"
+          width="600"
+          height="600"
+        />
+        <Image
+          src="/img/dc-4.jpeg"
+          alt="Danzacruz 2024"
+          width="600"
+          height="600"
+        />
+        <Image
+          src="/img/dc-5.jpeg"
+          alt="Danzacruz 2024"
+          width="600"
+          height="600"
+        />
+        <Image
+          src="/img/dc-6.jpeg"
+          alt="Danzacruz 2024"
+          width="600"
+          height="600"
+        />
+        <Image
+          src="/img/dc-7.jpeg"
+          alt="Danzacruz 2024"
+          width="600"
+          height="600"
+        />
+        <Image
+          src="/img/dc-8.jpeg"
+          alt="Danzacruz 2024"
+          width="600"
+          height="600"
+        />
+      </div>
 
       {/* <section className="bg-black">
         <div className="container text-white px-4 py-10">
