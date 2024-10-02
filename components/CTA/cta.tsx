@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function Cta() {
   return (
     <section className="bg-slate-200">
-      <div className="flex justify-center h-[200px] items-center gap-7 flex-col md:flex-row">
+      <div className="flex justify-center items-center gap-7 py-10 flex-col md:h-[200px] md:flex-row">
         <div className="text-center md:text-left">
           <h3 className="mb-4">
             3 días de talleres, competencias y exhibiciones

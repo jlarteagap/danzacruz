@@ -2,25 +2,13 @@
 
 import Cta from '@/components/CTA/cta'
 import Image from 'next/image'
+import Hero from './components/Hero'
 
 // import { ArrowUpRight, FileDown } from 'lucide-react'
 export default function Page() {
   return (
     <>
-      {/* <div className="container flex justify-center items-center w-full h-screen">
-        <div className="block mx-auto text-center">
-          <h1 className="text-4xl sm:text-7xl font-bold">DANZACRUZ</h1>
-          <span className="text-xl">Festival Internacional de danza</span>
-        </div>
-      </div> */}
-      <div className="container flex justify-center items-center flex-col">
-        <Image
-          src="/img/dc-1.jpeg"
-          alt="Danzacruz 2024"
-          width="600"
-          height="600"
-        />
-      </div>
+      <Hero />
       <Cta />
       <div className="container flex justify-center items-center flex-col">
         <Image
