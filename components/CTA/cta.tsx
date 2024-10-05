@@ -10,8 +10,8 @@ export default function Cta() {
           <h3 className="mb-4">
             3 días de talleres, competencias y exhibiciones
           </h3>
-          <p className="text-3xl font-semibold">
-            ¡INSCRIBE TÚ CON TU GRUPO O COMO SOLISTA!
+          <p className="text-3xl font-semibold uppercase">
+            ¡inscríbete TÚ CON TU GRUPO O COMO SOLISTA!
           </p>
         </div>
         <div className="flex gap-3 ">
