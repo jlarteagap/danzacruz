@@ -3,6 +3,7 @@
 import Cta from '@/components/CTA/cta'
 import Image from 'next/image'
 import Hero from './components/Hero'
+import WorkshopSection from './components/Workshop/Workshop'
 
 // import { ArrowUpRight, FileDown } from 'lucide-react'
 export default function Page() {
@@ -10,6 +11,7 @@ export default function Page() {
     <>
       <Hero />
       <Cta />
+      <WorkshopSection />
       <div className="container flex justify-center items-center flex-col">
         <Image
           src="/img/workshop.jpeg"
