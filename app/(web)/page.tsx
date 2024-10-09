@@ -4,33 +4,20 @@ import Cta from '@/components/CTA/cta'
 import Image from 'next/image'
 import Hero from './components/Hero'
 import WorkshopSection from './components/Workshop/Workshop'
+import InfoData from './components/Info/Info'
+import Modalidad from './components/Modalidad/Modalidad'
+import Registration from './components/Registration/Registration'
 
-// import { ArrowUpRight, FileDown } from 'lucide-react'
 export default function Page() {
   return (
     <>
       <Hero />
       <Cta />
       <WorkshopSection />
+      <InfoData />
+      <Modalidad />
+      <Registration />
       <div className="container flex justify-center items-center flex-col">
-        <Image
-          src="/img/workshop.jpeg"
-          alt="Workshop"
-          width="600"
-          height="600"
-        />
-        <Image
-          src="/img/dc-2.jpeg"
-          alt="Danzacruz 2024"
-          width="600"
-          height="600"
-        />
-        <Image
-          src="/img/dc-3.jpeg"
-          alt="Danzacruz 2024"
-          width="600"
-          height="600"
-        />
         <Image
           src="/img/dc-4.jpeg"
           alt="Danzacruz 2024"
