@@ -3,7 +3,7 @@ import { benefitsData, registrationData } from './Registration.data'
 export default function Registration() {
   return (
     <section className="bg-slate-100">
-      <div className="container my-10 py-10">
+      <div className="container mt-10 py-10">
         <div className="flex justify-center mb-10">
           <h2 className="text-4xl uppercase font-semibold">Inscripciones</h2>
         </div>

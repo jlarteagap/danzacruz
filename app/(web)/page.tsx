@@ -7,6 +7,7 @@ import WorkshopSection from './components/Workshop/Workshop'
 import InfoData from './components/Info/Info'
 import Modalidad from './components/Modalidad/Modalidad'
 import Registration from './components/Registration/Registration'
+import Awards from './components/Awards/Awards'
 
 export default function Page() {
   return (
@@ -17,31 +18,8 @@ export default function Page() {
       <InfoData />
       <Modalidad />
       <Registration />
+      <Awards />
       <div className="container flex justify-center items-center flex-col">
-        <Image
-          src="/img/dc-4.jpeg"
-          alt="Danzacruz 2024"
-          width="600"
-          height="600"
-        />
-        <Image
-          src="/img/dc-5.jpeg"
-          alt="Danzacruz 2024"
-          width="600"
-          height="600"
-        />
-        <Image
-          src="/img/dc-6.jpeg"
-          alt="Danzacruz 2024"
-          width="600"
-          height="600"
-        />
-        <Image
-          src="/img/dc-7.jpeg"
-          alt="Danzacruz 2024"
-          width="600"
-          height="600"
-        />
         <Image
           src="/img/dc-8.jpeg"
           alt="Danzacruz 2024"

@@ -1,14 +1,14 @@
 export const registrationData = [
-  { price: '200', name: 'Solista', desc: '' },
-  { price: '100', name: 'Duo', desc: 'Costo por participante' },
-  { price: '80', name: 'Trio', desc: 'Costo por participante' },
+  { price: '200 Bs.', name: 'Solista', desc: '' },
+  { price: '100 Bs.', name: 'Duo', desc: 'Costo por participante' },
+  { price: '80 Bs.', name: 'Trio', desc: 'Costo por participante' },
   {
-    price: '60',
+    price: '60 Bs.',
     name: 'Grupos pequeños',
     desc: 'Costo por participante'
   },
   {
-    price: '50',
+    price: '50 Bs.',
     name: 'Grupos grande',
     desc: 'Costo por participante'
   }
