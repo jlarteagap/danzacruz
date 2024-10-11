@@ -1,13 +1,12 @@
-// import { Button } from '@/components/ui/button'
-
 import Cta from '@/components/CTA/cta'
-import Image from 'next/image'
+
 import Hero from './components/Hero'
 import WorkshopSection from './components/Workshop/Workshop'
 import InfoData from './components/Info/Info'
 import Modalidad from './components/Modalidad/Modalidad'
 import Registration from './components/Registration/Registration'
 import Awards from './components/Awards/Awards'
+import Times from './components/Times/Times'
 
 export default function Page() {
   return (
@@ -19,14 +18,7 @@ export default function Page() {
       <Modalidad />
       <Registration />
       <Awards />
-      <div className="container flex justify-center items-center flex-col">
-        <Image
-          src="/img/dc-8.jpeg"
-          alt="Danzacruz 2024"
-          width="600"
-          height="600"
-        />
-      </div>
+      <Times />
 
       {/* <section className="bg-black">
         <div className="container text-white px-4 py-10">

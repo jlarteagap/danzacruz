@@ -1,5 +1,5 @@
 import { AwardIcon } from 'lucide-react'
-import { awardsCategory, awardsData } from './Awards.data'
+import { awardsCategory, awardsData, awardsEspecial } from './Awards.data'
 
 export default function Awards() {
   return (
@@ -8,10 +8,10 @@ export default function Awards() {
         <AwardIcon strokeWidth={3} />
         <h2 className="text-4xl uppercase font-semibold">Premios</h2>
       </div>
-      <div className="flex justify-center flex-col md:flex-row md:justify-around my-10">
+      <div className="container flex justify-center flex-col md:flex-row md:justify-around my-10">
         {awardsData.map(award => {
           return (
-            <div className="text-center mb-5" key={award.place}>
+            <div className="text-center mb-5 shadow-sm" key={award.place}>
               <div className="text-3xl uppercase font-semibold">
                 {award.place}
               </div>
@@ -22,7 +22,7 @@ export default function Awards() {
         })}
       </div>
 
-      <div className="container grid grid-cols-3 gap-5">
+      <div className="container grid grid-cols-1 md:grid-cols-3 gap-5">
         {awardsCategory.map(category => {
           return (
             <div className="shadow-sm rounded-lg p-5" key={category.category}>
@@ -44,6 +44,20 @@ export default function Awards() {
             </div>
           )
         })}
+      </div>
+      <div className="container my-20 w-100 md:w-1/3 m-auto text-center">
+        <h3 className="text-3xl uppercase font-semibold mb-5">
+          Premios especiales
+        </h3>
+        <ul>
+          {awardsEspecial.map(award => {
+            return (
+              <li className="mb-3 md:font-semibold" key={award}>
+                {award}
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </section>
   )
