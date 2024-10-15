@@ -5,21 +5,19 @@ export const InputField = ({ label, ...props }) => {
   const [field, meta] = useField(props)
 
   return (
-    <div className="field">
-      <div className="control">
-        <label className="label">{label}</label>
-        <input
-          className={`input ${meta.touched && meta.error && 'is-danger'}`}
-          {...field}
-          {...props}
-          autoComplete="off"
-        />
-        <ErrorMessage
-          component="div"
-          name={field.name}
-          className="help is-danger"
-        />
-      </div>
+    <div className="mb-5">
+      <label className="block mb-2">{label}</label>
+      <input
+        className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full ps-10 p-2 ${meta.touched && meta.error && 'border-red-500'}`}
+        {...field}
+        {...props}
+        autoComplete="off"
+      />
+      <ErrorMessage
+        component="div"
+        name={field.name}
+        className="text-sm text-red-500"
+      />
     </div>
   )
 }
@@ -28,33 +26,27 @@ export const SelectField = ({ label, options, ...props }) => {
   const [field, meta] = useField(props)
 
   return (
-    <div className="field">
-      <div className="control">
-        <label className="label">{label}</label>
-        <div className="select is-fullwidth">
-          <select
-            {...field}
-            {...props}
-            className={`${meta.touched && meta.error && 'is-danger'}`}
-          >
-            <option defaultValue="" value="" label="--">
-              - -
-            </option>
-            {options.map((option, index) => {
-              return (
-                <option value={option.value} label={option.name} key={index}>
-                  {option.value}
-                </option>
-              )
-            })}
-          </select>
-        </div>
+    <div className="">
+      <div className="mb-5">
+        <label className="block mb-2">{label}</label>
+        <select
+          {...field}
+          {...props}
+          className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 ${meta.touched && meta.error && ''}`}
+        >
+          <option defaultValue="" value="" label="--">
+            - -
+          </option>
+          {options.map((option, index) => {
+            return (
+              <option value={option.value} label={option.name} key={index}>
+                {option.value}
+              </option>
+            )
+          })}
+        </select>
+        <ErrorMessage component="div" name={field.name} className="text-sm" />
       </div>
-      <ErrorMessage
-        component="div"
-        name={field.name}
-        className="help is-danger"
-      />
     </div>
   )
 }
@@ -62,28 +54,27 @@ export const SelectField = ({ label, options, ...props }) => {
 export const TextareaField = ({ label, ...props }) => {
   const [field, meta] = useField(props)
   return (
-    <div className="field">
-      <div className={`control`}>
-        <label className="label">{label}</label>
+    <div className="">
+      <div className={``}>
+        <label className="">{label}</label>
         <textarea
-          className={`textarea ${meta.touched && meta.error && 'is-danger'}`}
+          className={`${meta.touched && meta.error && ''}`}
           placeholder="Agregar descripcion"
           {...field}
           {...props}
         ></textarea>
-        <ErrorMessage
-          component="div"
-          name={field.name}
-          className="help is-danger"
-        />
+        <ErrorMessage component="div" name={field.name} className="" />
       </div>
     </div>
   )
 }
 
-export const ButtonField = ({ type, addText, classType }) => {
+export const ButtonField = ({ type, addText }) => {
   return (
-    <button type={type} className={`button ${classType}`}>
+    <button
+      type={type}
+      className="bg-pink-900 text-white rounded-md p-2 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
+    >
       {addText}
     </button>
   )
@@ -91,12 +82,14 @@ export const ButtonField = ({ type, addText, classType }) => {
 
 export const RadioFields = ({ options, name }) => {
   return (
-    <div className="control">
+    <div className="block mb-5">
       {options.map((option, i) => {
         return (
-          <label className="dc__label" key={i}>
+          <label className="flex items-center" key={i}>
             <Field type="radio" name={name} value={option} />
-            <span className="dc__radio__label">{option}</span>
+            <span className="ml-3 block text-sm font-medium text-gray-900">
+              {option}
+            </span>
           </label>
         )
       })}

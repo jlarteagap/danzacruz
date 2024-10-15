@@ -5,14 +5,14 @@ import {
   InputField,
   RadioFields,
   SelectField,
-  ButtonField,
-  InputFile
+  ButtonField
 } from '../../src/components/form/Fileds'
 import { general, modalidad, category, subDivision, colegios } from './utils'
+
 export const FormParticipant = ({ categoryProp, setFieldValue }) => {
   return (
-    <div className="card m-auto dc__wrapper">
-      <div className="card-content">
+    <div className="text-right">
+      <div className="">
         <InputField
           label="Nombre del participante o agrupación"
           type="text"
@@ -25,10 +25,10 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
           name="coreografy"
         />
         <div>
-          <h3 className="is-size-4">Categoría</h3>
+          <h3 className="">Categoría</h3>
         </div>
-        <div className="columns">
-          <div className="column">
+        <div className="">
+          <div className="">
             <RadioFields options={category} name="category" />
             <SelectField
               label="División"
@@ -54,19 +54,15 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
         />
         <InputField label="Telefono" type="text" name="phone" />
         <InputField label="Correo electrónico" type="text" name="email" />
-        <InputFile
+        {/* <InputFile
           name="logo"
           type="file"
           onChange={event => {
             setFieldValue('logo', event.currentTarget.files[0])
           }}
-        />
-        <div className="is-flex is-justify-content-center pt-3">
-          <ButtonField
-            type="submit"
-            addText="Registrar ahora"
-            classType="is-primary"
-          />
+        /> */}
+        <div className="flex justify-center">
+          <ButtonField type="submit" addText="Registrar ahora" />
         </div>
       </div>
     </div>

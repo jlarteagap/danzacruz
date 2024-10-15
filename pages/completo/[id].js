@@ -7,7 +7,7 @@ export const getServerSideProps = async context => {
   const path = context.req.url
   const data = []
 
-  const registro = await getRegister(path.replace('/completo/', ''), 'user')
+  const registro = await getRegister(path.replace('/completo/', ''), 'register')
   data.push(registro.data())
 
   return {
@@ -30,7 +30,7 @@ const RegComplete = ({ data }) => {
             <p>¡Bienvenido/a {data[0].name}</p>
             <h3 className="is-size-4 has-text-weight-bold has-text-centered">
               XXIII Festival Internacional de danza
-              <br /> DANZACRUZ 2023!
+              <br /> DANZACRUZ 2024!
             </h3>
           </div>
         </div>
@@ -94,7 +94,7 @@ const RegComplete = ({ data }) => {
             ¡Nos vemos pronto!
             <br />
             Con gratitud, <br />
-            El Equipo de Danzacruz 2023
+            El Equipo de Danzacruz 2024
           </p>
           <div
             className="mt-5 is-flex is-justify-content-center"
@@ -111,10 +111,7 @@ const RegComplete = ({ data }) => {
               </PDFDownloadLink>
             ) : null} */}
 
-            <a
-              href="http://festivaldanzacruz.com"
-              className="button is-warning"
-            >
+            <a href="http://danzacruz.com" className="button is-warning">
               Ir a la página principal
             </a>
           </div>

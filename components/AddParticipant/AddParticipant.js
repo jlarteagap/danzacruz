@@ -3,13 +3,14 @@
 import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import { FormParticipant } from './FormParticipant'
-import { saveForm, uploadFile } from '../../firebase'
+import { saveForm } from '../../firebase'
 
 import { initialValues, validate } from './utils'
-// import { useRouter } from 'next/router'
 import { Loading } from '../../src/components/loading'
 import { useRouter } from 'next/navigation'
 // import { SendEmail } from '../email/sendEmail'
+const currentTime = new Date()
+const year = currentTime.getFullYear()
 
 const AddParticipant = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -26,8 +27,9 @@ const AddParticipant = () => {
           validationSchema={validate}
           onSubmit={async (values, { resetForm }) => {
             setIsLoading(true)
-            values.logo = await uploadFile(values.logo, values.name)
-            const dataSave = await saveForm(values, 'user')
+            values.year = year
+            // values.logo = await uploadFile(values.logo, values.name)
+            const dataSave = await saveForm(values, 'register')
             // SendEmail(values)
             resetForm()
             setIsLoading(false)
@@ -40,6 +42,7 @@ const AddParticipant = () => {
                 categoryProp={category}
                 setFieldValue={setFieldValue}
               />
+              <input type="text" hidden value={year} />
               {setCategory(values.category)}
             </Form>
           )}

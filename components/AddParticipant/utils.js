@@ -63,7 +63,7 @@ export const category = ['General', 'Colegios o Universidad']
 export const subDivision = [
   'Solo',
   'Duo',
-  'trio',
+  'Trio',
   'Grupo pequeño',
   'Grupo grande'
 ]
@@ -81,18 +81,18 @@ export const initialValues = {
   logo: ''
 }
 
-const MAX_FILE_SIZE = 602400 // 500KB
+// const MAX_FILE_SIZE = 602400 // 500KB
 
-const validFileExtensions = {
-  image: ['jpg', 'gif', 'png', 'jpeg', 'webp']
-}
+// const validFileExtensions = {
+//   image: ['jpg', 'gif', 'png', 'jpeg', 'webp']
+// }
 
-function isValidFileType(fileName, fileType) {
-  return (
-    fileName &&
-    validFileExtensions[fileType].indexOf(fileName.split('.').pop()) > -1
-  )
-}
+// function isValidFileType(fileName, fileType) {
+//   return (
+//     fileName &&
+//     validFileExtensions[fileType].indexOf(fileName.split('.').pop()) > -1
+//   )
+// }
 export const validate = Yup.object().shape({
   name: Yup.string().required('Introduzca un nombre del participante o grupo'),
   coreografy: Yup.string()
@@ -110,15 +110,15 @@ export const validate = Yup.object().shape({
     .min(5, 'Necesitamos un número de telefono valido'),
   email: Yup.string()
     .email('Correo no válido')
-    .required('Necesitamos un correo electrónico'),
+    .required('Necesitamos un correo electrónico')
 
-  logo: Yup.mixed()
-    .test('is-valid-type', 'No es una tipo de imagen valida', value =>
-      isValidFileType(value && value.name.toLowerCase(), 'image')
-    )
-    .test(
-      'is-valid-size',
-      'Pero maximo de imagen permitido es de 600Kb',
-      value => value && value.size <= MAX_FILE_SIZE
-    )
+  // logo: Yup.mixed()
+  //   .test('is-valid-type', 'No es una tipo de imagen valida', value =>
+  //     isValidFileType(value && value.name.toLowerCase(), 'image')
+  //   )
+  //   .test(
+  //     'is-valid-size',
+  //     'Pero maximo de imagen permitido es de 600Kb',
+  //     value => value && value.size <= MAX_FILE_SIZE
+  //   )
 })
