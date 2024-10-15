@@ -7,7 +7,7 @@ import {
   SelectField,
   ButtonField,
   InputFile
-} from '../form/Fileds'
+} from '../../src/components/form/Fileds'
 import { general, modalidad, category, subDivision, colegios } from './utils'
 export const FormParticipant = ({ categoryProp, setFieldValue }) => {
   return (

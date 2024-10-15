@@ -1,14 +1,17 @@
+'use client'
+
 import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import { FormParticipant } from './FormParticipant'
-import { saveForm, uploadFile } from '../../../firebase'
+import { saveForm, uploadFile } from '../../firebase'
 
 import { initialValues, validate } from './utils'
-import { useRouter } from 'next/router'
-import { Loading } from '../loading'
+// import { useRouter } from 'next/router'
+import { Loading } from '../../src/components/loading'
+import { useRouter } from 'next/navigation'
 // import { SendEmail } from '../email/sendEmail'
 
-export const AddParticipant = () => {
+const AddParticipant = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [category, setCategory] = useState('')
   const router = useRouter()
@@ -45,3 +48,5 @@ export const AddParticipant = () => {
     </>
   )
 }
+
+export default AddParticipant
