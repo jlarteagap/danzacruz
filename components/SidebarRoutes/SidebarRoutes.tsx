@@ -1,8 +1,8 @@
 'use client'
 
-import { Separator } from '../ui/separator'
+// import { Separator } from '../ui/separator'
 import SidebarItems from '../SidebarItems/SidebarItems'
-import { dataGeneralSidebar, dataSettings } from './SidebarRoutes.data'
+import { dataGeneralSidebar } from './SidebarRoutes.data'
 
 export default function SidebarRoutes() {
   return (
@@ -12,11 +12,11 @@ export default function SidebarRoutes() {
         {dataGeneralSidebar.map(item => (
           <SidebarItems key={item.label} items={item} />
         ))}
-        <Separator className="my-5" />
-        <h2 className="font-semibold mb-3">Admin web</h2>
+        {/* <Separator className="my-5" /> */}
+        {/* <h2 className="font-semibold mb-3">Admin web</h2>
         {dataSettings.map(item => (
           <SidebarItems key={item.label} items={item} />
-        ))}
+        ))} */}
       </div>
       <footer className="mt-5 p3 text-center">All rigth reserved</footer>
     </aside>
