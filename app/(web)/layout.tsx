@@ -1,8 +1,8 @@
 import React from 'react'
 import { monserrat } from '../ui/fonts'
 import '../ui/global.css'
-import { Footer } from '../../src/components/footer'
-import { Header } from '../../src/components/header/header'
+import { Footer } from './components/Layout/Footer'
+import { Header } from './components/Layout/Header'
 
 export default function DashboardLayout({
   children
