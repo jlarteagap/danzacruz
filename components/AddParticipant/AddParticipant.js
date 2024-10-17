@@ -29,7 +29,7 @@ const AddParticipant = () => {
             setIsLoading(true)
             values.year = year
             // values.logo = await uploadFile(values.logo, values.name)
-            const dataSave = await saveForm(values, 'register')
+            const dataSave = await saveForm(values, 'register-data')
             // SendEmail(values)
             resetForm()
             setIsLoading(false)
