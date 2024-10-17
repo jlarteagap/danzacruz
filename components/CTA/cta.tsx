@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { FileDown } from 'lucide-react'
+import { FileDown, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Cta() {
@@ -21,10 +21,12 @@ export default function Cta() {
               Convocatoria
             </Link>
           </Button>
-          {/* <Button>
-            <ArrowUpRight className="w-5 h-5 mr-2" />
-            Registrarte
-          </Button> */}
+          <Button asChild>
+            <Link href={'/registro'} className="flex">
+              <ArrowUpRight className="w-5 h-5 mr-2" />
+              Registrarse
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

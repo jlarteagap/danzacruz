@@ -1,6 +1,8 @@
 // import React from 'react'
 // import Image from 'next/image'
-// import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
 export const Header = () => {
   return (
     <header className="container mx-auto px-4">
@@ -64,6 +66,12 @@ export const Header = () => {
               </li>
             </ul>
           </div> */}
+        <Button asChild>
+          <Link href={'/registro'} className="flex">
+            <ArrowUpRight className="w-5 h-5 mr-2" />
+            Registro
+          </Link>
+        </Button>
       </nav>
     </header>
   )
