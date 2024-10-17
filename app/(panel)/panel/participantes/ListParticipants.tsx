@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { getSubscribers } from '@/lib/firebase'
+import { getSubscribers, updateRegister } from '@/lib/firebase'
 
 export default function ParticipantesList({ initialData }) {
   const [data, setData] = useState(initialData)
@@ -13,11 +13,6 @@ export default function ParticipantesList({ initialData }) {
 
     return () => unsubscribe()
   }, [])
-
-  const updateRegister = async (id, newStatus) => {
-    // Implementa la lógica para actualizar el estado en Firebase
-    console.log('Actualizando registro:', id, newStatus)
-  }
 
   return (
     <div>
