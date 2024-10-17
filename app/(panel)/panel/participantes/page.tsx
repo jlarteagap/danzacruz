@@ -1,11 +1,10 @@
-// import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 // import { ListSubscribers } from '../src/components/subscribers/listSubscribers'
 import { getSubscribers } from '@/lib/firebase'
 
-
 export default async function Participantes() {
   const data = []
-  const getListOfSusbcribers = await getSubscribers("register")
+  const getListOfSusbcribers = await getSubscribers('register')
   getListOfSusbcribers.forEach(doc => {
     return data.push({ id: doc.id, ...doc.data() })
   })
@@ -19,52 +18,47 @@ export default async function Participantes() {
       <div>
         {data.map((sub, i) => {
           const {
+            id,
             name,
             phone,
-            email,
+            // email,
             modalidity,
             coreografy,
             professor,
             category,
             division,
-            subDivision, status
+            subDivision,
+            status
           } = sub
+
           return (
             <div key={i}>
-              <div className="message-body">
-                <div className="list__content" style={{ gap: '1rem' }}>
-                  <div>
-                    <strong>Participante:</strong> {name} <br />
-                    <strong>Telefono:</strong>
-                    {phone} <br />
-                    <strong>Correo: </strong>
-                    {email}
-                  </div>
-                  <div>
-                    <strong>Modalidad: </strong> <br /> {modalidity}
-                  </div>
-                  <div>
-                    <strong>Coreografía: </strong> {coreografy}
-                    <br />
-                    <strong>Profesor / Coreografo: </strong>
-                    {professor}
-                  </div>
-                  <div>
-                    <strong>Categoria: </strong> {category} <br />
-                    <strong>Division: </strong> {division} <br />
-                    <strong>Sub Division: </strong> {subDivision} <br />
-                  </div>
-                  <div>
-                    <button
-                      className={`button ${
-                        status ? 'is-success' : 'is-secondary is-outlined'
-                      }`}
-                      // onClick={() => updateDoc(sub.id, !sub.status)}
-                      disabled={status}
-                    >
-                      {status ? 'Confirmado' : 'Sin Confirmar'}
-                    </button>
-                  </div>
+              <div className="grid gap-3 grid-cols-4 bg-white p-5 rounded-md shadow-sm my-3">
+                <div className="flex flex-col">
+                  <p className="font-semibold">{name}</p>
+                  <span className="text-sm">{phone}</span>
+                </div>
+                <div className="text-sm">
+                  <strong>Modalidad: </strong> {modalidity} <br />
+                  <strong>Categoria: </strong> {category} <br />
+                  <strong>Division: </strong> {division} <br />
+                  <strong>Sub Division: </strong> {subDivision} <br />
+                </div>
+                <div className="text-sm">
+                  <strong>Coreografía: </strong>
+                  <br /> {coreografy}
+                  <br />
+                  <strong>Profesor / Coreografo: </strong>
+                  <br />
+                  {professor}
+                </div>
+                <div className="flex justify-center">
+                  <Button
+                    className="bg-fuchsia-700 text-white p-3 rounded-sm inline-block"
+                    // onClick={() => updateRegister(id, !status, 'register')}
+                  >
+                    {status ? 'Confirmado' : 'Sin Confirmar'}
+                  </Button>
                 </div>
               </div>
             </div>
