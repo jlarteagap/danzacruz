@@ -1,12 +1,12 @@
-import { Users } from 'lucide-react'
+import { Users, Dock } from 'lucide-react'
 // import { Settings2, Dock, Speech, UserPen, Users, Medal } from 'lucide-react'
 
 export const dataGeneralSidebar = [
-  // {
-  //   icon: Dock,
-  //   label: 'Pagina Principal',
-  //   href: '/panel'
-  // },
+  {
+    icon: Dock,
+    label: 'Pagina Principal',
+    href: '/panel'
+  },
   // {
   //   icon: Speech,
   //   label: 'Talleres',

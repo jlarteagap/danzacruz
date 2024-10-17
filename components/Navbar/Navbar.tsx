@@ -15,7 +15,7 @@ export default function Nabvar() {
           </SheetContent>
         </Sheet>
       </div>
-      <div className="">Que coloca aca?</div>
+      <div className=""></div>
     </div>
   )
 }
