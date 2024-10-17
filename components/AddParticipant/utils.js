@@ -10,7 +10,14 @@ export const modalidad = [
   { value: 'Musical', name: 'Musical' },
   { value: 'Tap Dance', name: 'Tap Dance' },
   { value: 'Street Dance', name: 'Street Dance' },
-  { value: 'Bailes Tropicales y Salón', name: 'Bailes Tropicales y Salón' },
+  {
+    value: 'Bailes Tropicales y Salón  (Amateur)',
+    name: 'Bailes Tropicales y Salón (Amateur)'
+  },
+  {
+    value: 'Bailes Tropicales y Salón  (Profesional)',
+    name: 'Bailes Tropicales y Salón (Profesional)'
+  },
   { value: 'Folk de Raíz', name: 'Folklore de Raíz' },
   { value: 'Modalidad Libre', name: 'Modalidad Libre' },
   {
