@@ -23,6 +23,11 @@ const firebaseConfig = {
   messagingSenderId: '1079471460424',
   appId: '1:1079471460424:web:388d0606f9bcce9c3bc87d'
 }
+type Unsubscribe = () => void
+type Subscriber = {
+  id: string
+  [key: string]: any // Ajusta esto según la estructura real de tus datos
+}
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
@@ -43,36 +48,33 @@ export const saveForm = async (values, collectionDB) => {
     console.error('Error adding document: ', e)
   }
 }
-// export const getSubscribers = collectionDB => {
-//   const data = query(collection(db, collectionDB))
-//   const subscribers = getDocs(data)
 
-//   return subscribers
-// }
-export const getSubscribers = collectionDB => {
+type GetServerData = () => Promise<Subscriber[]>
+type GetClientData = (callback: (data: Subscriber[]) => void) => Unsubscribe
+
+export const getSubscribers = (
+  collectionDB: string
+): GetServerData | GetClientData => {
   const q = query(collection(db, collectionDB))
 
-  // Versión para el servidor
-  const getServerData = async () => {
-    const querySnapshot = await getDocs(q)
-    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-  }
-
-  // Versión para el cliente
-  const getClientData = callback => {
-    return onSnapshot(q, querySnapshot => {
-      const subscribers = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }))
-      callback(subscribers)
-    })
-  }
-
-  // Detectar si estamos en el servidor o en el cliente
   if (typeof window === 'undefined') {
+    // Versión para el servidor
+    const getServerData: GetServerData = async () => {
+      const querySnapshot = await getDocs(q)
+      return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    }
     return getServerData
   } else {
+    // Versión para el cliente
+    const getClientData: GetClientData = callback => {
+      return onSnapshot(q, querySnapshot => {
+        const subscribers = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }))
+        callback(subscribers)
+      })
+    }
     return getClientData
   }
 }

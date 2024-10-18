@@ -3,7 +3,7 @@ import ListParticipants from './ListParticipants'
 import { getSubscribers } from '@/lib/firebase'
 
 export default async function Participantes() {
-  const getServerData = getSubscribers('register')
+  const getServerData = getSubscribers('register') as () => Promise<any[]>
   const initialData = await getServerData()
 
   return (

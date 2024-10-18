@@ -3,15 +3,24 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { getSubscribers, updateRegister } from '@/lib/firebase'
+import { Subscriber, Unsubscribe } from './ListParticipants.type'
 
-export default function ParticipantesList({ initialData }) {
-  const [data, setData] = useState(initialData)
+export default function ParticipantesList({
+  initialData
+}: {
+  initialData: Subscriber[]
+}) {
+  const [data, setData] = useState<Subscriber[]>(initialData)
 
   useEffect(() => {
-    const getClientData = getSubscribers('register')
+    const getClientData = getSubscribers('register-data') as (
+      callback: (data: Subscriber[]) => void
+    ) => Unsubscribe
     const unsubscribe = getClientData(setData)
 
-    return () => unsubscribe()
+    return () => {
+      unsubscribe()
+    }
   }, [])
 
   const updateDoc = (id, status) => {
