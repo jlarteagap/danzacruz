@@ -42,8 +42,8 @@ export const saveForm = async (values, collectionDB) => {
     console.error('Error adding document: ', e)
   }
 }
-export const getSubscribers = () => {
-  const data = query(collection(db, 'user'))
+export const getSubscribers = (collection) => {
+  const data = query(collection(db, collection))
   const subscribers = getDocs(data)
 
   return subscribers

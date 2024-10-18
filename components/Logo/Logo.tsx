@@ -9,7 +9,7 @@ export default function Logo() {
       className="min-h-20 h-20 flex items-center px-6 border-r cursor-pointer"
       onClick={() => router.push('/')}
     >
-      <h1>DANZACRUZ</h1>
+      <h1 className="text-2xl uppercase font-bold">DANZACRUZ</h1>
     </div>
   )
 }
