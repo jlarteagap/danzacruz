@@ -42,7 +42,6 @@ const AddParticipant = () => {
                 categoryProp={category}
                 setFieldValue={setFieldValue}
               />
-              <input type="text" hidden value={year} />
               {setCategory(values.category)}
             </Form>
           )}

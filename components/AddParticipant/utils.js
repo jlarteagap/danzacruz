@@ -85,7 +85,10 @@ export const initialValues = {
   professor: '',
   phone: '',
   email: '',
-  logo: ''
+  logo: '',
+  song: '',
+  notes: '',
+  add: ''
 }
 
 // const MAX_FILE_SIZE = 602400 // 500KB

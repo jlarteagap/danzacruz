@@ -8,19 +8,20 @@ import {
   ButtonField
 } from '../../src/components/form/Fileds'
 import { general, modalidad, category, subDivision, colegios } from './utils'
+import { Separator } from '@/components/ui/separator'
 
 export const FormParticipant = ({ categoryProp, setFieldValue }) => {
   return (
     <div className="text-right">
       <div className="">
         <InputField
-          label="Nombre del participante o agrupación"
+          label="Nombre del participante o agrupación *"
           type="text"
           name="name"
         />
 
         <InputField
-          label="Nombre de la Coreografia"
+          label="Nombre de la Coreografia *"
           type="text"
           name="coreografy"
         />
@@ -48,12 +49,28 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
           options={modalidad}
         />
         <InputField
-          label="Nombre del profesor o Coreográfo"
+          label="Nombre del profesor o Coreográfo *"
           type="text"
           name="professor"
         />
-        <InputField label="Telefono" type="text" name="phone" />
-        <InputField label="Correo electrónico" type="text" name="email" />
+        <InputField
+          name="song"
+          type="text"
+          label="Nombre de la canción o música a bailar"
+        />
+        <InputField
+          name="notes"
+          type="text"
+          label="Aclarativo si es necesario sobre la modalidad"
+        />
+        <InputField
+          name="add"
+          type="text"
+          label="Información adiocional que desea registrar"
+        />
+        <Separator className="mb-5" />
+        <InputField label="Telefono *" type="text" name="phone" />
+        <InputField label="Correo electrónico *" type="text" name="email" />
         {/* <InputFile
           name="logo"
           type="file"

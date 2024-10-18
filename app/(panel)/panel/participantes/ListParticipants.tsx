@@ -13,7 +13,7 @@ export default function ParticipantesList({
   const [data, setData] = useState<Subscriber[]>(initialData)
 
   useEffect(() => {
-    const getClientData = getSubscribers('register-data') as (
+    const getClientData = getSubscribers('register') as (
       callback: (data: Subscriber[]) => void
     ) => Unsubscribe
     const unsubscribe = getClientData(setData)
@@ -41,12 +41,15 @@ export default function ParticipantesList({
           category,
           division,
           subDivision,
-          status
+          status,
+          song,
+          notes,
+          add
         } = sub
 
         return (
           <div key={id}>
-            <div className="grid gap-3 grid-cols-4 bg-white p-5 rounded-md shadow-sm my-3">
+            <div className="grid gap-3 grid-cols-5 bg-white p-5 rounded-md shadow-sm my-3">
               <div className="flex flex-col">
                 <p className="font-semibold">{name}</p>
                 <span className="text-sm">{phone}</span>
@@ -61,9 +64,24 @@ export default function ParticipantesList({
                 <strong>Coreografía: </strong>
                 <br /> {coreografy}
                 <br />
+                <strong>Nombre de la canción: </strong>
+                <br /> {song}
+                <br />
                 <strong>Profesor / Coreografo: </strong>
                 <br />
                 {professor}
+              </div>
+              <div className="text-sm">
+                <p>
+                  <strong>Aclaraciones sobre la modalidad: </strong>
+                  <br />
+                  {notes === '' ? 'Ninguna' : notes}
+                </p>
+                <p>
+                  <strong>Información adicional:</strong>
+                  <br />
+                  {add === '' ? 'Ninguna' : add}
+                </p>
               </div>
               <div className="flex justify-center">
                 <Button onClick={() => updateDoc(id, !status)}>

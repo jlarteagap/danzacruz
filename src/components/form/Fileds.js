@@ -16,7 +16,8 @@ export const InputField = ({ label, ...props }) => {
       <ErrorMessage
         component="div"
         name={field.name}
-        className="text-sm text-red-500"
+        className="text-sm"
+        style={{ color: 'red' }}
       />
     </div>
   )
