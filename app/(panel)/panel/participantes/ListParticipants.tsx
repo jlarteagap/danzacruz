@@ -14,6 +14,11 @@ export default function ParticipantesList({ initialData }) {
     return () => unsubscribe()
   }, [])
 
+  const updateDoc = (id, status) => {
+    console.log('id, status')
+    updateRegister(id, { status }, 'register-data')
+  }
+
   return (
     <div>
       {data.map(sub => {
@@ -52,7 +57,7 @@ export default function ParticipantesList({ initialData }) {
                 {professor}
               </div>
               <div className="flex justify-center">
-                <Button onClick={() => updateRegister(id, !status)}>
+                <Button onClick={() => updateDoc(id, !status)}>
                   {status ? 'Confirmado' : 'Sin Confirmar'}
                 </Button>
               </div>
