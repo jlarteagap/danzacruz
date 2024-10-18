@@ -2,21 +2,21 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { getSubscribers } from '@/lib/firebase'
+import { getSubscribers, updateRegister } from '@/lib/firebase'
 
 export default function ParticipantesList({ initialData }) {
   const [data, setData] = useState(initialData)
 
   useEffect(() => {
-    const getClientData = getSubscribers('register-data')
+    const getClientData = getSubscribers('register')
     const unsubscribe = getClientData(setData)
 
     return () => unsubscribe()
   }, [])
 
-  const updateRegister = async (id, newStatus) => {
-    // Implementa la lógica para actualizar el estado en Firebase
-    console.log('Actualizando registro:', id, newStatus)
+  const updateDoc = (id, status) => {
+    console.log('id, status')
+    updateRegister(id, { status }, 'register')
   }
 
   return (
@@ -57,7 +57,7 @@ export default function ParticipantesList({ initialData }) {
                 {professor}
               </div>
               <div className="flex justify-center">
-                <Button onClick={() => updateRegister(id, !status)}>
+                <Button onClick={() => updateDoc(id, !status)}>
                   {status ? 'Confirmado' : 'Sin Confirmar'}
                 </Button>
               </div>
