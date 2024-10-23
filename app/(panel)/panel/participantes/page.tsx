@@ -1,15 +1,34 @@
-import { Suspense } from 'react'
+'use client'
+
+import { useState, useEffect, Suspense } from 'react'
 import ListParticipants from './ListParticipants'
 import { getSubscribers } from '@/lib/firebase'
+import { ExportToExcel } from '@/components/ExportoToExcel/ExportoToExcel'
 
-export default async function Participantes() {
-  const getServerData = getSubscribers('register') as () => Promise<any[]>
-  const initialData = await getServerData()
+export default function Participantes() {
+  const [initialData, setInitialData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const getServerData = getSubscribers('register-data') as () => Promise<
+        Participant[]
+      >
+      const data = await getServerData()
+      setInitialData(data)
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <section>
       <div className="flex justify-between">
         <h2 className="text-2xl">Lista de participantes</h2>
+        <ExportToExcel
+          data={initialData}
+          fileName="Lista de Participantes"
+          sheetName="Participantes"
+        />
       </div>
       <div className="grid gap-3 grid-cols-5 bg-white p-5 rounded-md shadow-sm my-3">
         <div className="text-center">Datos personales</div>
@@ -23,11 +42,10 @@ export default async function Participantes() {
           Aun no existen registros...
         </h3>
       ) : (
-        ''
+        <Suspense fallback={<div>Cargando...</div>}>
+          <ListParticipants initialData={initialData} />
+        </Suspense>
       )}
-      <Suspense fallback={<div>Cargando...</div>}>
-        <ListParticipants initialData={initialData} />
-      </Suspense>
     </section>
   )
 }

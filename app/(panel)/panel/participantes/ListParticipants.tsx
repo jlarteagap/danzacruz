@@ -24,7 +24,6 @@ export default function ParticipantesList({
   }, [])
 
   const updateDoc = (id, status) => {
-    console.log('id, status')
     updateRegister(id, { status }, 'register')
   }
 
