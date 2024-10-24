@@ -3,6 +3,7 @@ import { monserrat } from '../ui/fonts'
 import '../ui/global.css'
 import { Footer } from './components/Layout/Footer'
 import { Header } from './components/Layout/Header'
+import { Toaster } from '@/components/ui/sonner'
 
 export default function DashboardLayout({
   children
@@ -15,6 +16,7 @@ export default function DashboardLayout({
         <Header />
         {children}
         <Footer />
+        <Toaster />
       </body>
     </html>
   )

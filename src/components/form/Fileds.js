@@ -8,7 +8,7 @@ export const InputField = ({ label, ...props }) => {
     <div className="mb-5">
       <label className="block mb-2">{label}</label>
       <input
-        className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full ps-10 p-2 ${meta.touched && meta.error && 'border-red-500'}`}
+        className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-pink-500 block w-full ps-10 p-2 ${meta.touched && meta.error && 'border-red-500'}`}
         {...field}
         {...props}
         autoComplete="off"

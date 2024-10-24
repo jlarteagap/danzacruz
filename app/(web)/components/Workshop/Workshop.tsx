@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function WorkshopSection() {
   return (
@@ -47,6 +49,9 @@ export default function WorkshopSection() {
               400 Bs.
             </p>
           </div>
+          <Button>
+            <Link href="/registro/workshops">Registrarse al taller</Link>
+          </Button>
         </div>
       </div>
       <div className="flex items-center flex-col">
