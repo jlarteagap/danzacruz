@@ -1,4 +1,4 @@
-import { Users, Dock } from 'lucide-react'
+import { Users, Dock, Speech } from 'lucide-react'
 // import { Settings2, Dock, Speech, UserPen, Users, Medal } from 'lucide-react'
 
 export const dataGeneralSidebar = [
@@ -7,21 +7,22 @@ export const dataGeneralSidebar = [
     label: 'Pagina Principal',
     href: '/panel'
   },
-  // {
-  //   icon: Speech,
-  //   label: 'Talleres',
-  //   href: '/panel/talleres'
-  // },
+  {
+    icon: Users,
+    label: 'Participantes',
+    href: '/panel/participantes'
+  },
+  {
+    icon: Speech,
+    label: 'Talleres',
+    href: '/panel/talleres'
+  }
   // {
   //   icon: UserPen,
   //   label: 'Jurados',
   //   href: '/panel/jurados'
   // },
-  {
-    icon: Users,
-    label: 'Participantes',
-    href: '/panel/participantes'
-  }
+
   // {
   //   icon: Medal,
   //   label: 'Auspiciadores',
