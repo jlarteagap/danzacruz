@@ -7,6 +7,7 @@ import Modalidad from './components/Modalidad/Modalidad'
 import Registration from './components/Registration/Registration'
 import Awards from './components/Awards/Awards'
 import Times from './components/Times/Times'
+import Judges from './components/Judges/Judges'
 
 export default function Page() {
   return (
@@ -19,6 +20,7 @@ export default function Page() {
       <Registration />
       <Awards />
       <Times />
+      <Judges />
     </>
   )
 }
