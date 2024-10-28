@@ -8,7 +8,7 @@ import { Separator } from '@/components/ui/separator'
 
 export default function Times() {
   return (
-    <section className="bg-slate-700 text-white py-10">
+    <section className="bg-fuchsia-950 text-fuchsia-200 py-10">
       <div className="container flex flex-col justify-center items-center md:flex-row">
         <Clock10 strokeWidth={3} className="mb-5 md:mr-5" />
         <h2 className="text-4xl uppercase font-semibold text-center md:text-left">

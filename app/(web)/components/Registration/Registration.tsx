@@ -2,7 +2,7 @@ import { benefitsData, registrationData } from './Registration.data'
 
 export default function Registration() {
   return (
-    <section className="bg-slate-100">
+    <section className="text-fuchsia-800">
       <div className="container mt-10 py-10">
         <div className="flex justify-center mb-10">
           <h2 className="text-4xl uppercase font-semibold">Inscripciones</h2>

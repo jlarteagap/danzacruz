@@ -3,7 +3,7 @@ import { awardsCategory, awardsData, awardsEspecial } from './Awards.data'
 
 export default function Awards() {
   return (
-    <section className="bg-slate-500 text-slate-200 py-10">
+    <section className="bg-fuchsia-900 text-fuchsia-200 py-10">
       <div className="flex justify-center items-center">
         <AwardIcon strokeWidth={3} />
         <h2 className="text-4xl uppercase font-semibold">Premios</h2>

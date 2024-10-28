@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function WorkshopSection() {
   return (
-    <section className="py-10 bg-gradient-to-r from-slate-50 via-fucsia-600 to-pink-500">
+    <section className="py-10 bg-black text-fuchsia-100">
       <div className="w-full flex flex-col items-center justify-center">
         <div className="text-2xl">Nicolas Blanzari</div>
         <h3 className="text-4xl font-semibold">Workshop</h3>
@@ -28,7 +28,7 @@ export default function WorkshopSection() {
             </div>
             <div>15:00 a 17:00 hrs.</div>
           </div>
-          <div className="bg-pink-900 text-white rounded-sm my-5 p-3">
+          <div className="bg-fuchsia-900 text-white rounded-sm my-5 p-3">
             <p className="text-amber-400 font-semibold text-center">
               Hasta el <span className="text-white text-xl">31</span> de octubre
             </p>
@@ -49,7 +49,7 @@ export default function WorkshopSection() {
               400 Bs.
             </p>
           </div>
-          <Button>
+          <Button className='bg-fuchsia-900'>
             <Link href="/registro/workshops">Registrarse al taller</Link>
           </Button>
         </div>
