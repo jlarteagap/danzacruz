@@ -20,8 +20,8 @@ export default function Hero() {
       <div className="absolute w-full h-screen -z-10">
         <Image
           src="/img/dc-2024.jpg"
-          objectFit="cover"
-          layout="fill"
+          className="object-cover"
+          fill={true}
           alt="Danzacruz 2024"
         />
       </div>

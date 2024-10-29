@@ -18,9 +18,9 @@ export default function Times() {
       <div className="flex gap-5 md:w-[700px] m-auto container my-10 justify-center items-center flex-col md:flex-row">
         <h3 className="text-3xl font-semibold uppercase md:w-1/2">Colegios</h3>
         <div>
-          {TimeSchoolData.map(time => {
+          {TimeSchoolData.map((time, i) => {
             return (
-              <div key={time.time} className="mb-3">
+              <div key={i} className="mb-3">
                 <h4 className="text-xl font-semibold ">{time.category}</h4>
                 <p className="text-slate-300">{time.time}</p>
               </div>

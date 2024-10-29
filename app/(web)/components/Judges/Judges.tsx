@@ -25,7 +25,7 @@ export default function Judges() {
       </div>
       <Carousel
         plugins={[plugin.current]}
-        className="w-full"
+        className="w-[80%] m-auto"
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
       >
@@ -38,12 +38,12 @@ export default function Judges() {
               >
                 <div className="p-1">
                   <Card className="overflow-hidden">
-                    <div className="relative w-full h-60">
+                    <div className="relative w-full h-32 md:h-60">
                       <Image
                         src={judges.photo}
                         alt={judges.name}
-                        objectFit="cover"
-                        layout="fill"
+                        className="object-cover"
+                        fill={true}
                       />
                     </div>
                     <CardContent className="p-4">

@@ -6,12 +6,12 @@ import Link from 'next/link'
 export const Header = () => {
   return (
     <header className="mx-auto py-4 bg-gradient-to-t from-fuchsia-900 to-fuchsia-800">
-      <nav className="container flex justify-between items-center mx-auto max-w-screen-xl">
+      <nav className="container flex gap-1 md:gap-3 justify-between items-center mx-auto max-w-screen-xl">
         <a href="/" className="">
-          <h1 className="text-3xl font-semibold text-fuchsia-100 hover:text-fuchsia-300 transition-all uppercase">
+          <h1 className="text-xl md:text-3xl font-semibold text-fuchsia-100 hover:text-fuchsia-300 transition-all uppercase">
             Danzacruz
           </h1>
-          <span className="self-center whitespace-nowrap leading-3 text-fuchsia-50">
+          <span className="text-sm self-center whitespace-nowrap leading-3 text-fuchsia-50">
             Festival Internacional de Danza
           </span>
         </a>
@@ -22,8 +22,8 @@ export const Header = () => {
           variant="outline"
         >
           <Link href={'/registro'} className="flex">
-            <ArrowUpRight className="w-5 h-5 mr-2" />
-            Registro
+            <ArrowUpRight className="w-5 h-5 md:mr-2" />
+            <span className="hidden sm:block">Registro</span>
           </Link>
         </Button>
       </nav>
