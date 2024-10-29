@@ -15,13 +15,17 @@ export default function Cta() {
           </p>
         </div>
         <div className="flex gap-3 ">
-          <Button variant="outline" asChild className="text-fuchsia-900 hover:bg-fuchsia-200 ">
+          <Button
+            variant="outline"
+            asChild
+            className="text-fuchsia-900 hover:bg-fuchsia-200 "
+          >
             <Link href="/pdf/dc-2024.pdf" target="_blank">
               <FileDown className="mr-2" />
               Convocatoria
             </Link>
           </Button>
-          <Button asChild className='hover:bg-fuchsia-900 transition-all'>
+          <Button asChild className="hover:bg-fuchsia-900 transition-all">
             <Link href={'/registro'} className="flex">
               <ArrowUpRight className="w-5 h-5 mr-2" />
               Registrarse

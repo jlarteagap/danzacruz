@@ -49,7 +49,7 @@ export default function WorkshopSection() {
               400 Bs.
             </p>
           </div>
-          <Button className='bg-fuchsia-900'>
+          <Button className="bg-fuchsia-900">
             <Link href="/registro/workshops">Registrarse al taller</Link>
           </Button>
         </div>
