@@ -8,6 +8,7 @@ import Registration from './components/Registration/Registration'
 import Awards from './components/Awards/Awards'
 import Times from './components/Times/Times'
 import Judges from './components/Judges/Judges'
+import { Ads } from './components/Ads/Ads'
 
 export default function Page() {
   return (
@@ -21,6 +22,7 @@ export default function Page() {
       <Awards />
       <Times />
       <Judges />
+      <Ads />
     </>
   )
 }
