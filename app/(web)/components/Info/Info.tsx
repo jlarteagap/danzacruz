@@ -5,7 +5,7 @@ export default function InfoData() {
     <section className="py-40 bg-gradient-to-br from-fuchsia-200 ">
       <div className="container">
         <InfoSection list={modalidad} title="Forma de participación" />
-        <InfoSection list={categories} title="Catetorias" />
+        <InfoSection list={categories} title="Categorias" />
         <InfoSection list={division} title="División" />
         <InfoSection list={subDivision} title="Sub División" />
       </div>

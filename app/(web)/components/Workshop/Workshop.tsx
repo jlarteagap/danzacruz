@@ -58,7 +58,7 @@ export default function WorkshopSection() {
         <h4 className="text-3xl font-semibold text-amber-400 [text-shadow:_0_2px_4px_rgb(190_144_44_/_0.8)] md:text-2xl leading-snug font-manrope">
           Ritmos Urbanos
         </h4>
-        <p>Incluye Certificado y Conversario</p>
+        <p>Incluye Certificado y Conversatorio</p>
       </div>
     </section>
   )
