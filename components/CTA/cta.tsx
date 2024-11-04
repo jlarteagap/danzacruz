@@ -20,7 +20,7 @@ export default function Cta() {
             asChild
             className="text-fuchsia-900 hover:bg-fuchsia-200 "
           >
-            <Link href="/pdf/dc-2024.pdf" target="_blank">
+            <Link href="/pdf/danzacruz-2024.pdf" target="_blank">
               <FileDown className="mr-2" />
               Convocatoria
             </Link>
