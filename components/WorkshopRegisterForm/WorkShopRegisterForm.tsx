@@ -1,13 +1,10 @@
 'use client'
 import { Form, Formik } from 'formik'
-import {
-  InputField,
-  SelectField,
-  ButtonField
-} from 'src/components/form/Fileds'
+import { InputField, SelectField } from 'src/components/form/Fileds'
 import { initialValues, Workshops, validate } from './utils'
 import { saveForm } from '@/lib/firebase'
 import { toast } from 'sonner'
+import { Button } from '../ui/button'
 
 const currentTime = new Date()
 const year = currentTime.getFullYear()
@@ -44,7 +41,7 @@ export default function WorkshopRegisterForm() {
             <InputField label="Telefono" type="text" name="phone" />
 
             <div className="flex justify-center">
-              <ButtonField type="submit" addText="Registrar ahora" />
+              <Button type="submit">Registrarse ahora</Button>
             </div>
           </Form>
         )}

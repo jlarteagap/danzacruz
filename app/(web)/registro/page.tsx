@@ -1,5 +1,13 @@
 import AddParticipant from '@/components/AddParticipant/AddParticipant'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Página de Registro',
+  description:
+    'Registre su participación en el festival más importante del país'
+}
+
 export default function Workshops() {
   return (
     <section className="container py-10">

@@ -1,4 +1,10 @@
 import WorkshopRegisterForm from '@/components/WorkshopRegisterForm/WorkShopRegisterForm'
+import type { Metadata } from 'next'
+export const metadata: Metadata = {
+  title: 'Página de Registro a los talleres',
+  description:
+    'Registre su participación en los talleres festival más importante del país'
+}
 
 export default function WorkshopsRegister() {
   return (
