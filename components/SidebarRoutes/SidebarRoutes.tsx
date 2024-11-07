@@ -18,7 +18,6 @@ export default function SidebarRoutes() {
           <SidebarItems key={item.label} items={item} />
         ))} */}
       </div>
-      <footer className="mt-5 p3 text-center">All rigth reserved</footer>
     </aside>
   )
 }

@@ -1,13 +1,29 @@
-import Logo from '../Logo/Logo'
-import SidebarRoutes from '../SidebarRoutes/SidebarRoutes'
+import React from 'react'
 
-export default function Sidebar() {
+import SidebarRoutes from '../SidebarRoutes/SidebarRoutes'
+import Logo from '../Logo/Logo'
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarHeader
+} from '@/components/ui/sidebar'
+
+export function AppSidebar() {
   return (
-    <aside className="h-screen">
-      <div className="h-full flex flex-col border-b p-4">
+    <Sidebar>
+      <SidebarHeader>
         <Logo />
+      </SidebarHeader>
+      <SidebarContent className="mx-3">
+        <SidebarGroup />
         <SidebarRoutes />
-      </div>
-    </aside>
+        <SidebarGroup />
+      </SidebarContent>
+      <SidebarFooter>
+        <footer className="mt-5 p3 text-center">All rigth reserved</footer>
+      </SidebarFooter>
+    </Sidebar>
   )
 }

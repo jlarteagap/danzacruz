@@ -1,8 +1,10 @@
 import React from 'react'
 import { monserrat } from '../../ui/fonts'
 import '../../ui/global.css'
-import Nabvar from '@/components/Navbar/Navbar'
-import Sidebar from '@/components/Sidebar/Sidebar'
+
+import { AppSidebar } from '@/components/Sidebar/Sidebar'
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+
 export default function RootLayout({
   children
 }: {
@@ -11,13 +13,13 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${monserrat.className} antialiased`}>
-        <div className="hidden xl:block w-80 h-full xl:fixed">
-          <Sidebar />
-        </div>
-        <div className="xl:ml-80">
-          <Nabvar />
-          <div className="p-6 bg-[#fafbfc]">{children}</div>
-        </div>
+        <SidebarProvider>
+          <AppSidebar />
+          <main className="p-6 bg-[#fafbfc] w-full">
+            <SidebarTrigger />
+            {children}
+          </main>
+        </SidebarProvider>
       </body>
     </html>
   )
