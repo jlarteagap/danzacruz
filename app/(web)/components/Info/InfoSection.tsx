@@ -8,7 +8,7 @@ export default function InfoSection({
   title: string
 }) {
   return (
-    <div className="flex gap-5 flex-col md:flex-row text-fuchsia-800">
+    <div className="flex gap-5 flex-col text-fuchsia-800 w-1/2">
       <div className="w-full md:w-1/2">
         <h3 className="text-3xl font-bold uppercase">{title}</h3>
       </div>

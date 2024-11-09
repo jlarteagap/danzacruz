@@ -36,7 +36,7 @@ export default function Registration() {
                   className="flex justify-center items-center text-sm text-center"
                   key={benefit}
                 >
-                  <p>{benefit}</p>
+                  <p className="text-slate-500">{benefit}</p>
                 </div>
               )
             })}
