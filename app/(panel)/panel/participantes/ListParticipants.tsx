@@ -13,7 +13,7 @@ export default function ParticipantesList({
   const [data, setData] = useState<Subscriber[]>(initialData)
 
   useEffect(() => {
-    const getClientData = getSubscribers('register') as (
+    const getClientData = getSubscribers('register-data') as (
       callback: (data: Subscriber[]) => void
     ) => Unsubscribe
     const unsubscribe = getClientData(setData)
@@ -24,7 +24,6 @@ export default function ParticipantesList({
   }, [])
 
   const updateDoc = (id, status) => {
-    console.log('id, status')
     updateRegister(id, { status }, 'register')
   }
 

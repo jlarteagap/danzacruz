@@ -21,7 +21,7 @@
     "bulma": "^1.0.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "embla-carousel-autoplay": "^8.3.0",
+    "embla-carousel-autoplay": "^8.5.1",
     "embla-carousel-react": "^8.3.0",
     "eslint-config-next": "13.4.13",
     "firebase": "^10.1.0",
@@ -34,6 +34,7 @@
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
+    "xlsx": "^0.18.5",
     "yup": "^1.2.0"
   },
   "devDependencies": {
