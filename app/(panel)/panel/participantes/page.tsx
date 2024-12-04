@@ -1,24 +1,11 @@
-'use client'
-
-import { useState, useEffect, Suspense } from 'react'
+import { Suspense } from 'react'
 import ListParticipants from './ListParticipants'
 import { getSubscribers } from '@/lib/firebase'
 import { ExportToExcel } from '@/components/ExportoToExcel/ExportoToExcel'
 
-export default function Participantes() {
-  const [initialData, setInitialData] = useState([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const getServerData = getSubscribers('register-data') as () => Promise<
-        Participant[]
-      >
-      const data = await getServerData()
-      setInitialData(data)
-    }
-
-    fetchData()
-  }, [])
+export default async function Participantes() {
+  const getServerData = getSubscribers('register-data') as () => Promise<any[]>
+  const initialData = await getServerData()
 
   return (
     <section>
