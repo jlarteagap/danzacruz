@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
 import { getSubscribers, updateRegister } from '@/lib/firebase'
 import { Subscriber, Unsubscribe } from './WorkshopParticipants.type'
+import { BadgeCheck, BadgeX, FilePenLine, Trash2Icon } from 'lucide-react'
 
 export default function ParticipantsWorkshop({
   initialData
@@ -23,14 +23,13 @@ export default function ParticipantsWorkshop({
     }
   }, [])
   const updateDoc = (id, status) => {
-    console.log('id, status')
-    updateRegister(id, { status }, 'register')
+    console.log(id, status)
+    updateRegister(id, { status }, 'workshops')
   }
 
   return (
     <div>
       {data.map(work => {
-        console.log(work)
         const { id, name, phone, status, workshop } = work
 
         return (
@@ -46,10 +45,19 @@ export default function ParticipantsWorkshop({
                 <strong>Workshop: </strong>
                 <br /> {workshop}
               </div>
-              <div className="flex justify-center">
-                <Button onClick={() => updateDoc(id, !status)}>
-                  {status ? 'Confirmado' : 'Sin Confirmar'}
-                </Button>
+              <div className="flex justify-center gap-4">
+                <Trash2Icon />
+                <FilePenLine />
+                <div onClick={() => updateDoc(id, !status)}>
+                  {status ? (
+                    <BadgeCheck
+                      color="#22c55e"
+                      className="cursor-pointer text-green-500"
+                    />
+                  ) : (
+                    <BadgeX className="cursor-pointer text-red-600" />
+                  )}
+                </div>
               </div>
             </div>
           </div>
