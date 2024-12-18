@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { getSubscribers, updateRegister } from '@/lib/firebase'
 import { Subscriber, Unsubscribe } from './WorkshopParticipants.type'
-import { BadgeCheck, BadgeX, FilePenLine, Trash2Icon } from 'lucide-react'
+import ActionButtons from '@/components/ActionButtons/ActionButtons'
 
 export default function ParticipantsWorkshop({
   initialData
@@ -22,10 +22,6 @@ export default function ParticipantsWorkshop({
       unsubscribe()
     }
   }, [])
-  const updateDoc = (id, status) => {
-    console.log(id, status)
-    updateRegister(id, { status }, 'workshops')
-  }
 
   return (
     <div>
@@ -46,18 +42,7 @@ export default function ParticipantsWorkshop({
                 <br /> {workshop}
               </div>
               <div className="flex justify-center gap-4">
-                <Trash2Icon />
-                <FilePenLine />
-                <div onClick={() => updateDoc(id, !status)}>
-                  {status ? (
-                    <BadgeCheck
-                      color="#22c55e"
-                      className="cursor-pointer text-green-500"
-                    />
-                  ) : (
-                    <BadgeX className="cursor-pointer text-red-600" />
-                  )}
-                </div>
+                <ActionButtons status={status} id={id} />
               </div>
             </div>
           </div>
