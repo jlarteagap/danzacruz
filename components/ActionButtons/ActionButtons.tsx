@@ -1,32 +1,21 @@
-import { BadgeCheck, BadgeX, Trash2Icon } from 'lucide-react'
-import { updateRegister } from '@/lib/firebase'
+import { updateRegister, deleteRegister } from '@/lib/firebase'
 
-export default function ActionButtons({ id, status }) {
+import DeleteConfirmationDialog from './DeleteConfirmationDialog'
+import UpdateStatusButton from './UpdateStatusButton'
+
+export default function ActionButtons({ id, status, collection }) {
   const updateDoc = (id, status) => {
-    updateRegister(id, { status }, 'workshops')
+    updateRegister(id, { status }, collection)
   }
 
-  const deleteDoc = (id, stattus) => {
-    console.log('clicj')
+  const deleteDoc = id => {
+    deleteRegister(id, collection)
   }
 
   return (
     <>
-      <Trash2Icon
-        onClick={() => {
-          deleteDoc(id, status)
-        }}
-      />
-      <div onClick={() => updateDoc(id, !status)}>
-        {status ? (
-          <BadgeCheck
-            color="#22c55e"
-            className="cursor-pointer text-green-500"
-          />
-        ) : (
-          <BadgeX className="cursor-pointer text-red-600" />
-        )}
-      </div>
+      <DeleteConfirmationDialog id={id} onDelete={deleteDoc} />
+      <UpdateStatusButton id={id} status={status} onUpdate={updateDoc} />
     </>
   )
 }

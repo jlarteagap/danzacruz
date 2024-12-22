@@ -1,9 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
-import { getSubscribers, updateRegister } from '@/lib/firebase'
+
+import { getSubscribers } from '@/lib/firebase'
 import { Subscriber, Unsubscribe } from './ListParticipants.type'
+import ActionButtons from '@/components/ActionButtons/ActionButtons'
 
 export default function ParticipantesList({
   initialData
@@ -22,10 +23,6 @@ export default function ParticipantesList({
       unsubscribe()
     }
   }, [])
-
-  const updateDoc = (id, status) => {
-    updateRegister(id, { status }, 'register')
-  }
 
   return (
     <div>
@@ -83,9 +80,11 @@ export default function ParticipantesList({
                 </p>
               </div>
               <div className="flex justify-center">
-                <Button onClick={() => updateDoc(id, !status)}>
-                  {status ? 'Confirmado' : 'Sin Confirmar'}
-                </Button>
+                <ActionButtons
+                  id={id}
+                  status={status}
+                  collection="register-data"
+                />
               </div>
             </div>
           </div>
