@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { getSubscribers, updateRegister } from '@/lib/firebase'
+import { getSubscribers } from '@/lib/firebase'
 import { Subscriber, Unsubscribe } from './WorkshopParticipants.type'
 import ActionButtons from '@/components/ActionButtons/ActionButtons'
 
@@ -42,7 +42,7 @@ export default function ParticipantsWorkshop({
                 <br /> {workshop}
               </div>
               <div className="flex justify-center gap-4">
-                <ActionButtons status={status} id={id} />
+                <ActionButtons status={status} id={id} collection="workshops" />
               </div>
             </div>
           </div>
