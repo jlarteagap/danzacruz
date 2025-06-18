@@ -1,25 +1,25 @@
-import React from 'react'
-import { monserrat } from '../ui/fonts'
-import '../ui/global.css'
-import { Footer } from './components/Layout/Footer'
-import { Header } from './components/Layout/Header'
-import { Toaster } from '@/components/ui/sonner'
-import { Analytics } from '@vercel/analytics/react'
+import React from "react";
+import { monserrat } from "../ui/fonts";
+import "../ui/global.css";
+import { Footer } from "./components/Layout/Footer";
+import { Header } from "./components/Layout/Header";
+import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: {
-    default: 'Danzacruz 2024',
-    template: '%s | Festival Internacional de Danza'
+    default: "Danzacruz 2025",
+    template: "%s | Festival Internacional de Danza",
   },
-  description: 'Festival Internacional de danza "Danzacruz 2024" '
-}
+  description: 'Festival Internacional de danza "Danzacruz 2024" ',
+};
 export default function DashboardLayout({
-  children
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang='es'>
       <body className={`${monserrat.className} antialiased`}>
         <Header />
         {children}
@@ -28,5 +28,5 @@ export default function DashboardLayout({
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
