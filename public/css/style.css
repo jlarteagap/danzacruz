@@ -1,0 +1,130 @@
+
+:root {
+    --primary:  rgba(2,0,36,1);
+    --secondary: rgba(187,29,92,1);
+    --terciary: rgba(121,9,101,1);
+    --text-color: #ffffff;
+}
+
+body {
+    background: var(--primary) ;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 66%, var(--terciary)  73%, var(--primary)  100%);
+    color: var(--text-color);
+}
+.dc__label{
+    display: flex;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: .375rem;
+}
+.dc__label input{
+    position: absolute;
+    visibility: hidden;
+}
+.dc__label input:checked + span{
+    background-color: var(--terciary);
+    color: white;
+}
+.dc__label input:checked + span::before{
+    box-shadow: inset 0 0 0 0.4375em var(--secondary);
+}
+.dc__label span{
+    display: flex;
+    align-items: center;
+    padding: 0.375em 0.75em 0.375em 0.375em;
+    border-radius: 99em;
+    font-size: 12px;
+    transition: 0.25s ease;
+}
+.dc__label span:hover{
+    color: white;
+    background-color: var(--secondary);
+}
+.dc__label span::before{
+    display: flex;
+    flex-shrink: 0;
+    content: "";
+    background-color: #fff;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    margin-right: 0.375em;
+    transition: 0.25s ease;
+    box-shadow: inset 0 0 0 0.125em var(--terciary);
+}
+
+.dc__wrapper{
+    width: 50%;
+}
+
+/* list particpante */
+.list__content{
+    display: grid;
+    grid-template-columns: minmax(64px, 64px) repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+.footer {
+    background-color: var(--primary);
+}
+
+@media screen and (max-width: 480px){
+    .dc__wrapper{
+        width: 96%;
+    }
+}
+
+.loading__content {
+    align-items: center;
+    background: linear-gradient(-45deg, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    width: 100%;
+  animation: animate 7.5s ease-in-out infinite;
+  background-size: 400% 400%;
+  top: 0;
+  }
+
+  .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes animate{
+    0%{
+      background-position: 0 50%;
+    }
+    50%{
+      background-position: 100% 50%;
+    }
+    100%{
+      background-position: 0 50%;
+    }
+  }
