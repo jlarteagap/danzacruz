@@ -34,9 +34,9 @@ export default function Times() {
           General y universidades
         </h3>
         <div>
-          {TimeGeneralData.map(time => {
+          {TimeGeneralData.map((time, i) => {
             return (
-              <div key={time.time} className="mb-3">
+              <div key={i} className="mb-3">
                 <h4 className="text-xl font-semibold ">{time.category}</h4>
                 <p className="text-slate-300">{time.time}</p>
               </div>
