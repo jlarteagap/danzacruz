@@ -26,7 +26,7 @@ export default function Page() {
             <BreadcrumbList>
               <BreadcrumbItem className='hidden md:block'>
                 <BreadcrumbLink href='#'>
-                  Building Your Application A
+                  Building Your Application B
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className='hidden md:block' />
