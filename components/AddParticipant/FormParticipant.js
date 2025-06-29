@@ -66,7 +66,7 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
         <InputField
           name='add'
           type='text'
-          label='Información adiocional que desea registrar'
+          label='Información adicional que desea registrar'
         />
         <Separator className='mb-5' />
         <InputField label='Telefono *' type='text' name='phone' />
