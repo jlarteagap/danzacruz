@@ -28,7 +28,7 @@ export default function Hero() {
         9 de 12 de Octubre del 2025
       </div>
       <div className='mt-5 gap-3 flex'>
-        <Button className='bg-slate-600 hover:bg-slate-300 transition-all hover:text-slate-700'>
+        <Button className='bg-slate-600 text-slate-50 hover:bg-slate-300 transition-all hover:text-slate-700'>
           <Link
             href='http://wa.me/59175020012'
             target='_blank'
@@ -38,7 +38,7 @@ export default function Hero() {
             75020012
           </Link>
         </Button>
-        <Button className='bg-slate-600 hover:bg-slate-300 transition-all hover:text-slate-700'>
+        <Button className='bg-slate-600 text-slate-50 hover:bg-slate-300 transition-all hover:text-slate-700'>
           <Link
             href='http://wa.me/59175553576'
             target='_blank'
