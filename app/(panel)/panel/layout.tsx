@@ -1,6 +1,7 @@
 import React from "react";
 import { monserrat } from "../../ui/fonts";
 import "../../ui/global.css";
+import { HeaderPanel } from "@/components/Layout/HeaderPanel";
 
 export default function RootLayout({
   children,
@@ -9,8 +10,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='es'>
-      <body className={`${monserrat.className} antialiased`}>
-        <main className='p-6 bg-[#fafbfc] w-full'>{children}</main>
+      <body className={`${monserrat.className} antialiased bg-[#fafbfc]`}>
+        <HeaderPanel />
+        <main className='mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8'>
+          {children}
+        </main>
       </body>
     </html>
   );
