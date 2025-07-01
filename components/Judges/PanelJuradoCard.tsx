@@ -14,7 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Edit, Trash2, UserCheck, UserX } from "lucide-react";
+import { Edit, Trash2, UserCheck, UserX, MapPin } from "lucide-react";
 import { Judge } from "../../types/judges.types";
 
 interface JuradoCardProps {
@@ -57,6 +57,7 @@ export const PanelJudgeCard: React.FC<JuradoCardProps> = ({
                 {judge.nombre} {judge.apellido}
               </CardTitle>
               <Badge variant='secondary' className='mt-1'>
+                <MapPin className='h-4 w-4 mr-1' />
                 {judge.nacionalidad}
               </Badge>
             </div>
