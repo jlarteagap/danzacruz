@@ -64,8 +64,12 @@ export const PanelJudgeCard: React.FC<JuradoCardProps> = ({
           </div>
 
           <Badge
-            variant={judge.habilitado ? "default" : "destructive"}
-            className='ml-2'
+            // variant={judge.habilitado ? "default" : "destructive"}
+            className={`${
+              judge.habilitado
+                ? "bg-gray-800 text-gray-100"
+                : "bg-red-100 text-red-800"
+            } ml`}
           >
             {judge.habilitado ? "Activo" : "Inactivo"}
           </Badge>
