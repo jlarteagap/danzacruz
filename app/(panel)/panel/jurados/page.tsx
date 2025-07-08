@@ -4,8 +4,8 @@ import { useJurados } from "@/hooks/useJudges";
 import { useJudgeForm } from "@/hooks/useJudgesForm";
 import { PanelJudgesHeader } from "@/components/Judges/PanelJudgesHeader";
 import { PanelJudgeList } from "@/components/Judges/PanelJudgesList";
-import { PanelJudgeForm } from "@/components/Judges/PanelJudgeForm";
-
+// import { PanelJudgeForm } from "@/components/Judges/PanelJudgeForm";
+import { PanelJudgeForm } from "@/components/form/JudgeForm";
 ("@/components/Judges/PanelJudgesHeader");
 export default function Jurados() {
   const { jurados, addJurado, updateJurado, deleteJurado, toggleJuradoStatus } =

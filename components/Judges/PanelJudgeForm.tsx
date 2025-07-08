@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Judge, JudgesFormData } from "../../types/judges.types";
+import { InputField } from "src/components/form/Fileds";
 
 interface JudgeFormProps {
   isOpen: boolean;
@@ -48,13 +49,13 @@ export const PanelJudgeForm: React.FC<JudgeFormProps> = ({
         <div className='space-y-6'>
           <div className='grid grid-cols-2 gap-4'>
             <div className='space-y-2'>
-              <Label htmlFor='nombre'>Nombre *</Label>
-              <Input
+              <InputField
                 id='nombre'
                 name='nombre'
                 value={formData.nombre}
                 onChange={(e) => onInputChange("nombre", e.target.value)}
                 placeholder='Nombre del jurado'
+                label='Nombre *'
               />
             </div>
 
@@ -111,7 +112,7 @@ export const PanelJudgeForm: React.FC<JudgeFormProps> = ({
             </Button>
             <Button
               onClick={handleSubmit}
-              className='bg-blue-600 hover:bg-blue-700'
+              className='bg-slate-600 hover:bg-slate-700'
               disabled={!isValid}
             >
               {editingJudge ? "Actualizar" : "Agregar"} Jurado

@@ -18,7 +18,10 @@ export const PanelJudgesHeader: React.FC<PanelJudgesHeaderProps> = ({
         </p>
       </div>
 
-      <Button onClick={onAddClick} className='bg-blue-600 hover:bg-blue-700'>
+      <Button
+        onClick={onAddClick}
+        className='bg-slate-800 hover:bg-slate-700 text-slate-300'
+      >
         <Plus className='h-4 w-4 mr-2' />
         Agregar Jurado
       </Button>
