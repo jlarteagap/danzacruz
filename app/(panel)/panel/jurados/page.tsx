@@ -53,11 +53,10 @@ export default function Jurados() {
       <PanelJudgeForm
         isOpen={isDialogOpen}
         onClose={handleCloseDialog}
-        formData={formData}
         editingJudge={editingJudge}
-        onInputChange={handleInputChange}
-        onSubmit={handleSubmit}
-        isValid={validateForm()}
+        // onInputChange={handleInputChange}
+        // onSubmit={handleSubmit}
+        // isValid={validateForm()}
       />
     </section>
   );

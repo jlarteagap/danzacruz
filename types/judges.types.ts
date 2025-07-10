@@ -5,7 +5,7 @@ export interface Judge {
   nacionalidad: string;
   trayectoria: string;
   fotoPerfil: string;
-  habilitado: boolean;
+  status: boolean;
 }
 
 export interface JudgesFormData {
