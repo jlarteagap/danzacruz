@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FormikHelpers } from "formik";
 import { JudgesFormData, Judge } from "@/types/judges.types";
-import { judgeService } from "@/services/judgeService";
+import { createJudge, updateJudge } from "@/services/judgeService";
 import { toast } from "sonner";
 
 export const useJudgeForm = (
@@ -21,13 +21,10 @@ export const useJudgeForm = (
       let result: Judge;
 
       if (editingJudge) {
-        result = await judgeService.updateJudge(
-          String(editingJudge.id),
-          values
-        );
+        result = await updateJudge(String(editingJudge.id), values);
         toast.success("Jurado actualizado correctamente");
       } else {
-        result = await judgeService.createJudge(values);
+        result = await createJudge(values);
         toast.success("Jurado agregado correctamente");
       }
 

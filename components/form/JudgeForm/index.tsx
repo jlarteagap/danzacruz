@@ -46,7 +46,6 @@ export const PanelJudgeForm: React.FC<JudgeFormProps> = ({
             {editingJudge ? "Editar Jurado" : "Agregar Nuevo Jurado"}
           </DialogTitle>
         </DialogHeader>
-        ;
         <Formik
           initialValues={getInitialValues()}
           validationSchema={judgeValidationSchema}

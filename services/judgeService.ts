@@ -1,52 +1,68 @@
 import { JudgesFormData, Judge } from "@/types/judges.types";
 import { saveForm, updateRegister } from "../firebase";
 
-class JudgeService {
-  private readonly COLLECTION_NAME = "judges";
+const COLLECTION_NAME = "judges";
+const getCurrentTimestamp = (): string => new Date().toISOString();
 
-  async createJudge(data: JudgesFormData): Promise<Judge> {
-    // Implementa tu lógica de creación
-    try {
-      const docId = await saveForm(data, this.COLLECTION_NAME);
-      if (!docId) {
-        throw new Error("No se pudo obtener el ID del documento creado");
-      }
+const createJudgeFromData = (data: JudgesFormData, docId: string): Judge => ({
+  id: Number(docId),
+  ...data,
+  createdAt: getCurrentTimestamp(),
+  updatedAt: getCurrentTimestamp(),
+  status: false,
+});
 
-      return {
-        id: Number(docId),
-        ...data,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        status: false,
-      } as Judge;
-    } catch (error) {
-      console.error("Error al crear el jurado:", error);
-      throw new Error("Error al crear el jurado");
-    }
+const createUpdatedJudge = (id: string, data: JudgesFormData): Judge => ({
+  id: Number(id),
+  ...data,
+  updatedAt: getCurrentTimestamp(),
+  createdAt: "", // Esto debería venir de la base de datos original
+  status: false,
+});
+
+// Función para manejo de errores
+const handleError = (operation: string, error: unknown): never => {
+  console.error(`Error al ${operation} el jurado:`, error);
+  throw new Error(`Error al ${operation} el jurado`);
+};
+
+// Función para validar docId
+const validateDocId = (docId: string | any): string => {
+  if (!docId) {
+    throw new Error("No se pudo obtener el ID del documento creado");
   }
+  return docId;
+};
 
-  async updateJudge(id: string, data: JudgesFormData): Promise<Judge> {
-    // Implementa tu lógica de actualización
-    try {
-      const updateData = {
-        ...data,
-        updatedAt: new Date().toISOString(),
-      };
-
-      await updateRegister(id, updateData, this.COLLECTION_NAME);
-
-      // Retorna el objeto actualizado
-      return {
-        id: Number(id),
-        ...updateData,
-        // Mantener campos que no se actualizan
-        createdAt: "", // Esto debería venir de la base de datos original
-        status: false,
-      } as Judge;
-    } catch (error) {
-      console.error("Error al actualizar el jurado:", error);
-      throw new Error("Error al actualizar el jurado");
-    }
+export const createJudge = async (data: JudgesFormData): Promise<Judge> => {
+  try {
+    const docId = await saveForm(data, COLLECTION_NAME);
+    const validatedDocId = validateDocId(docId);
+    return createJudgeFromData(data, validatedDocId);
+  } catch (error) {
+    return handleError("crear", error);
   }
-}
-export const judgeService = new JudgeService();
+};
+
+export const updateJudge = async (
+  id: string,
+  data: JudgesFormData
+): Promise<Judge> => {
+  try {
+    const updateData = {
+      ...data,
+      updatedAt: getCurrentTimestamp(),
+    };
+
+    await updateRegister(id, updateData, COLLECTION_NAME);
+    return createUpdatedJudge(id, data);
+  } catch (error) {
+    return handleError("actualizar", error);
+  }
+};
+
+// Exportación por defecto del servicio como objeto con funciones
+export default {
+  createJudge,
+  updateJudge,
+};
