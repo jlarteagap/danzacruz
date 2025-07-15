@@ -1,5 +1,5 @@
 export interface Judge {
-  id: number;
+  id: string;
   nombre: string;
   apellido: string;
   nacionalidad: string;

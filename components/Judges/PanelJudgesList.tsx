@@ -6,8 +6,8 @@ import { Judge } from "../../types/judges.types";
 interface JudgeListProps {
   judges: Judge[];
   onEdit: (judge: Judge) => void;
-  onDelete: (id: number) => void;
-  onToggleStatus: (id: number) => void;
+  onDelete: (id: string) => void;
+  onToggleStatus: (id: string) => void;
   onAddClick: () => void;
 }
 

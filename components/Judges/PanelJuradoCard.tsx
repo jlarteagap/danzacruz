@@ -20,8 +20,8 @@ import { Judge } from "../../types/judges.types";
 interface JuradoCardProps {
   judge: Judge;
   onEdit: (jurado: Judge) => void;
-  onDelete: (id: number) => void;
-  onToggleStatus: (id: number) => void;
+  onDelete: (id: string) => void;
+  onToggleStatus: (id: string) => void;
 }
 
 export const PanelJudgeCard: React.FC<JuradoCardProps> = ({
@@ -37,7 +37,7 @@ export const PanelJudgeCard: React.FC<JuradoCardProps> = ({
   return (
     <Card
       className={`transition-all duration-200 hover:shadow-lg ${
-        !judge.habilitado ? "opacity-60 bg-gray-50" : ""
+        !judge.status ? "opacity-60 bg-gray-50" : ""
       }`}
     >
       <CardHeader className='pb-4'>
@@ -64,14 +64,14 @@ export const PanelJudgeCard: React.FC<JuradoCardProps> = ({
           </div>
 
           <Badge
-            // variant={judge.habilitado ? "default" : "destructive"}
+            // variant={judge.status ? "default" : "destructive"}
             className={`${
-              judge.habilitado
+              judge.status
                 ? "bg-gray-800 text-gray-100"
                 : "bg-red-100 text-red-800"
             } ml`}
           >
-            {judge.habilitado ? "Activo" : "Inactivo"}
+            {judge.status ? "Activo" : "Inactivo"}
           </Badge>
         </div>
       </CardHeader>
@@ -99,11 +99,11 @@ export const PanelJudgeCard: React.FC<JuradoCardProps> = ({
 
           <Button
             size='sm'
-            variant={judge.habilitado ? "destructive" : "default"}
+            variant={judge.status ? "destructive" : "default"}
             onClick={() => onToggleStatus(judge.id)}
             className='flex-1'
           >
-            {judge.habilitado ? (
+            {judge.status ? (
               <>
                 <UserX className='h-4 w-4 mr-1' />
                 Deshabilitar

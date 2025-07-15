@@ -1,11 +1,11 @@
 import { JudgesFormData, Judge } from "@/types/judges.types";
-import { saveForm, updateRegister } from "../firebase";
+import { saveForm, updateRegister, getSubscribers } from "../firebase";
 
 const COLLECTION_NAME = "judges";
 const getCurrentTimestamp = (): string => new Date().toISOString();
 
 const createJudgeFromData = (data: JudgesFormData, docId: string): Judge => ({
-  id: Number(docId),
+  id: docId,
   ...data,
   createdAt: getCurrentTimestamp(),
   updatedAt: getCurrentTimestamp(),
@@ -13,7 +13,7 @@ const createJudgeFromData = (data: JudgesFormData, docId: string): Judge => ({
 });
 
 const createUpdatedJudge = (id: string, data: JudgesFormData): Judge => ({
-  id: Number(id),
+  id: id,
   ...data,
   updatedAt: getCurrentTimestamp(),
   createdAt: "", // Esto debería venir de la base de datos original
@@ -61,8 +61,22 @@ export const updateJudge = async (
   }
 };
 
+export const getJudges = async (): Promise<Judge[]> => {
+  try {
+    const judgesSnapshot = await getSubscribers(COLLECTION_NAME);
+    const judgesData: Judge[] = judgesSnapshot.docs.map((doc: any) => ({
+      ...doc.data(),
+      id: doc.id, // ID como string desde Firestore
+    }));
+    return judgesData;
+  } catch (error) {
+    return handleError("obtener", error);
+  }
+};
+
 // Exportación por defecto del servicio como objeto con funciones
 export default {
   createJudge,
   updateJudge,
+  getJudges,
 };

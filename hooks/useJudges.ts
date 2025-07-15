@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Judge, JudgesFormData } from "../types/judges.types";
+import { getJudges } from "@/services/judgeService";
 
 const INITIAL_JURADOS: Judge[] = [
   {
-    id: 1,
+    id: "1",
     nombre: "María",
     apellido: "González",
     nacionalidad: "Española",
@@ -14,7 +15,7 @@ const INITIAL_JURADOS: Judge[] = [
     status: true,
   },
   {
-    id: 2,
+    id: "2",
     nombre: "Carlos",
     apellido: "Rodríguez",
     nacionalidad: "Mexicana",
@@ -25,7 +26,7 @@ const INITIAL_JURADOS: Judge[] = [
     status: true,
   },
   {
-    id: 3,
+    id: "3",
     nombre: "Ana",
     apellido: "Silva",
     nacionalidad: "Argentina",
@@ -38,17 +39,40 @@ const INITIAL_JURADOS: Judge[] = [
 ];
 export const useJurados = () => {
   const [jurados, setJurados] = useState<Judge[]>(INITIAL_JURADOS);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Cargar jurados desde la base de datos al iniciar el hook
+  const loadJudges = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const juradosFromDB = await getJudges();
+      setJurados(juradosFromDB.length > 0 ? juradosFromDB : INITIAL_JURADOS);
+    } catch (err) {
+      console.error("Error al cargar jurados:", err);
+      setError("Error al cargar los jurados desde la base de datos");
+      // Mantener datos iniciales en caso de error
+      setJurados(INITIAL_JURADOS);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadJudges();
+  }, []);
 
   const addJurado = (juradoData: JudgesFormData): void => {
     const newJurado: Judge = {
-      id: Date.now(),
+      id: Date.now().toString(), // Generar un ID único
       ...juradoData,
       status: true,
     };
     setJurados((prev) => [...prev, newJurado]);
   };
 
-  const updateJurado = (id: number, juradoData: JudgesFormData): void => {
+  const updateJurado = (id: string, juradoData: JudgesFormData): void => {
     setJurados((prev) =>
       prev.map((jurado) =>
         jurado.id === id ? { ...jurado, ...juradoData } : jurado
@@ -56,11 +80,11 @@ export const useJurados = () => {
     );
   };
 
-  const deleteJurado = (id: number): void => {
+  const deleteJurado = (id: string): void => {
     setJurados((prev) => prev.filter((jurado) => jurado.id !== id));
   };
 
-  const toggleJuradoStatus = (id: number): void => {
+  const toggleJuradoStatus = (id: string): void => {
     setJurados((prev) =>
       prev.map((jurado) =>
         jurado.id === id ? { ...jurado, status: !jurado.status } : jurado
@@ -74,5 +98,8 @@ export const useJurados = () => {
     updateJurado,
     deleteJurado,
     toggleJuradoStatus,
+    loading,
+    error,
+    loadJudges,
   };
 };
