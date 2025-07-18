@@ -132,14 +132,14 @@ export const PanelJudgeCard: React.FC<JuradoCardProps> = ({
                     {" "}
                     {judge.nombre} {judge.apellido}
                   </strong>{" "}
-                  de la lista de judges.
+                  de la lista de jurados.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancelar</AlertDialogCancel>
                 <AlertDialogAction
                   onClick={() => onDelete(judge.id)}
-                  className='bg-red-600 hover:bg-red-700'
+                  className='bg-red-600 hover:bg-red-700 text-white'
                 >
                   Eliminar
                 </AlertDialogAction>

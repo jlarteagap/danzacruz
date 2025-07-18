@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Judge, JudgesFormData } from "../types/judges.types";
-import { getJudges } from "@/services/judgeService";
+import { getJudges, updateJudge, deleteJudge } from "@/services/judgeService";
 
 const INITIAL_JURADOS: Judge[] = [
   {
@@ -80,16 +80,47 @@ export const useJurados = () => {
     );
   };
 
-  const deleteJurado = (id: string): void => {
-    setJurados((prev) => prev.filter((jurado) => jurado.id !== id));
+  const deleteJurado = async (id: string): Promise<void> => {
+    try {
+      await deleteJudge(id);
+      setJurados((prev) => prev.filter((jurado) => jurado.id !== id));
+      console.log("Jurado eliminado correctamente");
+    } catch (error) {
+      console.error("Error al eliminar el jurado:", error);
+    }
   };
 
-  const toggleJuradoStatus = (id: string): void => {
+  const toggleJuradoStatus = async (id: string): Promise<void> => {
+    const currentJurado = jurados.find((jurado) => jurado.id === id);
+
+    if (!currentJurado) {
+      console.error("Jurado no encontrado");
+      return;
+    }
     setJurados((prev) =>
       prev.map((jurado) =>
         jurado.id === id ? { ...jurado, status: !jurado.status } : jurado
       )
     );
+
+    try {
+      const updatedData: JudgesFormData = {
+        ...currentJurado,
+        status: !currentJurado.status,
+      };
+      await updateJudge(id, updatedData);
+    } catch (error) {
+      console.error("Error al actualizar el status del jurado:", error);
+
+      // Revertir el cambio local si falla Firebase
+      setJurados((prev) =>
+        prev.map((jurado) =>
+          jurado.id === id
+            ? { ...jurado, status: currentJurado.status }
+            : jurado
+        )
+      );
+    }
   };
 
   return {

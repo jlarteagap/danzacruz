@@ -16,4 +16,5 @@ export interface JudgesFormData {
   nacionalidad: string;
   trayectoria: string;
   fotoPerfil: string;
+  status?: boolean;
 }

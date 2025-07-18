@@ -1,5 +1,10 @@
 import { JudgesFormData, Judge } from "@/types/judges.types";
-import { saveForm, updateRegister, getSubscribers } from "../firebase";
+import {
+  saveForm,
+  updateRegister,
+  getSubscribers,
+  deleteRegister,
+} from "../firebase";
 
 const COLLECTION_NAME = "judges";
 const getCurrentTimestamp = (): string => new Date().toISOString();
@@ -71,6 +76,14 @@ export const getJudges = async (): Promise<Judge[]> => {
     return judgesData;
   } catch (error) {
     return handleError("obtener", error);
+  }
+};
+
+export const deleteJudge = async (id: string): Promise<void> => {
+  try {
+    await deleteRegister(id, COLLECTION_NAME);
+  } catch (error) {
+    return handleError("eliminar", error);
   }
 };
 
