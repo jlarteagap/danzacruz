@@ -88,67 +88,9 @@ export const deleteJudge = async (id: string): Promise<void> => {
   }
 };
 
-export const uploadJudgeImage = async (
-  file: File,
-  fileName: string
-): Promise<string> => {
-  try {
-    if (!file) {
-      throw new Error("No se proporcionó un archivo para subir");
-    }
-    if (!fileName.trim()) {
-      throw new Error("El nombre del archivo no puede estar vacío");
-    }
-    const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
-    if (!allowedTypes.includes(file.type)) {
-      throw new Error(
-        "Tipo de archivo no permitido. Solo se permiten imágenes JPEG, PNG o WebP"
-      );
-    }
-    const maxSize = 5 * 1024 * 1024; // 5MB en bytes
-    if (file.size > maxSize) {
-      throw new Error("El archivo es demasiado grande. Máximo 5MB permitido");
-    }
-
-    const sanitizedFileName = fileName
-      .toLowerCase()
-      .replace(/[^a-z0-9.-]/g, "-")
-      .replace(/-+/g, "-");
-
-    const imageUrl = await uploadFile(file, sanitizedFileName, "judges");
-    if (!imageUrl || typeof imageUrl !== "string") {
-      throw new Error("No se pudo obtener la URL de la imagen subida");
-    }
-    return imageUrl;
-  } catch (error) {
-    return handleError("subir imagen", error);
-  }
-};
-
-// export const updateJudgeWithImage = async (
-//   judgeId: string,
-//   data: JudgesFormData,
-//   imageFile?: File
-// ): Promise<Judge> => {
-//   try {
-//     let updateData = { ...data };
-
-//     // Si hay imagen, subirla y agregar la URL
-//     if (imageFile) {
-//       const imageUrl = await uploadJudgeImage(imageFile, `judge-${judgeId}`);
-//       updateData = { ...updateData, imageUrl };
-//     }
-
-//     return await updateJudge(judgeId, updateData);
-//   } catch (error) {
-//     return handleError("actualizar juez con imagen", error);
-//   }
-// };
-// Exportación por defecto del servicio como objeto con funciones
 export default {
   createJudge,
   updateJudge,
   getJudges,
   deleteJudge,
-  uploadJudgeImage,
 };
