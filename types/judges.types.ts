@@ -17,4 +17,5 @@ export interface JudgesFormData {
   trayectoria: string;
   fotoPerfil: string;
   status?: boolean;
+  imageUrl?: string;
 }

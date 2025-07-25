@@ -62,8 +62,8 @@ export const deleteRegister = async (id, collectionDB) =>
 export const updateRegister = (id, newfields, collectionDB) =>
   updateDoc(doc(db, collectionDB, id), newfields);
 
-export const uploadFile = async (file, name) => {
-  const storageRef = ref(storage, `registros/${name.replaceAll(" ", "-")}`);
+export const uploadFile = async (file, name, folder) => {
+  const storageRef = ref(storage, `${folder}/${name.replaceAll(" ", "-")}`);
   await uploadBytes(storageRef, file);
   const url = await getDownloadURL(storageRef);
 
