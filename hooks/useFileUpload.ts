@@ -55,13 +55,23 @@ export const useFileUpload = (
     [validation]
   );
 
-  // Función principal para subir archivo
+  // 🔧 FUNCIÓN CORREGIDA - Cambié uploadFile por uploadImage
   const uploadFile = useCallback(
     async (
       file: File,
-      fileName: string, // Ahora es requerido, siguiendo tu patrón existente
+      fileName: string,
       folder: string
     ): Promise<string | null> => {
+      // Validar parámetros requeridos
+      if (!folder || folder.trim() === "") {
+        setUploadState((prev) => ({
+          ...prev,
+          error: "La carpeta de destino es requerida",
+          uploading: false,
+        }));
+        return null;
+      }
+
       // Validar archivo
       const validationError = validateFile(file);
       if (validationError) {
@@ -81,6 +91,7 @@ export const useFileUpload = (
       });
 
       try {
+        // ✅ CORRECCIÓN: Usar uploadImage en lugar de uploadFile
         const uploadedUrl = await uploadImage(file, fileName, folder);
 
         setUploadState({

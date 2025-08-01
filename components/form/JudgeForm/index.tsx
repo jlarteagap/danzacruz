@@ -9,7 +9,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { InputField, ImageUploadField } from "@/components/form/Fields";
+import { InputField } from "@/components/form/Fields";
+import { ImageUploadField } from "@/components/form/UploadImage";
 import { useJudgeForm } from "./hooks/useJudgeForm";
 import { judgeValidationSchema, initialValues } from "./validation";
 import { JudgeFormProps } from "./types";
@@ -56,19 +57,21 @@ export const PanelJudgeForm: React.FC<JudgeFormProps> = ({
             <Form className='space-y-6'>
               <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                 <div className='md:col-span-1 flex flex-col items-center justify-start'>
-                  <ImageUploadField
-                    name='fotoPerfil'
-                    type='file'
-                    label='Foto de Perfil'
-                    currentImageUrl={values.fotoPerfil as string} // Pass current image URL for preview
-                    onImageUpload={(imageUrl: string) => {
-                      setFieldValue("fotoPerfil", imageUrl); // Update formik value with the uploaded URL
-                    }}
-                  />
-                  {/* You might want to add some instructions or styling here */}
-                  <p className='text-sm text-gray-500 mt-2 text-center'>
-                    Sube una imagen JPG o PNG.
-                  </p>
+                  {/* Sección de imagen */}
+                  <div className='md:col-span-1 flex flex-col items-center justify-start'>
+                    <ImageUploadField
+                      name='fotoPerfil'
+                      label='Foto de Perfil'
+                      currentImageUrl={values.fotoPerfil as string}
+                      onImageUpload={(imageUrl: string) => {
+                        setFieldValue("fotoPerfil", imageUrl);
+                      }}
+                      folder='judges' // Carpeta específica para jueces
+                    />
+                    <p className='text-sm text-gray-500 mt-2 text-center'>
+                      Sube una imagen JPG, PNG o WebP (máx. 5MB)
+                    </p>
+                  </div>
                 </div>
                 <div className='md:col-span-2 space-y-4'>
                   <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mb-0'>
