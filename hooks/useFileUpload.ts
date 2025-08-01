@@ -81,7 +81,7 @@ export const useFileUpload = (
       });
 
       try {
-        const uploadedUrl = await uploadFile(file, fileName, folder);
+        const uploadedUrl = await uploadImage(file, fileName, folder);
 
         setUploadState({
           uploading: false,

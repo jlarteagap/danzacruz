@@ -34,6 +34,6 @@ export const uploadImage = async (
     }
     return imageUrl;
   } catch (error) {
-    return `Error al subir la imagen: ${error.message}`;
+    throw new Error(`Error al subir la imagen: ${error.message}`);
   }
 };
