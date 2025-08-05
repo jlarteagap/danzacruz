@@ -4,7 +4,6 @@ import {
   updateRegister,
   getSubscribers,
   deleteRegister,
-  uploadFile,
 } from "../firebase";
 
 const COLLECTION_NAME = "judges";

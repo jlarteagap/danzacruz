@@ -37,7 +37,7 @@ export const ImageUploadField: React.FC<ImageUploadFieldProps> = ({
   const generateFileName = (originalName: string): string => {
     const timestamp = Date.now();
     const extension = originalName.split(".").pop();
-    return `judge_${timestamp}.${extension}`;
+    return `${folder}_${timestamp}.${extension}`;
   };
 
   const handleFileSelect = async (
