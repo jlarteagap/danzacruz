@@ -8,7 +8,7 @@ export default function Cta() {
       <div className='flex justify-center items-center gap-7 py-10 flex-col md:h-[200px] md:flex-row'>
         <div className='text-center md:text-left'>
           <h3 className='mb-4'>
-            3 días de talleres, competencias y exhibiciones
+            4 días de talleres, competencias y exhibiciones
           </h3>
           <p className='text-3xl font-semibold uppercase'>
             ¡inscríbete TÚ CON TU GRUPO O COMO SOLISTA!

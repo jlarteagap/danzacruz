@@ -30,12 +30,12 @@ export default function Hero() {
       <div className='mt-5 gap-3 flex'>
         <Button className='bg-slate-600 hover:bg-slate-300 transition-all hover:text-slate-700'>
           <Link
-            href='http://wa.me/59175020012'
+            href='http://wa.me/59175095094'
             target='_blank'
             className='flex'
           >
             <MessageSquareShare className='mr-2' />
-            75020012
+            75095094
           </Link>
         </Button>
         <Button className='bg-slate-600 hover:bg-slate-300 transition-all hover:text-slate-700'>

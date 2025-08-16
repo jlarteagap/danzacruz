@@ -29,10 +29,10 @@ export function Footer() {
             </h4>
             <div className='flex flex-col'>
               <a
-                href='http://wa.me/59175020012'
+                href='http://wa.me/59175095094'
                 className='hover:text-slate-400 transition-all'
               >
-                75020012
+                75095094
               </a>
               <a
                 href='http://wa.me/59175553576'
