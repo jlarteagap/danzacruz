@@ -51,7 +51,7 @@ const timesData = {
     times: [{ category: "GRUPOS", time: "10 MIN MÁXIMO", type: "grupo" }],
   },
 };
-import { Separator } from "@/components/ui/separator";
+
 import TimesCard from "./TimesCard";
 
 export default function Times() {
@@ -151,11 +151,11 @@ export default function Times() {
                     Consideraciones Generales
                   </h4>
                   <ul className='space-y-2 text-sm'>
-                    <li>
+                    {/* <li>
                       • Los tiempos incluyen entrada y salida del escenario
-                    </li>
+                    </li> */}
                     <li>
-                      • Se permite una tolerancia de 5 segundos adicionales
+                      • Se permite una tolerancia de 10 segundos adicionales
                     </li>
                     <li>• El cronómetro inicia con la primera nota musical</li>
                   </ul>

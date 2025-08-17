@@ -19,20 +19,20 @@ export default function Hero() {
       {/* Main Content */}
       <div className='relative z-10 container mx-auto px-6 text-center'>
         {/* Badge */}
-        <div className='inline-flex items-center gap-2 px-4 py-2 mb-8 bg-white/60 backdrop-blur-sm border border-white/80 rounded-full shadow-sm'>
+        {/* <div className='inline-flex items-center gap-2 px-4 py-2 mb-8 bg-white/60 backdrop-blur-sm border border-white/80 rounded-full shadow-sm'>
           <Star className='w-4 h-4 text-amber-500' />
           <span className='text-sm font-medium text-neutral-700'>
             25 años de tradición
           </span>
-        </div>
+        </div> */}
 
         {/* Main Title */}
         <div className='relative mb-6'>
           <h1 className='text-6xl md:text-8xl lg:text-9xl font-bold text-transparent bg-gradient-to-br from-neutral-900 via-neutral-700 to-neutral-600 bg-clip-text tracking-tight leading-none'>
             DANZACRUZ
-            <span className='absolute -top-2 -right-4 md:-top-4 md:-right-8 text-lg md:text-3xl font-light text-neutral-500 transform rotate-12'>
+            {/* <span className='absolute -top-2 -right-4 md:-top-4 md:-right-8 text-lg md:text-3xl font-light text-neutral-500 transform rotate-12'>
               2025
-            </span>
+            </span> */}
           </h1>
         </div>
 
@@ -43,10 +43,10 @@ export default function Hero() {
 
         {/* Date Info */}
         <div className='inline-flex items-center gap-3 px-6 py-3 mb-12 bg-white/50 backdrop-blur-sm border border-white/70 rounded-2xl shadow-lg'>
-          <Calendar className='w-5 h-5 text-blue-600' />
+          {/* <Calendar className='w-5 h-5 text-blue-600' />
           <span className='text-lg font-semibold text-neutral-800 uppercase tracking-wide'>
             9 - 12 de Octubre 2025
-          </span>
+          </span> */}
           <MapPin className='w-5 h-5 text-purple-600 ml-2' />
           <span className='text-lg font-medium text-neutral-700'>
             Santa Cruz, Bolivia
@@ -59,7 +59,7 @@ export default function Hero() {
             href='http://wa.me/59175095094'
             target='_blank'
             rel='noopener noreferrer'
-            className='group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-2xl shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/40 hover:-translate-y-1 transition-all duration-300 ease-out min-w-[200px] justify-center'
+            className='group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-full shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/40 hover:-translate-y-1 transition-all duration-300 ease-out min-w-[200px] justify-center'
           >
             <div className='p-1 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors'>
               <MessageSquareShare className='w-5 h-5' />
@@ -71,7 +71,7 @@ export default function Hero() {
             href='http://wa.me/59175553576'
             target='_blank'
             rel='noopener noreferrer'
-            className='group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-2xl shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/40 hover:-translate-y-1 transition-all duration-300 ease-out min-w-[200px] justify-center'
+            className='group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-full shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/40 hover:-translate-y-1 transition-all duration-300 ease-out min-w-[200px] justify-center'
           >
             <div className='p-1 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors'>
               <MessageSquareShare className='w-5 h-5' />

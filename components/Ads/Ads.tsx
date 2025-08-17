@@ -4,6 +4,7 @@ import Image from "next/image";
 import { AdsList, SupportList } from "./Ads..data";
 import { Heart, Handshake, Star, Sparkles, Award, Users } from "lucide-react";
 import SponsorCard from "./SponsordCard";
+import Link from "next/link";
 export const Ads = () => {
   const [activeSponsor, setActiveSponsor] = useState(null);
   const [activeSupport, setActiveSupport] = useState(null);
@@ -165,14 +166,22 @@ export const Ads = () => {
                 </div>
 
                 <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-                  <div className='inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300'>
+                  <a
+                    href='http://wa.me/59175553576'
+                    target='_blank'
+                    className='inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300'
+                  >
                     <span>Ser Patrocinador</span>
                     <Award size={16} />
-                  </div>
-                  <div className='inline-flex items-center gap-3 px-6 py-3 bg-white border-2 border-gray-300 rounded-full text-gray-700 font-semibold hover:border-fuchsia-300 hover:text-fuchsia-700 transform hover:scale-105 transition-all duration-300'>
+                  </a>
+                  <a
+                    href='http://wa.me/59175553576'
+                    target='_blank'
+                    className='inline-flex items-center gap-3 px-6 py-3 bg-white border-2 border-gray-300 rounded-full text-gray-700 font-semibold hover:border-fuchsia-300 hover:text-fuchsia-700 transform hover:scale-105 transition-all duration-300'
+                  >
                     <span>Más Información</span>
                     <Heart size={16} />
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>

@@ -1,5 +1,7 @@
 "use client";
-import { ArrowUpRight, Calendar, Menu, X } from "lucide-react";
+
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 export const Header = () => {
@@ -14,9 +16,6 @@ export const Header = () => {
             href='/'
             className='group flex items-center gap-3 hover:opacity-80 transition-opacity duration-300'
           >
-            <div className='p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300'>
-              <Calendar className='w-6 h-6 text-white' />
-            </div>
             <div className='flex flex-col'>
               <h1 className='text-2xl md:text-3xl font-bold text-neutral-900 tracking-tight leading-none'>
                 DANZACRUZ
@@ -29,38 +28,14 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex items-center gap-8'>
-            <nav className='flex items-center gap-6'>
-              <a
-                href='#festival'
-                className='text-neutral-700 hover:text-neutral-900 font-medium transition-colors duration-200 relative group'
-              >
-                Festival
-                <span className='absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300'></span>
-              </a>
-              <a
-                href='#participar'
-                className='text-neutral-700 hover:text-neutral-900 font-medium transition-colors duration-200 relative group'
-              >
-                Participar
-                <span className='absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300'></span>
-              </a>
-              <a
-                href='#contacto'
-                className='text-neutral-700 hover:text-neutral-900 font-medium transition-colors duration-200 relative group'
-              >
-                Contacto
-                <span className='absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300'></span>
-              </a>
-            </nav>
-
             {/* CTA Button */}
-            <a
+            {/* <Link
               href='/registro'
-              className='group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 ease-out'
+              className='group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-slate-600 to-slate-700 text-white font-semibold rounded-full shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-slate-500/40 hover:-translate-y-0.5 transition-all duration-300 ease-out'
             >
               <span>Registro</span>
               <ArrowUpRight className='w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300' />
-            </a>
+            </Link> */}
           </div>
 
           {/* Mobile Menu Button */}
