@@ -14,7 +14,7 @@ export default function Page() {
       <Info />
       <Modalidad />
       <Times />
-      {/* <Awards /> */}
+      <Awards />
       <Ads />
     </>
   );
