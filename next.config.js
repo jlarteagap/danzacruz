@@ -4,9 +4,7 @@ const nextConfig = {
     appDir: true,
     serverComponentsExternalPackages: [
       "firebase-admin",
-      "google-auth-library",
-      "gcp-metadata",
-      "google-logging-utils",
+      "@auth/firebase-adapter",
     ],
   },
   images: {
