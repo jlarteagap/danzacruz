@@ -214,7 +214,7 @@ export default function ModalidadCard({
       />
 
       {/* Contenido principal */}
-      <div className='relative p-6 lg:p-8'>
+      <div className='relative p-6 lg:p-5'>
         {/* Header con icono y título */}
         <div className='flex items-start gap-4 mb-4'>
           <div

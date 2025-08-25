@@ -41,7 +41,7 @@ export default function InfoSection({
         } bg-gradient-to-br from-fuchsia-500/10 via-purple-500/5 to-pink-500/10`}
       />
 
-      <div className='relative p-8 lg:p-10'>
+      <div className='relative p-8 lg:p-5'>
         {/* Header con icono */}
         <div className='flex items-center gap-4 mb-8'>
           <div

@@ -118,7 +118,7 @@ export default function Times() {
           </div>
 
           {/* Grid de categorías */}
-          <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mb-16'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-16'>
             {categories.map((category, index) => (
               <TimesCard
                 key={index}
