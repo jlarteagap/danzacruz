@@ -2,6 +2,7 @@
 
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import { LoginButton } from "./ui/commons/LoginButton";
 
 export function Navbar() {
   const { data: session, status } = useSession();
@@ -41,9 +42,7 @@ export function Navbar() {
               </button>
             </>
           ) : (
-            <Link href='/auth/signin' className='hover:underline'>
-              Iniciar sesión
-            </Link>
+            <LoginButton />
           )}
         </div>
       </div>

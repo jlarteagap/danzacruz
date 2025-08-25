@@ -3,8 +3,10 @@
 import { signIn, signOut } from "@/auth";
 
 export const login = async () => {
-  await signIn("google", { redirectTo: "/" });
+  // Redirigir directamente al panel, AuthRedirectHandler se encargará del resto
+  await signIn("google", { redirectTo: "/panel" });
 };
+
 export const logout = async () => {
   await signOut({ redirectTo: "/" });
 };
