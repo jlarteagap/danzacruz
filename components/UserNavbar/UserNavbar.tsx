@@ -80,7 +80,11 @@ export const UserNavbar: React.FC<UserNavbarProps> = React.memo(
 
             <DropdownMenuSeparator className='mx-6 bg-gray-200/60 h-px' />
 
-            <div role='group' aria-label='Opciones de cuenta'>
+            <div
+              className='px-3 py-1'
+              role='group'
+              aria-label='Opciones de cuenta'
+            >
               <MenuItem
                 icon={<Settings className='h-5 w-5 text-gray-600' />}
                 label='Configuración'
