@@ -16,7 +16,7 @@ export function useProfileCheck() {
 
     // Si está autenticado pero el perfil no está completo, redirigir
     if (session?.user && session.user.profileComplete === false) {
-      router.push("/complete-profile");
+      router.push("/profile");
     }
   }, [session, status, router]);
 

@@ -27,14 +27,14 @@ export default function AuthRedirectHandler({ children }) {
       });
 
       // Si el perfil no está completo y no está en la página de completar perfil
-      if (profileComplete === false && pathname !== "/complete-profile") {
-        console.log("Redirecting to complete-profile");
-        router.push("/complete-profile");
+      if (profileComplete === false && pathname !== "/profile") {
+        console.log("Redirecting to profile");
+        router.push("/profile");
         return;
       }
 
-      // Si el perfil está completo y está en la página de completar perfil
-      if (profileComplete === true && pathname === "/complete-profile") {
+      // Si el perfil está completo y está en la página de perfil
+      if (profileComplete === true && pathname === "/profile") {
         console.log("Redirecting to panel - profile already complete");
         router.push("/panel");
         return;
