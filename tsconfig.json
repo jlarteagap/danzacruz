@@ -7,7 +7,7 @@
       "@/lib/*": ["lib/*"],
       "@/hooks/*": ["hooks/*"],
       "@/types/*": ["public/types/*"],
-      "@/utils/*": ["utils/*"]
+      "@/utils/*": ["utils/*"],
       "@/auth": ["auth.js"]
     },
     "allowJs": true,
@@ -30,13 +30,6 @@
     "strictNullChecks": true,
     "target": "ES2017"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
