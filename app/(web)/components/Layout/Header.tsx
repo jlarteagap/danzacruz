@@ -7,42 +7,52 @@ import { LoginButton } from "@/components/ui/commons/LoginButton";
 import { User, UserActions } from "@/types/user.types";
 import { getFirstName } from "@/utils/user-display.utils";
 
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const sampleUser: User = useMemo(
-    () => ({
-      id: "1",
-      name: "María González Rodríguez",
-      email: "maria.gonzalez@empresa.com",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
-      role: "Administradora",
-    }),
-    []
-  );
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
   const actions: UserActions = useMemo(
     () => ({
       onLogout: async () => {
         console.log("Cerrando sesión...");
-        // await authService.logout();
+        await signOut({ callbackUrl: "/" });
       },
       onSettings: () => {
         console.log("Navegando a configuración...");
-        // router.push('/settings');
+        router.push("/settings");
       },
       onProfile: () => {
         console.log("Navegando a perfil...");
-        // router.push('/profile');
+        router.push("/profile");
       },
     }),
-    []
+    [router]
   );
 
+  // Crear usuario desde los datos de la sesión
+  const currentUser: User | null = useMemo(() => {
+    if (!session?.user) return null;
+
+    return {
+      id: session.user.id || "unknown",
+      name: session.user.name || "Usuario",
+      email: session.user.email || "",
+      avatar:
+        session.user.image ||
+        `https://ui-avatars.com/api/?name=${encodeURIComponent(
+          session.user.name || "U"
+        )}&background=6366f1&color=fff`,
+      role: session.user.role || "Usuario", // Asume que tienes role en tu sesión
+    };
+  }, [session]);
+
   const firstName = useMemo(
-    () => getFirstName(sampleUser.name),
-    [sampleUser.name]
+    () => (currentUser ? getFirstName(currentUser.name) : ""),
+    [currentUser]
   );
 
   return (
@@ -66,17 +76,20 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex items-center gap-8'>
-            <LoginButton />
-            {/* CTA Button */}
-            {/* <Link
-              href='/registro'
-              className='group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-slate-600 to-slate-700 text-white font-semibold rounded-full shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-slate-500/40 hover:-translate-y-0.5 transition-all duration-300 ease-out'
-            >
-              <span>Registro</span>
-              <ArrowUpRight className='w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300' />
-            </Link> */}
+            {/* Mostrar LoginButton solo si no hay sesión */}
+            {status !== "authenticated" && <LoginButton />}
 
-            <UserNavbar user={sampleUser} actions={actions} />
+            {/* Mostrar UserNavbar solo si hay sesión activa */}
+            {status === "authenticated" && currentUser && (
+              <UserNavbar user={currentUser} actions={actions} />
+            )}
+
+            {/* Loading state */}
+            {status === "loading" && (
+              <div className='animate-pulse'>
+                <div className='h-8 w-8 bg-gray-200 rounded-full'></div>
+              </div>
+            )}
           </div>
         </div>
       </nav>

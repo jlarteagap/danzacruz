@@ -26,7 +26,11 @@ export const MenuItem: React.FC<MenuItemProps> = React.memo(
       [variant]
     );
     const itemClasses = useMemo(
-      () => combineClasses("cursor-pointer transition-colors", variantClasses),
+      () =>
+        combineClasses(
+          "flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-gray-50/80 active:bg-gray-100/80 transition-colors duration-150 group mt-1",
+          variantClasses
+        ),
       [variantClasses]
     );
 

@@ -51,7 +51,7 @@ export const UserNavbar: React.FC<UserNavbarProps> = React.memo(
 
         <DropdownMenu>
           <DropdownMenuTrigger
-            className='focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-full transition-all hover:opacity-80'
+            className='group relative flex items-center space-x-3 px-4 py-2 rounded-full bg-gray-50/80 hover:bg-gray-100/80 focus:bg-gray-100/80 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:ring-offset-2 transition-all duration-200 ease-out backdrop-blur-sm border border-gray-200/50 hover:border-gray-300/50 hover:shadow-sm active:scale-98'
             aria-label={ariaLabel}
             aria-haspopup='menu'
             aria-expanded='false'
@@ -67,7 +67,7 @@ export const UserNavbar: React.FC<UserNavbarProps> = React.memo(
           </DropdownMenuTrigger>
 
           <DropdownMenuContent
-            className='w-64 shadow-lg border-0 bg-white'
+            className='w-80 p-0 border-0 shadow-2xl bg-white/95 backdrop-blur-xl rounded-2xl ring-1 ring-gray-900/5'
             align='end'
             sideOffset={4}
             role='menu'
@@ -78,11 +78,11 @@ export const UserNavbar: React.FC<UserNavbarProps> = React.memo(
               <UserInfoDisplay user={user} />
             </DropdownMenuLabel>
 
-            <DropdownMenuSeparator className='bg-gray-200' />
+            <DropdownMenuSeparator className='mx-6 bg-gray-200/60 h-px' />
 
             <div role='group' aria-label='Opciones de cuenta'>
               <MenuItem
-                icon={<Settings className='h-4 w-4' />}
+                icon={<Settings className='h-5 w-5 text-gray-600' />}
                 label='Configuración'
                 onClick={handleSettings}
                 data-testid={`${testId}-settings`}
@@ -90,7 +90,7 @@ export const UserNavbar: React.FC<UserNavbarProps> = React.memo(
 
               {actions.onProfile && (
                 <MenuItem
-                  icon={<User className='h-4 w-4' />}
+                  icon={<User className='h-5 w-5 text-gray-600' />}
                   label='Mi Perfil'
                   onClick={handleProfile}
                   data-testid={`${testId}-profile`}
@@ -98,15 +98,16 @@ export const UserNavbar: React.FC<UserNavbarProps> = React.memo(
               )}
             </div>
 
-            <DropdownMenuSeparator className='bg-gray-200' />
-
-            <MenuItem
-              icon={<LogOut className='h-4 w-4' />}
-              label='Cerrar Sesión'
-              onClick={handleLogout}
-              variant='danger'
-              data-testid={`${testId}-logout`}
-            />
+            <DropdownMenuSeparator className='mx-6 bg-gray-200/60 h-px' />
+            <div className='px-3 py-1 pb-3'>
+              <MenuItem
+                icon={<LogOut className='h-5 w-5 text-gray-600' />}
+                label='Cerrar Sesión'
+                onClick={handleLogout}
+                variant='danger'
+                data-testid={`${testId}-logout`}
+              />
+            </div>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

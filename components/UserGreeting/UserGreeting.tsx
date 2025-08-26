@@ -19,7 +19,7 @@ export const UserGreeting: React.FC<UserGreetingProps> = React.memo(
     const greetingClasses = useMemo(
       () =>
         combineClasses(
-          "text-sm font-medium text-gray-700 hidden sm:block",
+          "text-gray-700 font-medium text-sm hidden md:block",
           className
         ),
       [className]
