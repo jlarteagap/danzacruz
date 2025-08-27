@@ -33,12 +33,8 @@ export default function AuthRedirectHandler({ children }) {
         return;
       }
 
-      // Si el perfil está completo y está en la página de perfil
-      if (profileComplete === true && pathname === "/profile") {
-        console.log("Redirecting to panel - profile already complete");
-        router.push("/panel");
-        return;
-      }
+      // Si el perfil está completo y está en la página de perfil, NO redirigir
+      // El usuario puede quedarse en /profile para ver/editar su información
     }
   }, [session, status, router, pathname]);
 

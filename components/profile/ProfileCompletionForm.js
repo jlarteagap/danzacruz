@@ -33,7 +33,7 @@ export default function ProfileCompletionForm({ user, isEditMode = false }) {
         if (isEditMode) {
           router.push("/profile?updated=true");
         } else {
-          router.push("/panel");
+          router.push("/");
         }
       } else {
         throw new Error(result.error);

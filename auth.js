@@ -76,7 +76,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       // Si es después de login, siempre ir al panel
       // La lógica de verificar profileComplete se manejará en el cliente
       if (url.startsWith("/api/auth/signin") || url === baseUrl) {
-        return `${baseUrl}/panel`;
+        return `${baseUrl}/`;
       }
 
       // Si la URL es relativa, hacerla absoluta

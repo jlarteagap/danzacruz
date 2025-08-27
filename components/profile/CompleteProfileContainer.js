@@ -17,12 +17,9 @@ export default function CompleteProfileContainer() {
       router.push("/");
       return;
     }
-
-    if (session?.user?.profileComplete && !isViewMode) {
-      router.push("/panel");
-      return;
-    }
-  }, [session, status, router, isViewMode]);
+    // Permitir visualizar /profile si el perfil está completo
+    // El usuario solo será redirigido si no está autenticado
+  }, [session, status, router]);
 
   if (status === "loading") {
     return (
@@ -39,16 +36,13 @@ export default function CompleteProfileContainer() {
   return (
     <main className='min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
       <div className='max-w-md w-full space-y-8'>
-        {session.user.profileComplete && isViewMode ? (
+        {session.user.profileComplete ? (
           <ProfileViewMode
             user={session.user}
             onEdit={() => toggleViewMode(false)}
           />
         ) : (
-          <ProfileCompletionForm
-            user={session.user}
-            isEditMode={session.user.profileComplete}
-          />
+          <ProfileCompletionForm user={session.user} isEditMode={false} />
         )}
       </div>
     </main>
