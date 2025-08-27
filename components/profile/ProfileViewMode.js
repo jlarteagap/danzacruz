@@ -1,5 +1,5 @@
 "use client";
-import { User, Phone, Calendar, Edit3 } from "lucide-react";
+import { User, Phone, Calendar, Edit3, Pin } from "lucide-react";
 
 export default function ProfileViewMode({ user, onEdit }) {
   const profileFields = [
@@ -16,11 +16,14 @@ export default function ProfileViewMode({ user, onEdit }) {
       value: user.phone || "No especificado",
     },
     {
-      icon: Calendar,
-      label: "Fecha de nacimiento",
-      value: user.dateOfBirth
-        ? new Date(user.dateOfBirth).toLocaleDateString("es-ES")
-        : "No especificado",
+      icon: Pin,
+      label: "Ciudad",
+      value: user.city || "No especificado",
+    },
+    {
+      icon: User,
+      label: "Rol de usuario",
+      value: user.userRole || "No especificado",
     },
   ];
 

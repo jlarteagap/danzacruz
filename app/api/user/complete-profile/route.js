@@ -13,8 +13,15 @@ export async function POST(request) {
     }
 
     const body = await request.json();
-    const { userId, firstName, lastName, phone, dateOfBirth, ...otherFields } =
-      body;
+    const {
+      userId,
+      firstName,
+      lastName,
+      phone,
+      city,
+      userRole,
+      ...otherFields
+    } = body;
 
     // Verificar que el usuario está actualizando su propio perfil
     if (session.user.id !== userId) {
@@ -27,7 +34,8 @@ export async function POST(request) {
       firstName: firstName?.trim(),
       lastName: lastName?.trim(),
       phone: phone?.trim(),
-      dateOfBirth,
+      city: city?.trim(),
+      userRole: userRole?.trim(),
       profileComplete: true,
       profileCompletedAt: new Date(),
       ...otherFields,

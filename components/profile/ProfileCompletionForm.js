@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { profileValidationSchema } from "@/lib/validation/profileSchema";
 import { useProfileSubmission } from "@/hooks/useProfileSubmission";
 import { getInitialProfileValues } from "@/utils/profileUtils";
-import { ButtonField, InputField } from "../form/Fields";
+import { ButtonField, InputField, SelectField } from "../form/Fields";
 
 export default function ProfileCompletionForm({ user, isEditMode = false }) {
   const router = useRouter();
@@ -15,6 +15,7 @@ export default function ProfileCompletionForm({ user, isEditMode = false }) {
   const initialValues = getInitialProfileValues(user);
 
   const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
+    console.log("Submitting profile with values:", values);
     try {
       const result = await submitProfile({
         userId: user.id,
@@ -98,13 +99,27 @@ export default function ProfileCompletionForm({ user, isEditMode = false }) {
                 required
                 autoComplete='tel'
               />
-
               <InputField
-                name='dateOfBirth'
-                label='Fecha de nacimiento'
-                type='date'
+                name='city'
+                label='Ciudad'
+                type='text'
+                placeholder='Tu ciudad'
                 required
-                autoComplete='bday'
+                autoComplete='address-level2'
+              />
+              <SelectField
+                name='userRole'
+                label='Rol de usuario'
+                options={[
+                  { value: "Director", name: "Director" },
+                  {
+                    value: "Representante de academia",
+                    name: "Representante de Academia",
+                  },
+                  { value: "Participante", name: "Participante solista" },
+                ]}
+                required
+                autoComplete='off'
               />
             </fieldset>
 
@@ -119,9 +134,10 @@ export default function ProfileCompletionForm({ user, isEditMode = false }) {
             )}
 
             <ButtonField
-              //   isLoading={isLoading || isSubmitting}
-              //   loadingText='Guardando...'
+              isLoading={isLoading || isSubmitting}
+              loadingText='Guardando...'
               addText={isEditMode ? "Actualizar perfil" : "Completar perfil"}
+              type='submit'
             />
           </Form>
         )}

@@ -4,7 +4,8 @@ export function getInitialProfileValues(user) {
       firstName: "",
       lastName: "",
       phone: "",
-      dateOfBirth: "",
+      city: "",
+      userRole: "",
     };
   }
 
@@ -14,6 +15,7 @@ export function getInitialProfileValues(user) {
     firstName: user.firstName || nameParts[0] || "",
     lastName: user.lastName || nameParts.slice(1).join(" ") || "",
     phone: user.phone || "",
-    dateOfBirth: user.dateOfBirth || "",
+    city: user.city || "",
+    userRole: user.userRole || "",
   };
 }
