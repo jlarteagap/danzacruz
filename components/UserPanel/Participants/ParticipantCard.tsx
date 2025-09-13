@@ -1,18 +1,16 @@
 "use client";
 
 import { FC } from "react";
-import { Edit3, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { Participant } from "../types";
 
 interface ParticipantCardProps {
   participant: Participant;
-  onEdit: (p: Participant) => void;
   onDelete: (id: string) => void;
 }
 
 const ParticipantCard: FC<ParticipantCardProps> = ({
   participant,
-  onEdit,
   onDelete,
 }) => {
   return (
@@ -26,12 +24,6 @@ const ParticipantCard: FC<ParticipantCardProps> = ({
         </p>
       </div>
       <div className='flex gap-2 mt-4 md:mt-0'>
-        <button
-          onClick={() => onEdit(participant)}
-          className='flex items-center gap-1 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg'
-        >
-          <Edit3 className='w-4 h-4' /> Editar
-        </button>
         <button
           onClick={() => onDelete(participant.id)}
           className='flex items-center gap-1 px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-lg'

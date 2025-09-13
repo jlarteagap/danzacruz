@@ -58,11 +58,6 @@ const UserPanel = ({
           {activeTab === "choreographies" && (
             <ChoreographiesList user={session?.user} />
           )}
-          <div className='text-center text-gray-400 py-20'>
-            No existen{" "}
-            {activeTab === "participants" ? "Participantes" : "Coreografías"}{" "}
-            registrados{" "}
-          </div>
         </div>
       </div>
     </div>

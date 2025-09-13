@@ -29,19 +29,6 @@ const ParticipantForm: FC<ParticipantFormProps> = ({
     setCategory,
   } = useParticipantForm();
 
-  const onSubmit = async (data: Participant) => {
-    try {
-      if (participant) {
-        await apiUpdate("participants", participant.id, data);
-      } else {
-        await apiSave("participants", data);
-      }
-      onClose();
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   return (
     <div className='fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50'>
       <div className='bg-white rounded-lg p-6 w-full max-w-lg'>
@@ -50,12 +37,12 @@ const ParticipantForm: FC<ParticipantFormProps> = ({
         </h2>
         <Formik
           initialValues={initialValues}
-          onSubmit={(values, helpers) => handleSubmit(values, helpers, user)}
+          onSubmit={(values, helpers) =>
+            handleSubmit(values, helpers, user, onClose)
+          }
           validationSchema={validate}
         >
           {({ values, setFieldValue }) => {
-            // Ensure category is set when values.category changes
-            // (Requires React import)
             useEffect(() => {
               setCategory(values.category);
             }, [values.category, setCategory]);

@@ -92,12 +92,7 @@ const ParticipantsList = ({ user }) => {
       )}
 
       {participants.map((p) => (
-        <ParticipantCard
-          key={p.id}
-          participant={p}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
+        <ParticipantCard key={p.id} participant={p} onDelete={handleDelete} />
       ))}
     </div>
   );

@@ -8,7 +8,12 @@ export const useParticipantForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState("");
 
-  const handleSubmit = async (values: any, { resetForm }: any, user: any) => {
+  const handleSubmit = async (
+    values: any,
+    { resetForm }: any,
+    user: any,
+    onClose: () => void
+  ) => {
     try {
       setIsLoading(true);
       const currentYear = new Date().getFullYear();
@@ -20,6 +25,7 @@ export const useParticipantForm = () => {
 
       const data = await apiSave("participants", payload);
       resetForm();
+      onClose();
     } catch (error) {
       console.error("Error al registrar:", error);
     } finally {
