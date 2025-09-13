@@ -1,25 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { initialValues, validate } from "@/components/UserPanel/utils";
+import { useRouter } from "next/navigation";
+import { initialValues, validate } from "@/components/AddParticipant/utils";
 import { apiSave } from "@/lib/api";
 
-export const useParticipantForm = () => {
+export const useCoreografyForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = async (values: any, { resetForm }: any, user: any) => {
+  const handleSubmit = async (values: any, { resetForm }: any) => {
     try {
       setIsLoading(true);
       const currentYear = new Date().getFullYear();
-      const payload = {
-        ...values,
-        year: currentYear,
-        userId: user.id, // assuming user object has an id property
-      };
+      values.year = currentYear;
 
-      const data = await apiSave("participants", payload);
+      const data = await await apiSave("coreografy", values);
+
       resetForm();
+      // router.push(`completo/${data.id}`); // puedes activarlo luego si quieres redirección
     } catch (error) {
       console.error("Error al registrar:", error);
     } finally {

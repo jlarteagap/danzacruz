@@ -38,8 +38,10 @@ export async function apiDelete(collection: string, id: string) {
   return res.json(); // devuelve { success: true }
 }
 
-export async function apiGet(collection: string, id?: string) {
-  const url = id ? `/api/${collection}/${id}` : `/api/${collection}`;
+export async function apiGet(collection: string, userId?: string) {
+  const url = userId
+    ? `/api/${collection}?userId=${userId}`
+    : `/api/${collection}`;
 
   const res = await fetch(url, {
     method: "GET",

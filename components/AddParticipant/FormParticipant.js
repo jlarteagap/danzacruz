@@ -8,7 +8,6 @@ import {
   ButtonField,
 } from "../form/Fields";
 import { general, modalidad, category, subDivision, colegios } from "./utils";
-import { Separator } from "@/components/ui/separator";
 
 export const FormParticipant = ({ categoryProp, setFieldValue }) => {
   return (
@@ -19,18 +18,15 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
           type='text'
           name='name'
         />
-
         <InputField
           label='Nombre de la Coreografia *'
           type='text'
           name='coreografy'
         />
-        <div>
-          <h3 className=''>Categoría</h3>
-        </div>
+
         <div className=''>
           <div className=''>
-            <RadioFields options={category} name='category' />
+            <RadioFields options={category} name='category' label='Categoría' />
             <SelectField
               label='División'
               name='division'
@@ -39,7 +35,11 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
             />
           </div>
           <div className='column'>
-            <RadioFields options={subDivision} name='subDivision' />
+            <RadioFields
+              options={subDivision}
+              name='subDivision'
+              label='Subdivisión'
+            />
           </div>
         </div>
         <SelectField
@@ -68,9 +68,6 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
           type='text'
           label='Información adiocional que desea registrar'
         />
-        <Separator className='mb-5' />
-        <InputField label='Telefono *' type='text' name='phone' />
-        <InputField label='Correo electrónico *' type='text' name='email' />
         {/* <InputFile
           name="logo"
           type="file"

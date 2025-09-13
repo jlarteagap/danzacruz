@@ -20,15 +20,24 @@ export async function POST(
     );
   }
 }
-
-// GET: traer todos los documentos de una colección
+// GET: traer documentos, con filtro opcional por userId
 export async function GET(
   req: Request,
   { params }: { params: { collection: string } }
 ) {
   try {
     const { collection } = params;
-    const snapshot = await db.collection(collection).get();
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get("userId");
+
+    let query: FirebaseFirestore.Query<FirebaseFirestore.DocumentData> =
+      db.collection(collection);
+
+    if (userId) {
+      query = query.where("userId", "==", userId);
+    }
+
+    const snapshot = await query.get();
 
     const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
