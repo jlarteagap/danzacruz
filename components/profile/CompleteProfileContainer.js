@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useProfileCompletion } from "@/hooks/useProfileCompletion";
 import LoadingSpinner from "@/components/ui/commons/LoadingSpinner";
 import ProfileCompletionForm from "@/components/profile/ProfileCompletionForm";
-import ProfileViewMode from "@/components/profile/ProfileViewMode";
+import UserPanel from "@/components/UserPanel";
 
 export default function CompleteProfileContainer() {
   const { data: session, status } = useSession();
@@ -35,12 +35,9 @@ export default function CompleteProfileContainer() {
 
   return (
     <main className='min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
-      <div className='max-w-md w-full space-y-8'>
+      <div className='w-full space-y-8'>
         {session.user.profileComplete ? (
-          <ProfileViewMode
-            user={session.user}
-            onEdit={() => toggleViewMode(false)}
-          />
+          <UserPanel user={session.user} />
         ) : (
           <ProfileCompletionForm user={session.user} isEditMode={false} />
         )}

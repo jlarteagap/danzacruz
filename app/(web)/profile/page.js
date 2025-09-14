@@ -16,7 +16,6 @@ export default function CompleteProfilePage() {
   return (
     <AuthRedirectHandler>
       <CompleteProfileContainer />
-      <UserPanel />
     </AuthRedirectHandler>
   );
 }
