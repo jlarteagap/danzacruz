@@ -20,7 +20,7 @@ const ParticipantCard: FC<ParticipantCardProps> = ({
         <p className='text-gray-500 text-sm'>{participant.choreography}</p>
         <p className='text-gray-400 text-sm'>
           {participant.category} | {participant.division} |{" "}
-          {participant.modality}
+          {participant.subDivision}
         </p>
       </div>
       <div className='flex gap-2 mt-4 md:mt-0'>

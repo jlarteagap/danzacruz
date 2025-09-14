@@ -5,7 +5,7 @@ export const InputField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
-    <div className='mb-6'>
+    <div className='mb-3'>
       {/* Label */}
       <label className='block text-sm font-medium text-gray-900 mb-3 text-left'>
         {label}
@@ -46,7 +46,7 @@ export const SelectField = ({ label, options, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
-    <div className='mb-6'>
+    <div className='mb-3'>
       {/* Label */}
       <label className='block text-sm font-medium text-gray-900 mb-3 text-left'>
         {label}
@@ -115,7 +115,7 @@ export const TextareaField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
-    <div className='mb-6'>
+    <div className='mb-3'>
       {/* Label */}
       <label className='block text-sm font-medium text-gray-900 mb-3 text-left'>
         {label}
@@ -219,7 +219,7 @@ export const ButtonField = ({
 
 export const RadioFields = ({ options, name, label }) => {
   return (
-    <div className='mb-6'>
+    <div className='mb-3'>
       {/* Label */}
       {label && (
         <label className='block text-sm font-medium text-gray-900 mb-3 text-left'>
@@ -273,7 +273,7 @@ export const InputFile = ({ label = "Subir archivo", ...props }) => {
   const [field, meta] = useField(props);
 
   return (
-    <div className='mb-6'>
+    <div className='mb-3'>
       {/* Label */}
       {label && (
         <label className='block text-sm font-medium text-gray-900 mb-3 text-left'>
@@ -344,7 +344,7 @@ export const CheckboxField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
-    <div className='mb-6'>
+    <div className='mb-3'>
       <label className='flex items-center group cursor-pointer text-left'>
         <div className='relative'>
           <input

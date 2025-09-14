@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import ChoreographyCard from "./ChoreographyCard";
 import { Choreography } from "../types";
 import { apiGet, apiDelete } from "@/lib/api";
-// import ChoreographyForm from "./ChoreographyForm";
+import ChoreographyForm from "./ChoreographyForm";
 
 // Shadcn Modal
 import {
@@ -23,11 +23,12 @@ const ChoreographiesList = ({ user }) => {
 
   useEffect(() => {
     fetchChoreographies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchChoreographies = async () => {
     try {
-      const data = await apiGet("choreographies");
+      const data = await apiGet("choreographies", user.id);
       setChoreographies(data);
     } catch (err) {
       console.error(err);
@@ -66,12 +67,12 @@ const ChoreographiesList = ({ user }) => {
         <DialogTrigger asChild>
           <button
             onClick={handleAdd}
-            className='mb-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700'
+            className='mb-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700'
           >
             + Agregar Coreografía
           </button>
         </DialogTrigger>
-        <DialogContent className='sm:max-w-lg'>
+        <DialogContent className='sm:max-w-lg max-w-3xl'>
           <DialogHeader>
             <DialogTitle>
               {editingChoreography
@@ -79,24 +80,22 @@ const ChoreographiesList = ({ user }) => {
                 : "Agregar Coreografía"}
             </DialogTitle>
           </DialogHeader>
-          {/* <ChoreographyForm
+          <ChoreographyForm
             choreography={editingChoreography}
             onClose={handleClose}
-          /> */}
+            user={user}
+          />
         </DialogContent>
       </Dialog>
 
       {choreographies.length === 0 && (
-        <p className='text-gray-400 text-center py-20'>No hay coreografías.</p>
+        <p className='text-gray-400 text-center py-20'>
+          No hay coreografías registradas.
+        </p>
       )}
 
       {choreographies.map((c) => (
-        <ChoreographyCard
-          key={c.id}
-          choreography={c}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
+        <ChoreographyCard key={c.id} choreography={c} onDelete={handleDelete} />
       ))}
     </div>
   );

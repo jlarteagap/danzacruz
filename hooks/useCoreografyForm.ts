@@ -1,27 +1,58 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { initialValues, validate } from "@/components/AddParticipant/utils";
-import { apiSave } from "@/lib/api";
+import * as Yup from "yup";
+import { apiSave, apiUpdate } from "@/lib/api";
 
-export const useCoreografyForm = () => {
+export const useChoreographyForm = (choreography?: any) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [category, setCategory] = useState("");
-  const router = useRouter();
 
-  const handleSubmit = async (values: any, { resetForm }: any) => {
+  const initialValues = choreography || {
+    name: "",
+    // participantId: "",
+    modality: "",
+    teacher: "",
+    music: "",
+    clarification: "",
+    extra: "",
+  };
+
+  const validate = Yup.object().shape({
+    name: Yup.string().required("El nombre de la coreografía es obligatorio"),
+    // participantId: Yup.string().required("El participante es obligatorio"),
+    modality: Yup.string().required("La modalidad es obligatoria"),
+    teacher: Yup.string().required("El nombre del profesor es obligatorio"),
+    music: Yup.string().required("La canción/música es obligatoria"),
+    clarification: Yup.string().optional(),
+    extra: Yup.string().optional(),
+  });
+
+  const handleSubmit = async (
+    values: any,
+    { resetForm }: any,
+    user: any,
+    onClose: () => void
+  ) => {
+    console.log("Submitting choreography:", values);
     try {
       setIsLoading(true);
       const currentYear = new Date().getFullYear();
-      values.year = currentYear;
+      const payload = {
+        ...values,
+        year: currentYear,
+        userId: user.id,
+      };
 
-      const data = await await apiSave("coreografy", values);
+      if (choreography?.id) {
+        await apiUpdate("choreographies", choreography.id, payload);
+      } else {
+        await apiSave("choreographies", payload);
+      }
 
       resetForm();
-      // router.push(`completo/${data.id}`); // puedes activarlo luego si quieres redirección
+      onClose();
     } catch (error) {
-      console.error("Error al registrar:", error);
+      console.error("Error al guardar coreografía:", error);
     } finally {
       setIsLoading(false);
     }
@@ -32,7 +63,5 @@ export const useCoreografyForm = () => {
     validate,
     handleSubmit,
     isLoading,
-    category,
-    setCategory,
   };
 };
