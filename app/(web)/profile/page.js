@@ -1,6 +1,5 @@
 import CompleteProfileContainer from "@/components/profile/CompleteProfileContainer";
 import AuthRedirectHandler from "@/components/AuthRedirectHandler";
-import UserPanel from "@/components/UserPanel";
 
 export const metadata = {
   title: "Completar Perfil | DanzaCruz",

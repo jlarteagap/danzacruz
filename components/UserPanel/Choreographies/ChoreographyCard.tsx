@@ -2,18 +2,7 @@
 
 import { FC } from "react";
 import { Trash2 } from "lucide-react";
-
-interface Choreography {
-  id: string;
-  name: string;
-  category: string;
-  division: string;
-  modality: string;
-  teacher: string;
-  music: string;
-  clarification?: string;
-  extra?: string;
-}
+import { Choreography } from "../types";
 
 interface ChoreographyCardProps {
   choreography: Choreography;

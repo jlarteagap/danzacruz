@@ -1,12 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { initialValues, validate } from "@/components/UserPanel/utils";
-import { apiSave } from "@/lib/api";
+import { apiSave, apiGet } from "@/lib/api";
+import { Participant } from "@/components/UserPanel/types";
+import { useSession } from "next-auth/react";
 
-export const useParticipantForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
+export const useParticipantForm = (user: string) => {
+  const [participants, setParticipants] = useState<Participant[]>([]);
   const [category, setCategory] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { data: session, status } = useSession();
+
+  console.log();
+
+  useEffect(() => {
+    const fetchParticipants = async () => {
+      try {
+        const data = await apiGet("participants", user);
+        setParticipants(data);
+      } catch (error) {
+        console.error("Error fetching participants:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchParticipants();
+  }, []);
 
   const handleSubmit = async (
     values: any,
@@ -39,6 +61,7 @@ export const useParticipantForm = () => {
     handleSubmit,
     isLoading,
     category,
+    participants,
     setCategory,
   };
 };

@@ -7,8 +7,9 @@ import { Choreography } from "../types";
 
 import { InputField, SelectField } from "@/components/form/Fields";
 import { useChoreographyForm } from "@/hooks/useCoreografyForm";
+import { useParticipantForm } from "@/hooks/useParticipantForm";
 
-import { modalidad, validate } from "@/components/AddParticipant/utils";
+import { modalidad } from "@/components/AddParticipant/utils";
 
 interface ChoreographyFormProps {
   user: any;
@@ -23,6 +24,9 @@ const ChoreographyForm: FC<ChoreographyFormProps> = ({
 }) => {
   const { initialValues, validate, handleSubmit, isLoading } =
     useChoreographyForm(choreography);
+  const { participants, isLoading: isLoadingParticipants } = useParticipantForm(
+    user.id
+  );
 
   return (
     <div className='fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50'>
@@ -38,8 +42,19 @@ const ChoreographyForm: FC<ChoreographyFormProps> = ({
           validationSchema={validate}
           enableReinitialize
         >
-          {() => (
+          {({ isSubmitting }) => (
             <Form className='space-y-4'>
+              {!isLoadingParticipants && (
+                <SelectField
+                  name='participantId'
+                  label='Participante'
+                  options={participants.map((p) => ({
+                    value: p.id,
+                    name: `${p.name} - ${p.category} - ${p.division}`,
+                  }))}
+                  type='select'
+                />
+              )}
               {/* Grid en dos columnas */}
               <div className='grid grid-cols-1 md:grid-cols-2 gap-1'>
                 <InputField

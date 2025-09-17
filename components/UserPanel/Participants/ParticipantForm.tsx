@@ -4,7 +4,6 @@ import { FC, useEffect } from "react";
 import { Form, Formik } from "formik";
 
 import { Participant } from "../types";
-import { apiSave, apiUpdate } from "@/lib/api";
 import { InputField, RadioFields, SelectField } from "@/components/form/Fields";
 import { colegios, general, category, subDivision } from "../utils";
 import { useParticipantForm } from "@/hooks/useParticipantForm";
@@ -27,7 +26,7 @@ const ParticipantForm: FC<ParticipantFormProps> = ({
     isLoading,
     category: categoryState,
     setCategory,
-  } = useParticipantForm();
+  } = useParticipantForm(user.id);
 
   return (
     <div className='fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50'>
