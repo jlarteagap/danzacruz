@@ -4,14 +4,11 @@ import { useState, useEffect } from "react";
 import { initialValues, validate } from "@/components/UserPanel/utils";
 import { apiSave, apiGet } from "@/lib/api";
 import { Participant } from "@/components/UserPanel/types";
-import { useSession } from "next-auth/react";
 
 export const useParticipantForm = (user: string) => {
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [category, setCategory] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const { data: session, status } = useSession();
 
   console.log();
 

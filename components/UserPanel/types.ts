@@ -20,4 +20,5 @@ export interface Choreography {
   participantId: string;
   userId: any;
   year: number;
+  status: boolean;
 }

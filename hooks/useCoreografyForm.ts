@@ -3,6 +3,7 @@
 import { useState } from "react";
 import * as Yup from "yup";
 import { apiSave, apiUpdate } from "@/lib/api";
+import { stat } from "fs";
 
 export const useChoreographyForm = (choreography?: any) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,6 +16,7 @@ export const useChoreographyForm = (choreography?: any) => {
     music: "",
     clarification: "",
     extra: "",
+    status: false,
   };
 
   const validate = Yup.object().shape({
@@ -40,6 +42,7 @@ export const useChoreographyForm = (choreography?: any) => {
       const payload = {
         ...values,
         year: currentYear,
+        status: false,
         userId: user.id,
       };
 
