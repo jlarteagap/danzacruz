@@ -5,6 +5,7 @@ import ChoreographyCard from "./ChoreographyCard";
 import { Choreography } from "../types";
 import { apiGet, apiDelete } from "@/lib/api";
 import ChoreographyForm from "./ChoreographyForm";
+import { toast } from "sonner";
 
 // Shadcn Modal
 import {
@@ -45,8 +46,10 @@ const ChoreographiesList = ({ user }) => {
     try {
       await apiDelete("choreographies", id);
       setChoreographies(choreographies.filter((c) => c.id !== id));
+      toast.success("La coreografía se eliminó correctamente");
     } catch (err) {
       console.error(err);
+      toast.error("No se pudo eliminar la coreografía");
     }
   };
 
