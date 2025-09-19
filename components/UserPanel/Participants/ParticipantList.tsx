@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { toast } from "sonner";
 
 const ParticipantsList = ({ user }) => {
   const [participants, setParticipants] = useState<Participant[]>([]);
@@ -44,8 +45,10 @@ const ParticipantsList = ({ user }) => {
     try {
       await apiDelete("participants", id);
       setParticipants(participants.filter((p) => p.id !== id));
+      toast.success("El participante se eliminó correctamente");
     } catch (err) {
       console.error(err);
+      toast.error("No se pudo eliminar el participante");
     }
   };
 
@@ -92,7 +95,12 @@ const ParticipantsList = ({ user }) => {
       )}
 
       {participants.map((p) => (
-        <ParticipantCard key={p.id} participant={p} onDelete={handleDelete} />
+        <ParticipantCard
+          key={p.id}
+          participant={p}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+        />
       ))}
     </div>
   );

@@ -6,6 +6,7 @@ export interface Participant {
   subDivision?: string;
   userId: any;
   year: number;
+  image?: string;
 }
 
 export interface Choreography {

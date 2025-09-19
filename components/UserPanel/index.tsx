@@ -51,7 +51,7 @@ const UserPanel = ({
         </div>
 
         {/* Contenido dinámico */}
-        <div className='flex-1 overflow-auto'>
+        <div className='flex-1'>
           {activeTab === "participants" && (
             <ParticipantsList user={session?.user} />
           )}
