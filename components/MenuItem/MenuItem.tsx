@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from "react";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { MenuVariant } from "@/types/user.types";
+import { MenuVariant } from "types/user.types";
 import { getMenuVariantClasses, combineClasses } from "../../utils/style.utils";
 
 interface MenuItemProps {

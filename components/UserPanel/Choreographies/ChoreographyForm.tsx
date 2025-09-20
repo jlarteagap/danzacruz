@@ -3,7 +3,7 @@
 import { FC } from "react";
 import { Form, Formik } from "formik";
 
-import { Choreography } from "../types";
+import { Choreography } from "@/types/userPanel.types";
 
 import { InputField, SelectField } from "@/components/form/Fields";
 import { useChoreographyForm } from "@/hooks/useCoreografyForm";

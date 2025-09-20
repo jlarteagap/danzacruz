@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { UserActions } from "public/types/user.types";
+import { UserActions } from "types/user.types";
 
 /**
  * Hook para manejar acciones del usuario

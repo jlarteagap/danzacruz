@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { User } from "@/types/user.types";
+import { User } from "types/user.types";
 import { getFirstName } from "@/utils/user-display.utils";
 import { generateGreetingAriaLabel } from "@/utils/accessibility.utils";
 import { combineClasses } from "@/utils/style.utils";

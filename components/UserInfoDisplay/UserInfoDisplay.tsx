@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { User } from "@/types/user.types";
+import { User } from "types/user.types";
 import { formatEmail } from "@/utils/user-display.utils";
 import { UserAvatar } from "../UserAvatar/UserAvatar";
 

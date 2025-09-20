@@ -3,7 +3,7 @@
 import { FC, useEffect } from "react";
 import { Form, Formik } from "formik";
 
-import { Participant } from "../types";
+import { Participant } from "@/types/userPanel.types";
 import { InputField, RadioFields, SelectField } from "@/components/form/Fields";
 import { colegios, general, category, subDivision } from "../utils";
 import { useParticipantForm } from "@/hooks/useParticipantForm";

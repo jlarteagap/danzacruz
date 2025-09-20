@@ -1,14 +1,16 @@
 // components/ChoreographyCardContent.tsx
 import { FC } from "react";
-import { User, Music, Palette } from "lucide-react";
-import { Choreography } from "../types";
+import { User, Music, Palette, UserCheck } from "lucide-react";
+import { Choreography } from "@/types/userPanel.types";
 
 interface ChoreographyCardContentProps {
   choreography: Choreography & { status: boolean };
+  participantName: string;
 }
 
 export const ChoreographyCardContent: FC<ChoreographyCardContentProps> = ({
   choreography,
+  participantName,
 }) => {
   const isApproved = choreography.status;
 
@@ -17,12 +19,29 @@ export const ChoreographyCardContent: FC<ChoreographyCardContentProps> = ({
       {/* Title - Prominente en la parte superior */}
       <h3
         className={`
-        text-xl md:text-2xl font-bold mb-4 leading-tight transition-colors duration-300
+        text-xl md:text-2xl font-bold mb-2 leading-tight transition-colors duration-300
         ${isApproved ? "text-gray-900" : "text-gray-500"}
       `}
       >
         {choreography.name}
       </h3>
+
+      {/* Nombre del participante - Justo debajo del título en letras pequeñas */}
+      <div className='flex items-center gap-2 mb-4'>
+        <UserCheck
+          className={`w-3 h-3 ${
+            isApproved ? "text-blue-500" : "text-gray-400"
+          }`}
+        />
+        <p
+          className={`
+          text-xs font-medium uppercase tracking-wider transition-colors duration-300
+          ${isApproved ? "text-blue-600" : "text-gray-400"}
+        `}
+        >
+          {participantName}
+        </p>
+      </div>
 
       {/* 3 Elementos principales - Una sola línea horizontal */}
       <div className='grid grid-cols-1 md:grid-cols-3 gap-3 mb-6'>

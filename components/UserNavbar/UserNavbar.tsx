@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { User as UserType, UserActions } from "@/types/user.types";
+import { User as UserType, UserActions } from "types/user.types";
 import { generateUserMenuAriaLabel } from "@/utils/accessibility.utils";
 import { combineClasses } from "@/utils/style.utils";
 import { useUserActions } from "@/hooks/useUserActions";

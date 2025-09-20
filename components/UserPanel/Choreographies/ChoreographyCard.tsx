@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Choreography } from "../types";
+import { Choreography } from "@/types/userPanel.types";
 import { ChoreographyCardHeader } from "./ChoreographyCardHeader";
 import { ChoreographyCardContent } from "./ChoreographyCardContent";
 import { ChoreographyCardActions } from "./ChoreographyCardActions";
@@ -11,17 +11,24 @@ import { ChoreographyCardSkeleton } from "./ChoreographyCardSkeleton";
 
 interface ChoreographyCardProps {
   choreography: Choreography & { status: boolean };
-  onDelete: (id: string) => void;
+  participantName: string;
+  onDelete: (id: string) => Promise<boolean>;
+  onEdit?: (choreography: Choreography) => void;
   isLoading?: boolean;
 }
 
 const ChoreographyCard: FC<ChoreographyCardProps> = ({
   choreography,
+  participantName,
   onDelete,
+  onEdit,
   isLoading = false,
 }) => {
-  // const { handleViewDetails } = useCoregraphyActions();
   const isApproved = choreography.status;
+
+  const handleDelete = async () => {
+    await onDelete(choreography.id);
+  };
 
   if (isLoading) {
     return <ChoreographyCardSkeleton />;
@@ -44,7 +51,10 @@ const ChoreographyCard: FC<ChoreographyCardProps> = ({
 
         <div className='flex flex-col md:flex-row md:justify-between items-start md:items-center'>
           <div className='flex-1'>
-            <ChoreographyCardContent choreography={choreography} />
+            <ChoreographyCardContent
+              choreography={choreography}
+              participantName={participantName}
+            />
             <ChoreographyAdditionalInfo
               clarification={choreography.clarification}
               extra={choreography.extra}
@@ -56,8 +66,8 @@ const ChoreographyCard: FC<ChoreographyCardProps> = ({
             choreographyId={choreography.id}
             choreographyName={choreography.name}
             isApproved={isApproved}
-            onDelete={onDelete} // Pasamos directamente tu función
-            // onViewDetails={handleViewDetails}
+            onDelete={handleDelete}
+            onEdit={onEdit ? () => onEdit(choreography) : undefined}
           />
         </div>
       </CardContent>

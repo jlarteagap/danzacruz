@@ -3,14 +3,12 @@
 import { useState, useEffect } from "react";
 import { initialValues, validate } from "@/components/UserPanel/utils";
 import { apiSave, apiGet } from "@/lib/api";
-import { Participant } from "@/components/UserPanel/types";
+import { Participant } from "@/types/userPanel.types";
 
 export const useParticipantForm = (user: string) => {
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [category, setCategory] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  console.log();
 
   useEffect(() => {
     const fetchParticipants = async () => {
@@ -33,6 +31,8 @@ export const useParticipantForm = (user: string) => {
     user: any,
     onClose: () => void
   ) => {
+    console.log(values);
+    debugger;
     try {
       setIsLoading(true);
       const currentYear = new Date().getFullYear();

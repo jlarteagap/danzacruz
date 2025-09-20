@@ -10,7 +10,7 @@ export const useChoreographyForm = (choreography?: any) => {
 
   const initialValues = choreography || {
     name: "",
-    // participantId: "",
+    participantId: "",
     modality: "",
     teacher: "",
     music: "",
@@ -21,7 +21,7 @@ export const useChoreographyForm = (choreography?: any) => {
 
   const validate = Yup.object().shape({
     name: Yup.string().required("El nombre de la coreografía es obligatorio"),
-    // participantId: Yup.string().required("El participante es obligatorio"),
+    participantId: Yup.string().required("El participante es obligatorio"),
     modality: Yup.string().required("La modalidad es obligatoria"),
     teacher: Yup.string().required("El nombre del profesor es obligatorio"),
     music: Yup.string().required("La canción/música es obligatoria"),

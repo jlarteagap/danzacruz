@@ -1,4 +1,4 @@
-import { AvatarSize, MenuVariant } from "@/types/user.types";
+import { AvatarSize, MenuVariant } from "types/user.types";
 
 /**
  * Obtiene las clases CSS para el tamaño del avatar
