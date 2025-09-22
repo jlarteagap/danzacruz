@@ -9,24 +9,21 @@ import { getFirstName } from "@/utils/user-display.utils";
 
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { MainMenu } from "@/components/MainMenu/MainMenu";
 
 export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data: session, status } = useSession();
   const router = useRouter();
 
   const actions: UserActions = useMemo(
     () => ({
       onLogout: async () => {
-        console.log("Cerrando sesión...");
         await signOut({ callbackUrl: "/" });
       },
       onSettings: () => {
-        console.log("Navegando a configuración...");
         router.push("/settings");
       },
       onProfile: () => {
-        console.log("Navegando a perfil...");
         router.push("/profile");
       },
     }),
@@ -75,16 +72,16 @@ export const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
+          <MainMenu user={currentUser} />
           <div className='hidden md:flex items-center gap-8'>
-            {/* Mostrar LoginButton solo si no hay sesión */}
             {status !== "authenticated" && <LoginButton />}
 
-            {/* Mostrar UserNavbar solo si hay sesión activa */}
             {status === "authenticated" && currentUser && (
-              <UserNavbar user={currentUser} actions={actions} />
+              <>
+                <UserNavbar user={currentUser} actions={actions} />
+              </>
             )}
 
-            {/* Loading state */}
             {status === "loading" && (
               <div className='animate-pulse'>
                 <div className='h-8 w-8 bg-gray-200 rounded-full'></div>

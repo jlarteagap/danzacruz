@@ -5,7 +5,6 @@ import Info from "@/components/Info/Info";
 import Modalidad from "@/components/Modalidad/Modalidad";
 import Times from "@/components/Times/Times";
 import { Ads } from "@/components/Ads/Ads";
-import { Navbar } from "@/components/navbar";
 
 import { auth } from "@/auth";
 

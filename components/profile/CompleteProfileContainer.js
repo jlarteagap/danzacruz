@@ -5,13 +5,14 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/components/ui/commons/LoadingSpinner";
 import ProfileCompletionForm from "@/components/profile/ProfileCompletionForm";
-import UserPanel from "@/components/UserPanel";
-import { DataProvider } from "@/contexts/DataContext";
-
+import ProfileViewMode from "@/components/profile/ProfileViewMode";
 export default function CompleteProfileContainer() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
+  const handleEditProfile = () => {
+    console.log("Edit profile clicked");
+  };
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/");
@@ -35,9 +36,7 @@ export default function CompleteProfileContainer() {
     <main className='min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
       <div className='w-full space-y-8'>
         {session.user.profileComplete ? (
-          <DataProvider userId={session.user.id}>
-            <UserPanel user={session.user} />
-          </DataProvider>
+          <ProfileViewMode user={session?.user} onEdit={handleEditProfile} />
         ) : (
           <ProfileCompletionForm user={session.user} isEditMode={false} />
         )}

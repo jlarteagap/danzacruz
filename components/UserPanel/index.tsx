@@ -29,12 +29,7 @@ const UserPanel = ({ user, onEditProfile }: UserPanelProps) => {
   };
 
   return (
-    <div className='flex h-screen bg-gray-50 overflow-auto p-6'>
-      {/* Columna izquierda: Perfil */}
-      <div className='w-full md:w-1/3 lg:w-1/4 pr-4'>
-        <ProfileViewMode user={session?.user} onEdit={handleEditProfile} />
-      </div>
-
+    <div className='flex bg-gray-50 p-6'>
       {/* Columna derecha: Contenido */}
       <div className='flex-1 flex flex-col'>
         {/* Botones de selección */}
