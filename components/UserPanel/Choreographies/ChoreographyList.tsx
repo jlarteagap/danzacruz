@@ -128,7 +128,7 @@ const ChoreographiesList = ({ user }: ChoreographiesListProps) => {
               Agregar Coreografía
             </Button>
           </DialogTrigger>
-          <DialogContent className='sm:max-w-3xl max-w-4xl'>
+          <DialogContent className='sm:max-w-3xl max-w-4xl bg-white'>
             <DialogHeader>
               <DialogTitle>
                 {editingChoreography

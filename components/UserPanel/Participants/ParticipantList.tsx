@@ -90,7 +90,7 @@ const ParticipantsList = ({ user }: ParticipantsListProps) => {
               Agregar Participante
             </Button>
           </DialogTrigger>
-          <DialogContent className='sm:max-w-lg'>
+          <DialogContent className='sm:max-w-lg bg-white'>
             <DialogHeader>
               <DialogTitle>
                 {editingParticipant
