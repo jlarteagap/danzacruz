@@ -8,7 +8,7 @@ const nextConfig = {
     ],
   },
   images: {
-    domains: ["firebasestorage.googleapis.com"],
+    domains: ["firebasestorage.googleapis.com", "lh3.googleusercontent.com"],
     minimumCacheTTL: 6000000,
   },
   webpack: (config, { isServer }) => {

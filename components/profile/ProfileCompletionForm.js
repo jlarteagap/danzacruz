@@ -7,7 +7,11 @@ import { useProfileSubmission } from "@/hooks/useProfileSubmission";
 import { getInitialProfileValues } from "@/utils/profileUtils";
 import { ButtonField, InputField, SelectField } from "../form/Fields";
 
-export default function ProfileCompletionForm({ user, isEditMode = false }) {
+export default function ProfileCompletionForm({
+  user,
+  isEditMode = false,
+  onCancel,
+}) {
   const router = useRouter();
   const { update } = useSession();
   const { submitProfile, isLoading } = useProfileSubmission();
@@ -15,7 +19,6 @@ export default function ProfileCompletionForm({ user, isEditMode = false }) {
   const initialValues = getInitialProfileValues(user);
 
   const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
-    console.log("Submitting profile with values:", values);
     try {
       const result = await submitProfile({
         userId: user.id,
@@ -72,41 +75,10 @@ export default function ProfileCompletionForm({ user, isEditMode = false }) {
         {({ errors, touched, isSubmitting }) => (
           <Form className='space-y-6' noValidate>
             <fieldset className='space-y-4'>
-              <legend className='sr-only'>Información personal</legend>
-              <InputField
-                name='firstName'
-                label='Nombre'
-                type='text'
-                placeholder='Tu nombre'
-                required
-                autoComplete='given-name'
-              />
-
-              <InputField
-                name='lastName'
-                label='Apellido'
-                type='text'
-                placeholder='Tu apellido'
-                required
-                autoComplete='family-name'
-              />
-
-              <InputField
-                name='phone'
-                label='Teléfono'
-                type='tel'
-                placeholder='Tu número de teléfono'
-                required
-                autoComplete='tel'
-              />
-              <InputField
-                name='city'
-                label='Ciudad'
-                type='text'
-                placeholder='Tu ciudad'
-                required
-                autoComplete='address-level2'
-              />
+              <InputField name='firstName' label='Nombre' required />
+              <InputField name='lastName' label='Apellido' required />
+              <InputField name='phone' label='Teléfono' required />
+              <InputField name='city' label='Ciudad' required />
               <SelectField
                 name='userRole'
                 label='Rol de usuario'
@@ -119,7 +91,6 @@ export default function ProfileCompletionForm({ user, isEditMode = false }) {
                   { value: "Participante", name: "Participante solista" },
                 ]}
                 required
-                autoComplete='off'
               />
             </fieldset>
 
@@ -127,18 +98,28 @@ export default function ProfileCompletionForm({ user, isEditMode = false }) {
               <div
                 role='alert'
                 className='bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md'
-                aria-live='polite'
               >
                 {errors.submit}
               </div>
             )}
 
-            <ButtonField
-              isLoading={isLoading || isSubmitting}
-              loadingText='Guardando...'
-              addText={isEditMode ? "Actualizar perfil" : "Completar perfil"}
-              type='submit'
-            />
+            <div className='flex gap-4 justify-end'>
+              {isEditMode && (
+                <button
+                  type='button'
+                  onClick={onCancel}
+                  className='px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100'
+                >
+                  Cancelar
+                </button>
+              )}
+              <ButtonField
+                isLoading={isLoading || isSubmitting}
+                loadingText='Guardando...'
+                addText={isEditMode ? "Actualizar perfil" : "Completar perfil"}
+                type='submit'
+              />
+            </div>
           </Form>
         )}
       </Formik>

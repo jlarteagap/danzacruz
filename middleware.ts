@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const protectedRoutes = ["/registro", "/panel"];
+const protectedRoutes = [
+  "/inscripciones",
+  "/panel",
+  "/certificados",
+  "/profile",
+];
 
 export default function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;

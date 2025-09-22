@@ -1,7 +1,10 @@
 "use client";
-import { User, Phone, Calendar, Edit3, Pin } from "lucide-react";
+import Image from "next/image";
+import { User, Phone, Edit3, Pin } from "lucide-react";
+import { UserAvatar } from "../UserAvatar/UserAvatar";
 
 export default function ProfileViewMode({ user, onEdit }) {
+  console.log("ProfileViewMode user:", user);
   const profileFields = [
     {
       icon: User,
@@ -30,8 +33,14 @@ export default function ProfileViewMode({ user, onEdit }) {
   return (
     <div className='bg-white shadow-lg rounded-lg overflow-hidden'>
       <div className='bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-8 text-white text-center'>
-        <div className='w-20 h-20 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center'>
+        <div className='relative w-20 h-20 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center'>
           <User className='w-10 h-10' aria-hidden='true' />
+          <Image
+            src={user.image || "/default-profile.png"}
+            alt='Foto de perfil'
+            className='rounded-full object-cover'
+            fill
+          />
         </div>
         <h1 className='text-2xl font-bold'>Mi Perfil</h1>
         <p className='text-blue-100 mt-1'>Información personal</p>

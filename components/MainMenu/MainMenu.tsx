@@ -9,10 +9,8 @@ interface MainMenuProps {
 }
 
 export const MainMenu: FC<MainMenuProps> = ({ user }) => {
-  if (!user) return null;
-
-  const isAdmin = user.role === "admin";
-  const isJurado = user.role === "jurado";
+  const isAdmin = user?.role === "admin";
+  const isJurado = user?.role === "jurado";
 
   return (
     <div className='flex items-center gap-6'>
