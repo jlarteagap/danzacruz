@@ -1,4 +1,3 @@
-import Awards from "@/components/Awards/Awards";
 import Hero from "../../components/Hero";
 import Cta from "@/components/CTA/cta";
 import Info from "@/components/Info/Info";
