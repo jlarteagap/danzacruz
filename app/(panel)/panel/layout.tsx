@@ -6,7 +6,11 @@ import "../../ui/global.css";
 import { Home, Users, FileText, Settings } from "lucide-react";
 import { PanelHeader } from "@/components/Panel/PanelHeader";
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang='es'>
       <body className={`${monserrat.className} antialiased`}>

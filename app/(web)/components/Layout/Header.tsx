@@ -1,11 +1,8 @@
 "use client";
 import React, { useMemo } from "react";
 import { UserNavbar } from "@/components/UserNavbar/UserNavbar";
-import { ArrowUpRight, Menu, X } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 import { User, UserActions } from "@/types/user.types";
-import { getFirstName } from "@/utils/user-display.utils";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,11 +35,6 @@ export const Header = () => {
       },
     }),
     []
-  );
-
-  const firstName = useMemo(
-    () => getFirstName(sampleUser.name),
-    [sampleUser.name]
   );
 
   return (

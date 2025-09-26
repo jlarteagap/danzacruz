@@ -6,7 +6,8 @@
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/types/*": ["public/types/*"],
+      "@/types/*": ["types/*"],
+      "@/services/*": ["services/*"],
       "@/utils/*": ["utils/*"]
     },
     "allowJs": true,
