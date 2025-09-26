@@ -6,8 +6,6 @@ import Modalidad from "@/components/Modalidad/Modalidad";
 import Times from "@/components/Times/Times";
 import { Ads } from "@/components/Ads/Ads";
 
-import { auth } from "@/auth";
-
 export default async function Page() {
   return (
     <>

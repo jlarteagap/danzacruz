@@ -1,32 +1,32 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 
-import { getSubscribers } from '@/lib/firebase'
-import { Subscriber, Unsubscribe } from './ListParticipants.type'
-import ActionButtons from '@/components/ActionButtons/ActionButtons'
+import { getSubscribers } from "@/lib/firebase";
+import { Subscriber, Unsubscribe } from "./ListParticipants.type";
+import ActionButtons from "@/components/ActionButtons/ActionButtons";
 
 export default function ParticipantesList({
-  initialData
+  initialData,
 }: {
-  initialData: Subscriber[]
+  initialData: Subscriber[];
 }) {
-  const [data, setData] = useState<Subscriber[]>(initialData)
+  const [data, setData] = useState<Subscriber[]>(initialData);
 
   useEffect(() => {
-    const getClientData = getSubscribers('register-data') as (
+    const getClientData = getSubscribers("register") as (
       callback: (data: Subscriber[]) => void
-    ) => Unsubscribe
-    const unsubscribe = getClientData(setData)
+    ) => Unsubscribe;
+    const unsubscribe = getClientData(setData);
 
     return () => {
-      unsubscribe()
-    }
-  }, [])
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <div>
-      {data.map(sub => {
+      {data.map((sub) => {
         const {
           id,
           name,
@@ -40,23 +40,23 @@ export default function ParticipantesList({
           status,
           song,
           notes,
-          add
-        } = sub
+          add,
+        } = sub;
 
         return (
           <div key={id}>
-            <div className="grid gap-3 grid-cols-5 bg-white p-5 rounded-md shadow-sm my-3">
-              <div className="flex flex-col">
-                <p className="font-semibold">{name}</p>
-                <span className="text-sm">{phone}</span>
+            <div className='grid gap-3 grid-cols-5 bg-white p-5 rounded-md shadow-sm my-3'>
+              <div className='flex flex-col'>
+                <p className='font-semibold'>{name}</p>
+                <span className='text-sm'>{phone}</span>
               </div>
-              <div className="text-sm">
+              <div className='text-sm'>
                 <strong>Modalidad: </strong> {modalidity} <br />
                 <strong>Categoria: </strong> {category} <br />
                 <strong>Division: </strong> {division} <br />
                 <strong>Sub Division: </strong> {subDivision} <br />
               </div>
-              <div className="text-sm">
+              <div className='text-sm'>
                 <strong>Coreografía: </strong>
                 <br /> {coreografy}
                 <br />
@@ -67,29 +67,25 @@ export default function ParticipantesList({
                 <br />
                 {professor}
               </div>
-              <div className="text-sm">
+              <div className='text-sm'>
                 <p>
                   <strong>Aclaraciones sobre la modalidad: </strong>
                   <br />
-                  {notes === '' ? 'Ninguna' : notes}
+                  {notes === "" ? "Ninguna" : notes}
                 </p>
                 <p>
                   <strong>Información adicional:</strong>
                   <br />
-                  {add === '' ? 'Ninguna' : add}
+                  {add === "" ? "Ninguna" : add}
                 </p>
               </div>
-              <div className="flex justify-center">
-                <ActionButtons
-                  id={id}
-                  status={status}
-                  collection="register-data"
-                />
+              <div className='flex justify-center'>
+                <ActionButtons id={id} status={status} collection='register' />
               </div>
             </div>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

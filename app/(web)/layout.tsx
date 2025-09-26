@@ -3,11 +3,25 @@ import { monserrat } from "../ui/fonts";
 import "../ui/global.css";
 import { Footer } from "./components/Layout/Footer";
 import { Header } from "./components/Layout/Header";
-import { Toaster } from "@/components/ui/sonner";
+
 import { Analytics } from "@vercel/analytics/react";
 
 import { Providers } from "../provides";
 import { auth } from "@/auth";
+
+import { Toaster } from "@/components/ui/sonner";
+
+export function RootLayout({ children }) {
+  return (
+    <html lang='en'>
+      <head />
+      <body>
+        <main>{children}</main>
+        <Toaster position='bottom-center' richColors />
+      </body>
+    </html>
+  );
+}
 
 export const metadata = {
   title: {

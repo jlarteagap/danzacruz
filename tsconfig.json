@@ -7,9 +7,9 @@
       "@/lib/*": ["lib/*"],
       "@/hooks/*": ["hooks/*"],
       "@/types/*": ["types/*"],
+      "@/services/*": ["services/*"],
       "@/utils/*": ["utils/*"],
       "@/auth": ["auth.js"],
-      "@/services/*": ["services/*"],
       "@/contexts/*": ["contexts/*"]
     },
     "allowJs": true,

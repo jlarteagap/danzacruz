@@ -383,7 +383,7 @@ export const CheckboxField = ({ label, ...props }) => {
       <ErrorMessage
         component='div'
         name={field.name}
-        className='text-sm text-red-600 mt-2 font-medium px-1'
+        className='text-xs text-red-700 py-3'
       />
     </div>
   );

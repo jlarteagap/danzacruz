@@ -5,31 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Registro Festival Internacional de Danza",
   description:
-    "Regístrate en el Festival Internacional de Danza y sé parte de la mayor celebración artística y cultural.",
-  openGraph: {
-    title: "Registro Festival Internacional de Danza",
-    description:
-      "Vive la experiencia única de la danza en el festival más importante del país.",
-    url: "https://danzacruz.com/registro",
-    siteName: "Danzacruz",
-    images: [
-      {
-        width: 1200,
-        height: 630,
-        alt: "Festival Internacional de Danza",
-        url: "/og-image.jpg",
-      },
-    ],
-    locale: "es_ES",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Registro Festival Internacional de Danza",
-    description: "Forma parte del festival más vibrante de danza.",
-    // images: ["/og-image.jpg"],
-  },
-  robots: { index: true, follow: true },
+    "Registre su participación en el festival más importante del país",
 };
 
 export default function RegisterPage() {
