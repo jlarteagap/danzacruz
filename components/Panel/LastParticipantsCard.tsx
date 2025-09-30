@@ -18,7 +18,7 @@ interface Props {
 
 export default function LastParticipantsCard({ participants }: Props) {
   const lastFive = [...participants]
-    .sort((a, b) => b.year - a.year) // ⚡ Cambia por createdAt si lo agregas
+    .sort((a, b) => b.createdAt - a.createdAt) // ⚡ Cambia por createdAt si lo agregas
     .slice(0, 5);
 
   return (
