@@ -1,38 +1,40 @@
-import { Suspense } from "react";
-import ListParticipants from "./ListParticipants";
-import { getSubscribers } from "@/lib/firebase";
-import { ExportToExcel } from "@/components/ExportoToExcel/ExportoToExcel";
+// app/dashboard/participantes/page.tsx
+"use client";
 
-export default async function Participantes() {
-  const getServerData = getSubscribers("register") as () => Promise<any[]>;
-  const initialData = await getServerData();
+import { useParticipants } from "@/hooks/useParticipants";
+import { ParticipantsTable } from "@/components/Panel/participants/ParticipantsTable";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Loader2 } from "lucide-react";
+
+export default function ParticipantsPage() {
+  const { data: participants, isLoading, isError, error } = useParticipants();
+
+  if (isLoading) {
+    return (
+      <div className='flex justify-center items-center h-full'>
+        <Loader2 className='h-6 w-6 animate-spin text-primary' />
+        <span className='ml-2'>Cargando participantes...</span>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <Card className='max-w-md mx-auto mt-10'>
+        <CardHeader>
+          <CardTitle>Error</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className='text-red-500'>{error.message}</p>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
-    <section>
-      <div className='flex justify-between'>
-        <h2 className='text-2xl'>Lista de participantes</h2>
-        <ExportToExcel
-          data={initialData}
-          fileName='Lista de Participantes'
-          sheetName='Participantes'
-        />
-      </div>
-      <div className='grid gap-3 grid-cols-5 bg-white p-5 rounded-md shadow-sm my-3'>
-        <div className='text-center'>Datos personales</div>
-        <div className='text-center'>Participación</div>
-        <div className='text-center'>Datos Coreografía</div>
-        <div className='text-center'>Aclaraciones</div>
-        <div className='text-center'>Acciones</div>
-      </div>
-      {initialData.length === 0 ? (
-        <h3 className='text-center my-5 bg-white p-5 font-semibold'>
-          Aun no existen registros...
-        </h3>
-      ) : (
-        <Suspense fallback={<div>Cargando...</div>}>
-          <ListParticipants initialData={initialData} />
-        </Suspense>
-      )}
+    <section className='p-6'>
+      <h1 className='text-2xl font-bold mb-6'>Participantes</h1>
+      <ParticipantsTable participants={participants ?? []} />
     </section>
   );
 }
