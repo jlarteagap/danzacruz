@@ -7,6 +7,8 @@ export interface Participant {
   userId: any;
   year: number;
   image?: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface Choreography {
@@ -22,6 +24,8 @@ export interface Choreography {
   userId: any;
   year: number;
   status: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface DataContextType {
