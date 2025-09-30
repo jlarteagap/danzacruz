@@ -4,6 +4,8 @@ export interface User {
   readonly email: string;
   readonly avatar?: string;
   readonly role?: string;
+  readonly createdAt: string;
+  readonly phone?: string;
 }
 
 export interface UserActions {
