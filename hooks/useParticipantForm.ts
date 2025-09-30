@@ -44,6 +44,7 @@ export const useParticipantForm = (
       const payload = {
         ...values,
         userId: user.id,
+        createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
 

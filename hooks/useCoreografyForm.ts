@@ -53,6 +53,8 @@ export const useChoreographyForm = (choreography?: any) => {
         year: currentYear,
         status: choreography?.status || false, // Preservar status actual
         userId: user.id,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
       };
 
       if (choreography?.id) {

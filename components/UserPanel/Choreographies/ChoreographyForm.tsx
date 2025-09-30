@@ -7,10 +7,10 @@ import { Choreography } from "@/types/userPanel.types";
 
 import { InputField, SelectField } from "@/components/form/Fields";
 import { useChoreographyForm } from "@/hooks/useCoreografyForm";
-import { useParticipantForm } from "@/hooks/useParticipantForm";
 import { Button } from "@/components/ui/button";
 import { modalidad } from "@/components/AddParticipant/utils";
 import { AlertCircle, Loader2 } from "lucide-react";
+import { useDataContext } from "@/contexts/DataContext";
 
 interface ChoreographyFormProps {
   user: any;
@@ -25,9 +25,7 @@ const ChoreographyForm: FC<ChoreographyFormProps> = ({
 }) => {
   const { initialValues, validationSchema, handleSubmit, isLoading } =
     useChoreographyForm(choreography);
-  const { participants, isLoading: isLoadingParticipants } = useParticipantForm(
-    user.id
-  );
+  const { participants, isLoadingParticipants } = useDataContext();
 
   return (
     <div className='space-y-4'>

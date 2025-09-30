@@ -10,11 +10,11 @@ import { useDataContext } from "@/contexts/DataContext";
  */
 export const useDataInitializer = () => {
   const context = useDataContext();
+  const { refreshData } = context;
 
   useEffect(() => {
-    // Load both participants and choreographies on mount
-    context.refreshData();
-  }, [context.refreshData]);
+    refreshData();
+  }, [refreshData]);
 
   return context;
 };

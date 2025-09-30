@@ -5,7 +5,6 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import ParticipantsList from "./Participants/ParticipantList";
 import ChoreographiesList from "./Choreographies/ChoreographyList";
-import ProfileViewMode from "@/components/profile/ProfileViewMode";
 import { useDataInitializer } from "@/hooks/useDataContext";
 
 type Tab = "participants" | "choreographies";
@@ -35,6 +34,7 @@ const UserPanel = ({ user, onEditProfile }: UserPanelProps) => {
         {/* Botones de selección */}
         <div className='flex gap-4 mb-6'>
           <button
+            id='participants-tab'
             className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
               activeTab === "participants"
                 ? "bg-blue-600 hover:bg-blue-700 text-white shadow-md"
@@ -42,6 +42,8 @@ const UserPanel = ({ user, onEditProfile }: UserPanelProps) => {
             }`}
             onClick={() => setActiveTab("participants")}
             aria-pressed={activeTab === "participants"}
+            aria-selected={activeTab === "participants"}
+            aria-controls='participants-panel'
             role='tab'
           >
             Participantes
