@@ -4,11 +4,44 @@ export interface Participant {
   category: string;
   division: string;
   subDivision?: string;
-  userId: any;
+  userId: string;
   year: number;
   image?: string;
+  status?: "active" | "inactive";
+  email?: string;
+  phone?: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface ParticipantsFilters {
+  search: string;
+  category: string[];
+  division: string[];
+  year: number[];
+  status: string[];
+}
+
+export interface ParticipantsStats {
+  total: number;
+  active: number;
+  inactive: number;
+  byCategory: Record<string, number>;
+  byDivision: Record<string, number>;
+}
+
+export interface ParticipantUpdateDTO {
+  name?: string;
+  category?: string;
+  division?: string;
+  subDivision?: string;
+  status?: "active" | "inactive";
+  year?: number;
+}
+
+export interface BulkActionPayload {
+  participantIds: string[];
+  action: "activate" | "deactivate" | "delete";
 }
 
 export interface Choreography {

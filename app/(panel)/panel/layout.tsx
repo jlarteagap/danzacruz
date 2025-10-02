@@ -8,6 +8,7 @@ import { PanelHeader } from "@/components/Panel/PanelHeader";
 import { auth } from "@/auth";
 import { SessionProvider } from "next-auth/react";
 import Providers from "./providers";
+import { Toaster } from "sonner";
 
 export default async function RootLayout({
   children,
@@ -64,6 +65,7 @@ export default async function RootLayout({
 
               {/* Main content */}
               <main className='flex-1 p-6'>
+                <Toaster position='top-right' richColors />
                 <PanelHeader />
                 {children}
               </main>

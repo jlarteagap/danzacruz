@@ -53,7 +53,7 @@ export default function UsersPage() {
         </div>
       </div>
 
-      <Card>
+      <Card className='bg-white/50 shadow-sm'>
         <CardHeader className='border-b bg-muted/30'>
           <CardTitle>Lista de Usuarios</CardTitle>
           <CardDescription>
