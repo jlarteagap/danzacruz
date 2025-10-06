@@ -1,11 +1,60 @@
 "use client";
+import React, { useMemo, useState } from "react";
+import { UserNavbar } from "@/components/UserNavbar/UserNavbar";
 
 import { ArrowUpRight, FileDown, Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { LoginButton } from "@/components/ui/commons/LoginButton";
+import { User, UserActions } from "@/types/user.types";
+import { getFirstName } from "@/utils/user-display.utils";
+
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  const actions: UserActions = useMemo(
+    () => ({
+      onLogout: async () => {
+        console.log("Cerrando sesión...");
+        await signOut({ callbackUrl: "/" });
+      },
+      onSettings: () => {
+        console.log("Navegando a configuración...");
+        router.push("/settings");
+      },
+      onProfile: () => {
+        console.log("Navegando a perfil...");
+        router.push("/profile");
+      },
+    }),
+    [router]
+  );
+
+  // Crear usuario desde los datos de la sesión
+  const currentUser: User | null = useMemo(() => {
+    if (!session?.user) return null;
+
+    return {
+      id: session.user.id || "unknown",
+      name: session.user.name || "Usuario",
+      email: session.user.email || "",
+      avatar:
+        session.user.image ||
+        `https://ui-avatars.com/api/?name=${encodeURIComponent(
+          session.user.name || "U"
+        )}&background=6366f1&color=fff`,
+      role: session.user.role || "Usuario", // Asume que tienes role en tu sesión
+    };
+  }, [session]);
+
+  const firstName = useMemo(
+    () => (currentUser ? getFirstName(currentUser.name) : ""),
+    [currentUser]
+  );
 
   return (
     <header className='sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-neutral-200/60'>
@@ -28,82 +77,20 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex items-center gap-8'>
-            {/* CTA Button */}
-            <Link
-              href='/pdf/danzacruz-2025.pdf'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <button className='group relative inline-flex items-center justify-center px-8 py-4 bg-white/80 backdrop-blur-sm text-neutral-700 font-semibold border border-neutral-200/60 rounded-2xl shadow-sm hover:bg-white hover:border-neutral-300 hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out'>
-                <span className='relative flex items-center gap-2'>
-                  <FileDown className='w-5 h-5 group-hover:translate-y-0.5 transition-transform duration-300' />
-                  Convocatoria
-                </span>
-              </button>
-            </Link>
-          </div>
+            {/* Mostrar LoginButton solo si no hay sesión */}
+            {status !== "authenticated" && <LoginButton />}
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className='md:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors duration-200'
-            aria-label='Toggle menu'
-          >
-            {isMenuOpen ? (
-              <X className='w-6 h-6 text-neutral-700' />
-            ) : (
-              <Menu className='w-6 h-6 text-neutral-700' />
+            {/* Mostrar UserNavbar solo si hay sesión activa */}
+            {status === "authenticated" && currentUser && (
+              <UserNavbar user={currentUser} actions={actions} />
             )}
-          </button>
-        </div>
 
-        {/* Mobile Navigation */}
-        <div
-          className={`md:hidden transition-all duration-300 ease-out overflow-hidden ${
-            isMenuOpen ? "max-h-96 opacity-100 mt-6" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className='py-4 border-t border-neutral-200/60'>
-            <nav className='flex flex-col gap-4'>
-              <a
-                href='#festival'
-                className='flex items-center justify-between py-3 px-4 text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg font-medium transition-all duration-200'
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Festival
-                <ArrowUpRight className='w-4 h-4' />
-              </a>
-              <a
-                href='#participar'
-                className='flex items-center justify-between py-3 px-4 text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg font-medium transition-all duration-200'
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Participar
-                <ArrowUpRight className='w-4 h-4' />
-              </a>
-              <a
-                href='#contacto'
-                className='flex items-center justify-between py-3 px-4 text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg font-medium transition-all duration-200'
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contacto
-                <ArrowUpRight className='w-4 h-4' />
-              </a>
-
-              {/* Mobile CTA Button */}
-              <Link
-                href='/pdf/danzacruz-2025.pdf'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <button className='group relative inline-flex items-center justify-center px-8 py-4 bg-white/80 backdrop-blur-sm text-neutral-700 font-semibold border border-neutral-200/60 rounded-2xl shadow-sm hover:bg-white hover:border-neutral-300 hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out'>
-                  <span className='relative flex items-center gap-2'>
-                    <FileDown className='w-5 h-5 group-hover:translate-y-0.5 transition-transform duration-300' />
-                    Convocatoria
-                  </span>
-                </button>
-              </Link>
-            </nav>
+            {/* Loading state */}
+            {status === "loading" && (
+              <div className='animate-pulse'>
+                <div className='h-8 w-8 bg-gray-200 rounded-full'></div>
+              </div>
+            )}
           </div>
         </div>
       </nav>
