@@ -102,12 +102,12 @@ export default function InfoData() {
             ))}
           </div>
 
-          {/* <div className='text-center mt-16 lg:mt-20'>
+          <div className='text-center mt-16 lg:mt-20'>
             <div className='inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-slate-600 to-slate-800 rounded-full text-white font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300'>
               <span>¿Listo para participar?</span>
               <div className='w-2 h-2 bg-white rounded-full animate-pulse' />
             </div>
-          </div> */}
+          </div>
         </div>
       </section>
     </>
