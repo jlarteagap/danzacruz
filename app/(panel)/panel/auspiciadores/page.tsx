@@ -1,19 +1,19 @@
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog'
-import FormAds from './components/FormAds'
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import FormAds from "./components/FormAds";
 
 export default function Auspiciadores() {
   return (
     <section>
-      <div className="flex justify-between">
-        <h2 className="text-2xl">Lista de auspiciadores</h2>
+      <div className='flex justify-between'>
+        <h2 className='text-2xl'>Lista de auspiciadores</h2>
         <Dialog>
           <DialogTrigger>
             <Button>Agregar auspiciador</Button>
@@ -28,9 +28,9 @@ export default function Auspiciadores() {
           </DialogContent>
         </Dialog>
       </div>
-      <div className="">
+      <div className=''>
         logo nombre categoria [- Auspiciador - Colaborador - Apoyo]
       </div>
     </section>
-  )
+  );
 }

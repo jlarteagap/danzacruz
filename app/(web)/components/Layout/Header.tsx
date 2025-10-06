@@ -1,7 +1,6 @@
 "use client";
 import React, { useMemo } from "react";
 import { UserNavbar } from "@/components/UserNavbar/UserNavbar";
-
 import { LoginButton } from "@/components/ui/commons/LoginButton";
 import { User, UserActions } from "types/user.types";
 import { getFirstName } from "@/utils/user-display.utils";

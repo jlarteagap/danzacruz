@@ -51,13 +51,19 @@ export default function Cta() {
               </Link>
 
 
+              </div> */}
+            <Link
+              href='/pdf/danzacruz-2025.pdf'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <button className='group relative inline-flex items-center justify-center px-8 py-4 bg-white/80 backdrop-blur-sm text-neutral-700 font-semibold border border-neutral-200/60 rounded-2xl shadow-sm hover:bg-white hover:border-neutral-300 hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out'>
                 <span className='relative flex items-center gap-2'>
                   <FileDown className='w-5 h-5 group-hover:translate-y-0.5 transition-transform duration-300' />
                   Convocatoria
                 </span>
               </button>
-            </div> */}
+            </Link>
           </div>
 
           {/* Stats or Features */}

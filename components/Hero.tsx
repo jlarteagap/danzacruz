@@ -19,12 +19,12 @@ export default function Hero() {
       {/* Main Content */}
       <div className='relative z-10 container mx-auto px-6 text-center'>
         {/* Badge */}
-        {/* <div className='inline-flex items-center gap-2 px-4 py-2 mb-8 bg-white/60 backdrop-blur-sm border border-white/80 rounded-full shadow-sm'>
+        <div className='inline-flex items-center gap-2 px-4 py-2 mb-8 bg-white/60 backdrop-blur-sm border border-white/80 rounded-full shadow-sm'>
           <Star className='w-4 h-4 text-amber-500' />
           <span className='text-sm font-medium text-neutral-700'>
             25 años de tradición
           </span>
-        </div> */}
+        </div>
 
         {/* Main Title */}
         <div className='relative mb-6'>
@@ -43,10 +43,10 @@ export default function Hero() {
 
         {/* Date Info */}
         <div className='inline-flex items-center gap-3 px-6 py-3 mb-12 bg-white/50 backdrop-blur-sm border border-white/70 rounded-2xl shadow-lg'>
-          {/* <Calendar className='w-5 h-5 text-blue-600' />
+          <Calendar className='w-5 h-5 text-blue-600' />
           <span className='text-lg font-semibold text-neutral-800 uppercase tracking-wide'>
-            9 - 12 de Octubre 2025
-          </span> */}
+            6 - 9 de Noviembre 2025
+          </span>
           <MapPin className='w-5 h-5 text-purple-600 ml-2' />
           <span className='text-lg font-medium text-neutral-700'>
             Santa Cruz, Bolivia
