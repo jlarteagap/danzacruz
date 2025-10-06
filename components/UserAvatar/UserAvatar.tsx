@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { User, AvatarSize } from "public/types/user.types";
+import { User, AvatarSize } from "@/types/user.types";
 import { getInitials } from "@/utils/user-display.utils";
 import { generateAvatarAlt } from "@/utils/accessibility.utils";
 import { getAvatarSizeClasses, combineClasses } from "@/utils/style.utils";

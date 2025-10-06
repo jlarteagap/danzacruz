@@ -5,7 +5,6 @@ export interface User {
   readonly avatar?: string;
   readonly role?: string;
 }
-
 export interface UserActions {
   readonly onLogout: () => void | Promise<void>;
   readonly onSettings: () => void | Promise<void>;

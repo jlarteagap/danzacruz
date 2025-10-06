@@ -6,7 +6,7 @@
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/types/*": ["public/types/*"],
+      "@/types/*": ["types/*"],
       "@/utils/*": ["utils/*"],
       "@/auth": ["auth.js"]
     },
