@@ -5,9 +5,10 @@ export const LoginButton = () => {
   return (
     <button
       onClick={() => login()}
-      className='bg-blue-500 text-white px-4 py-2 rounded'
+      className='inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 rounded-full text-white font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300'
     >
-      Registrarse
+      <span>Registrarse</span>
+      <div className='w-2 h-2 bg-white rounded-full animate-pulse' />
     </button>
   );
 };

@@ -25,13 +25,6 @@ export const MainMenu: FC<MainMenuProps> = ({ user }) => {
 
       {/* Certificados - solo admin */}
 
-      <Link
-        href='/certificados'
-        className='text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors'
-      >
-        Certificados
-      </Link>
-
       {/* Evaluaciones - admin y jurado */}
       {(isAdmin || isJurado) && (
         <Link

@@ -258,10 +258,16 @@ export default function Modalidad() {
                 modalidad no está listada, contáctanos para incluirla en las
                 categorías especiales.
               </p>
-              <div className='inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300'>
-                <span>Contáctanos</span>
-                <div className='w-2 h-2 bg-white/80 rounded-full animate-pulse' />
-              </div>
+              <a
+                target='_blank'
+                href='http://wa.me/59175553576'
+                className='absolute inset-0'
+              >
+                <div className='inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300'>
+                  <span>Contáctanos</span>
+                  <div className='w-2 h-2 bg-white/80 rounded-full animate-pulse' />
+                </div>
+              </a>
             </div>
           </div>
         </div>
