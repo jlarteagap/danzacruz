@@ -28,7 +28,7 @@ export const metadata = {
     default: "Danzacruz 2025",
     template: "%s | Festival Internacional de Danza",
   },
-  description: 'Festival Internacional de danza "Danzacruz 2024" ',
+  description: 'Festival Internacional de danza "Danzacruz 2025" ',
 };
 export default async function DashboardLayout({
   children,

@@ -794,8 +794,9 @@ export default function ConvocatoriaContent() {
                   <p className='text-gray-700'>
                     Dentro de las constantes innovaciones del Festival, este
                     año, se invita especialmente a los grupos de danzas de{" "}
-                    <strong>Reguetón</strong> y <strong>Caporales</strong> como
-                    modalidades independientes.
+                    <strong>Reguetón, Tobas, Salay</strong>{" "}
+                    <strong>Caporales y Neo Folklore</strong> como modalidades
+                    independientes.
                   </p>
                 </div>
 
@@ -924,6 +925,12 @@ export default function ConvocatoriaContent() {
                     </table>
                   </div>
                 </div>
+              </div>
+              <div className='p-4 mt-6 bg-red-50 border-l-4 border-red-500 rounded'>
+                <p className='font-semibold text-red-900'>
+                  ⚠️ EJEMPLO: en caso de grupo grande. Mínimo 3 min. Y máximo 6
+                  minutos.
+                </p>
               </div>
 
               <div className='p-4 mt-6 bg-red-50 border-l-4 border-red-500 rounded'>
@@ -1396,7 +1403,9 @@ export default function ConvocatoriaContent() {
 
                 <div className='mt-4 space-y-2 text-sm text-gray-600'>
                   <p>
-                    • La credencial tendrá un costo de <strong>Bs. 10</strong>
+                    • Adicional a la inscripción el o la credencial tendrá un
+                    costo de <strong>10 Bs.</strong> En caso de extravío de
+                    cancelar la misma suma para su reposición
                   </p>
                   <p>
                     • Todos los participantes recibirán un certificado de
