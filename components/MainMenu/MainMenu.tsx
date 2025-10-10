@@ -22,6 +22,12 @@ export const MainMenu: FC<MainMenuProps> = ({ user }) => {
       >
         Inscripciones
       </Link>
+      <Link
+        href='/convocatoria'
+        className='text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors'
+      >
+        Convocatoria
+      </Link>
 
       {/* Certificados - solo admin */}
 
