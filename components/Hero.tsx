@@ -9,14 +9,16 @@ export default function Hero() {
       role='banner'
       aria-label='Sección principal de bienvenida a Danzacruz'
     >
-      {/* Background */}
+      {/* Background - Reemplazado: indigo->cyan, purple->primary (#63f7df) */}
       <div
         aria-hidden='true'
-        className='absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50/90 to-purple-50'
+        className='absolute inset-0 bg-gradient-to-br from-blue-50 via-cyan-50/90 to-teal-50'
       >
         <div className='absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-blue-200/30 rounded-full blur-2xl sm:blur-3xl animate-pulse'></div>
-        <div className='absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-purple-200/30 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000'></div>
-        <div className='hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] lg:w-[800px] h-[600px] lg:h-[800px] bg-gradient-conic from-blue-100/20 via-purple-100/20 to-pink-100/20 rounded-full blur-3xl animate-spin [animation-duration:60s]'></div>
+        {/* Reemplazado: purple-200 -> teal-200 (equivalente a #63f7df) */}
+        <div className='absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-teal-200/30 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000'></div>
+        {/* Reemplazado: purple-100, pink-100 -> cyan-100, yellow-100 */}
+        <div className='hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] lg:w-[800px] h-[600px] lg:h-[800px] bg-gradient-conic from-blue-100/20 via-cyan-100/20 to-yellow-100/20 rounded-full blur-3xl animate-spin [animation-duration:60s]'></div>
       </div>
 
       {/* Gradient overlay for readability */}
@@ -42,23 +44,24 @@ export default function Hero() {
           25 años proyectando Bolivia al mundo
         </p>
 
-        {/* Date and Location */}
+        {/* Date and Location - Reemplazado purple-600 -> teal-600 */}
         <div className='flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-4 px-5 py-3 mb-10 sm:mb-12 bg-white/50 backdrop-blur-sm border border-white/70 rounded-2xl shadow-lg text-neutral-800'>
           <div className='flex items-center gap-2'>
-            <Calendar className='w-5 h-5 text-blue-600' aria-hidden='true' />
+            <Calendar className='w-5 h-5 text-teal-500' aria-hidden='true' />
             <span className='text-sm sm:text-lg font-semibold uppercase tracking-wide'>
               6 - 9 de Noviembre 2025
             </span>
           </div>
           <div className='flex items-center gap-2'>
-            <MapPin className='w-5 h-5 text-purple-600' aria-hidden='true' />
+            {/* Reemplazado: purple-600 -> teal-600 (#63f7df range) */}
+            <MapPin className='w-5 h-5 text-teal-600' aria-hidden='true' />
             <span className='text-sm sm:text-lg font-medium'>
               Santa Cruz, Bolivia
             </span>
           </div>
         </div>
 
-        {/* WhatsApp Buttons */}
+        {/* WhatsApp Buttons - Rediseñados con paleta corporativa */}
         <div className='flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center pb-16 sm:pb-20'>
           {[
             { number: "75095094", link: "http://wa.me/59175095094" },
@@ -70,12 +73,15 @@ export default function Hero() {
               target='_blank'
               rel='noopener noreferrer'
               aria-label={`Contactar por WhatsApp al ${number}`}
-              className='group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-full shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/40 hover:-translate-y-1 transition-all duration-300 ease-out min-w-[180px] sm:min-w-[200px] justify-center'
+              className='group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-400 to-cyan-500 text-neutral-900 font-bold rounded-full shadow-lg shadow-teal-400/30 hover:shadow-xl hover:shadow-teal-400/50 hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-out min-w-[180px] sm:min-w-[200px] justify-center border border-teal-300/50'
+              style={{
+                background: "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
+              }}
             >
-              <div className='p-1 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors'>
+              <div className='p-1 bg-neutral-900/10 rounded-lg group-hover:bg-neutral-900/20 transition-colors'>
                 <MessageSquareShare className='w-4 h-4 sm:w-5 sm:h-5' />
               </div>
-              <span>{number}</span>
+              <span className='tracking-wide'>{number}</span>
             </a>
           ))}
         </div>

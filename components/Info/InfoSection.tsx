@@ -34,40 +34,51 @@ export default function InfoSection({
       onMouseEnter={() => onHover(index)}
       onMouseLeave={onLeave}
     >
-      {/* Gradiente de fondo animado */}
+      {/* Gradiente de fondo animado - Reemplazado fuchsia/purple/pink por teal/cyan/yellow */}
       <div
         className={`absolute inset-0 opacity-0 transition-opacity duration-500 ${
           isActive ? "opacity-100" : ""
-        } bg-gradient-to-br from-fuchsia-500/10 via-purple-500/5 to-pink-500/10`}
+        }`}
+        style={{
+          backgroundImage: isActive
+            ? "linear-gradient(135deg, rgba(99, 247, 223, 0.1) 0%, rgba(45, 212, 191, 0.05) 50%, rgba(253, 247, 112, 0.1) 100%)"
+            : "none",
+        }}
       />
 
       <div className='relative p-8 lg:p-5'>
-        {/* Header con icono */}
+        {/* Header con icono - Reemplazado fuchsia/purple por teal/cyan (#63f7df) */}
         <div className='flex items-center gap-4 mb-8'>
           <div
             className={`p-3 rounded-2xl transition-all duration-500 ${
-              isActive
-                ? "bg-gradient-to-br from-fuchsia-500 to-purple-600 shadow-lg"
-                : "bg-fuchsia-100"
+              isActive ? "shadow-lg" : "bg-teal-100"
             }`}
+            style={
+              isActive
+                ? {
+                    background:
+                      "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
+                  }
+                : {}
+            }
           >
             <IconComponent
               size={24}
               className={`transition-colors duration-500 ${
-                isActive ? "text-white" : "text-fuchsia-600"
+                isActive ? "text-neutral-900" : "text-teal-600"
               }`}
             />
           </div>
           <h3
             className={`text-xl lg:text-2xl font-semibold transition-colors duration-500 ${
-              isActive ? "text-fuchsia-900" : "text-fuchsia-800"
+              isActive ? "text-teal-900" : "text-teal-800"
             }`}
           >
             {title}
           </h3>
         </div>
 
-        {/* Lista de elementos */}
+        {/* Lista de elementos - Reemplazado fuchsia por teal */}
         <div className='space-y-4'>
           {list.map((item, itemIndex) => (
             <div
@@ -87,8 +98,8 @@ export default function InfoSection({
                   size={20}
                   className={`transition-colors duration-300 ${
                     isActive
-                      ? "text-fuchsia-600"
-                      : "text-fuchsia-400 group-hover:text-fuchsia-600"
+                      ? "text-teal-600"
+                      : "text-teal-400 group-hover:text-teal-600"
                   }`}
                 />
               </div>

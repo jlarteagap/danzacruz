@@ -43,22 +43,28 @@ export default function InfoData() {
       `}</style>
 
       <section className='relative overflow-hidden py-16 sm:py-20'>
-        {/* Fondo degradado */}
-        <div className='absolute inset-0 bg-gradient-to-br from-fuchsia-50 via-purple-50 to-pink-50' />
-        <div className='absolute top-10 left-5 w-40 h-40 sm:w-72 sm:h-72 bg-fuchsia-200/20 rounded-full blur-3xl' />
-        <div className='absolute bottom-10 right-5 w-52 h-52 sm:w-96 sm:h-96 bg-purple-200/20 rounded-full blur-3xl' />
+        {/* Fondo degradado - Reemplazado fuchsia/purple/pink por teal/cyan/yellow */}
+        <div className='absolute inset-0 bg-gradient-to-br from-cyan-50 via-teal-50 to-yellow-50' />
+        <div className='absolute top-10 left-5 w-40 h-40 sm:w-72 sm:h-72 bg-cyan-200/20 rounded-full blur-3xl' />
+        <div className='absolute bottom-10 right-5 w-52 h-52 sm:w-96 sm:h-96 bg-teal-200/20 rounded-full blur-3xl' />
 
         <div className='container relative z-10 px-5 sm:px-6 lg:px-8 mx-auto'>
-          {/* Encabezado */}
+          {/* Encabezado - Reemplazado fuchsia por teal (#63f7df) */}
           <div className='text-center mb-10 sm:mb-16 animate-fadeInUp'>
-            <div className='inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-fuchsia-100/50 text-fuchsia-700 text-sm font-medium mb-4 sm:mb-6'>
+            <div className='inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-teal-100/50 text-teal-700 text-sm font-medium mb-4 sm:mb-6'>
               <Sparkles size={16} />
               Información del Festival
             </div>
 
             <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 mb-3'>
               Formas de{" "}
-              <span className='bg-gradient-to-r from-fuchsia-600 to-purple-600 bg-clip-text text-transparent'>
+              <span
+                className='bg-clip-text text-transparent'
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, #63f7df 0%, #fdf770 100%)",
+                }}
+              >
                 Participación
               </span>
             </h2>
@@ -103,14 +109,17 @@ export default function InfoData() {
             </div>
           </div>
 
-          {/* CTA */}
+          {/* CTA - Reemplazado slate por gradiente corporativo */}
           <div className='text-center mt-12 sm:mt-16'>
             <button
               onClick={() => login()}
-              className='inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-slate-700 to-slate-900 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300'
+              className='inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full text-neutral-900 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-teal-400/50'
+              style={{
+                background: "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
+              }}
             >
               <span>¿Listo para participar?</span>
-              <div className='w-2 h-2 bg-white rounded-full animate-pulse' />
+              <div className='w-2 h-2 bg-neutral-900 rounded-full animate-pulse' />
             </button>
           </div>
         </div>

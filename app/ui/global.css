@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+:root {
+    --color-primary: #63f7df;
+    --color-secondary: #fdf770;
+    --color-primary-dark: #0d9488;
+    --color-secondary-dark: #854d0e;
+}
+
 @layer theme {
     :root {
         /* Base theme colors */

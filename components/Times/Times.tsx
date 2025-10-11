@@ -50,22 +50,28 @@ export default function Times() {
 
   return (
     <section className='py-20 lg:py-32 relative overflow-hidden'>
-      {/* Fondo */}
-      <div className='absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900' />
-      <div className='absolute inset-0 bg-gradient-to-tr from-fuchsia-900/20 via-transparent to-purple-900/20' />
-      <div className='absolute top-20 left-10 w-72 h-72 bg-fuchsia-500/10 rounded-full blur-3xl' />
-      <div className='absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl' />
+      {/* Fondo - Reemplazado purple/fuchsia por teal/cyan/yellow con fondo oscuro */}
+      <div className='absolute inset-0 bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900' />
+      <div className='absolute inset-0 bg-gradient-to-tr from-cyan-900/20 via-transparent to-teal-900/20' />
+      <div className='absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl' />
+      <div className='absolute bottom-20 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl' />
 
       <div className='container relative z-10 px-6 lg:px-8 m-auto'>
-        {/* Header */}
+        {/* Header - Reemplazado fuchsia por teal/cyan (#63f7df) */}
         <div className='text-center mb-16 lg:mb-20'>
           <div className='inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md text-white text-sm font-medium mb-8 border border-white/20'>
-            <Clock size={20} className='text-fuchsia-300' />
+            <Clock size={20} className='text-cyan-300' />
             <span>Tiempos de Participación</span>
           </div>
           <h2 className='text-4xl lg:text-6xl font-bold text-white mb-6'>
             Cronometra Tu
-            <span className='bg-gradient-to-r from-fuchsia-400 to-purple-400 bg-clip-text text-transparent'>
+            <span
+              className='bg-clip-text text-transparent'
+              style={{
+                backgroundImage:
+                  "linear-gradient(135deg, #63f7df 0%, #fdf770 100%)",
+              }}
+            >
               {" "}
               Presentación
             </span>
@@ -100,12 +106,18 @@ export default function Times() {
           ))}
         </div>
 
-        {/* Información adicional */}
+        {/* Información adicional - Reemplazado fuchsia/purple por teal/cyan/yellow */}
         <div className='max-w-4xl mx-auto mt-16'>
           <div className='bg-white/10 backdrop-blur-xl rounded-3xl p-8 lg:p-12 border border-white/20 shadow-2xl'>
             <div className='text-center mb-8'>
-              <div className='inline-flex items-center gap-2 p-3 bg-fuchsia-500/20 rounded-2xl mb-4'>
-                <Sparkles size={24} className='text-fuchsia-300' />
+              <div
+                className='inline-flex items-center gap-2 p-3 rounded-2xl mb-4'
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(99, 247, 223, 0.2) 0%, rgba(45, 212, 191, 0.2) 100%)",
+                }}
+              >
+                <Sparkles size={24} className='text-cyan-300' />
               </div>
               <h3 className='text-2xl lg:text-3xl font-bold text-white mb-4'>
                 Información Importante
@@ -115,7 +127,7 @@ export default function Times() {
             <div className='grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-300 text-sm sm:text-base'>
               <div>
                 <h4 className='text-lg font-semibold text-white mb-3 flex items-center gap-2'>
-                  <span className='w-2 h-2 bg-fuchsia-400 rounded-full'></span>
+                  <span className='w-2 h-2 bg-cyan-400 rounded-full'></span>
                   Consideraciones Generales
                 </h4>
                 <ul className='space-y-2'>
@@ -127,7 +139,7 @@ export default function Times() {
               </div>
               <div>
                 <h4 className='text-lg font-semibold text-white mb-3 flex items-center gap-2'>
-                  <span className='w-2 h-2 bg-purple-400 rounded-full'></span>
+                  <span className='w-2 h-2 bg-yellow-400 rounded-full'></span>
                   Recomendaciones
                 </h4>
                 <ul className='space-y-2'>

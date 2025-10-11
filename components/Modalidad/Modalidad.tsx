@@ -4,6 +4,7 @@ import { Music, Heart, Sparkles, Globe, Zap, Crown } from "lucide-react";
 import ModalidadCard from "./ModalidadCard";
 
 // Datos expandidos con información detallada para cada modalidad
+// ACTUALIZADO: Todos los colores fuchsia/purple/pink/violet reemplazados por teal/cyan/yellow
 const modalidadesData = {
   "BALLET CLÁSICO": {
     tipos: [
@@ -14,8 +15,8 @@ const modalidadesData = {
       "Centro clásico",
     ],
     icon: Crown,
-    color: "from-pink-500 to-rose-600",
-    bgColor: "from-pink-50 to-rose-50",
+    color: "from-teal-500 to-cyan-600", // Era: pink-500 to rose-600
+    bgColor: "from-teal-50 to-cyan-50", // Era: pink-50 to rose-50
   },
   "BALLET NEO - CLÁSICO": {
     tipos: [
@@ -26,8 +27,8 @@ const modalidadesData = {
       "Coreografía innovadora",
     ],
     icon: Sparkles,
-    color: "from-purple-500 to-violet-600",
-    bgColor: "from-purple-50 to-violet-50",
+    color: "from-cyan-500 to-teal-600", // Era: purple-500 to violet-600
+    bgColor: "from-cyan-50 to-teal-50", // Era: purple-50 to violet-50
   },
   "DANZA MODERNA Y CONTEMPORANEA": {
     tipos: [
@@ -63,8 +64,8 @@ const modalidadesData = {
       "Performance integral",
     ],
     icon: Sparkles,
-    color: "from-red-500 to-pink-600",
-    bgColor: "from-red-50 to-pink-50",
+    color: "from-red-500 to-yellow-600", // Era: red-500 to pink-600
+    bgColor: "from-red-50 to-yellow-50", // Era: red-50 to pink-50
   },
   "TAP DANCE": {
     tipos: [
@@ -128,8 +129,8 @@ const modalidadesData = {
       "Bailes regionales",
     ],
     icon: Globe,
-    color: "from-indigo-500 to-purple-600",
-    bgColor: "from-indigo-50 to-purple-50",
+    color: "from-blue-500 to-cyan-600", // Era: indigo-500 to purple-600
+    bgColor: "from-blue-50 to-cyan-50", // Era: indigo-50 to purple-50
   },
   "FOLKLORE NACIONAL E INTERNACIONAL DEPROYECCIÓN": {
     tipos: [
@@ -140,8 +141,8 @@ const modalidadesData = {
       "Puesta en valor",
     ],
     icon: Sparkles,
-    color: "from-violet-500 to-fuchsia-600",
-    bgColor: "from-violet-50 to-fuchsia-50",
+    color: "from-cyan-500 to-teal-600", // Era: violet-500 to fuchsia-600
+    bgColor: "from-cyan-50 to-teal-50", // Era: violet-50 to fuchsia-50
   },
   "DANZAS POPULARES": {
     tipos: [
@@ -164,8 +165,8 @@ const modalidadesData = {
       "Cover dance",
     ],
     icon: Sparkles,
-    color: "from-pink-500 to-purple-600",
-    bgColor: "from-pink-50 to-purple-50",
+    color: "from-teal-500 to-cyan-600", // Era: pink-500 to purple-600
+    bgColor: "from-teal-50 to-cyan-50", // Era: pink-50 to purple-50
   },
   "RETRO - DANCE": {
     tipos: [
@@ -203,24 +204,30 @@ export default function Modalidad() {
       `}</style>
 
       <section className='py-16 md:py-24 relative overflow-hidden'>
-        {/* Fondo decorativo */}
-        <div className='absolute inset-0 bg-gradient-to-tr from-fuchsia-50 via-purple-50/50 to-pink-50' />
-        <div className='absolute inset-0 bg-gradient-to-bl from-transparent via-fuchsia-100/20 to-purple-100/30' />
+        {/* Fondo decorativo - Reemplazado fuchsia/purple/pink por teal/cyan/yellow */}
+        <div className='absolute inset-0 bg-gradient-to-tr from-cyan-50 via-teal-50/50 to-yellow-50' />
+        <div className='absolute inset-0 bg-gradient-to-bl from-transparent via-cyan-100/20 to-teal-100/30' />
 
-        {/* Elementos decorativos suaves */}
-        <div className='absolute top-20 right-10 w-40 h-40 md:w-64 md:h-64 bg-fuchsia-200/20 rounded-full blur-3xl' />
-        <div className='absolute bottom-20 left-10 w-56 h-56 md:w-80 md:h-80 bg-purple-200/20 rounded-full blur-3xl' />
+        {/* Elementos decorativos suaves - Reemplazado fuchsia/purple por teal/cyan */}
+        <div className='absolute top-20 right-10 w-40 h-40 md:w-64 md:h-64 bg-cyan-200/20 rounded-full blur-3xl' />
+        <div className='absolute bottom-20 left-10 w-56 h-56 md:w-80 md:h-80 bg-teal-200/20 rounded-full blur-3xl' />
 
         <div className='container relative z-10 px-4 sm:px-6 lg:px-8 m-auto'>
-          {/* Header */}
+          {/* Header - Reemplazado fuchsia por teal */}
           <div className='text-center mb-12 md:mb-16'>
-            <div className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-fuchsia-100/50 text-fuchsia-700 text-xs sm:text-sm font-medium mb-4'>
+            <div className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-100/50 text-teal-700 text-xs sm:text-sm font-medium mb-4'>
               <Music size={16} />
               Modalidades de Danza
             </div>
             <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3'>
               Explora Nuestras
-              <span className='bg-gradient-to-r from-fuchsia-600 to-purple-600 bg-clip-text text-transparent'>
+              <span
+                className='bg-clip-text text-transparent'
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, #63f7df 0%, #fdf770 100%)",
+                }}
+              >
                 {" "}
                 Modalidades
               </span>
@@ -253,7 +260,7 @@ export default function Modalidad() {
             ))}
           </div>
 
-          {/* CTA */}
+          {/* CTA - Reemplazado fuchsia/purple por teal/cyan (#63f7df) */}
           <div className='text-center mt-16'>
             <div className='max-w-3xl mx-auto p-6 sm:p-8 bg-white/60 backdrop-blur-md rounded-3xl shadow-xl border border-white/20'>
               <h3 className='text-xl sm:text-2xl font-bold text-gray-900 mb-4'>
@@ -268,10 +275,14 @@ export default function Modalidad() {
                 target='_blank'
                 rel='noopener noreferrer'
                 href='https://wa.me/59175553576'
-                className='inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300'
+                className='inline-flex items-center gap-3 px-6 py-3 rounded-full text-neutral-900 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-teal-400/50'
+                style={{
+                  background:
+                    "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
+                }}
               >
                 <span>Contáctanos</span>
-                <div className='w-2 h-2 bg-white/80 rounded-full animate-pulse' />
+                <div className='w-2 h-2 bg-neutral-900/80 rounded-full animate-pulse' />
               </a>
             </div>
           </div>

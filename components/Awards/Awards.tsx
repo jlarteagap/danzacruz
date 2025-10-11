@@ -46,6 +46,7 @@ const awardsData = [
   },
 ];
 
+// ACTUALIZADO: Reemplazados colores pink/purple/indigo por teal/cyan/yellow
 const awardsCategory = [
   {
     category: "GANADOR ABSOLUTO SOLISTA",
@@ -54,7 +55,7 @@ const awardsCategory = [
     obs: "(el premio en efectivo será válido en caso de 15 participantes como mínimo)",
     value: "valor del premio 775 Bs.",
     icon: Star,
-    color: "from-pink-500 to-rose-600",
+    color: "from-teal-500 to-cyan-600", // Era: pink-500 to rose-600
   },
   {
     category: "GANADOR ABSOLUTO DUO",
@@ -63,7 +64,7 @@ const awardsCategory = [
     obs: "(el premio en efectivo será válido en caso de 10 duos como mínimo)",
     value: "valor del premio 1100 Bs.",
     icon: Trophy,
-    color: "from-purple-500 to-violet-600",
+    color: "from-cyan-500 to-teal-600", // Era: purple-500 to violet-600
   },
   {
     category: "GANADOR ABSOLUTO TRIOS",
@@ -99,7 +100,7 @@ const awardsCategory = [
     obs: "(el premio en efectivo será válido en caso de 15 participantes como mínimo)",
     value: "valor del premio 5000 Bs.",
     icon: Trophy,
-    color: "from-indigo-500 to-purple-600",
+    color: "from-blue-500 to-cyan-600", // Era: indigo-500 to purple-600
   },
 ];
 
@@ -155,19 +156,19 @@ export default function Awards() {
       `}</style>
 
       <section className='py-20 lg:py-32 relative overflow-hidden m-auto'>
-        {/* Fondo elegante */}
-        <div className='absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-fuchsia-900' />
-        <div className='absolute inset-0 bg-gradient-to-tr from-yellow-900/20 via-transparent to-purple-900/20' />
+        {/* Fondo elegante - Reemplazado purple/fuchsia por teal/cyan */}
+        <div className='absolute inset-0 bg-gradient-to-br from-slate-900 via-teal-900 to-cyan-900' />
+        <div className='absolute inset-0 bg-gradient-to-tr from-yellow-900/20 via-transparent to-teal-900/20' />
 
-        {/* Elementos decorativos */}
+        {/* Elementos decorativos - Reemplazado purple por teal */}
         <div className='absolute top-20 left-10 w-72 h-72 bg-yellow-500/10 rounded-full blur-3xl float' />
         <div
-          className='absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl float'
+          className='absolute bottom-20 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl float'
           style={{ animationDelay: "1s" }}
         />
         <div className='absolute top-1/4 right-1/4 w-4 h-4 bg-yellow-400 rounded-full twinkle' />
         <div
-          className='absolute top-3/4 left-1/4 w-3 h-3 bg-purple-400 rounded-full twinkle'
+          className='absolute top-3/4 left-1/4 w-3 h-3 bg-cyan-400 rounded-full twinkle'
           style={{ animationDelay: "1s" }}
         />
         <div className='container relative z-10 px-6 lg:px-8 m-auto'>
@@ -227,11 +228,18 @@ export default function Awards() {
             </div>
           </div>
 
+          {/* Premios Especiales - Reemplazado fuchsia/purple por teal/cyan */}
           <div className='max-w-4xl mx-auto'>
             <div className='bg-white/10 backdrop-blur-xl rounded-3xl p-8 lg:p-12 border border-white/20 shadow-2xl'>
               <div className='text-center mb-8'>
-                <div className='inline-flex items-center gap-2 p-4 bg-gradient-to-r from-fuchsia-500/20 to-purple-500/20 rounded-2xl mb-6'>
-                  <Sparkles size={28} className='text-fuchsia-300' />
+                <div
+                  className='inline-flex items-center gap-2 p-4 rounded-2xl mb-6'
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(99, 247, 223, 0.2) 0%, rgba(45, 212, 191, 0.2) 100%)",
+                  }}
+                >
+                  <Sparkles size={28} className='text-cyan-300' />
                 </div>
                 <h3 className='text-2xl lg:text-3xl font-bold text-white mb-4'>
                   🌟 Premios Especiales
@@ -253,7 +261,7 @@ export default function Awards() {
                       {award.icon}
                     </div>
                     <div>
-                      <h4 className='text-white font-semibold text-lg group-hover:text-fuchsia-300 transition-colors duration-300'>
+                      <h4 className='text-white font-semibold text-lg group-hover:text-cyan-300 transition-colors duration-300'>
                         {award.name}
                       </h4>
                       <p className='text-gray-400 text-sm'>
