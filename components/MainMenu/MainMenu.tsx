@@ -14,38 +14,32 @@ export const MainMenu: FC<MainMenuProps> = ({ user }) => {
 
   return (
     <div className='flex items-center gap-6'>
-      {/* Inscripciones - solo admin */}
-
       <Link
         href='/inscripciones'
-        className='text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors'
+        className='text-sm font-medium text-white hover:text-[#63f7df] transition-colors'
       >
         Inscripciones
       </Link>
       <Link
         href='/convocatoria'
-        className='text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors'
+        className='text-sm font-medium text-white hover:text-[#63f7df] transition-colors'
       >
         Convocatoria
       </Link>
 
-      {/* Certificados - solo admin */}
-
-      {/* Evaluaciones - admin y jurado */}
       {(isAdmin || isJurado) && (
         <Link
           href='/evaluaciones'
-          className='text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors'
+          className='text-sm font-medium text-white hover:text-[#63f7df] transition-colors'
         >
           Evaluaciones
         </Link>
       )}
 
-      {/* Panel - solo admin */}
       {isAdmin && (
         <Link
           href='/panel'
-          className='text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors'
+          className='text-sm font-medium text-white hover:text-[#63f7df] transition-colors'
         >
           Panel
         </Link>

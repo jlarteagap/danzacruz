@@ -5,10 +5,21 @@ export const LoginButton = () => {
   return (
     <button
       onClick={() => login()}
-      className='inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 rounded-full text-white font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300'
+      className='
+        inline-flex items-center gap-3 
+        px-6 py-3 
+        bg-[#63f7df] 
+        text-neutral-900 font-semibold 
+        rounded-2xl
+        shadow-sm hover:shadow-md 
+        hover:scale-105 
+        transition-all duration-300
+        focus:outline-none focus:ring-2 focus:ring-[#fdf770]
+      '
     >
       <span>Registrarse</span>
-      <div className='w-2 h-2 bg-white rounded-full animate-pulse' />
+      {/* Indicador animado sutil */}
+      <div className='w-2 h-2 bg-white rounded-full animate-ping' />
     </button>
   );
 };
