@@ -153,39 +153,28 @@ export default function ConvocatoriaContent() {
         }`}
       >
         <div className='p-6'>
-          {/* Logo */}
-          <div className='mb-6'>
-            <div className='w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center mb-3'>
-              <span className='text-white font-bold text-xl'>DC</span>
-            </div>
-            <h1 className='text-center font-bold text-lg'>DANZACRUZ 2025</h1>
-            <p className='text-center text-xs text-gray-500'>
-              XXV Festival Internacional
-            </p>
-          </div>
-
-          {/* Countdown Compact */}
-          <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-3 mb-6'>
+          {/* Countdown Compact - Reemplazado purple por teal */}
+          <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-lg p-3 mb-6 mt-24'>
             <p className='text-xs text-gray-600 text-center mb-2'>
               Tiempo restante
             </p>
             <div className='flex justify-center gap-2 text-center'>
               <div>
-                <div className='text-lg font-bold text-purple-600'>
+                <div className='text-lg font-bold text-teal-600'>
                   {String(countdown.days).padStart(2, "0")}
                 </div>
                 <div className='text-xs text-gray-600'>días</div>
               </div>
-              <div className='text-purple-600 font-bold'>:</div>
+              <div className='text-teal-600 font-bold'>:</div>
               <div>
-                <div className='text-lg font-bold text-purple-600'>
+                <div className='text-lg font-bold text-teal-600'>
                   {String(countdown.hours).padStart(2, "0")}
                 </div>
                 <div className='text-xs text-gray-600'>hrs</div>
               </div>
-              <div className='text-purple-600 font-bold'>:</div>
+              <div className='text-teal-600 font-bold'>:</div>
               <div>
-                <div className='text-lg font-bold text-purple-600'>
+                <div className='text-lg font-bold text-teal-600'>
                   {String(countdown.minutes).padStart(2, "0")}
                 </div>
                 <div className='text-xs text-gray-600'>min</div>
@@ -193,15 +182,18 @@ export default function ConvocatoriaContent() {
             </div>
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button - Reemplazado purple/indigo por teal/cyan */}
           <button
             onClick={() => scrollToSection("inscripciones")}
-            className='w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-center font-semibold rounded-lg hover:shadow-lg transition-all duration-300 text-sm mb-6'
+            className='w-full py-3 px-4 text-white text-center font-semibold rounded-lg hover:shadow-lg transition-all duration-300 text-sm mb-6'
+            style={{
+              background: "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
+            }}
           >
             📝 Inscribirse Ahora
           </button>
 
-          {/* Navigation */}
+          {/* Navigation - Reemplazado purple por teal */}
           <nav className='space-y-1 text-sm'>
             {NAVIGATION_ITEMS.map((item) => (
               <div key={item.id}>
@@ -228,7 +220,7 @@ export default function ConvocatoriaContent() {
                             onClick={() => scrollToSection(subItem.id)}
                             className={`w-full text-left py-2 px-3 rounded-lg text-xs transition-all ${
                               activeSection === subItem.id
-                                ? "bg-purple-50 text-purple-600 font-semibold"
+                                ? "bg-teal-50 text-teal-600 font-semibold"
                                 : "text-gray-600 hover:bg-gray-50"
                             }`}
                           >
@@ -243,7 +235,7 @@ export default function ConvocatoriaContent() {
                     onClick={() => scrollToSection(item.id)}
                     className={`w-full text-left py-2 px-3 rounded-lg transition-all ${
                       activeSection === item.id
-                        ? "bg-purple-50 text-purple-600 font-semibold"
+                        ? "bg-teal-50 text-teal-600 font-semibold"
                         : "text-gray-700 hover:bg-gray-50"
                     }`}
                   >
@@ -259,7 +251,13 @@ export default function ConvocatoriaContent() {
       <main className='md:ml-80 min-h-screen'>
         <div className='max-w-5xl mx-auto px-6 py-12'>
           <section data-section='sobre' className='mb-16 scroll-mt-8'>
-            <h2 className='text-4xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent'>
+            <h2
+              className='text-4xl font-bold mb-6 bg-clip-text text-transparent'
+              style={{
+                backgroundImage:
+                  "linear-gradient(135deg, #63f7df 0%, #fdf770 100%)",
+              }}
+            >
               Convocatoria
             </h2>
 
@@ -293,7 +291,7 @@ export default function ConvocatoriaContent() {
               </h3>
               <ul className='space-y-4'>
                 <li className='flex gap-3'>
-                  <span className='text-purple-600 font-bold flex-shrink-0'>
+                  <span className='text-teal-600 font-bold flex-shrink-0'>
                     •
                   </span>
                   <span className='text-gray-700'>
@@ -308,7 +306,7 @@ export default function ConvocatoriaContent() {
                   </span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='text-purple-600 font-bold flex-shrink-0'>
+                  <span className='text-teal-600 font-bold flex-shrink-0'>
                     •
                   </span>
                   <span className='text-gray-700'>
@@ -317,7 +315,7 @@ export default function ConvocatoriaContent() {
                   </span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='text-purple-600 font-bold flex-shrink-0'>
+                  <span className='text-teal-600 font-bold flex-shrink-0'>
                     •
                   </span>
                   <span className='text-gray-700'>
@@ -327,7 +325,7 @@ export default function ConvocatoriaContent() {
                   </span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='text-purple-600 font-bold flex-shrink-0'>
+                  <span className='text-teal-600 font-bold flex-shrink-0'>
                     •
                   </span>
                   <span className='text-gray-700'>
@@ -336,7 +334,7 @@ export default function ConvocatoriaContent() {
                   </span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='text-purple-600 font-bold flex-shrink-0'>
+                  <span className='text-teal-600 font-bold flex-shrink-0'>
                     •
                   </span>
                   <span className='text-gray-700'>
@@ -345,7 +343,7 @@ export default function ConvocatoriaContent() {
                   </span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='text-purple-600 font-bold flex-shrink-0'>
+                  <span className='text-teal-600 font-bold flex-shrink-0'>
                     •
                   </span>
                   <span className='text-gray-700'>
@@ -356,7 +354,7 @@ export default function ConvocatoriaContent() {
                   </span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='text-purple-600 font-bold flex-shrink-0'>
+                  <span className='text-teal-600 font-bold flex-shrink-0'>
                     •
                   </span>
                   <span className='text-gray-700'>
@@ -365,7 +363,7 @@ export default function ConvocatoriaContent() {
                   </span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='text-purple-600 font-bold flex-shrink-0'>
+                  <span className='text-teal-600 font-bold flex-shrink-0'>
                     •
                   </span>
                   <span className='text-gray-700'>
@@ -374,7 +372,7 @@ export default function ConvocatoriaContent() {
                   </span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='text-purple-600 font-bold flex-shrink-0'>
+                  <span className='text-teal-600 font-bold flex-shrink-0'>
                     •
                   </span>
                   <span className='text-gray-700'>
@@ -388,8 +386,8 @@ export default function ConvocatoriaContent() {
 
           {/* CAPÍTULO I */}
           <section className='mb-16 scroll-mt-8'>
-            <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 mb-8'>
-              <h2 className='text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2'>
+            <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-8 mb-8'>
+              <h2 className='text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2'>
                 CAPÍTULO I
               </h2>
               <p className='text-xl text-gray-700'>
@@ -406,7 +404,7 @@ export default function ConvocatoriaContent() {
 
               <div className='grid md:grid-cols-2 gap-6 mb-6'>
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-lg font-bold mb-4 text-purple-600'>
+                  <h4 className='text-lg font-bold mb-4 text-teal-600'>
                     CATEGORÍA COLEGIOS:
                   </h4>
                   <div className='space-y-3'>
@@ -452,7 +450,7 @@ export default function ConvocatoriaContent() {
               </h3>
 
               <div className='space-y-4'>
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-6'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-6'>
                   <h4 className='font-bold text-lg mb-2'>
                     📅 Día 1 del Festival: (06 de noviembre)
                   </h4>
@@ -531,7 +529,7 @@ export default function ConvocatoriaContent() {
                   <strong>20 de octubre</strong> al correo:{" "}
                   <a
                     href='mailto:chichomachine@yahoo.com'
-                    className='underline font-semibold text-purple-600 hover:text-purple-800'
+                    className='underline font-semibold text-teal-600 hover:text-teal-800'
                   >
                     chichomachine@yahoo.com
                   </a>{" "}
@@ -542,7 +540,7 @@ export default function ConvocatoriaContent() {
               <div className='space-y-6'>
                 {/* 3.1 Ballet Clásico */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     3.1 BALLET CLÁSICO:
                   </h4>
                   <p className='text-gray-700 mb-4'>
@@ -558,14 +556,14 @@ export default function ConvocatoriaContent() {
                   </p>
                   <ul className='space-y-2 ml-6'>
                     <li className='flex gap-2'>
-                      <span className='text-purple-600'>•</span>
+                      <span className='text-teal-600'>•</span>
                       <span className='text-gray-700'>
                         La categoría <strong>Infantil</strong> puede presentar
                         un Pas de Deux sin variaciones ni coda.
                       </span>
                     </li>
                     <li className='flex gap-2'>
-                      <span className='text-purple-600'>•</span>
+                      <span className='text-teal-600'>•</span>
                       <span className='text-gray-700'>
                         La categoría <strong>Juvenil</strong> tanto de colegios
                         como general deberá usar zapatillas de punta de forma
@@ -581,7 +579,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 3.2 Ballet Neo-Clásico */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     3.2 BALLET NEO-CLÁSICO:
                   </h4>
                   <p className='text-gray-700'>
@@ -595,7 +593,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 3.3 Danza Moderna y Contemporánea */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     3.3 DANZA MODERNA y DANZA CONTEMPORÁNEA:
                   </h4>
                   <p className='text-gray-700'>
@@ -609,7 +607,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 3.4 Jazz */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     3.4 JAZZ:
                   </h4>
                   <p className='text-gray-700 mb-4'>
@@ -620,7 +618,7 @@ export default function ConvocatoriaContent() {
                   </p>
                   <ul className='space-y-2 ml-6 mb-4'>
                     <li className='flex gap-2'>
-                      <span className='text-purple-600'>•</span>
+                      <span className='text-teal-600'>•</span>
                       <span className='text-gray-700'>
                         <strong>Lyrical Jazz:</strong> Se caracteriza por tener
                         un contenido expresivo y emocional de la pieza musical
@@ -628,14 +626,14 @@ export default function ConvocatoriaContent() {
                       </span>
                     </li>
                     <li className='flex gap-2'>
-                      <span className='text-purple-600'>•</span>
+                      <span className='text-teal-600'>•</span>
                       <span className='text-gray-700'>
                         <strong>Modern Jazz:</strong> Surge del aporte de la
                         danza contemporánea de los años 60 al Jazz.
                       </span>
                     </li>
                     <li className='flex gap-2'>
-                      <span className='text-purple-600'>•</span>
+                      <span className='text-teal-600'>•</span>
                       <span className='text-gray-700'>
                         <strong>Street Jazz:</strong> Surge de la fusión del
                         Jazz con danzas populares urbanas o Street Dance.
@@ -657,7 +655,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 3.5 Musical */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     3.5 MUSICAL:
                   </h4>
                   <p className='text-gray-700'>
@@ -669,7 +667,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 3.6 Street Dance */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     3.6 STREET DANCE:
                   </h4>
                   <p className='text-gray-700'>
@@ -684,7 +682,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 3.7 Bailes Tropicales */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     3.7 BAILES TROPICALES Y DE SALÓN:
                   </h4>
                   <p className='text-gray-700'>
@@ -697,7 +695,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 3.8 Folklore Étnico */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     3.8 FOLKLORE ÉTNICO Y DE RAÍZ:
                   </h4>
                   <p className='text-gray-700 mb-4'>
@@ -738,7 +736,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 3.9 Folklore Nacional */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     3.9 FOLKLORE NACIONAL E INTERNACIONAL POPULAR:
                   </h4>
                   <p className='text-gray-700 mb-4'>
@@ -762,25 +760,25 @@ export default function ConvocatoriaContent() {
                   </p>
                   <ul className='space-y-2 ml-6'>
                     <li className='flex gap-2'>
-                      <span className='text-purple-600'>•</span>
+                      <span className='text-teal-600'>•</span>
                       <span className='text-gray-700'>
                         Danzas orientales (Santa Cruz, Beni y Pando)
                       </span>
                     </li>
                     <li className='flex gap-2'>
-                      <span className='text-purple-600'>•</span>
+                      <span className='text-teal-600'>•</span>
                       <span className='text-gray-700'>
                         Danzas de los valles (Cochabamba, Chuquisaca y Tarija)
                       </span>
                     </li>
                     <li className='flex gap-2'>
-                      <span className='text-purple-600'>•</span>
+                      <span className='text-teal-600'>•</span>
                       <span className='text-gray-700'>
                         Danzas andinas (La Paz, Oruro y Potosí)
                       </span>
                     </li>
                     <li className='flex gap-2'>
-                      <span className='text-purple-600'>•</span>
+                      <span className='text-teal-600'>•</span>
                       <span className='text-gray-700'>Danzas Chaqueñas</span>
                     </li>
                   </ul>
@@ -788,7 +786,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 4.0 Danzas Populares */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     4.0 DANZAS POPULARES:
                   </h4>
                   <p className='text-gray-700'>
@@ -802,7 +800,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 4.1 K-Pop */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     4.1 K-Pop:
                   </h4>
                   <p className='text-gray-700'>
@@ -814,7 +812,7 @@ export default function ConvocatoriaContent() {
 
                 {/* 4.2 Retro Dance */}
                 <div className='bg-white border border-gray-200 rounded-xl p-6'>
-                  <h4 className='text-xl font-bold mb-3 text-purple-600'>
+                  <h4 className='text-xl font-bold mb-3 text-teal-600'>
                     4.2 Retro Dance:
                   </h4>
                   <p className='text-gray-700'>
@@ -944,8 +942,8 @@ export default function ConvocatoriaContent() {
 
           {/* CAPÍTULO II - REGLAMENTOS */}
           <section className='mb-16 scroll-mt-8'>
-            <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 mb-8'>
-              <h2 className='text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2'>
+            <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-8 mb-8'>
+              <h2 className='text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2'>
                 CAPÍTULO II
               </h2>
               <p className='text-xl text-gray-700'>REGLAMENTOS</p>
@@ -981,14 +979,14 @@ export default function ConvocatoriaContent() {
                     También se podrá optar por el envío de video al mail:{" "}
                     <a
                       href='mailto:jorgelarteagap@gmail.com'
-                      className='text-purple-600 underline hover:text-purple-800'
+                      className='text-teal-600 underline hover:text-teal-800'
                     >
                       jorgelarteagap@gmail.com
                     </a>{" "}
                     o al número del WhatsApp:{" "}
                     <a
                       href='https://wa.me/59177633551'
-                      className='text-purple-600 underline hover:text-purple-800'
+                      className='text-teal-600 underline hover:text-teal-800'
                     >
                       +591-77633551
                     </a>
@@ -1002,14 +1000,14 @@ export default function ConvocatoriaContent() {
                     sus videos al mail:{" "}
                     <a
                       href='mailto:jorgelarteagap@gmail.com'
-                      className='text-purple-600 underline hover:text-purple-800'
+                      className='text-teal-600 underline hover:text-teal-800'
                     >
                       jorgelarteagap@gmail.com
                     </a>{" "}
                     o al número del WhatsApp:{" "}
                     <a
                       href='https://wa.me/59177633551'
-                      className='text-purple-600 underline hover:text-purple-800'
+                      className='text-teal-600 underline hover:text-teal-800'
                     >
                       +591-77633551
                     </a>
@@ -1029,7 +1027,7 @@ export default function ConvocatoriaContent() {
               </h4>
 
               <div className='space-y-4'>
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-4'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-4'>
                   <p className='text-gray-700'>
                     En todas las modalidades del Festival, la participación de
                     cada grupo queda limitada a un número máximo de{" "}
@@ -1043,7 +1041,7 @@ export default function ConvocatoriaContent() {
                   </p>
                 </div>
 
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-4'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-4'>
                   <p className='text-gray-700'>
                     En la modalidad de colegios y la categoría infantil general,{" "}
                     <strong>
@@ -1053,7 +1051,7 @@ export default function ConvocatoriaContent() {
                   </p>
                 </div>
 
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-4'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-4'>
                   <p className='text-gray-700'>
                     En caso de problemas técnicos, habrá{" "}
                     <strong>1 minuto de tolerancia</strong> (pasado ese lapso se
@@ -1062,7 +1060,7 @@ export default function ConvocatoriaContent() {
                   </p>
                 </div>
 
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-4'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-4'>
                   <p className='text-gray-700'>
                     Serán permitidos elementos escénicos simples y prácticos que
                     quedarán a cargo del grupo participante. El grupo tendrá{" "}
@@ -1080,7 +1078,7 @@ export default function ConvocatoriaContent() {
                   </p>
                 </div>
 
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-4'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-4'>
                   <p className='text-gray-700'>
                     Se sugiere la presencia de un responsable técnico en la
                     cabina de luz, sonido y video durante la presentación del
@@ -1088,7 +1086,7 @@ export default function ConvocatoriaContent() {
                   </p>
                 </div>
 
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-4'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-4'>
                   <p className='text-gray-700 mb-2'>
                     Los participantes deben traer en{" "}
                     <strong>dos archivos MP3 y WAV</strong> para cada música que
@@ -1105,7 +1103,7 @@ export default function ConvocatoriaContent() {
                   </p>
                 </div>
 
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-4'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-4'>
                   <p className='text-gray-700'>
                     Cada participante o grupo deberá llegar{" "}
                     <strong>una hora antes</strong> del horario de su
@@ -1113,7 +1111,7 @@ export default function ConvocatoriaContent() {
                   </p>
                 </div>
 
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-4'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-4'>
                   <p className='text-gray-700'>
                     <strong>De la ocupación de los camerinos:</strong> Deberán
                     ser desocupados después de la presentación del grupo, de
@@ -1153,7 +1151,7 @@ export default function ConvocatoriaContent() {
                   </p>
                 </div>
 
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-4'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-4'>
                   <p className='text-gray-700'>
                     Los grupos participantes deberán presentarse de acuerdo con
                     su ficha de inscripción con respecto a su contenido, idea,
@@ -1165,7 +1163,7 @@ export default function ConvocatoriaContent() {
                   </p>
                 </div>
 
-                <div className='bg-white border-l-4 border-purple-500 rounded-lg p-4'>
+                <div className='bg-white border-l-4 border-teal-500 rounded-lg p-4'>
                   <p className='text-gray-700'>
                     Todos los grupos y participantes en general deberán hacer
                     saber el origen de su trabajo con una breve información
@@ -1190,7 +1188,7 @@ export default function ConvocatoriaContent() {
                 Artículo 2 - DE LAS NORMAS DEL PREMIO POR VOTACIÓN DEL PÚBLICO
               </h3>
 
-              <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6'>
+              <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl p-6'>
                 <p className='text-gray-700 mb-4'>
                   El público podrá votar por el (solista, dúo, trío o grupo)
                   concursante de su preferencia hasta{" "}
@@ -1243,8 +1241,8 @@ export default function ConvocatoriaContent() {
 
           {/* CAPÍTULO III - INSCRIPCIONES */}
           <section data-section='inscripciones' className='mb-16 scroll-mt-8'>
-            <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 mb-8'>
-              <h2 className='text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2'>
+            <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-8 mb-8'>
+              <h2 className='text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2'>
                 CAPÍTULO III
               </h2>
               <p className='text-xl text-gray-700'>
@@ -1284,14 +1282,14 @@ export default function ConvocatoriaContent() {
                 </p>
                 <ul className='space-y-2 ml-6 mb-4'>
                   <li className='flex gap-2'>
-                    <span className='text-purple-600'>•</span>
+                    <span className='text-teal-600'>•</span>
                     <span className='text-gray-700'>
                       <strong>Grupos de 4 a 15 personas:</strong> Bs. 60 por
                       bailarín por presentación
                     </span>
                   </li>
                   <li className='flex gap-2'>
-                    <span className='text-purple-600'>•</span>
+                    <span className='text-teal-600'>•</span>
                     <span className='text-gray-700'>
                       <strong>Grupos de 16 a 50 personas:</strong> Bs. 50 por
                       bailarín por presentación
@@ -1310,21 +1308,21 @@ export default function ConvocatoriaContent() {
                 </h3>
                 <ul className='space-y-2'>
                   <li className='flex gap-2'>
-                    <span className='text-purple-600'>•</span>
+                    <span className='text-teal-600'>•</span>
                     <span className='text-gray-700'>
                       <strong>Solistas:</strong> Bs. 250 (doscientos cincuenta
                       bolivianos)
                     </span>
                   </li>
                   <li className='flex gap-2'>
-                    <span className='text-purple-600'>•</span>
+                    <span className='text-teal-600'>•</span>
                     <span className='text-gray-700'>
                       <strong>Dúo:</strong> Bs. 100 (cien bolivianos) por
                       bailarín
                     </span>
                   </li>
                   <li className='flex gap-2'>
-                    <span className='text-purple-600'>•</span>
+                    <span className='text-teal-600'>•</span>
                     <span className='text-gray-700'>
                       <strong>Trío:</strong> Bs. 80 (ochenta bolivianos) por
                       bailarín
@@ -1426,21 +1424,21 @@ export default function ConvocatoriaContent() {
                 </h3>
                 <ul className='space-y-3'>
                   <li className='flex gap-3'>
-                    <span className='text-purple-600 font-bold'>a)</span>
+                    <span className='text-teal-600 font-bold'>a)</span>
                     <span className='text-gray-700'>
                       Foto digital reciente de cada integrante medida 3x4, con
                       el detalle del nombre completo.
                     </span>
                   </li>
                   <li className='flex gap-3'>
-                    <span className='text-purple-600 font-bold'>b)</span>
+                    <span className='text-teal-600 font-bold'>b)</span>
                     <span className='text-gray-700'>
                       Cédula de identidad (carnet de identidad) o certificado de
                       nacimiento, de cada integrante del grupo (escaneada).
                     </span>
                   </li>
                   <li className='flex gap-3'>
-                    <span className='text-purple-600 font-bold'>c)</span>
+                    <span className='text-teal-600 font-bold'>c)</span>
                     <div className='text-gray-700'>
                       <p className='mb-2'>
                         Los participantes internacionales, nacionales y de
@@ -1460,7 +1458,7 @@ export default function ConvocatoriaContent() {
                           O solicitar el QR correspondiente al WhatsApp{" "}
                           <a
                             href='https://wa.me/59175553576'
-                            className='text-purple-600 underline hover:text-purple-800'
+                            className='text-teal-600 underline hover:text-teal-800'
                           >
                             +591 75553576
                           </a>
@@ -1470,7 +1468,7 @@ export default function ConvocatoriaContent() {
                           por favor dirigirse a través de WhatsApp al número{" "}
                           <a
                             href='https://wa.me/59175553576'
-                            className='text-purple-600 underline hover:text-purple-800'
+                            className='text-teal-600 underline hover:text-teal-800'
                           >
                             +591 75553576
                           </a>
@@ -1479,7 +1477,7 @@ export default function ConvocatoriaContent() {
                     </div>
                   </li>
                   <li className='flex gap-3'>
-                    <span className='text-purple-600 font-bold'>d)</span>
+                    <span className='text-teal-600 font-bold'>d)</span>
                     <span className='text-gray-700'>
                       Todos los participantes, de provincia, otros departamentos
                       e internacionales, que se inscriban mediante depósito
@@ -1488,14 +1486,14 @@ export default function ConvocatoriaContent() {
                       número{" "}
                       <a
                         href='https://wa.me/59177633551'
-                        className='text-purple-600 underline hover:text-purple-800'
+                        className='text-teal-600 underline hover:text-teal-800'
                       >
                         +591 77633551
                       </a>
                     </span>
                   </li>
                   <li className='flex gap-3'>
-                    <span className='text-purple-600 font-bold'>e)</span>
+                    <span className='text-teal-600 font-bold'>e)</span>
                     <div className='text-gray-700'>
                       <p className='font-semibold mb-2'>Observaciones:</p>
                       <ul className='space-y-2 ml-4'>
@@ -1568,7 +1566,7 @@ export default function ConvocatoriaContent() {
                   filmado, sin necesidad de usar vestuario, a{" "}
                   <a
                     href='mailto:chichomachine@yahoo.com'
-                    className='text-purple-600 underline hover:text-purple-800'
+                    className='text-teal-600 underline hover:text-teal-800'
                   >
                     chichomachine@yahoo.com
                   </a>{" "}
@@ -1580,8 +1578,8 @@ export default function ConvocatoriaContent() {
 
           {/* Talleres */}
           <section data-section='talleres' className='mb-16 scroll-mt-8'>
-            <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 mb-8'>
-              <h3 className='text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2'>
+            <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-8 mb-8'>
+              <h3 className='text-2xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2'>
                 Artículo 2 - TALLERES O WORKSHOP
               </h3>
               <p className='text-xl text-gray-700'>
@@ -1623,8 +1621,8 @@ export default function ConvocatoriaContent() {
           </section>
           {/* CAPÍTULO IV - Evaluación */}
           <section data-section='evaluacion' className='mb-16 scroll-mt-8'>
-            <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 mb-8'>
-              <h2 className='text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2'>
+            <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-8 mb-8'>
+              <h2 className='text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2'>
                 CAPÍTULO IV
               </h2>
               <p className='text-xl text-gray-700'>CRITERIO DE EVALUACIÓN</p>
@@ -1647,7 +1645,7 @@ export default function ConvocatoriaContent() {
                   key={index}
                   className='bg-white border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition-shadow'
                 >
-                  <span className='text-purple-600 font-semibold'>
+                  <span className='text-teal-600 font-semibold'>
                     {criterio}
                   </span>
                 </div>
@@ -1657,8 +1655,8 @@ export default function ConvocatoriaContent() {
 
           {/* CAPÍTULO V - Calificación */}
           <section data-section='calificacion' className='mb-16 scroll-mt-8'>
-            <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 mb-8'>
-              <h2 className='text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2'>
+            <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-8 mb-8'>
+              <h2 className='text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2'>
                 CAPÍTULO V
               </h2>
               <p className='text-xl text-gray-700'>
@@ -1727,7 +1725,7 @@ export default function ConvocatoriaContent() {
                   Web:{" "}
                   <a
                     href='https://www.danzacruz.com'
-                    className='text-purple-600 underline hover:text-purple-800'
+                    className='text-teal-600 underline hover:text-teal-800'
                   >
                     www.danzacruz.com
                   </a>{" "}
@@ -1739,8 +1737,8 @@ export default function ConvocatoriaContent() {
 
           {/* CAPÍTULO VI - Premiación */}
           <section data-section='premiacion' className='mb-16 scroll-mt-8'>
-            <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 mb-8'>
-              <h2 className='text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2'>
+            <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-8 mb-8'>
+              <h2 className='text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2'>
                 CAPÍTULO VI
               </h2>
               <p className='text-xl text-gray-700'>DE LA PREMIACIÓN</p>
@@ -1771,7 +1769,7 @@ export default function ConvocatoriaContent() {
               </div>
 
               {/* Dúo */}
-              <div className='bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-300 rounded-xl p-6'>
+              <div className='bg-gradient-to-br from-teal-50 to-purple-100 border-2 border-teal-300 rounded-xl p-6'>
                 <div className='text-4xl mb-3'>🏆</div>
                 <h3 className='text-xl font-bold mb-4'>
                   GANADOR ABSOLUTO DÚO
@@ -1787,7 +1785,7 @@ export default function ConvocatoriaContent() {
                   El premio en efectivo será válido con 10 dúos participantes
                   como mínimo
                 </p>
-                <p className='font-bold text-purple-700'>
+                <p className='font-bold text-teal-700'>
                   Valor total del premio: Bs. 1,100 (Un mil cien Bolivianos)
                 </p>
               </div>
@@ -1880,7 +1878,7 @@ export default function ConvocatoriaContent() {
             </div>
 
             {/* Premios Especiales */}
-            <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-8 mb-8'>
+            <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl p-8 mb-8'>
               <h3 className='text-2xl font-bold mb-6 text-center'>
                 PREMIACIÓN ESPECIAL
               </h3>
@@ -1914,7 +1912,7 @@ export default function ConvocatoriaContent() {
             </div>
 
             {/* Proyección Internacional */}
-            <div className='bg-white border-l-4 border-purple-500 rounded-lg p-6 mb-8'>
+            <div className='bg-white border-l-4 border-teal-500 rounded-lg p-6 mb-8'>
               <h4 className='font-bold text-lg mb-3 flex items-center gap-2'>
                 <span className='text-2xl'>🌍</span>
                 Proyección Internacional
@@ -1965,8 +1963,8 @@ export default function ConvocatoriaContent() {
 
           {/* CAPÍTULO VII - Observaciones Generales */}
           <section data-section='observaciones' className='mb-16 scroll-mt-8'>
-            <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 mb-8'>
-              <h2 className='text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2'>
+            <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-8 mb-8'>
+              <h2 className='text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2'>
                 CAPÍTULO VII
               </h2>
               <p className='text-xl text-gray-700'>
@@ -1982,7 +1980,7 @@ export default function ConvocatoriaContent() {
                   de inscripción a través de WhatsApp al número{" "}
                   <a
                     href='https://wa.me/59175095094'
-                    className='text-purple-600 underline hover:text-purple-800'
+                    className='text-teal-600 underline hover:text-teal-800'
                   >
                     +591 75095094
                   </a>
@@ -2002,7 +2000,7 @@ export default function ConvocatoriaContent() {
                 </p>
               </div>
 
-              <div className='bg-white border-l-4 border-purple-500 rounded-lg p-6'>
+              <div className='bg-white border-l-4 border-teal-500 rounded-lg p-6'>
                 <h4 className='font-bold text-lg mb-3'>USO DE IMÁGENES</h4>
                 <p className='text-gray-700'>
                   El Festival Internacional Danzacruz se reserva el derecho de
@@ -2046,8 +2044,8 @@ export default function ConvocatoriaContent() {
 
           {/* CONTACTO */}
           <section data-section='contacto' className='mb-16 scroll-mt-8'>
-            <div className='bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 mb-8'>
-              <h2 className='text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2'>
+            <div className='bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-8 mb-8'>
+              <h2 className='text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2'>
                 Contacto
               </h2>
               <p className='text-xl text-gray-700'>
@@ -2063,14 +2061,14 @@ export default function ConvocatoriaContent() {
                 </h3>
                 <div className='space-y-6'>
                   <div className='flex items-start gap-4'>
-                    <div className='w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <div className='w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0'>
                       <span className='text-white text-xl'>📧</span>
                     </div>
                     <div>
                       <p className='font-semibold mb-1'>Email General</p>
                       <a
                         href='mailto:chichomachine@yahoo.com'
-                        className='text-purple-600 hover:underline'
+                        className='text-teal-600 hover:underline'
                       >
                         chichomachine@yahoo.com
                       </a>
@@ -2078,7 +2076,7 @@ export default function ConvocatoriaContent() {
                   </div>
 
                   <div className='flex items-start gap-4'>
-                    <div className='w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <div className='w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0'>
                       <span className='text-white text-xl'>📱</span>
                     </div>
                     <div>
@@ -2087,7 +2085,7 @@ export default function ConvocatoriaContent() {
                       </p>
                       <a
                         href='https://wa.me/59177633551'
-                        className='text-purple-600 hover:underline'
+                        className='text-teal-600 hover:underline'
                       >
                         +591 77633551
                       </a>
@@ -2095,14 +2093,14 @@ export default function ConvocatoriaContent() {
                   </div>
 
                   <div className='flex items-start gap-4'>
-                    <div className='w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <div className='w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0'>
                       <span className='text-white text-xl'>📱</span>
                     </div>
                     <div>
                       <p className='font-semibold mb-1'>WhatsApp - Consultas</p>
                       <a
                         href='https://wa.me/59175553576'
-                        className='text-purple-600 hover:underline'
+                        className='text-teal-600 hover:underline'
                       >
                         +591 75553576
                       </a>
@@ -2110,14 +2108,14 @@ export default function ConvocatoriaContent() {
                   </div>
 
                   <div className='flex items-start gap-4'>
-                    <div className='w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <div className='w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0'>
                       <span className='text-white text-xl'>📱</span>
                     </div>
                     <div>
                       <p className='font-semibold mb-1'>WhatsApp - Fichas</p>
                       <a
                         href='https://wa.me/59175095094'
-                        className='text-purple-600 hover:underline'
+                        className='text-teal-600 hover:underline'
                       >
                         +591 75095094
                       </a>
@@ -2125,14 +2123,14 @@ export default function ConvocatoriaContent() {
                   </div>
 
                   <div className='flex items-start gap-4'>
-                    <div className='w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <div className='w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0'>
                       <span className='text-white text-xl'>🌐</span>
                     </div>
                     <div>
                       <p className='font-semibold mb-1'>Sitio Web</p>
                       <a
                         href='https://www.danzacruz.com'
-                        className='text-purple-600 hover:underline'
+                        className='text-teal-600 hover:underline'
                         target='_blank'
                         rel='noopener noreferrer'
                       >
@@ -2142,7 +2140,7 @@ export default function ConvocatoriaContent() {
                   </div>
 
                   <div className='flex items-start gap-4'>
-                    <div className='w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <div className='w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0'>
                       <span className='text-white text-xl'>📍</span>
                     </div>
                     <div>
@@ -2159,26 +2157,22 @@ export default function ConvocatoriaContent() {
               <div className='bg-white rounded-2xl p-8 border border-gray-200'>
                 <h3 className='text-2xl font-bold mb-6'>Fechas Importantes</h3>
                 <div className='space-y-4'>
-                  <div className='border-l-4 border-purple-500 pl-4'>
-                    <p className='font-semibold text-purple-600'>
-                      20 de Octubre
-                    </p>
+                  <div className='border-l-4 border-teal-500 pl-4'>
+                    <p className='font-semibold text-teal-600'>20 de Octubre</p>
                     <p className='text-sm text-gray-600'>
                       Envío de resumen de trabajos
                     </p>
                   </div>
-                  <div className='border-l-4 border-purple-500 pl-4'>
-                    <p className='font-semibold text-purple-600'>
+                  <div className='border-l-4 border-teal-500 pl-4'>
+                    <p className='font-semibold text-teal-600'>
                       30 de Septiembre
                     </p>
                     <p className='text-sm text-gray-600'>
                       Envío de videos para sugerencias
                     </p>
                   </div>
-                  <div className='border-l-4 border-purple-500 pl-4'>
-                    <p className='font-semibold text-purple-600'>
-                      30 de Octubre
-                    </p>
+                  <div className='border-l-4 border-teal-500 pl-4'>
+                    <p className='font-semibold text-teal-600'>30 de Octubre</p>
                     <p className='text-sm text-gray-600'>
                       Fecha límite de inscripciones y pagos
                     </p>
@@ -2226,7 +2220,7 @@ export default function ConvocatoriaContent() {
             </div>
 
             {/* CTA Final */}
-            <div className='mt-12 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-8 text-white text-center'>
+            <div className='mt-12 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-2xl p-8 text-white text-center'>
               <h3 className='text-3xl font-bold mb-4'>
                 ¿Listo para participar?
               </h3>
@@ -2236,7 +2230,7 @@ export default function ConvocatoriaContent() {
               </p>
               <a
                 href='https://wa.me/59177633551'
-                className='inline-block px-8 py-4 bg-white text-purple-600 font-semibold rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105'
+                className='inline-block px-8 py-4 bg-white text-teal-600 font-semibold rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105'
                 target='_blank'
                 rel='noopener noreferrer'
               >
