@@ -33,10 +33,6 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
               name='division'
               type='select'
               options={categoryProp === "General" ? general : colegios}
-              label='División'
-              name='division'
-              type='select'
-              options={categoryProp === "General" ? general : colegios}
             />
           </div>
           <div className='column'>
@@ -47,15 +43,7 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
             />
           </div>
         </div>
-        <SelectField
-          label='Modalidad'
-          name='modalidity'
-          type='select'
-          label='Modalidad'
-          name='modalidity'
-          type='select'
-          options={modalidad}
-        />
+        <SelectField name='modalidity' type='select' options={modalidad} />
         <InputField
           label='Nombre del profesor o Coreográfo *'
           type='text'
@@ -65,14 +53,8 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
           name='song'
           type='text'
           label='Nombre de la canción o música a bailar'
-          name='song'
-          type='text'
-          label='Nombre de la canción o música a bailar'
         />
         <InputField
-          name='notes'
-          type='text'
-          label='Aclarativo si es necesario sobre la modalidad'
           name='notes'
           type='text'
           label='Aclarativo si es necesario sobre la modalidad'
@@ -82,9 +64,9 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
           type='text'
           label='Información adiocional que desea registrar'
         />
-        <Separator className="mb-5" />
-        <InputField label="Telefono *" type="text" name="phone" />
-        <InputField label="Correo electrónico *" type="text" name="email" />
+        <Separator className='mb-5' />
+        <InputField label='Telefono *' type='text' name='phone' />
+        <InputField label='Correo electrónico *' type='text' name='email' />
         {/* <InputFile
           name="logo"
           type="file"
@@ -94,10 +76,11 @@ export const FormParticipant = ({ categoryProp, setFieldValue }) => {
         /> */}
         <div className='flex justify-center'>
           <ButtonField type='submit' addText='Registrar ahora' />
-        <div className='flex justify-center'>
-          <ButtonField type='submit' addText='Registrar ahora' />
+          <div className='flex justify-center'>
+            <ButtonField type='submit' addText='Registrar ahora' />
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};

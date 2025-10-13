@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Music } from "lucide-react";
-import { Choreography } from "@/types/userPanel.types"; // ⚡ Ajusta la ruta de tus tipos
+import { Choreography } from "@/types/userPanel.types";
 
 interface Props {
   choreographies: Choreography[];
@@ -18,7 +18,10 @@ interface Props {
 
 export default function LastChoreographiesCard({ choreographies }: Props) {
   const lastFive = [...choreographies]
-    .sort((a, b) => b.createdAt - a.createdAt) // ⚡ Cambia por createdAt si lo agregas
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
     .slice(0, 5);
 
   return (

@@ -3,6 +3,7 @@ import { Music, Heart, Sparkles, Globe, Zap, Crown } from "lucide-react";
 import { modalidad } from "../AddParticipant/utils";
 
 // Datos expandidos con información detallada para cada modalidad
+// ACTUALIZADO: Todos los colores fuchsia/purple/pink/violet reemplazados por teal/cyan/yellow
 const modalidadesData = {
   "BALLET CLÁSICO": {
     tipos: [
@@ -13,8 +14,8 @@ const modalidadesData = {
       "Centro clásico",
     ],
     icon: Crown,
-    color: "from-pink-500 to-rose-600",
-    bgColor: "from-pink-50 to-rose-50",
+    color: "from-teal-500 to-cyan-600", // Era: pink-500 to rose-600
+    bgColor: "from-teal-50 to-cyan-50", // Era: pink-50 to rose-50
   },
   "BALLET NEO - CLÁSICO": {
     tipos: [
@@ -25,8 +26,8 @@ const modalidadesData = {
       "Coreografía innovadora",
     ],
     icon: Sparkles,
-    color: "from-purple-500 to-violet-600",
-    bgColor: "from-purple-50 to-violet-50",
+    color: "from-cyan-500 to-teal-600", // Era: purple-500 to violet-600
+    bgColor: "from-cyan-50 to-teal-50", // Era: purple-50 to violet-50
   },
   "DANZA MODERNA Y CONTEMPORANEA": {
     tipos: [
@@ -62,8 +63,8 @@ const modalidadesData = {
       "Performance integral",
     ],
     icon: Sparkles,
-    color: "from-red-500 to-pink-600",
-    bgColor: "from-red-50 to-pink-50",
+    color: "from-red-500 to-yellow-600", // Era: red-500 to pink-600
+    bgColor: "from-red-50 to-yellow-50", // Era: red-50 to pink-50
   },
   "TAP DANCE": {
     tipos: [
@@ -127,8 +128,8 @@ const modalidadesData = {
       "Bailes regionales",
     ],
     icon: Globe,
-    color: "from-indigo-500 to-purple-600",
-    bgColor: "from-indigo-50 to-purple-50",
+    color: "from-blue-500 to-cyan-600", // Era: indigo-500 to purple-600
+    bgColor: "from-blue-50 to-cyan-50", // Era: indigo-50 to purple-50
   },
   "FOLKLORE NACIONAL E INTERNACIONAL DEPROYECCIÓN": {
     tipos: [
@@ -139,8 +140,8 @@ const modalidadesData = {
       "Puesta en valor",
     ],
     icon: Sparkles,
-    color: "from-violet-500 to-fuchsia-600",
-    bgColor: "from-violet-50 to-fuchsia-50",
+    color: "from-cyan-500 to-teal-600", // Era: violet-500 to fuchsia-600
+    bgColor: "from-cyan-50 to-teal-50", // Era: violet-50 to fuchsia-50
   },
   "DANZAS POPULARES": {
     tipos: [
@@ -163,8 +164,8 @@ const modalidadesData = {
       "Cover dance",
     ],
     icon: Sparkles,
-    color: "from-pink-500 to-purple-600",
-    bgColor: "from-pink-50 to-purple-50",
+    color: "from-teal-500 to-cyan-600", // Era: pink-500 to purple-600
+    bgColor: "from-teal-50 to-cyan-50", // Era: pink-50 to purple-50
   },
   "RETRO - DANCE": {
     tipos: [
@@ -215,26 +216,26 @@ export default function ModalidadCard({
 
       {/* Contenido principal */}
       <div className='relative p-6 lg:p-5'>
-        {/* Header con icono y título */}
+        {/* Header con icono y título - Reemplazado fuchsia por teal */}
         <div className='flex items-start gap-4 mb-4'>
           <div
             className={`p-3 rounded-xl transition-all duration-500 flex-shrink-0 ${
               isActive
                 ? `bg-gradient-to-br ${data.color} shadow-lg`
-                : "bg-fuchsia-100 group-hover:bg-fuchsia-200"
+                : "bg-teal-100 group-hover:bg-teal-200"
             }`}
           >
             <IconComponent
               size={24}
               className={`transition-colors duration-500 ${
-                isActive ? "text-white" : "text-fuchsia-600"
+                isActive ? "text-white" : "text-teal-600"
               }`}
             />
           </div>
           <div className='flex-1 min-w-0'>
             <h3
               className={`text-lg lg:text-xl font-bold transition-all duration-500 leading-tight ${
-                isActive ? "text-gray-900" : "text-fuchsia-800"
+                isActive ? "text-gray-900" : "text-teal-800"
               }`}
             >
               {modalidad}

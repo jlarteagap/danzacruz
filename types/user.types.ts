@@ -16,7 +16,6 @@ export interface User {
   readonly createdAt: string;
   readonly phone?: string;
 }
-
 export interface UserActions {
   readonly onLogout: () => void | Promise<void>;
   readonly onSettings: () => void | Promise<void>;

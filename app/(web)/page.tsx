@@ -4,6 +4,8 @@ import Cta from "@/components/CTA/cta";
 import Info from "@/components/Info/Info";
 import Modalidad from "@/components/Modalidad/Modalidad";
 import Times from "@/components/Times/Times";
+// import { Ads } from "@/components/Ads/Ads";
+import Awards from "@/components/Awards/Awards";
 import { Ads } from "@/components/Ads/Ads";
 
 export default async function Page() {
@@ -14,8 +16,8 @@ export default async function Page() {
       <Info />
       <Modalidad />
       <Times />
-      {/* <Awards /> */}
-      <Ads />
+      <Awards />
+      {/* <Ads /> */}
     </>
   );
 }

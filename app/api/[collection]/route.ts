@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase-admin";
 
-export async function POST(
-  req: Request,
-  { params }: { params: { collection: string } }
-) {
+type RouteContext = {
+  params: Promise<{ collection: string }>;
+};
+
+// POST: crear un nuevo documento en la colección
+export async function POST(req: Request, context: RouteContext) {
   try {
     const body = await req.json();
-    const { collection } = params;
+    const { collection } = await context.params;
 
     const docRef = await db.collection(collection).add(body);
 
@@ -20,32 +22,23 @@ export async function POST(
     );
   }
 }
-// GET: traer documentos, con filtro opcional por userId
-export async function GET(
-  req: Request,
-  { params }: { params: { collection: string } }
-) {
+
+// GET: obtener todos los documentos de una colección
+export async function GET(req: Request, context: RouteContext) {
   try {
-    const { collection } = params;
-    const { searchParams } = new URL(req.url);
-    const userId = searchParams.get("userId");
+    const { collection } = await context.params;
+    const snapshot = await db.collection(collection).get();
 
-    let query: FirebaseFirestore.Query<FirebaseFirestore.DocumentData> =
-      db.collection(collection);
+    const documents = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
-    if (userId) {
-      query = query.where("userId", "==", userId);
-    }
-
-    const snapshot = await query.get();
-
-    const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-
-    return NextResponse.json(data, { status: 200 });
+    return NextResponse.json(documents, { status: 200 });
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: "Error fetching collection" },
+      { error: "Error fetching documents" },
       { status: 500 }
     );
   }
