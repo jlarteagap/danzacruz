@@ -20,15 +20,8 @@ export default function AuthRedirectHandler({ children }) {
     if (session?.user) {
       const { profileComplete } = session.user;
 
-      console.log("Checking profile status:", {
-        profileComplete,
-        currentPath: pathname,
-        userId: session.user.id,
-      });
-
       // Si el perfil no está completo y no está en la página de completar perfil
       if (profileComplete === false && pathname !== "/profile") {
-        console.log("Redirecting to profile");
         router.push("/profile");
         return;
       }

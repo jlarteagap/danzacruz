@@ -42,7 +42,6 @@ export async function apiGet(collection: string, userId?: string) {
   const url = userId
     ? `/api/${collection}?userId=${userId}`
     : `/api/${collection}`;
-
   const res = await fetch(url, {
     method: "GET",
     headers: { "Content-Type": "application/json" },

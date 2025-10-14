@@ -19,7 +19,7 @@ const UserPanel = ({ user, onEditProfile }: UserPanelProps) => {
   const { data: session } = useSession();
 
   // Initialize data when component mounts
-  useDataInitializer();
+  useDataInitializer(session?.user?.id);
 
   const handleEditProfile = () => {
     if (onEditProfile) {

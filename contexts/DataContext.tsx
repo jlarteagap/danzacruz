@@ -35,6 +35,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({
     setIsLoadingParticipants(true);
     try {
       const data = await ParticipantService.fetchParticipants(userId);
+      console.log("Fetched participants:", data);
       setParticipants(data);
     } catch (error) {
       console.error("Error loading participants:", error);

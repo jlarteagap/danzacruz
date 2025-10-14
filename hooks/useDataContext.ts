@@ -8,13 +8,14 @@ import { useDataContext } from "@/contexts/DataContext";
  * Hook personalizado para manejar la carga inicial de datos
  * Sigue el principio de Single Responsibility
  */
-export const useDataInitializer = () => {
+export const useDataInitializer = (userId?: string) => {
   const context = useDataContext();
   const { refreshData } = context;
 
   useEffect(() => {
+    if (!userId) return; // Esperar a que exista
     refreshData();
-  }, [refreshData]);
+  }, [userId, refreshData]);
 
   return context;
 };

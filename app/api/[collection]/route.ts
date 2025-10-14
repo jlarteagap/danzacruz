@@ -1,34 +1,24 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase-admin";
 
-type RouteContext = {
-  params: Promise<{ collection: string }>;
-};
-
-// POST: crear un nuevo documento en la colección
-export async function POST(req: Request, context: RouteContext) {
+// GET: listar documentos con filtro opcional por userId
+export async function GET(
+  req: Request,
+  { params }: { params: { collection: string } }
+) {
   try {
-    const body = await req.json();
-    const { collection } = await context.params;
+    const { collection } = params;
+    const url = new URL(req.url);
+    const userId = url.searchParams.get("userId");
 
-    const docRef = await db.collection(collection).add(body);
+    let queryRef: FirebaseFirestore.Query<FirebaseFirestore.DocumentData> =
+      db.collection(collection);
 
-    return NextResponse.json({ id: docRef.id, ...body }, { status: 201 });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json(
-      { error: "Error creating document" },
-      { status: 500 }
-    );
-  }
-}
+    if (userId) {
+      queryRef = queryRef.where("userId", "==", userId);
+    }
 
-// GET: obtener todos los documentos de una colección
-export async function GET(req: Request, context: RouteContext) {
-  try {
-    const { collection } = await context.params;
-    const snapshot = await db.collection(collection).get();
-
+    const snapshot = await queryRef.get();
     const documents = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -39,6 +29,33 @@ export async function GET(req: Request, context: RouteContext) {
     console.error(error);
     return NextResponse.json(
       { error: "Error fetching documents" },
+      { status: 500 }
+    );
+  }
+}
+
+// POST: crear un nuevo documento
+export async function POST(
+  req: Request,
+  { params }: { params: { collection: string } }
+) {
+  try {
+    const { collection } = params;
+    const body = await req.json();
+
+    if (!body.userId) {
+      return NextResponse.json(
+        { error: "userId es obligatorio" },
+        { status: 400 }
+      );
+    }
+
+    const docRef = await db.collection(collection).add(body);
+    return NextResponse.json({ id: docRef.id, ...body }, { status: 201 });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      { error: "Error creating document" },
       { status: 500 }
     );
   }
