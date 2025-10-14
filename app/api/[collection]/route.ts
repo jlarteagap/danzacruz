@@ -4,10 +4,10 @@ import { db } from "@/lib/firebase-admin";
 // GET: listar documentos con filtro opcional por userId
 export async function GET(
   req: Request,
-  { params }: { params: { collection: string } }
+  { params }: { params: Promise<{ collection: string }> }
 ) {
   try {
-    const { collection } = params;
+    const { collection } = await params;
     const url = new URL(req.url);
     const userId = url.searchParams.get("userId");
 
@@ -37,10 +37,10 @@ export async function GET(
 // POST: crear un nuevo documento
 export async function POST(
   req: Request,
-  { params }: { params: { collection: string } }
+  { params }: { params: Promise<{ collection: string }> }
 ) {
   try {
-    const { collection } = params;
+    const { collection } = await params;
     const body = await req.json();
 
     if (!body.userId) {
