@@ -39,11 +39,44 @@ export interface ParticipantUpdateDTO {
   year?: number;
 }
 
-export interface BulkActionPayload {
-  participantIds: string[];
-  action: "activate" | "deactivate" | "delete";
+export interface ChoreographiesFilters {
+  search: string;
+  modality: string[];
+  participantId: string[];
+  year: number[];
+  status: string[];
 }
 
+/**
+ * Estadísticas agregadas para dashboard o paneles analíticos.
+ */
+export interface ChoreographiesStats {
+  total: number;
+  active: number;
+  inactive: number;
+  byModality: Record<string, number>;
+  byYear: Record<number, number>;
+}
+
+/**
+ * DTO para actualización parcial de coreografías (PATCH).
+ */
+export interface ChoreographyUpdateDTO {
+  name?: string;
+  modality?: string;
+  teacher?: string;
+  music?: string;
+  notes?: string;
+  clarification?: string;
+  extra?: string;
+  participantId?: string;
+  status?: boolean;
+  year?: number;
+}
+
+/**
+ * Estructura base del modelo Choreography.
+ */
 export interface Choreography {
   id: string;
   name: string;
@@ -54,7 +87,7 @@ export interface Choreography {
   clarification?: string;
   extra?: string;
   participantId: string;
-  userId: any;
+  userId: string;
   year: number;
   status: boolean;
   createdAt: Date;

@@ -3,7 +3,6 @@ import {
   Participant,
   ParticipantsStats,
   ParticipantUpdateDTO,
-  BulkActionPayload,
 } from "@/types/userPanel.types";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -63,20 +62,6 @@ class ParticipantsService {
 
     if (!response.ok) {
       throw new Error(`Error al eliminar participante: ${response.statusText}`);
-    }
-  }
-
-  async bulkAction(payload: BulkActionPayload): Promise<void> {
-    const response = await fetch(`${this.baseUrl}/bulk`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Error en acción masiva: ${response.statusText}`);
     }
   }
 

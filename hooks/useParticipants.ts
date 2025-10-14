@@ -5,7 +5,6 @@ import {
   Participant,
   ParticipantsStats,
   ParticipantUpdateDTO,
-  BulkActionPayload,
 } from "@/types/userPanel.types";
 import { participantsService } from "@/services/participantsService";
 
