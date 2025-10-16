@@ -7,7 +7,7 @@ import {
   User,
   FileText,
   Info,
-  Upload,
+  Theater,
   Loader2,
   Trash2,
 } from "lucide-react";
@@ -29,19 +29,15 @@ import {
 } from "@/hooks/use-choreography-registration";
 import { useState } from "react";
 
+import {
+  SUBDIVISION_OPTIONS,
+  MODALITIES,
+} from "@/services/api/choreography.service";
 interface ChoreographySectionProps {
   index: number;
   onRemove?: () => void;
   showRemove: boolean;
 }
-
-const MODALITIES = [
-  { value: "solo", label: "Solo" },
-  { value: "duo", label: "Dúo" },
-  { value: "trio", label: "Trío" },
-  { value: "group", label: "Grupo" },
-  { value: "formation", label: "Formación" },
-];
 
 export function ChoreographySection({
   index,
@@ -80,218 +76,244 @@ export function ChoreographySection({
             Eliminar
           </Button>
         )}
+      </div>{" "}
+      <div className='space-y-2'>
+        <Label
+          htmlFor={`${prefix}.choreographyName`}
+          className='text-sm font-medium text-apple-gray-700 flex items-center gap-2'
+        >
+          <Theater className='h-4 w-4 text-brand-teal' />
+          Nombre de la coreografía <span className='text-red-500'>*</span>
+        </Label>
+        <Field name={`${prefix}.choreographyName`}>
+          {({ field, meta }: any) => (
+            <>
+              <Input
+                {...field}
+                value={field.value || ""}
+                placeholder='Ej: Tradición Viva'
+                className={`${
+                  meta.touched && meta.error ? "border-red-400" : ""
+                }`}
+              />
+              <ErrorMessage name={`${prefix}.choreographyName`}>
+                {(msg) => (
+                  <p className='mt-1 text-sm text-red-600' role='alert'>
+                    {msg}
+                  </p>
+                )}
+              </ErrorMessage>
+            </>
+          )}
+        </Field>
       </div>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        {/* Nombre de la Coreografía */}
 
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
         {/* Category */}
-        <div className='space-y-2'>
-          <Label
-            htmlFor={`${prefix}.category`}
-            className='text-sm font-medium text-apple-gray-700'
-          >
-            Categoría <span className='text-red-500'>*</span>
-          </Label>
-          <Field name={`${prefix}.category`}>
-            {({ field, form, meta }: any) => (
-              <>
-                <Select
-                  value={field.value}
-                  onValueChange={(value) => {
-                    form.setFieldValue(`${prefix}.category`, value);
-                    setSelectedCategory(value);
-                    // Reset dependent fields
-                    form.setFieldValue(`${prefix}.division`, "");
-                    form.setFieldValue(`${prefix}.subdivision`, "");
-                    setSelectedDivision("");
-                  }}
-                  disabled={loadingCategories}
-                >
-                  <SelectTrigger
-                    className={`w-full ${
-                      meta.touched && meta.error ? "border-red-400" : ""
-                    }`}
+        <div className='flex flex-col gap-4'>
+          <div className='space-y-2'>
+            <Label
+              htmlFor={`${prefix}.category`}
+              className='text-sm font-medium text-apple-gray-700'
+            >
+              Categoría <span className='text-red-500'>*</span>
+            </Label>
+            <Field name={`${prefix}.category`}>
+              {({ field, form, meta }: any) => (
+                <>
+                  <Select
+                    value={field.value}
+                    onValueChange={(value) => {
+                      form.setFieldValue(`${prefix}.category`, value);
+                      setSelectedCategory(value);
+                      // Reset dependent fields
+                      form.setFieldValue(`${prefix}.division`, "");
+                      form.setFieldValue(`${prefix}.subdivision`, "");
+                      setSelectedDivision("");
+                    }}
+                    disabled={loadingCategories}
                   >
-                    <SelectValue placeholder='Selecciona una categoría' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {loadingCategories ? (
-                      <div className='flex items-center justify-center p-4'>
-                        <Loader2 className='h-5 w-5 animate-spin text-brand-teal' />
-                      </div>
-                    ) : (
-                      (Array.isArray(categories) ? categories : []).map(
-                        (cat) => (
-                          <SelectItem key={cat.id} value={cat.id}>
-                            {cat.name}
-                          </SelectItem>
+                    <SelectTrigger
+                      className={`w-full ${
+                        meta.touched && meta.error ? "border-red-400" : ""
+                      }`}
+                    >
+                      <SelectValue placeholder='Selecciona una categoría' />
+                    </SelectTrigger>
+                    <SelectContent className='bg-white'>
+                      {loadingCategories ? (
+                        <div className='flex items-center justify-center p-4'>
+                          <Loader2 className='h-5 w-5 animate-spin text-brand-teal' />
+                        </div>
+                      ) : (
+                        (Array.isArray(categories) ? categories : []).map(
+                          (cat) => (
+                            <SelectItem key={cat.value} value={cat.value}>
+                              {cat.name}
+                            </SelectItem>
+                          )
                         )
-                      )
+                      )}
+                    </SelectContent>
+                  </Select>
+                  <ErrorMessage name={`${prefix}.category`}>
+                    {(msg) => (
+                      <p className='mt-1 text-sm text-red-600' role='alert'>
+                        {msg}
+                      </p>
                     )}
-                  </SelectContent>
-                </Select>
-                <ErrorMessage name={`${prefix}.category`}>
-                  {(msg) => (
-                    <p className='mt-1 text-sm text-red-600' role='alert'>
-                      {msg}
-                    </p>
-                  )}
-                </ErrorMessage>
-              </>
-            )}
-          </Field>
+                  </ErrorMessage>
+                </>
+              )}
+            </Field>
+          </div>
         </div>
-
-        {/* Division */}
-        <div className='space-y-2'>
-          <Label
-            htmlFor={`${prefix}.division`}
-            className='text-sm font-medium text-apple-gray-700'
-          >
-            División <span className='text-red-500'>*</span>
-          </Label>
-          <Field name={`${prefix}.division`}>
-            {({ field, form, meta }: any) => (
-              <>
-                <Select
-                  value={field.value}
-                  onValueChange={(value) => {
-                    form.setFieldValue(`${prefix}.division`, value);
-                    setSelectedDivision(value);
-                    form.setFieldValue(`${prefix}.subdivision`, "");
-                  }}
-                  disabled={!selectedCategory || loadingDivisions}
-                >
-                  <SelectTrigger
-                    className={`w-full ${
-                      meta.touched && meta.error ? "border-red-400" : ""
-                    }`}
+        <div className='flex flex-col gap-4'>
+          {/* Division */}
+          <div className='space-y-2'>
+            <Label
+              htmlFor={`${prefix}.division`}
+              className='text-sm font-medium text-apple-gray-700'
+            >
+              División <span className='text-red-500'>*</span>
+            </Label>
+            <Field name={`${prefix}.division`}>
+              {({ field, form, meta }: any) => (
+                <>
+                  <Select
+                    value={field.value}
+                    onValueChange={(value) => {
+                      form.setFieldValue(`${prefix}.division`, value);
+                      setSelectedDivision(value);
+                      form.setFieldValue(`${prefix}.subdivision`, "");
+                    }}
+                    disabled={!selectedCategory || loadingDivisions}
                   >
-                    <SelectValue placeholder='Selecciona una división' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {loadingDivisions ? (
-                      <div className='flex items-center justify-center p-4'>
-                        <Loader2 className='h-5 w-5 animate-spin text-brand-teal' />
-                      </div>
-                    ) : (
-                      (Array.isArray(divisions) ? divisions : []).map((div) => (
-                        <SelectItem key={div.id} value={div.id}>
-                          {div.name}
+                    <SelectTrigger
+                      className={`w-full ${
+                        meta.touched && meta.error ? "border-red-400" : ""
+                      }`}
+                    >
+                      <SelectValue placeholder='Selecciona una división' />
+                    </SelectTrigger>
+                    <SelectContent className='bg-white'>
+                      {loadingDivisions ? (
+                        <div className='flex items-center justify-center p-4'>
+                          <Loader2 className='h-5 w-5 animate-spin text-brand-teal' />
+                        </div>
+                      ) : (
+                        (Array.isArray(divisions) ? divisions : []).map(
+                          (div) => (
+                            <SelectItem key={div.value} value={div.value}>
+                              {div.name}
+                            </SelectItem>
+                          )
+                        )
+                      )}
+                    </SelectContent>
+                  </Select>
+                  <ErrorMessage name={`${prefix}.division`}>
+                    {(msg) => (
+                      <p className='mt-1 text-sm text-red-600' role='alert'>
+                        {msg}
+                      </p>
+                    )}
+                  </ErrorMessage>
+                </>
+              )}
+            </Field>
+          </div>
+
+          {/* Subdivision */}
+          <div className='space-y-2'>
+            <Label
+              htmlFor={`${prefix}.subdivision`}
+              className='text-sm font-medium text-apple-gray-700'
+            >
+              Subdivisión <span className='text-red-500'>*</span>
+            </Label>
+            <Field name={`${prefix}.subdivision`}>
+              {({ field, form, meta }: any) => (
+                <>
+                  <Select
+                    value={field.value}
+                    onValueChange={(value) =>
+                      form.setFieldValue(`${prefix}.subdivision`, value)
+                    }
+                  >
+                    <SelectTrigger
+                      className={`w-full ${
+                        meta.touched && meta.error ? "border-red-400" : ""
+                      }`}
+                    >
+                      <SelectValue placeholder='Selecciona una subdivisión' />
+                    </SelectTrigger>
+                    <SelectContent className='bg-white'>
+                      {SUBDIVISION_OPTIONS.map((mod) => (
+                        <SelectItem key={mod.value} value={mod.value}>
+                          {mod.name}
                         </SelectItem>
-                      ))
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <ErrorMessage name={`${prefix}.subdivision`}>
+                    {(msg) => (
+                      <p className='mt-1 text-sm text-red-600' role='alert'>
+                        {msg}
+                      </p>
                     )}
-                  </SelectContent>
-                </Select>
-                <ErrorMessage name={`${prefix}.division`}>
-                  {(msg) => (
-                    <p className='mt-1 text-sm text-red-600' role='alert'>
-                      {msg}
-                    </p>
-                  )}
-                </ErrorMessage>
-              </>
-            )}
-          </Field>
-        </div>
+                  </ErrorMessage>
+                </>
+              )}
+            </Field>
+          </div>
 
-        {/* Subdivision */}
-        <div className='space-y-2'>
-          <Label
-            htmlFor={`${prefix}.subdivision`}
-            className='text-sm font-medium text-apple-gray-700'
-          >
-            Subdivisión <span className='text-red-500'>*</span>
-          </Label>
-          <Field name={`${prefix}.subdivision`}>
-            {({ field, form, meta }: any) => (
-              <>
-                <Select
-                  value={field.value}
-                  onValueChange={(value) =>
-                    form.setFieldValue(`${prefix}.subdivision`, value)
-                  }
-                  disabled={!selectedDivision || loadingSubdivisions}
-                >
-                  <SelectTrigger
-                    className={`w-full ${
-                      meta.touched && meta.error ? "border-red-400" : ""
-                    }`}
+          {/* Modality */}
+          <div className='space-y-2'>
+            <Label
+              htmlFor={`${prefix}.modality`}
+              className='text-sm font-medium text-apple-gray-700'
+            >
+              Modalidad <span className='text-red-500'>*</span>
+            </Label>
+            <Field name={`${prefix}.modality`}>
+              {({ field, form, meta }: any) => (
+                <>
+                  <Select
+                    value={field.value}
+                    onValueChange={(value) =>
+                      form.setFieldValue(`${prefix}.modality`, value)
+                    }
                   >
-                    <SelectValue placeholder='Selecciona una subdivisión' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {loadingSubdivisions ? (
-                      <div className='flex items-center justify-center p-4'>
-                        <Loader2 className='h-5 w-5 animate-spin text-brand-teal' />
-                      </div>
-                    ) : (
-                      (Array.isArray(subdivisions) ? subdivisions : []).map(
-                        (sub) => (
-                          <SelectItem key={sub.id} value={sub.id}>
-                            {sub.name}
-                          </SelectItem>
-                        )
-                      )
+                    <SelectTrigger
+                      className={`w-full ${
+                        meta.touched && meta.error ? "border-red-400" : ""
+                      }`}
+                    >
+                      <SelectValue placeholder='Selecciona modalidad' />
+                    </SelectTrigger>
+                    <SelectContent className='bg-white'>
+                      {MODALITIES.map((mod) => (
+                        <SelectItem key={mod.value} value={mod.value}>
+                          {mod.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <ErrorMessage name={`${prefix}.modality`}>
+                    {(msg) => (
+                      <p className='mt-1 text-sm text-red-600' role='alert'>
+                        {msg}
+                      </p>
                     )}
-                  </SelectContent>
-                </Select>
-                <ErrorMessage name={`${prefix}.subdivision`}>
-                  {(msg) => (
-                    <p className='mt-1 text-sm text-red-600' role='alert'>
-                      {msg}
-                    </p>
-                  )}
-                </ErrorMessage>
-              </>
-            )}
-          </Field>
-        </div>
-
-        {/* Modality */}
-        <div className='space-y-2'>
-          <Label
-            htmlFor={`${prefix}.modality`}
-            className='text-sm font-medium text-apple-gray-700'
-          >
-            Modalidad <span className='text-red-500'>*</span>
-          </Label>
-          <Field name={`${prefix}.modality`}>
-            {({ field, form, meta }: any) => (
-              <>
-                <Select
-                  value={field.value}
-                  onValueChange={(value) =>
-                    form.setFieldValue(`${prefix}.modality`, value)
-                  }
-                >
-                  <SelectTrigger
-                    className={`w-full ${
-                      meta.touched && meta.error ? "border-red-400" : ""
-                    }`}
-                  >
-                    <SelectValue placeholder='Selecciona modalidad' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {MODALITIES.map((mod) => (
-                      <SelectItem key={mod.value} value={mod.value}>
-                        {mod.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <ErrorMessage name={`${prefix}.modality`}>
-                  {(msg) => (
-                    <p className='mt-1 text-sm text-red-600' role='alert'>
-                      {msg}
-                    </p>
-                  )}
-                </ErrorMessage>
-              </>
-            )}
-          </Field>
+                  </ErrorMessage>
+                </>
+              )}
+            </Field>
+          </div>
         </div>
       </div>
-
       {/* Music Name */}
       <div className='space-y-2'>
         <Label
@@ -322,63 +344,6 @@ export function ChoreographySection({
           )}
         </Field>
       </div>
-
-      {/* Music File Upload */}
-      <div className='space-y-2'>
-        <Label
-          htmlFor={`${prefix}.musicFile`}
-          className='text-sm font-medium text-apple-gray-700 flex items-center gap-2'
-        >
-          <Upload className='h-4 w-4 text-brand-teal' />
-          Archivo de música (opcional)
-        </Label>
-        <Field name={`${prefix}.musicFile`}>
-          {({ form, meta }: any) => (
-            <>
-              <div className='flex items-center gap-3'>
-                <label
-                  htmlFor={`file-upload-${index}`}
-                  className='flex items-center gap-2 px-4 py-2 bg-white border-2 border-apple-gray-300 rounded-xl cursor-pointer hover:bg-apple-gray-50 hover:border-brand-teal transition-all'
-                >
-                  <Upload className='h-4 w-4' />
-                  <span className='text-sm font-medium'>
-                    Seleccionar archivo
-                  </span>
-                </label>
-                <input
-                  id={`file-upload-${index}`}
-                  type='file'
-                  accept='audio/mpeg,audio/wav,audio/mp4,audio/x-m4a'
-                  className='hidden'
-                  onChange={(e) => {
-                    const file = e.target.files?.[0];
-                    if (file) {
-                      form.setFieldValue(`${prefix}.musicFile`, file);
-                      setUploadedFileName(file.name);
-                    }
-                  }}
-                />
-                {uploadedFileName && (
-                  <span className='text-sm text-apple-gray-600 truncate max-w-xs'>
-                    {uploadedFileName}
-                  </span>
-                )}
-              </div>
-              <p className='text-xs text-apple-gray-500 mt-1'>
-                Formatos aceptados: MP3, WAV, M4A (máx. 10MB)
-              </p>
-              <ErrorMessage name={`${prefix}.musicFile`}>
-                {(msg) => (
-                  <p className='mt-1 text-sm text-red-600' role='alert'>
-                    {msg}
-                  </p>
-                )}
-              </ErrorMessage>
-            </>
-          )}
-        </Field>
-      </div>
-
       {/* Choreographer */}
       <div className='space-y-2'>
         <Label
@@ -409,7 +374,6 @@ export function ChoreographySection({
           )}
         </Field>
       </div>
-
       {/* Style Details */}
       <div className='space-y-2'>
         <Label
@@ -442,7 +406,6 @@ export function ChoreographySection({
           )}
         </Field>
       </div>
-
       {/* Additional Info */}
       <div className='space-y-2'>
         <Label
@@ -456,6 +419,7 @@ export function ChoreographySection({
           {({ field }: any) => (
             <Textarea
               {...field}
+              value={field.value ?? ""} // <-- evita null
               placeholder='Cualquier información relevante adicional...'
               rows={3}
             />

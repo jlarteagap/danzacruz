@@ -1,12 +1,17 @@
 // lib/validations/choreography-schema.ts
 import * as Yup from "yup";
-
+import { getDefaultChoreography } from "@/hooks/use-choreography-registration";
 /**
  * Validación individual de una coreografía
  * Incluye reglas condicionales y mensajes contextuales
  */
 const choreographySchema = Yup.object().shape({
   id: Yup.string().required(),
+  choreographyName: Yup.string()
+    .trim()
+    .min(3, "El nombre de la coreografía es muy corto")
+    .max(100, "El nombre de la coreografía no puede superar los 100 caracteres")
+    .required("El nombre de la coreografía es obligatorio"),
 
   category: Yup.string()
     .required("La categoría es obligatoria")
@@ -27,31 +32,17 @@ const choreographySchema = Yup.object().shape({
     }),
 
   modality: Yup.string()
-    .oneOf(["solo", "duo", "trio", "group", "formation"], "Modalidad inválida")
-    .required("La modalidad es obligatoria"),
+    .required("La modalidad es obligatoria")
+    .when("modalidad", {
+      is: (val: string) => !!val,
+      then: (schema) => schema.min(1, "Selecciona una subdivisión válida"),
+    }),
 
   musicName: Yup.string()
     .required("El nombre de la música es obligatorio")
     .min(2, "El nombre debe tener al menos 2 caracteres")
     .max(150, "El nombre no puede exceder 150 caracteres")
     .trim(),
-
-  musicFile: Yup.mixed()
-    .nullable()
-    .test("fileSize", "El archivo no debe superar 10MB", (value) => {
-      if (!value) return true; // Opcional
-      return (value as File).size <= 10 * 1024 * 1024; // 10MB
-    })
-    .test("fileType", "Solo se permiten archivos MP3, WAV o M4A", (value) => {
-      if (!value) return true;
-      const validTypes = [
-        "audio/mpeg",
-        "audio/wav",
-        "audio/mp4",
-        "audio/x-m4a",
-      ];
-      return validTypes.includes((value as File).type);
-    }),
 
   choreographer: Yup.string()
     .required("El nombre del coreógrafo es obligatorio")
@@ -60,7 +51,6 @@ const choreographySchema = Yup.object().shape({
     .trim(),
 
   styleDetails: Yup.string()
-    .required("Los detalles del estilo son obligatorios")
     .min(10, "Proporciona al menos 10 caracteres de descripción")
     .max(500, "La descripción no puede exceder 500 caracteres")
     .trim(),
@@ -85,6 +75,30 @@ export const registrationFormSchema = Yup.object().shape({
       "El nombre solo puede contener letras, espacios, guiones y apóstrofes"
     )
     .trim(),
+  participantEmail: Yup.string()
+    .required("El correo electrónico es obligatorio")
+    .email("Ingresa un correo electrónico válido")
+    .max(100, "El correo no puede exceder 100 caracteres")
+    .trim(),
+  participantPhone: Yup.string()
+    .required("El número de teléfono es obligatorio")
+    .matches(
+      /^\+?\d[\d\s\-()]{7,19}$/,
+      "Ingresa un número de teléfono válido (8 dígitos, puede incluir +, espacios, guiones o paréntesis)"
+    )
+    .trim(),
+
+  participantCity: Yup.string()
+    .required("La ciudad es obligatoria")
+    .min(2, "La ciudad debe tener al menos 2 caracteres")
+    .max(100, "La ciudad no puede exceder 100 caracteres")
+    .trim(),
+
+  participantCountry: Yup.string()
+    .required("El país es obligatorio")
+    .min(2, "El país debe tener al menos 2 caracteres")
+    .max(100, "El país no puede exceder 100 caracteres")
+    .trim(),
 
   choreographies: Yup.array()
     .of(choreographySchema)
@@ -97,16 +111,16 @@ export const registrationFormSchema = Yup.object().shape({
  * Valores iniciales para una nueva coreografía
  */
 export const getEmptyChoreography = (): any => ({
-  id: `temp-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-  category: "",
-  division: "",
-  subdivision: "",
-  modality: "solo",
+  id: `temp-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+  choreographyName: "",
+  category: "general", // default
+  division: "pre-infantil", // default
+  subdivision: "solo", // default
+  modality: "solo", // default
   musicName: "",
-  musicFile: null,
   choreographer: "",
   styleDetails: "",
-  additionalInfo: "",
+  additionalInfo: null,
 });
 
 /**
@@ -114,7 +128,11 @@ export const getEmptyChoreography = (): any => ({
  */
 export const initialFormValues = {
   participantName: "",
-  choreographies: [getEmptyChoreography()],
+  participantEmail: "",
+  participantPhone: "",
+  participantCity: "",
+  participantCountry: "",
+  choreographies: [getDefaultChoreography()],
 };
 
 /**

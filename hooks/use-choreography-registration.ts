@@ -1,11 +1,14 @@
 // lib/hooks/use-choreography-registration.ts
-
+import { useEffect } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   choreographyApi,
   MOCK_CATEGORIES,
   MOCK_DIVISIONS,
   MOCK_SUBDIVISIONS,
+  CATEGORY_OPTIONS,
+  DIVISION_OPTIONS,
+  SUBDIVISION_OPTIONS,
 } from "@/services/api/choreography.service";
 import type { RegistrationFormValues } from "@/lib/validation/choreography-schema";
 import { toast } from "sonner"; // o tu sistema de notificaciones preferido
@@ -32,7 +35,7 @@ export function useCategories() {
       // En desarrollo, usar mock data
       if (process.env.NODE_ENV === "development") {
         return new Promise((resolve) => {
-          setTimeout(() => resolve(MOCK_CATEGORIES), 500);
+          setTimeout(() => resolve(CATEGORY_OPTIONS), 500);
         });
       }
       return choreographyApi.getCategories();
@@ -55,7 +58,7 @@ export function useDivisions(categoryId: string | null) {
       if (process.env.NODE_ENV === "development") {
         return new Promise((resolve) => {
           setTimeout(() => {
-            resolve(MOCK_DIVISIONS[categoryId] || []);
+            resolve(DIVISION_OPTIONS[categoryId] || []);
           }, 400);
         });
       }
@@ -80,7 +83,7 @@ export function useSubdivisions(divisionId: string | null) {
       if (process.env.NODE_ENV === "development") {
         return new Promise((resolve) => {
           setTimeout(() => {
-            resolve(MOCK_SUBDIVISIONS[divisionId] || []);
+            resolve(SUBDIVISION_OPTIONS[divisionId] || []);
           }, 400);
         });
       }
@@ -117,23 +120,23 @@ export function useChoreographyRegistration() {
   const mutation = useMutation({
     mutationFn: async (data: RegistrationFormValues) => {
       // Simular delay de red en desarrollo
-      if (process.env.NODE_ENV === "development") {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+      // if (process.env.NODE_ENV === "development") {
+      //   await new Promise((resolve) => setTimeout(resolve, 2000));
 
-        // Simular respuesta exitosa
-        return {
-          registrationId: `REG-${Date.now()}`,
-          participantId: `PART-${Date.now()}`,
-          choreographyIds: data.choreographies.map(
-            (_, i) => `CHOREO-${Date.now()}-${i}`
-          ),
-          confirmationCode: `CONF-${Math.random()
-            .toString(36)
-            .substring(2, 8)
-            .toUpperCase()}`,
-          timestamp: new Date().toISOString(),
-        };
-      }
+      //   // Simular respuesta exitosa
+      //   return {
+      //     registrationId: `REG-${Date.now()}`,
+      //     participantId: `PART-${Date.now()}`,
+      //     choreographyIds: data.choreographies.map(
+      //       (_, i) => `CHOREO-${Date.now()}-${i}`
+      //     ),
+      //     confirmationCode: `CONF-${Math.random()
+      //       .toString(36)
+      //       .substring(2, 8)
+      //       .toUpperCase()}`,
+      //     timestamp: new Date().toISOString(),
+      //   };
+      // }
 
       return choreographyApi.registerParticipant(data);
     },
@@ -181,6 +184,30 @@ export function useChoreographyRegistration() {
     reset: mutation.reset,
   };
 }
+
+// IDs según tus mocks
+const GENERAL_CATEGORY_ID = "cat-01"; // General
+const COLEGIOS_CATEGORY_ID = "cat-02"; // Colegios
+// 🔹 Función para inicializar coreografía con categoría y división correctas
+const defaultCategory = CATEGORY_OPTIONS.find((c) => c.value === "general");
+if (!defaultCategory) throw new Error("No se encontró la categoría General");
+
+const defaultDivision = DIVISION_OPTIONS[defaultCategory.value][0];
+if (!defaultDivision)
+  throw new Error("No se encontró la división para General");
+
+export const getDefaultChoreography = () => ({
+  id: `temp-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+  choreographyName: "",
+  category: defaultCategory.value, // "general"
+  division: defaultDivision.value, // "pre-infantil"
+  subdivision: "solo",
+  modality: "solo",
+  musicName: "",
+  choreographer: "",
+  styleDetails: "",
+  additionalInfo: null,
+});
 
 /**
  * Hook para auto-guardado en localStorage (draft)

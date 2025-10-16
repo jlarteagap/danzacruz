@@ -44,7 +44,7 @@ export interface Subdivision {
 /**
  * Cliente API con configuración base
  */
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "/api";
 
 class ChoreographyApiService {
   private async request<T>(
@@ -107,13 +107,6 @@ class ChoreographyApiService {
   async registerParticipant(
     data: RegistrationFormValues
   ): Promise<RegistrationResponse> {
-    // Convertir a FormData si hay archivos de música
-    const hasFiles = data.choreographies.some((c) => c.musicFile);
-
-    if (hasFiles) {
-      return this.registerWithFiles(data);
-    }
-
     const response = await this.request<RegistrationResponse>(
       "/registrations",
       {
@@ -154,20 +147,13 @@ class ChoreographyApiService {
       );
       formData.append(
         `choreographies[${index}][styleDetails]`,
-        choreo.styleDetails
+        choreo.styleDetails ?? ""
       );
 
       if (choreo.additionalInfo) {
         formData.append(
           `choreographies[${index}][additionalInfo]`,
           choreo.additionalInfo
-        );
-      }
-
-      if (choreo.musicFile instanceof File) {
-        formData.append(
-          `choreographies[${index}][musicFile]`,
-          choreo.musicFile
         );
       }
     });
@@ -283,3 +269,65 @@ export const MOCK_SUBDIVISIONS: Record<string, Subdivision[]> = {
     { id: "sub-04", divisionId: "div-02", name: "Avanzado", level: "advanced" },
   ],
 };
+// 🔽 Categorías
+export const CATEGORY_OPTIONS = [
+  { value: "general", name: "General" },
+  { value: "colegios", name: "Colegios o Universidad" },
+];
+
+// 🔽 Divisiones por categoría
+export const DIVISION_OPTIONS = {
+  general: [
+    { value: "pre-infantil", name: "Pre-infantil" },
+    { value: "infantil", name: "Infantil" },
+    { value: "juvenil", name: "Juvenil" },
+    { value: "mayores", name: "Mayores" },
+  ],
+  colegios: [
+    { value: "pre-infantil", name: "Pre-infantil" },
+    { value: "infantil", name: "Infantil" },
+    { value: "juvenil", name: "Juvenil" },
+  ],
+};
+
+export const SUBDIVISION_OPTIONS = [
+  { value: "solo", name: "Solo" },
+  { value: "duo", name: "Dúo" },
+  { value: "trio", name: "Trío" },
+  { value: "grupo-pequeno", name: "Grupo pequeño" },
+  { value: "grupo-grande", name: "Grupo grande" },
+];
+
+export const MODALITIES = [
+  { value: "Ballet Clásico", name: "Ballet Clásico" },
+  {
+    value: "Danza Moderna y Contemporánea",
+    name: "Danza Moderna y Contemporánea",
+  },
+  { value: "Jazz", name: "Jazz" },
+  { value: "Musical", name: "Musical" },
+  { value: "Tap Dance", name: "Tap Dance" },
+  { value: "Street Dance", name: "Street Dance" },
+  {
+    value: "Bailes Tropicales y Salón  (Amateur)",
+    name: "Bailes Tropicales y Salón (Amateur)",
+  },
+  {
+    value: "Bailes Tropicales y Salón  (Profesional)",
+    name: "Bailes Tropicales y Salón (Profesional)",
+  },
+  { value: "Folk de Raíz", name: "Folklore de Raíz" },
+  { value: "Modalidad Libre", name: "Modalidad Libre" },
+  {
+    value: "Folk Nacional e Internacinal",
+    name: "Folklore Nacional e Internacinal",
+  },
+  {
+    value: "Folk Nacional e Internacinal de Proyección",
+    name: "Folklore Nacional e Internacinal de Proyección",
+  },
+  { value: "Danzas populares", name: "Danzas populares" },
+  { value: "K Pop", name: "K Pop" },
+  { value: "Retro Dance", name: "Retro Dance" },
+  { value: "Cosplay", name: "Cosplay" },
+];

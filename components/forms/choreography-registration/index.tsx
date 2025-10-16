@@ -50,10 +50,17 @@ export function ChoreographyRegistrationForm() {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [isSuccess, isLoading]);
 
-  const handleSubmit = async (values: RegistrationFormValues) => {
-    register(values);
+  const handleSubmit = async (
+    values: RegistrationFormValues,
+    formikHelpers: { resetForm: () => void }
+  ) => {
+    try {
+      await register(values); // tu función que envía los datos a la API
+      formikHelpers.resetForm(); // limpia el formulario
+    } catch (error) {
+      console.error("Error al registrar:", error);
+    }
   };
-
   const handleUseDraft = () => {
     setShowDraftRecovery(false);
   };
