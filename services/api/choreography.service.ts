@@ -14,10 +14,23 @@ export interface ApiResponse<T> {
 
 export interface RegistrationResponse {
   id: string;
-  participantId: string;
-  choreographyIds: string[];
-  confirmationCode: string;
-  timestamp: string;
+  participantName: string;
+  participantEmail: string;
+  participantPhone: string;
+  participantCity: string;
+  participantCountry: string;
+  choreographies: Array<{
+    id: string;
+    choreographyName: string;
+    category: string;
+    division: string;
+    subdivision: string;
+    modality: string;
+    musicName: string;
+    choreographer: string;
+    styleDetails: string;
+    additionalInfo: string | null;
+  }>;
 }
 
 export interface Category {

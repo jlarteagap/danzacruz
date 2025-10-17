@@ -125,7 +125,7 @@ export type Choreography = RegistrationFormValues["choreographies"][number];
 export const getDefaultChoreography = (): Choreography => ({
   id: `temp-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
   choreographyName: "",
-  category: "general",
+  category: "",
   division: "pre-infantil",
   subdivision: "solo",
   modality: "solo",

@@ -155,7 +155,6 @@ function calculateProgress(
     if (choreo.modality?.trim()) filledFields++;
     if (choreo.musicName?.trim()) filledFields++;
     if (choreo.choreographer?.trim()) filledFields++;
-    if (choreo.styleDetails?.trim()) filledFields++;
   });
 
   const progress = Math.round((filledFields / totalFields) * 100);

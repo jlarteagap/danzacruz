@@ -122,12 +122,55 @@ export function ChoreographyRegistrationForm() {
               <p className='font-medium text-green-900 mb-1'>
                 ¡Registro completado exitosamente!
               </p>
-              <p className='text-sm text-green-800'>
-                Código de confirmación:{" "}
-                <span className='font-mono font-semibold'>
-                  {data.confirmationCode}
-                </span>
-              </p>
+
+              {/* Información del Participante */}
+              <div className='text-sm text-green-800 space-y-2 mt-3'>
+                <p>
+                  <span className='font-semibold'>Participante:</span>{" "}
+                  {data.participantName}
+                </p>
+
+                {/* Coreografías Registradas */}
+                <div className='mt-3'>
+                  <p className='font-semibold mb-2'>
+                    {data.choreographies.length === 1
+                      ? "Coreografía registrada:"
+                      : `${data.choreographies.length} Coreografías registradas:`}
+                  </p>
+
+                  <div className='space-y-3 ml-2'>
+                    {data.choreographies.map((choreo, index) => (
+                      <div
+                        key={choreo.id}
+                        className='bg-white/50 rounded-lg p-3 border border-green-200'
+                      >
+                        <p className='font-medium text-green-900 mb-1'>
+                          {index + 1}. {choreo.choreographyName}
+                        </p>
+                        <div className='text-xs text-green-700 space-y-0.5'>
+                          <p>
+                            <span className='font-semibold'>Categoría:</span>{" "}
+                            {choreo.category}
+                          </p>
+                          <p>
+                            <span className='font-semibold'>División:</span>{" "}
+                            {choreo.division}
+                          </p>
+                          <p>
+                            <span className='font-semibold'>Subdivisión:</span>{" "}
+                            {choreo.subdivision}
+                          </p>
+                          <p>
+                            <span className='font-semibold'>Modalidad:</span>{" "}
+                            {choreo.modality}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               <Button
                 variant='link'
                 size='sm'
@@ -135,7 +178,7 @@ export function ChoreographyRegistrationForm() {
                   reset();
                   window.location.reload();
                 }}
-                className='mt-2 text-green-700 hover:text-green-900 p-0 h-auto'
+                className='mt-4 text-green-700 hover:text-green-900 p-0 h-auto'
               >
                 Registrar otro participante →
               </Button>

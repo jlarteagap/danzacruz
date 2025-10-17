@@ -148,7 +148,7 @@ export function useChoreographyRegistration() {
 
       // Toast de éxito
       toast.success("¡Registro exitoso!", {
-        description: `Código de confirmación: ${data.confirmationCode}`,
+        description: `Participante: ${data.participantName}`,
         duration: 5000,
       });
 
@@ -160,7 +160,6 @@ export function useChoreographyRegistration() {
       console.log("Registro completado:", {
         participant: variables.participantName,
         choreographies: variables.choreographies.length,
-        confirmationCode: data.confirmationCode,
       });
     },
     onError: (error: Error) => {
