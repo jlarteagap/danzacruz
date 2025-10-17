@@ -91,7 +91,7 @@ export function FormActions({
             <Button
               type='submit'
               disabled={isLoading || isSuccess || (hasTouched && !isValid)}
-              className='flex-1 sm:flex-none bg-gradient-to-r from-brand-teal to-brand-teal-dark hover:opacity-90 text-apple-gray-900 font-semibold shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed'
+              className='flex-1 sm:flex-none bg-gradient-to-r  from-[#63f7df] to-[#fdf770] text-slate-900 hover:opacity-90 text-apple-gray-900 font-semibold shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed'
             >
               {isLoading ? (
                 <>
