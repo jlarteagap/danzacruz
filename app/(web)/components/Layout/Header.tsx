@@ -116,10 +116,19 @@ export const Header = () => {
                 </span>
               </button>
             </Link>
-            {status !== "authenticated" && <LoginButton />}
-            {status === "authenticated" && currentUser && (
-              <UserNavbar user={currentUser} actions={actions} />
-            )}
+            <Link
+              href='/registrarse'
+              className='border-teal-400/50 group relative inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-neutral-900 font-semibold rounded-2xl shadow-lg hover:opacity-90 hover:scale-105 transition-all duration-300 ease-out'
+              style={{
+                background: "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
+              }}
+              aria-label='Ir al formulario de registro del Festival Danzacruz 2025'
+            >
+              <span className='flex items-center gap-2'>
+                Registrarse
+                <ArrowUpRight className='w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300' />
+              </span>
+            </Link>
           </div>
         )}
       </nav>
