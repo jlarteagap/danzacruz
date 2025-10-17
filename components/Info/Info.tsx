@@ -3,7 +3,7 @@ import { useState } from "react";
 import { categories, division, modalidad, subDivision } from "./Info.data";
 import InfoSection from "./InfoSection";
 import { Sparkles } from "lucide-react";
-import { login } from "@/lib/actions/auth";
+import Link from "next/link";
 
 export default function InfoData() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
@@ -111,16 +111,18 @@ export default function InfoData() {
 
           {/* CTA - Reemplazado slate por gradiente corporativo */}
           <div className='text-center mt-12 sm:mt-16'>
-            <button
-              onClick={() => login()}
-              className='inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full text-neutral-900 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-teal-400/50'
-              style={{
-                background: "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
-              }}
-            >
-              <span>¿Listo para participar?</span>
-              <div className='w-2 h-2 bg-neutral-900 rounded-full animate-pulse' />
-            </button>
+            <Link href='/registrarse'>
+              <button
+                className='inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full text-neutral-900 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-teal-400/50'
+                style={{
+                  background:
+                    "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
+                }}
+              >
+                <span>¿Listo para participar?</span>
+                <div className='w-2 h-2 bg-neutral-900 rounded-full animate-pulse' />
+              </button>
+            </Link>
           </div>
         </div>
       </section>

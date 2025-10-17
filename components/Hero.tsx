@@ -64,7 +64,7 @@ export default function Hero() {
         {/* WhatsApp Buttons - Rediseñados con paleta corporativa */}
         <div className='flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center pb-16 sm:pb-20'>
           {[
-            { number: "75095094", link: "http://wa.me/59175095094" },
+            { number: "62831956", link: "http://wa.me/59162831956" },
             { number: "75553576", link: "http://wa.me/59175553576" },
           ].map(({ number, link }) => (
             <a

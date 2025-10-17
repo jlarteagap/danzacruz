@@ -4,7 +4,7 @@ import { UserNavbar } from "@/components/UserNavbar/UserNavbar";
 import { LoginButton } from "@/components/ui/commons/LoginButton";
 import { User, UserActions } from "types/user.types";
 import { getFirstName } from "@/utils/user-display.utils";
-import { FileDown, Menu, X } from "lucide-react";
+import { FileDown, Menu, X, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -76,11 +76,7 @@ export const Header = () => {
           {/* Menú desktop */}
           <div className='hidden md:flex items-center gap-8'>
             <MainMenu user={currentUser} />
-            <Link
-              href='/pdf/danzacruz-2025.pdf'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
+            <Link href='/convocatoria' rel='noopener noreferrer'>
               <button className='group relative inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#63f7df] to-[#fdf770] text-slate-900 font-semibold rounded-2xl shadow-lg hover:opacity-90 hover:scale-105 transition-all duration-300 ease-out'>
                 <span className='relative flex items-center gap-2'>
                   <FileDown className='w-5 h-5 text-slate-900 group-hover:translate-y-0.5 transition-transform duration-300' />
@@ -88,10 +84,19 @@ export const Header = () => {
                 </span>
               </button>
             </Link>
-            {status !== "authenticated" && <LoginButton />}
-            {status === "authenticated" && currentUser && (
-              <UserNavbar user={currentUser} actions={actions} />
-            )}
+            <Link
+              href='/registrarse'
+              className='border-teal-400/50 group relative inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-neutral-900 font-semibold rounded-2xl shadow-lg hover:opacity-90 hover:scale-105 transition-all duration-300 ease-out'
+              style={{
+                background: "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
+              }}
+              aria-label='Ir al formulario de registro del Festival Danzacruz 2025'
+            >
+              <span className='flex items-center gap-2'>
+                Registrarse
+                <ArrowUpRight className='w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300' />
+              </span>
+            </Link>
           </div>
         </div>
 
