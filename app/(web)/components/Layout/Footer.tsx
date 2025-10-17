@@ -54,14 +54,14 @@ export function Footer() {
               </h4>
               <div className='space-y-2'>
                 <a
-                  href='http://wa.me/59175095094'
+                  href='http://wa.me/59162831956'
                   className='flex items-center gap-3 px-4 py-3 bg-white/60 backdrop-blur-sm border border-neutral-200/60 rounded-xl hover:bg-white/80 hover:border-neutral-300 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 group'
                 >
                   <div className='p-1.5 bg-green-500 rounded-lg group-hover:bg-green-600 transition-colors'>
                     <MessageCircle className='w-4 h-4 text-white' />
                   </div>
                   <span className='font-medium text-neutral-700 group-hover:text-neutral-900'>
-                    75095094
+                    62831956
                   </span>
                 </a>
 

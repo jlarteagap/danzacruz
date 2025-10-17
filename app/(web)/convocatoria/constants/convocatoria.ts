@@ -25,7 +25,7 @@ export const CONTACT_INFO = {
   whatsapp: {
     inscriptions: "+59177633551",
     queries: "+59175553576",
-    forms: "+59175095094",
+    forms: "+59162831956",
   },
   website: "https://www.danzacruz.com",
   bankAccount: {

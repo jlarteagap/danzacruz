@@ -183,15 +183,17 @@ export default function ConvocatoriaContent() {
           </div>
 
           {/* CTA Button - Reemplazado purple/indigo por teal/cyan */}
-          <button
-            onClick={() => scrollToSection("inscripciones")}
-            className='w-full py-3 px-4 text-white text-center font-semibold rounded-lg hover:shadow-lg transition-all duration-300 text-sm mb-6'
-            style={{
-              background: "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
-            }}
-          >
-            📝 Inscribirse Ahora
-          </button>
+          <div className='flex justify-center'>
+            <a
+              href='/pdf/danzacruz-2025.pdf'
+              className='w-full py-3 px-4 text-white text-center font-semibold rounded-lg hover:shadow-lg transition-all duration-300 text-sm mb-6'
+              style={{
+                background: "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
+              }}
+            >
+              📝 Descargar Ahora
+            </a>
+          </div>
 
           {/* Navigation - Reemplazado purple por teal */}
           <nav className='space-y-1 text-sm'>
@@ -1406,8 +1408,10 @@ export default function ConvocatoriaContent() {
                     cancelar la misma suma para su reposición
                   </p>
                   <p>
-                    • Todos los participantes recibirán un certificado de
-                    participación.
+                    • Todos los par ticipantes recibirán un cer tif icado de par
+                    ticipación (vir tual) podrán descargarlo de la pagina web
+                    del festival con el número de carnet o CI. De cada persona,
+                    1 semana después de f inalizado el festival.
                   </p>
                   <p>
                     • El coordinador/director o coreógrafo queda exento de pago,
@@ -1979,10 +1983,10 @@ export default function ConvocatoriaContent() {
                   (cursos/concurso), llenado todos los datos y enviando su ficha
                   de inscripción a través de WhatsApp al número{" "}
                   <a
-                    href='https://wa.me/59175095094'
+                    href='https://wa.me/59162831956'
                     className='text-teal-600 underline hover:text-teal-800'
                   >
-                    +591 75095094
+                    +591 62831956
                   </a>
                 </p>
               </div>
@@ -2114,10 +2118,10 @@ export default function ConvocatoriaContent() {
                     <div>
                       <p className='font-semibold mb-1'>WhatsApp - Fichas</p>
                       <a
-                        href='https://wa.me/59175095094'
+                        href='https://wa.me/59162831956'
                         className='text-teal-600 hover:underline'
                       >
-                        +591 75095094
+                        +591 62831956
                       </a>
                     </div>
                   </div>

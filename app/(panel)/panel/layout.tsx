@@ -35,20 +35,6 @@ export default async function RootLayout({
                     <span>Inicio</span>
                   </Link>
                   <Link
-                    href='/panel/inscripciones'
-                    className='flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition'
-                  >
-                    <Users className='w-5 h-5' />
-                    <span>Inscripciones</span>
-                  </Link>
-                  <Link
-                    href='/panel/certificados'
-                    className='flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition'
-                  >
-                    <FileText className='w-5 h-5' />
-                    <span>Certificados</span>
-                  </Link>
-                  <Link
                     href='/panel/configuracion'
                     className='flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition'
                   >
