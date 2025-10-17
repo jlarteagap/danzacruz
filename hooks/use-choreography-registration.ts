@@ -184,25 +184,15 @@ export function useChoreographyRegistration() {
     reset: mutation.reset,
   };
 }
+export type Choreography = RegistrationFormValues["choreographies"][number];
 
-// IDs según tus mocks
-const GENERAL_CATEGORY_ID = "cat-01"; // General
-const COLEGIOS_CATEGORY_ID = "cat-02"; // Colegios
-// 🔹 Función para inicializar coreografía con categoría y división correctas
-const defaultCategory = CATEGORY_OPTIONS.find((c) => c.value === "general");
-if (!defaultCategory) throw new Error("No se encontró la categoría General");
-
-const defaultDivision = DIVISION_OPTIONS[defaultCategory.value][0];
-if (!defaultDivision)
-  throw new Error("No se encontró la división para General");
-
-export const getDefaultChoreography = () => ({
+export const getDefaultChoreography = (): Choreography => ({
   id: `temp-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
   choreographyName: "",
-  category: defaultCategory.value, // "general"
-  division: defaultDivision.value, // "pre-infantil"
-  subdivision: "solo",
-  modality: "solo",
+  category: "",
+  division: "",
+  subdivision: "",
+  modality: "",
   musicName: "",
   choreographer: "",
   styleDetails: "",

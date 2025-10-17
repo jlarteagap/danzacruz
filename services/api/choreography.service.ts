@@ -13,7 +13,7 @@ export interface ApiResponse<T> {
 }
 
 export interface RegistrationResponse {
-  registrationId: string;
+  id: string;
   participantId: string;
   choreographyIds: string[];
   confirmationCode: string;
@@ -104,22 +104,50 @@ class ChoreographyApiService {
   /**
    * Registrar participante con coreografías
    */
+
   async registerParticipant(
     data: RegistrationFormValues
   ): Promise<RegistrationResponse> {
-    const response = await this.request<RegistrationResponse>(
-      "/registrations",
-      {
+    try {
+      console.log("📤 Enviando datos:", data); // Debug
+
+      const response = await fetch("/api/registrations", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(data),
+      });
+
+      console.log("📡 Response status:", response.status); // Debug
+
+      if (!response.ok) {
+        let errorMessage = `Error ${response.status}`;
+
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorData.message || errorMessage;
+        } catch {
+          const errorText = await response.text();
+          errorMessage = errorText || errorMessage;
+        }
+
+        console.error("❌ Error del servidor:", errorMessage);
+        throw new Error(errorMessage);
       }
-    );
 
-    if (!response.data) {
-      throw new Error("No se recibió respuesta del servidor");
+      const result: RegistrationResponse = await response.json();
+
+      if (!result || !result.id) {
+        throw new Error("Respuesta inválida del servidor");
+      }
+
+      console.log("✅ Registro exitoso:", result); // Debug
+      return result;
+    } catch (error: any) {
+      console.error("❌ Error en registerParticipant:", error);
+      throw new Error(error.message || "Error al registrar participante");
     }
-
-    return response.data;
   }
 
   /**

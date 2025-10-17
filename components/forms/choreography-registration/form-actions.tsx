@@ -139,20 +139,22 @@ function calculateProgress(
   values: RegistrationFormValues,
   errors: any
 ): number {
-  const totalFields = 1 + values.choreographies.length * 7; // participantName + (7 campos por coreografía)
+  const totalFields = 5 + values.choreographies.length * 7;
   let filledFields = 0;
 
-  // Check participant name
   if (values.participantName.trim()) filledFields++;
+  if (values.participantEmail.trim()) filledFields++;
+  if (values.participantPhone.trim()) filledFields++;
+  if (values.participantCity.trim()) filledFields++;
+  if (values.participantCountry.trim()) filledFields++;
 
-  // Check each choreography
   values.choreographies.forEach((choreo) => {
-    if (choreo.category) filledFields++;
-    if (choreo.division) filledFields++;
-    if (choreo.subdivision) filledFields++;
-    if (choreo.modality) filledFields++;
-    if (choreo.musicName.trim()) filledFields++;
-    if (choreo.choreographer.trim()) filledFields++;
+    if (choreo.category?.trim()) filledFields++;
+    if (choreo.division?.trim()) filledFields++;
+    if (choreo.subdivision?.trim()) filledFields++;
+    if (choreo.modality?.trim()) filledFields++;
+    if (choreo.musicName?.trim()) filledFields++;
+    if (choreo.choreographer?.trim()) filledFields++;
     if (choreo.styleDetails?.trim()) filledFields++;
   });
 

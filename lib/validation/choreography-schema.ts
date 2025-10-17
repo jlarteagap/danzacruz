@@ -1,11 +1,12 @@
 // lib/validations/choreography-schema.ts
 import * as Yup from "yup";
-import { getDefaultChoreography } from "@/hooks/use-choreography-registration";
+
 /**
- * Validación individual de una coreografía
- * Incluye reglas condicionales y mensajes contextuales
+ * Tipos TS derivados (útiles para el resto de la app)
+ * - Choreography: tipo de una coreografía individual
+ * - RegistrationFormValues: tipo del formulario
  */
-const choreographySchema = Yup.object().shape({
+export const choreographySchema = Yup.object({
   id: Yup.string().required(),
   choreographyName: Yup.string()
     .trim()
@@ -35,7 +36,7 @@ const choreographySchema = Yup.object().shape({
     .required("La modalidad es obligatoria")
     .when("modalidad", {
       is: (val: string) => !!val,
-      then: (schema) => schema.min(1, "Selecciona una subdivisión válida"),
+      then: (schema) => schema.min(1, "Selecciona una modalidad válida"),
     }),
 
   musicName: Yup.string()
@@ -53,7 +54,8 @@ const choreographySchema = Yup.object().shape({
   styleDetails: Yup.string()
     .min(10, "Proporciona al menos 10 caracteres de descripción")
     .max(500, "La descripción no puede exceder 500 caracteres")
-    .trim(),
+    .trim()
+    .nullable(),
 
   additionalInfo: Yup.string()
     .max(300, "La información adicional no puede exceder 300 caracteres")
@@ -63,9 +65,8 @@ const choreographySchema = Yup.object().shape({
 
 /**
  * Schema principal del formulario de registro
- * Valida participante + array de coreografías
  */
-export const registrationFormSchema = Yup.object().shape({
+export const registrationFormSchema = Yup.object({
   participantName: Yup.string()
     .required("El nombre del participante es obligatorio")
     .min(2, "El nombre debe tener al menos 2 caracteres")
@@ -75,11 +76,13 @@ export const registrationFormSchema = Yup.object().shape({
       "El nombre solo puede contener letras, espacios, guiones y apóstrofes"
     )
     .trim(),
+
   participantEmail: Yup.string()
     .required("El correo electrónico es obligatorio")
     .email("Ingresa un correo electrónico válido")
     .max(100, "El correo no puede exceder 100 caracteres")
     .trim(),
+
   participantPhone: Yup.string()
     .required("El número de teléfono es obligatorio")
     .matches(
@@ -108,15 +111,24 @@ export const registrationFormSchema = Yup.object().shape({
 });
 
 /**
+ * Tipos TypeScript inferidos desde Yup para seguridad
+ */
+export type RegistrationFormValues = Yup.InferType<
+  typeof registrationFormSchema
+>;
+
+export type Choreography = RegistrationFormValues["choreographies"][number];
+
+/**
  * Valores iniciales para una nueva coreografía
  */
-export const getEmptyChoreography = (): any => ({
+export const getDefaultChoreography = (): Choreography => ({
   id: `temp-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
   choreographyName: "",
-  category: "general", // default
-  division: "pre-infantil", // default
-  subdivision: "solo", // default
-  modality: "solo", // default
+  category: "general",
+  division: "pre-infantil",
+  subdivision: "solo",
+  modality: "solo",
   musicName: "",
   choreographer: "",
   styleDetails: "",
@@ -124,9 +136,9 @@ export const getEmptyChoreography = (): any => ({
 });
 
 /**
- * Valores iniciales del formulario completo
+ * Valores iniciales del formulario completo (tipados explícitamente)
  */
-export const initialFormValues = {
+export const initialFormValues: RegistrationFormValues = {
   participantName: "",
   participantEmail: "",
   participantPhone: "",
@@ -135,9 +147,4 @@ export const initialFormValues = {
   choreographies: [getDefaultChoreography()],
 };
 
-/**
- * Tipo inferido del schema para TypeScript
- */
-export type RegistrationFormValues = Yup.InferType<
-  typeof registrationFormSchema
->;
+export default registrationFormSchema;

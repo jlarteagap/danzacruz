@@ -160,7 +160,7 @@ export function ChoreographyRegistrationForm() {
         )}
 
         {/* Main Form */}
-        <Formik
+        <Formik<RegistrationFormValues>
           initialValues={recoveredDraft || initialFormValues}
           validationSchema={registrationFormSchema}
           onSubmit={handleSubmit}
