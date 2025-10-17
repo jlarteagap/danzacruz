@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ChoreographySection } from "./choreography-section";
 import {
-  getEmptyChoreography,
+  getDefaultChoreography,
   type RegistrationFormValues,
 } from "@/lib/validation/choreography-schema";
 
@@ -54,7 +54,7 @@ export function ChoreographyList({ formik }: ChoreographyListProps) {
               <>
                 <Button
                   type='button'
-                  onClick={() => push(getEmptyChoreography())}
+                  onClick={() => push(getDefaultChoreography())}
                   variant='outline'
                   size='lg'
                   className='w-full sm:w-auto border-2 border-dashed border-brand-teal/40 bg-brand-teal/5 hover:bg-brand-teal/10 hover:border-brand-teal text-apple-gray-900 transition-all duration-200'
