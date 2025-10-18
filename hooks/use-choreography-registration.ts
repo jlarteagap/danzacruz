@@ -1,11 +1,8 @@
 // lib/hooks/use-choreography-registration.ts
-import { useEffect } from "react";
+
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   choreographyApi,
-  MOCK_CATEGORIES,
-  MOCK_DIVISIONS,
-  MOCK_SUBDIVISIONS,
   CATEGORY_OPTIONS,
   DIVISION_OPTIONS,
   SUBDIVISION_OPTIONS,

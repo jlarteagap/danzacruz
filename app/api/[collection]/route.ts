@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase-admin";
 
+// Colecciones que NO requieren userId
+const PUBLIC_COLLECTIONS = ["registrations"];
+
 // GET: listar documentos con filtro opcional por userId
 export async function GET(
   req: Request,
@@ -43,17 +46,28 @@ export async function POST(
     const { collection } = await params;
     const body = await req.json();
 
-    if (!body.userId) {
+    // ✅ SOLUCIÓN: Solo validar userId si NO es una colección pública
+    const isPublicCollection = PUBLIC_COLLECTIONS.includes(collection);
+
+    if (!isPublicCollection && !body.userId) {
       return NextResponse.json(
         { error: "userId es obligatorio" },
         { status: 400 }
       );
     }
 
-    const docRef = await db.collection(collection).add(body);
-    return NextResponse.json({ id: docRef.id, ...body }, { status: 201 });
+    // Agregar metadata de creación
+    const docData = {
+      ...body,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    const docRef = await db.collection(collection).add(docData);
+
+    return NextResponse.json({ id: docRef.id, ...docData }, { status: 201 });
   } catch (error) {
-    console.error(error);
+    console.error("Error creating document:", error);
     return NextResponse.json(
       { error: "Error creating document" },
       { status: 500 }
