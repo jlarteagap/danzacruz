@@ -30,6 +30,8 @@ import {
 import { useState } from "react";
 
 import {
+  CATEGORY_OPTIONS,
+  DIVISION_OPTIONS,
   SUBDIVISION_OPTIONS,
   MODALITIES,
 } from "@/services/api/choreography.service";
@@ -46,9 +48,7 @@ export function ChoreographySection({
 }: ChoreographySectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedDivision, setSelectedDivision] = useState<string>("");
-  const [uploadedFileName, setUploadedFileName] = useState<string>("");
 
-  const { data: categories, isLoading: loadingCategories } = useCategories();
   const { data: divisions, isLoading: loadingDivisions } =
     useDivisions(selectedCategory);
   const { data: subdivisions, isLoading: loadingSubdivisions } =
@@ -127,12 +127,11 @@ export function ChoreographySection({
                     onValueChange={(value) => {
                       form.setFieldValue(`${prefix}.category`, value);
                       setSelectedCategory(value);
-                      // Reset dependent fields
+                      // Reset dependientes
                       form.setFieldValue(`${prefix}.division`, "");
                       form.setFieldValue(`${prefix}.subdivision`, "");
                       setSelectedDivision("");
                     }}
-                    disabled={loadingCategories}
                   >
                     <SelectTrigger
                       className={`w-full ${
@@ -142,19 +141,11 @@ export function ChoreographySection({
                       <SelectValue placeholder='Selecciona una categoría' />
                     </SelectTrigger>
                     <SelectContent className='bg-white'>
-                      {loadingCategories ? (
-                        <div className='flex items-center justify-center p-4'>
-                          <Loader2 className='h-5 w-5 animate-spin text-brand-teal' />
-                        </div>
-                      ) : (
-                        (Array.isArray(categories) ? categories : []).map(
-                          (cat) => (
-                            <SelectItem key={cat.value} value={cat.value}>
-                              {cat.name}
-                            </SelectItem>
-                          )
-                        )
-                      )}
+                      {CATEGORY_OPTIONS.map((cat) => (
+                        <SelectItem key={cat.value} value={cat.value}>
+                          {cat.name}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <ErrorMessage name={`${prefix}.category`}>
@@ -188,7 +179,7 @@ export function ChoreographySection({
                       setSelectedDivision(value);
                       form.setFieldValue(`${prefix}.subdivision`, "");
                     }}
-                    disabled={!selectedCategory || loadingDivisions}
+                    disabled={!selectedCategory}
                   >
                     <SelectTrigger
                       className={`w-full ${
@@ -197,19 +188,18 @@ export function ChoreographySection({
                     >
                       <SelectValue placeholder='Selecciona una división' />
                     </SelectTrigger>
+
                     <SelectContent className='bg-white'>
-                      {loadingDivisions ? (
-                        <div className='flex items-center justify-center p-4'>
-                          <Loader2 className='h-5 w-5 animate-spin text-brand-teal' />
-                        </div>
+                      {Array.isArray(DIVISION_OPTIONS[selectedCategory]) ? (
+                        DIVISION_OPTIONS[selectedCategory].map((div) => (
+                          <SelectItem key={div.value} value={div.value}>
+                            {div.name}
+                          </SelectItem>
+                        ))
                       ) : (
-                        (Array.isArray(divisions) ? divisions : []).map(
-                          (div) => (
-                            <SelectItem key={div.value} value={div.value}>
-                              {div.name}
-                            </SelectItem>
-                          )
-                        )
+                        <div className='p-3 text-gray-500 text-sm'>
+                          Selecciona una categoría primero
+                        </div>
                       )}
                     </SelectContent>
                   </Select>
