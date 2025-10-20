@@ -3,11 +3,12 @@ import Link from "next/link";
 
 import { monserrat } from "../../ui/fonts";
 import "../../ui/global.css";
-import { Home, Users, FileText, Settings } from "lucide-react";
+import { Home, Users, FileText, Settings, BookUser } from "lucide-react";
 import { PanelHeader } from "@/components/Panel/PanelHeader";
 import { auth } from "@/auth";
 import { SessionProvider } from "next-auth/react";
 import Providers from "./providers";
+import { Toaster } from "sonner";
 
 export default async function RootLayout({
   children,
@@ -35,11 +36,25 @@ export default async function RootLayout({
                     <span>Inicio</span>
                   </Link>
                   <Link
-                    href='/panel/configuracion'
+                    href='/panel/coreografias'
                     className='flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition'
                   >
-                    <Settings className='w-5 h-5' />
-                    <span>Configuración</span>
+                    <BookUser className='w-5 h-5' />
+                    <span>Coreografías</span>
+                  </Link>
+                  <Link
+                    href='/panel/participantes'
+                    className='flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition'
+                  >
+                    <FileText className='w-5 h-5' />
+                    <span>Participantes</span>
+                  </Link>
+                  <Link
+                    href='/panel/usuarios'
+                    className='flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition'
+                  >
+                    <Users className='w-5 h-5' />
+                    <span>Usuarios</span>
                   </Link>
                 </nav>
 
@@ -50,6 +65,7 @@ export default async function RootLayout({
 
               {/* Main content */}
               <main className='flex-1 p-6'>
+                <Toaster position='top-right' richColors />
                 <PanelHeader />
                 {children}
               </main>

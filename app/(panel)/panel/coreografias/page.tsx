@@ -1,10 +1,9 @@
-// app/dashboard/participantes/page.tsx
+// app/dashboard/coreografias/page.tsx
 "use client";
-
 import { useState } from "react";
-import { useParticipants } from "@/hooks/useParticipants";
-import { DataTable } from "@/components/Panel/participants/data-table";
-import { createColumns } from "@/components/Panel/participants/Columns";
+import { useChoreographies } from "@/hooks/useChoreographies";
+import { createColumns } from "@/components/Panel/choreographies/Columns";
+import { DataTable } from "@/components/Panel/choreographies/data-table";
 
 import {
   Card,
@@ -15,37 +14,37 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Loader2, RefreshCcw } from "lucide-react";
-import { Participant } from "@/types/userPanel.types";
+import { Choreography } from "@/types/userPanel.types";
 import { toast } from "sonner";
 
-export default function ParticipantsPage() {
+export default function ChoreographiesPage() {
   const {
-    data: participants,
+    data: choreographies,
     isLoading,
     isError,
     error,
     refetch,
-  } = useParticipants();
+  } = useChoreographies();
 
-  const [selectedParticipant, setSelectedParticipant] =
-    useState<Participant | null>(null);
+  const [selectedChoreography, setSelectedChoreography] =
+    useState<Choreography | null>(null);
   const [detailSheetOpen, setDetailSheetOpen] = useState(false);
 
-  const handleView = (participant: Participant) => {
-    setSelectedParticipant(participant);
+  const handleView = (choreography: Choreography) => {
+    setSelectedChoreography(choreography);
     setDetailSheetOpen(true);
   };
 
-  const handleEdit = (participant: Participant) => {
+  const handleEdit = (choreography: Choreography) => {
     // Aquí podrías abrir un modal de edición o redirigir
     toast.info("Funcionalidad de edición próximamente");
-    console.log("Editar:", participant);
+    console.log("Editar:", choreography);
   };
 
-  const handleDelete = (participant: Participant) => {
+  const handleDelete = (choreography: Choreography) => {
     // Aquí podrías implementar la eliminación individual
     toast.info("Funcionalidad de eliminación próximamente");
-    console.log("Eliminar:", participant);
+    console.log("Eliminar:", choreography);
   };
 
   if (isLoading) {
@@ -53,7 +52,7 @@ export default function ParticipantsPage() {
       <div className='flex flex-col items-center justify-center h-[calc(100vh-200px)] space-y-4'>
         <Loader2 className='h-10 w-10 animate-spin text-primary' />
         <div className='text-center space-y-2'>
-          <p className='text-lg font-medium'>Cargando participantes</p>
+          <p className='text-lg font-medium'>Cargando coreografías</p>
           <p className='text-sm text-muted-foreground'>
             Esto puede tardar unos segundos...
           </p>
@@ -93,9 +92,9 @@ export default function ParticipantsPage() {
       {/* Header */}
       <div className='flex items-center justify-between'>
         <div>
-          <h1 className='text-3xl font-bold tracking-tight'>Participantes</h1>
+          <h1 className='text-3xl font-bold tracking-tight'>Coreografías</h1>
           <p className='text-muted-foreground mt-1'>
-            Administra y monitorea todos los participantes del sistema
+            Administra y monitorea todas las coreografías del sistema
           </p>
         </div>
 
@@ -108,13 +107,13 @@ export default function ParticipantsPage() {
       {/* Data Table */}
       <Card className='bg-white'>
         <CardHeader>
-          <CardTitle>Lista de Participantes</CardTitle>
+          <CardTitle>Lista de Coreografías</CardTitle>
           <CardDescription>
-            Visualiza, filtra y administra todos los participantes registrados
+            Visualiza, filtra y administra todas las coreografías registradas
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <DataTable columns={columns} data={participants ?? []} />
+          <DataTable columns={columns} data={choreographies ?? []} />
         </CardContent>
       </Card>
     </div>

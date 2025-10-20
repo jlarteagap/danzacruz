@@ -4,13 +4,79 @@ export interface Participant {
   category: string;
   division: string;
   subDivision?: string;
-  userId: any;
+  userId: string;
   year: number;
   image?: string;
+  status?: "active" | "inactive";
+  email?: string;
+  phone?: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
+export interface ParticipantsFilters {
+  search: string;
+  category: string[];
+  division: string[];
+  year: number[];
+  status: string[];
+}
+
+export interface ParticipantsStats {
+  total: number;
+  active: number;
+  inactive: number;
+  byCategory: Record<string, number>;
+  byDivision: Record<string, number>;
+}
+
+export interface ParticipantUpdateDTO {
+  name?: string;
+  category?: string;
+  division?: string;
+  subDivision?: string;
+  status?: "active" | "inactive";
+  year?: number;
+}
+
+export interface ChoreographiesFilters {
+  search: string;
+  modality: string[];
+  participantId: string[];
+  year: number[];
+  status: string[];
+}
+
+/**
+ * Estadísticas agregadas para dashboard o paneles analíticos.
+ */
+export interface ChoreographiesStats {
+  total: number;
+  active: number;
+  inactive: number;
+  byModality: Record<string, number>;
+  byYear: Record<number, number>;
+}
+
+/**
+ * DTO para actualización parcial de coreografías (PATCH).
+ */
+export interface ChoreographyUpdateDTO {
+  name?: string;
+  modality?: string;
+  teacher?: string;
+  music?: string;
+  notes?: string;
+  clarification?: string;
+  extra?: string;
+  participantId?: string;
+  status?: boolean;
+  year?: number;
+}
+
+/**
+ * Estructura base del modelo Choreography.
+ */
 export interface Choreography {
   id: string;
   name: string;
@@ -21,7 +87,7 @@ export interface Choreography {
   clarification?: string;
   extra?: string;
   participantId: string;
-  userId: any;
+  userId: string;
   year: number;
   status: boolean;
   createdAt: Date;

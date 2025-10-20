@@ -18,6 +18,7 @@ export const useParticipantForm = (
     category: participant?.category || "General",
     division: participant?.division || "",
     subDivision: participant?.subDivision || "Grupo pequeño",
+    year: participant?.year || new Date().getFullYear(),
   };
 
   // Esquema de validación con Yup
@@ -44,6 +45,7 @@ export const useParticipantForm = (
       const payload = {
         ...values,
         userId: user.id,
+        year: new Date().getFullYear(),
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
