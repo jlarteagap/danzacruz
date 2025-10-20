@@ -4,11 +4,11 @@ import { USER_ROLES } from "@/types/user.types";
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { userId: string } }
+  { params }: { params: Promise<{ userId: string }> }
 ) {
   try {
     const body = await req.json();
-    const { userId } = params;
+    const { userId } = await params;
     const { role } = body;
 
     // Validación simple del rol

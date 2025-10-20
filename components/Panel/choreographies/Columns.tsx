@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Choreography } from "@/types/userPanel.types";
+import { RegistrationResponse } from "@/services/api/choreography.service";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
@@ -25,9 +25,9 @@ import { format } from "date-fns";
 import { es } from "date-fns/locale";
 
 export const createColumns = (
-  onEdit: (choreography: Choreography) => void,
-  onDelete: (choreography: Choreography) => void
-): ColumnDef<Choreography>[] => [
+  onEdit: (choreography: RegistrationResponse) => void,
+  onDelete: (choreography: RegistrationResponse) => void
+): ColumnDef<RegistrationResponse>[] => [
   {
     id: "select",
     header: ({ table }) => (
@@ -64,15 +64,10 @@ export const createColumns = (
     ),
     cell: ({ row }) => {
       const name = row.getValue("name") as string;
-      const notes = row.original.notes;
+
       return (
         <div className='flex flex-col'>
           <span className='font-medium'>{name}</span>
-          {notes && (
-            <span className='text-xs text-muted-foreground truncate max-w-[200px]'>
-              {notes}
-            </span>
-          )}
         </div>
       );
     },
@@ -165,12 +160,6 @@ export const createColumns = (
   {
     id: "createdAt",
     header: "Creación",
-    cell: ({ row }) => {
-      const date = row.original.createdAt
-        ? format(new Date(row.original.createdAt), "dd/MM/yyyy", { locale: es })
-        : "-";
-      return <span className='text-sm text-muted-foreground'>{date}</span>;
-    },
   },
   {
     id: "actions",

@@ -18,16 +18,15 @@ export function DataTableToolbar<TData>({
   table,
   selectedIds,
 }: DataTableToolbarProps<TData>) {
-  console.log(table.getColumn("modality"));
   const isFiltered = table.getState().columnFilters.length > 0;
 
   // Opciones de filtros dinámicos
   const modalities = Array.from(
-    table.getColumn("modality")?.getFacetedUniqueValues()?.keys() ?? []
+    table.getColumn("participantName")?.getFacetedUniqueValues()?.keys() ?? []
   ).map((value) => ({ label: value as string, value: value as string }));
 
   const statuses = Array.from(
-    table.getColumn("status")?.getFacetedUniqueValues()?.keys() ?? []
+    table.getColumn("participant")?.getFacetedUniqueValues()?.keys() ?? []
   ).map((value) => ({ label: value as string, value: value as string }));
 
   // Opcional: filtro por participantId

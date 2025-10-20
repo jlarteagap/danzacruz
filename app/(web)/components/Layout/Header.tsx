@@ -26,21 +26,17 @@ export const Header = () => {
     [router]
   );
 
-  const currentUser: User | null = useMemo(() => {
+  const currentUser = useMemo<User | null>(() => {
     if (!session?.user) return null;
     return {
-      id: session.user.id || "unknown",
-      name: session.user.name || "Usuario",
-      email: session.user.email || "",
+      ...session.user,
       avatar:
         session.user.image ||
         `https://ui-avatars.com/api/?name=${encodeURIComponent(
           session.user.name || "U"
         )}&background=63f7df&color=fff`,
-      role: session.user.role || "Usuario",
     };
   }, [session]);
-
   const firstName = useMemo(
     () => (currentUser ? getFirstName(currentUser.name) : ""),
     [currentUser]

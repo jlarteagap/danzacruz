@@ -23,14 +23,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
+
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
-import { Choreography } from "@/types/userPanel.types";
+import { RegistrationResponse } from "@/services/api/choreography.service";
 
 interface DataTableProps {
-  columns: ColumnDef<Choreography>[];
-  data: Choreography[];
+  columns: ColumnDef<RegistrationResponse>[];
+  data: RegistrationResponse[];
 }
 
 export function DataTable({ columns, data }: DataTableProps) {

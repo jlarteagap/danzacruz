@@ -1,4 +1,5 @@
 import NextAuth, { DefaultSession } from "next-auth";
+import { UserRole } from "./user.types";
 
 // 👇 Extiende los tipos por defecto de NextAuth
 declare module "next-auth" {
@@ -8,8 +9,10 @@ declare module "next-auth" {
       name: string;
       email: string;
       image?: string;
-      role?: string; // ✅ añadimos role aquí
-    } & DefaultSession["user"];
+      role: UserRole;
+      createdAt: string;
+      phone?: string;
+    };
   }
 
   interface User {
