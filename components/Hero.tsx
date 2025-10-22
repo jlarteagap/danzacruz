@@ -1,103 +1,248 @@
 "use client";
 
-import { MessageSquareShare, Calendar, MapPin, Star } from "lucide-react";
+import {
+  MessageSquare,
+  MapPin,
+  Calendar,
+  Instagram,
+  Facebook,
+  Music,
+  Sparkles,
+} from "lucide-react";
+import { useState, useEffect } from "react";
 
-export default function Hero() {
+export default function HeroImmersive() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
     <section
-      className='relative min-h-screen flex items-center justify-center overflow-hidden text-center'
+      className='relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20'
       role='banner'
-      aria-label='Sección principal de bienvenida a Danzacruz'
+      aria-label='Sección principal de bienvenida a Danzacruz 2025'
     >
-      {/* Background - Reemplazado: indigo->cyan, purple->primary (#63f7df) */}
-      <div
-        aria-hidden='true'
-        className='absolute inset-0 bg-gradient-to-br from-blue-50 via-cyan-50/90 to-teal-50'
-      >
-        <div className='absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-blue-200/30 rounded-full blur-2xl sm:blur-3xl animate-pulse'></div>
-        {/* Reemplazado: purple-200 -> teal-200 (equivalente a #63f7df) */}
-        <div className='absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-teal-200/30 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000'></div>
-        {/* Reemplazado: purple-100, pink-100 -> cyan-100, yellow-100 */}
-        <div className='hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] lg:w-[800px] h-[600px] lg:h-[800px] bg-gradient-conic from-blue-100/20 via-cyan-100/20 to-yellow-100/20 rounded-full blur-3xl animate-spin [animation-duration:60s]'></div>
+      {/* Fullscreen Background Image with Overlay */}
+      <div className='absolute inset-0' aria-hidden='true'>
+        {/* Background Image */}
+        <div className='absolute inset-0 bg-gradient-to-br from-emerald-100 via-teal-50 to-cyan-100'>
+          {/* <img
+            src='/api/placeholder/1920/1080'
+            alt=''
+            className='w-full h-full object-cover'
+          /> */}
+        </div>
+
+        {/* Gradient Overlay for readability */}
+        <div className='absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60' />
+        <div className='absolute inset-0 bg-gradient-to-r from-emerald-900/40 via-transparent to-teal-900/40' />
       </div>
 
-      {/* Gradient overlay for readability */}
-      <div className='absolute inset-0 -z-10 bg-gradient-to-br from-neutral-100/60 to-neutral-200/40 backdrop-blur-[2px]' />
-
-      {/* Content */}
-      <div className='relative z-10 container mx-auto px-4 sm:px-6 md:px-8'>
-        {/* Badge */}
-        <div className='inline-flex items-center gap-2 px-4 py-2 mb-6 sm:mb-8 bg-white/70 backdrop-blur-sm border border-white/80 rounded-full shadow-sm'>
-          <Star className='w-4 h-4 text-amber-500' aria-hidden='true' />
-          <span className='text-xs sm:text-sm font-medium text-neutral-700'>
-            25 años de tradición
-          </span>
-        </div>
-
-        {/* Title */}
-        <h1 className='text-4xl sm:text-6xl md:text-8xl font-bold text-transparent bg-gradient-to-br from-neutral-900 via-neutral-700 to-neutral-600 bg-clip-text tracking-tight leading-tight md:leading-none text-balance mb-4'>
-          DANZACRUZ
-        </h1>
-
-        {/* Subtitle */}
-        <p className='text-base sm:text-xl md:text-2xl text-neutral-600 mb-10 sm:mb-12 font-medium leading-relaxed max-w-xl sm:max-w-2xl mx-auto text-balance'>
-          25 años proyectando Bolivia al mundo
-        </p>
-
-        {/* Date and Location - Reemplazado purple-600 -> teal-600 */}
-        <div className='flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-4 px-5 py-3 mb-10 sm:mb-12 bg-white/50 backdrop-blur-sm border border-white/70 rounded-2xl shadow-lg text-neutral-800'>
-          <div className='flex items-center gap-2'>
-            <Calendar className='w-5 h-5 text-teal-500' aria-hidden='true' />
-            <span className='text-sm sm:text-lg font-semibold uppercase tracking-wide'>
-              6 - 9 de Noviembre 2025
-            </span>
-          </div>
-          <div className='flex items-center gap-2'>
-            {/* Reemplazado: purple-600 -> teal-600 (#63f7df range) */}
-            <MapPin className='w-5 h-5 text-teal-600' aria-hidden='true' />
-            <span className='text-sm sm:text-lg font-medium'>
-              Santa Cruz, Bolivia
-            </span>
-          </div>
-        </div>
-
-        {/* WhatsApp Buttons - Rediseñados con paleta corporativa */}
-        <div className='flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center pb-16 sm:pb-20'>
-          {[
-            { number: "62831956", link: "http://wa.me/59162831956" },
-            { number: "75553576", link: "http://wa.me/59175553576" },
-          ].map(({ number, link }) => (
-            <a
-              key={number}
-              href={link}
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label={`Contactar por WhatsApp al ${number}`}
-              className='group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-400 to-cyan-500 text-neutral-900 font-bold rounded-full shadow-lg shadow-teal-400/30 hover:shadow-xl hover:shadow-teal-400/50 hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-out min-w-[180px] sm:min-w-[200px] justify-center border border-teal-300/50'
-              style={{
-                background: "linear-gradient(135deg, #63f7df 0%, #2dd4bf 100%)",
-              }}
-            >
-              <div className='p-1 bg-neutral-900/10 rounded-lg group-hover:bg-neutral-900/20 transition-colors'>
-                <MessageSquareShare className='w-4 h-4 sm:w-5 sm:h-5' />
-              </div>
-              <span className='tracking-wide'>{number}</span>
-            </a>
-          ))}
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className='mt-10 sm:mt-20 relative'>
+      {/* Animated Confetti/Particles for 25th Anniversary */}
+      <div
+        className='absolute inset-0 overflow-hidden pointer-events-none'
+        aria-hidden='true'
+      >
+        {[...Array(20)].map((_, i) => (
           <div
-            className='absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 animate-bounce'
-            aria-hidden='true'
-          >
-            <div className='w-5 sm:w-6 h-8 sm:h-10 border-2 border-neutral-400 rounded-full flex justify-center items-start'>
-              <div className='w-1 h-3 bg-neutral-400 rounded-full mt-2 animate-pulse'></div>
+            key={i}
+            className='absolute w-2 h-2 bg-gradient-to-br from-emerald-400 to-teal-400 rounded-full opacity-60 animate-float-particle'
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${5 + Math.random() * 10}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Main Content */}
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
+        <div
+          className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          {/* Anniversary Badge with Glassmorphism */}
+          <div className='inline-flex items-center gap-3 px-5 py-2.5 mb-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl'>
+            <Sparkles
+              className='w-4 h-4 text-amber-400 animate-pulse'
+              aria-hidden='true'
+            />
+            <span className='text-sm font-semibold text-white tracking-widest uppercase'>
+              Edición 25° Aniversario
+            </span>
+            <Sparkles
+              className='w-4 h-4 text-amber-400 animate-pulse'
+              aria-hidden='true'
+            />
+          </div>
+
+          {/* Main Title - Hero Typography */}
+          <div className='space-y-6 mb-10'>
+            <h1 className='text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight'>
+              <span className='block text-white drop-shadow-2xl mb-2'>
+                DANZACRUZ
+              </span>
+              <span className='block text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-cyan-300 drop-shadow-lg text-5xl sm:text-6xl md:text-7xl lg:text-8xl'>
+                2025
+              </span>
+            </h1>
+
+            <p className='text-xl sm:text-2xl md:text-3xl text-white/90 font-light tracking-wide drop-shadow-lg'>
+              25 años proyectando Bolivia al mundo
+            </p>
+          </div>
+
+          {/* Glassmorphism Info Card */}
+          <div className='bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 sm:p-10 shadow-2xl mb-10 max-w-3xl mx-auto'>
+            {/* Event Details */}
+            <div className='space-y-4 mb-8'>
+              <div className='flex items-center justify-center gap-3 text-white'>
+                <Calendar
+                  className='w-6 h-6 text-emerald-300'
+                  aria-hidden='true'
+                />
+                <span className='text-lg sm:text-xl font-semibold tracking-wide'>
+                  6 - 9 de Noviembre 2025
+                </span>
+              </div>
+
+              <div className='flex items-center justify-center gap-3 text-white'>
+                <MapPin
+                  className='w-6 h-6 text-emerald-300'
+                  aria-hidden='true'
+                />
+                <span className='text-base sm:text-lg font-medium'>
+                  Coliseo Villa Rosita, Santa Cruz de la Sierra
+                </span>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className='w-20 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mb-8' />
+
+            {/* Primary CTA - WhatsApp */}
+            <div className='space-y-4 mb-8'>
+              <p className='text-white/80 font-medium tracking-wide'>
+                Reserva tus entradas
+              </p>
+
+              <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+                {[
+                  { number: "62831956", link: "http://wa.me/59162831956" },
+                  { number: "75553576", link: "http://wa.me/59175553576" },
+                ].map(({ number, link }) => (
+                  <a
+                    key={number}
+                    href={link}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    aria-label={`Contactar por WhatsApp al ${number}`}
+                    className='group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold rounded-2xl shadow-xl shadow-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/50 hover:-translate-y-1 transition-all duration-300 ease-out overflow-hidden min-w-[220px]'
+                  >
+                    {/* Shine effect */}
+                    <div className='absolute inset-0 -top-1 -left-1 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:left-full transition-all duration-700' />
+
+                    <div className='relative flex items-center gap-3'>
+                      <MessageSquare className='w-5 h-5' aria-hidden='true' />
+                      <span className='tracking-wider'>{number}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Secondary CTA - Social Media */}
+            <div className='pt-6 border-t border-white/20'>
+              <p className='text-white/70 text-sm font-medium mb-4 tracking-wide'>
+                Síguenos en redes sociales
+              </p>
+
+              <div className='flex gap-3 justify-center'>
+                {[
+                  {
+                    icon: Instagram,
+                    label: "Instagram",
+                    href: "https://instagram.com/festivaldanzacruz",
+                    gradient: "from-pink-500 to-purple-500",
+                  },
+                  {
+                    icon: Facebook,
+                    label: "Facebook",
+                    href: "https://facebook.com/festivaldanzacruz",
+                    gradient: "from-blue-500 to-blue-600",
+                  },
+                  {
+                    icon: Music,
+                    label: "TikTok",
+                    href: "https://www.tiktok.com/@festival.danzacruz",
+                    gradient: "from-neutral-800 to-neutral-900",
+                  },
+                ].map(({ icon: Icon, label, href, gradient }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    aria-label={`Visitar ${label} de Danzacruz`}
+                    className={`group relative p-4 bg-white/10 hover:bg-gradient-to-br ${gradient} backdrop-blur-sm rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-xl`}
+                  >
+                    <Icon className='w-6 h-6 text-white' aria-hidden='true' />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
+
+          {/* Bottom Caption */}
+          <div className='bg-black/30 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-4 inline-block shadow-xl'>
+            <p className='text-white/90 text-sm sm:text-base leading-relaxed'>
+              En el año del Bicentenario, 25 años proyectando Bolivia al mundo
+            </p>
+            <p className='text-emerald-300 font-bold text-xs sm:text-sm mt-1 tracking-widest'>
+              BODAS DE PLATA
+            </p>
+          </div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <div
+        className='absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20'
+        aria-hidden='true'
+      >
+        <div className='w-6 h-10 border-2 border-white/50 rounded-full flex justify-center items-start p-2 backdrop-blur-sm'>
+          <div className='w-1.5 h-3 bg-emerald-400 rounded-full animate-pulse' />
+        </div>
+      </div>
+
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes float-particle {
+          0%,
+          100% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.6;
+          }
+          90% {
+            opacity: 0.6;
+          }
+          100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+          }
+        }
+        .animate-float-particle {
+          animation: float-particle linear infinite;
+        }
+      `}</style>
     </section>
   );
 }
