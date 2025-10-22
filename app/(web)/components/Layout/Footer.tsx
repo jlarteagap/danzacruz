@@ -1,4 +1,4 @@
-import { Facebook, Phone, MessageCircle } from "lucide-react";
+import { Facebook, Phone, MessageCircle, Instagram } from "lucide-react";
 
 export function Footer() {
   return (
@@ -32,6 +32,19 @@ export function Footer() {
               <h4 className='text-lg font-semibold text-neutral-900'>
                 Síguenos
               </h4>
+              <a
+                href='https://www.facebook.com/festivaldanzacruz'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex items-center gap-3 px-4 py-3 bg-white/60 backdrop-blur-sm border border-neutral-200/60 rounded-xl hover:bg-white/80 hover:border-neutral-300 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 group'
+              >
+                <div className='p-1.5 bg-orange-500 rounded-lg group-hover:bg-orange-600 transition-colors'>
+                  <Instagram className='w-4 h-4 text-white' />
+                </div>
+                <span className='font-medium text-neutral-700 group-hover:text-neutral-900'>
+                  Instagram
+                </span>
+              </a>
               <a
                 href='https://www.facebook.com/festivaldanzacruz'
                 target='_blank'
