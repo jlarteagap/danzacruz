@@ -217,9 +217,7 @@ class ChoreographyService {
 
   /**
    * DELETE: Eliminar solo una coreografía específica
-   * Nota: Tu backend actual elimina el registro completo.
-   * Este método está preparado para cuando implementes el endpoint específico.
-   * Por ahora, redirige a deleteRegistration si es la última coreografía.
+   * Este método ahora solo maneja la eliminación via PATCH
    *
    * @param participantId - ID del participante
    * @param choreographyId - ID de la coreografía
@@ -231,36 +229,41 @@ class ChoreographyService {
     choreographyId: string
   ): Promise<void> {
     try {
-      // Primero obtenemos el participante para verificar cuántas coreografías tiene
+      // Obtener el registro actual
       const registration = await this.getById(participantId);
 
-      if (registration.choreographies.length === 1) {
-        // Si solo tiene una coreografía, eliminamos el registro completo
-        await this.deleteRegistration(participantId);
-        return;
+      // Validar que el participante existe
+      if (!registration) {
+        throw new Error(`Participante ${participantId} no encontrado`);
       }
 
-      // TODO: Cuando tu backend implemente este endpoint, descomenta esto:
-      /*
-      const response = await fetch(
-        `${this.baseUrl}/${participantId}/choreographies/${choreographyId}`,
-        {
-          method: 'DELETE',
-          headers: getHeaders(),
-        }
+      // Validar que tiene más de una coreografía
+      if (registration.choreographies.length <= 1) {
+        throw new Error(
+          "No se puede eliminar la única coreografía. Use deleteRegistration() en su lugar."
+        );
+      }
+
+      // Filtrar la coreografía a eliminar
+      const updatedChoreographies = registration.choreographies.filter(
+        (c) => c.id !== choreographyId
       );
 
-      await handleFetchError(
-        response,
-        `Error al eliminar coreografía ${choreographyId}`
-      );
-      */
+      // Validar que la coreografía existía
+      if (updatedChoreographies.length === registration.choreographies.length) {
+        throw new Error(`Coreografía ${choreographyId} no encontrada`);
+      }
 
-      // Por ahora, lanzamos un error indicando que no está implementado
-      throw new Error(
-        "El endpoint para eliminar coreografías individuales aún no está implementado en el backend. " +
-          "Se requiere: DELETE /registrations/{id}/choreographies/{choreoId}"
-      );
+      // Actualizar el registro con las coreografías restantes
+      await this.updateRegistration(participantId, {
+        choreographies: updatedChoreographies,
+      });
+
+      if (process.env.NODE_ENV === "development") {
+        console.log(
+          `[choreographyService.deleteChoreography] Coreografía ${choreographyId} eliminada`
+        );
+      }
     } catch (error) {
       console.error(
         `[choreographyService.deleteChoreography] Error eliminando coreografía ${choreographyId}:`,

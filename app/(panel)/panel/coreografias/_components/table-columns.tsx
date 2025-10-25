@@ -54,7 +54,7 @@ const ColumnActions = ({
           <Eye className='mr-2 h-4 w-4' />
           Ver detalles
         </DropdownMenuItem>
-        {/* <DropdownMenuItem
+        <DropdownMenuItem
           onClick={() => onEdit(choreography)}
           className='cursor-pointer'
         >
@@ -68,7 +68,7 @@ const ColumnActions = ({
         >
           <Trash2 className='mr-2 h-4 w-4' />
           Eliminar
-        </DropdownMenuItem> */}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -10,7 +10,7 @@ import { TableWrapper } from "./_components/table-wrapper";
 import { ChoreographiesTable } from "./_components/choreographies-table";
 import { ChoreographySheet } from "./_components/choreography-sheet";
 // import { ChoreographyEditSheet } from "./_components/choreography-edit-sheet";
-// import { DeleteAlertDialog } from "./_components/delete-alert-dialog";
+import { DeleteAlertDialog } from "./_components/delete-alert-dialog";
 import { createColumns } from "./_components/table-columns";
 import { useFlatChoreographies } from "./_hooks/use-flat-choreographies";
 import { exportToCSV } from "./_lib/export-excel";
@@ -159,13 +159,13 @@ export default function ChoreographiesPage() {
         />
       )} */}
 
-      {/* {deleteDialog.choreography && (
+      {deleteDialog.choreography && (
         <DeleteAlertDialog
           choreography={deleteDialog.choreography}
           isOpen={deleteDialog.isOpen}
           onClose={() => setDeleteDialog({ isOpen: false, choreography: null })}
         />
-      )} */}
+      )}
     </div>
   );
 }
