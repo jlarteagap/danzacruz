@@ -21,25 +21,48 @@ export async function POST(
     );
   }
 }
-// GET: obtener todos los documentos de una colección
 export async function GET(
   req: Request,
-  { params }: { params: Promise<{ collection: string }> }
+  { params }: { params: Promise<{ collection: string; id: string }> }
 ) {
   try {
-    const { collection } = await params;
-    const snapshot = await db.collection(collection).get();
+    const { collection, id } = await params;
 
-    const documents = snapshot.docs.map((doc) => ({
+    // Debug: verificar que los parámetros lleguen correctamente
+    console.log("Collection:", collection);
+    console.log("ID:", id);
+
+    // Validar que los parámetros no estén vacíos
+    if (!collection || !id) {
+      return NextResponse.json(
+        { error: "Collection and ID are required" },
+        { status: 400 }
+      );
+    }
+
+    // Obtener el documento específico por ID
+    const docRef = db.collection(collection).doc(id);
+    const doc = await docRef.get();
+
+    // Verificar si el documento existe
+    if (!doc.exists) {
+      return NextResponse.json(
+        { error: "Document not found" },
+        { status: 404 }
+      );
+    }
+
+    // Retornar el documento con su ID
+    const document = {
       id: doc.id,
       ...doc.data(),
-    }));
+    };
 
-    return NextResponse.json(documents, { status: 200 });
+    return NextResponse.json(document, { status: 200 });
   } catch (error) {
-    console.error(error);
+    console.error("Error completo:", error);
     return NextResponse.json(
-      { error: "Error fetching documents" },
+      { error: "Error fetching document" },
       { status: 500 }
     );
   }
