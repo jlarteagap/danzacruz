@@ -1,10 +1,12 @@
 // components/layout/Header.tsx
 "use client";
-
+import React, { useMemo } from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Bell, Menu, Moon, Sun, User, LogOut, Settings } from "lucide-react";
+import { User, UserActions } from "types/user.types";
+
+import { Bell, Menu, Moon, Sun, LogOut, Settings } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,8 +16,41 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useSession, signOut } from "next-auth/react";
+import { UserNavbar } from "../UserNavbar/UserNavbar";
+import { useRouter } from "next/navigation";
 
 export function PanelHeader() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const actions: UserActions = useMemo(
+    () => ({
+      onLogout: async () => {
+        await signOut({ callbackUrl: "/" });
+      },
+
+      onSettings: () => router.push("/settings"),
+      onProfile: () => router.push("/profile"),
+    }),
+    [router]
+  );
+
+  const currentUser: User | null = useMemo(() => {
+    if (!session?.user) return null;
+
+    return {
+      id: session.user.id || "unknown",
+      name: session.user.name || "Usuario",
+      email: session.user.email || "",
+      avatar:
+        session.user.image ||
+        `https://ui-avatars.com/api/?name=${encodeURIComponent(
+          session.user.name || "U"
+        )}&background=6366f1&color=fff`,
+      role: session.user.role || "Usuario", // Asume que tienes role en tu sesión
+      createdAt: session.user.createdAt || new Date().toISOString(),
+    };
+  }, [session]);
   return (
     <header className='h-16 w-full border-b bg-white px-4 flex items-center justify-between shadow-sm'>
       {/* Left Section */}
@@ -52,6 +87,7 @@ export function PanelHeader() {
         </Button>
 
         {/* User Menu */}
+        <UserNavbar user={currentUser} actions={actions} />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Avatar className='cursor-pointer'>
