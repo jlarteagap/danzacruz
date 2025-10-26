@@ -9,7 +9,7 @@ import { GlobalSearchCommand } from "./_components/global-search-command";
 import { TableWrapper } from "./_components/table-wrapper";
 import { ChoreographiesTable } from "./_components/choreographies-table";
 import { ChoreographySheet } from "./_components/choreography-sheet";
-// import { ChoreographyEditSheet } from "./_components/choreography-edit-sheet";
+import { ChoreographyEditSheet } from "./_components/choreography-edit-sheet";
 import { DeleteAlertDialog } from "./_components/delete-alert-dialog";
 import { createColumns } from "./_components/table-columns";
 import { useFlatChoreographies } from "./_hooks/use-flat-choreographies";
@@ -151,13 +151,13 @@ export default function ChoreographiesPage() {
         />
       )}
 
-      {/* {editSheet.choreography && (
+      {editSheet.choreography && (
         <ChoreographyEditSheet
           choreography={editSheet.choreography}
           isOpen={editSheet.isOpen}
           onClose={() => setEditSheet({ isOpen: false, choreography: null })}
         />
-      )} */}
+      )}
 
       {deleteDialog.choreography && (
         <DeleteAlertDialog

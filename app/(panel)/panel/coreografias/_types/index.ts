@@ -36,3 +36,15 @@ export interface ChoreographyStats {
   topDivision: string;
   topModality: string;
 }
+
+export interface ChoreographyEditFormValues {
+  choreographyName: string;
+  category: string;
+  division: string;
+  subdivision: string;
+  modality: string;
+  musicName: string;
+  choreographer: string;
+  styleDetails: string;
+  additionalInfo?: string;
+}
