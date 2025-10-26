@@ -135,10 +135,6 @@ export const ChoreographyEditSheet = ({
                     error={!!(errors.category && touched.category)}
                     onValueChange={(value) => {
                       setSelectedCategory(value);
-                      // Reset dependientes
-                      setFieldValue("division", "");
-                      setFieldValue("subdivision", "");
-                      setSelectedDivision("");
                     }}
                   />
                 </FormFieldWrapper>
@@ -156,7 +152,6 @@ export const ChoreographyEditSheet = ({
                     error={!!(errors.division && touched.division)}
                     onValueChange={(value) => {
                       setSelectedDivision(value);
-                      setFieldValue("subdivision", "");
                     }}
                   />
                 </FormFieldWrapper>
@@ -294,7 +289,7 @@ export const ChoreographyEditSheet = ({
                 <Button
                   type='submit'
                   disabled={isPending || !isValid || !dirty}
-                  className='w-full sm:w-auto'
+                  className='w-full sm:w-auto bg-teal-500 hover:bg-teal-400 text-white'
                 >
                   {isPending ? (
                     <>

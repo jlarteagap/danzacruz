@@ -25,7 +25,6 @@ export const choreographyEditSchema = Yup.object().shape({
     .max(100, "Máximo 100 caracteres"),
 
   styleDetails: Yup.string()
-    .required("Los detalles del estilo son requeridos")
     .min(5, "Debe tener al menos 5 caracteres")
     .max(500, "Máximo 500 caracteres"),
 
