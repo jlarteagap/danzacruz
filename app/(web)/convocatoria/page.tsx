@@ -271,7 +271,7 @@ export default function ConvocatoriaContent() {
                 <strong>
                   XXV Festival Internacional DANZACRUZ 2025 – BODAS DE PLATA
                 </strong>
-                , que se llevará cabo del <strong>06 al 09 de noviembre</strong>{" "}
+                , que se llevará cabo del <strong>07 al 09 de noviembre</strong>{" "}
                 del año en curso.
               </p>
 
@@ -454,7 +454,7 @@ export default function ConvocatoriaContent() {
               <div className='space-y-4'>
                 <div className='bg-white border-l-4 border-teal-500 rounded-lg p-6'>
                   <h4 className='font-bold text-lg mb-2'>
-                    📅 Día 1 del Festival: (06 de noviembre)
+                    📅 Día 1 del Festival: (07 de noviembre)
                   </h4>
                   <p className='text-gray-700 mb-2'>
                     Categoría Colegios y categoría General para los
@@ -475,7 +475,7 @@ export default function ConvocatoriaContent() {
 
                 <div className='bg-white border-l-4 border-indigo-500 rounded-lg p-6'>
                   <h4 className='font-bold text-lg mb-2'>
-                    📅 Día 2 del Festival: (07 de noviembre)
+                    📅 Día 2 del Festival: (08 de noviembre)
                   </h4>
                   <p className='text-gray-700'>
                     Categoría General para los participantes de las provincias
@@ -485,7 +485,7 @@ export default function ConvocatoriaContent() {
 
                 <div className='bg-white border-l-4 border-green-500 rounded-lg p-6'>
                   <h4 className='font-bold text-lg mb-2'>
-                    📅 Día 3 del Festival: (08 de noviembre)
+                    📅 Día 3 del Festival: (09 de noviembre)
                   </h4>
                   <p className='text-gray-700 mb-2'>
                     <strong>Ambas Categorías.</strong>
@@ -501,7 +501,7 @@ export default function ConvocatoriaContent() {
 
                 <div className='bg-white border-l-4 border-yellow-500 rounded-lg p-6'>
                   <h4 className='font-bold text-lg mb-2'>
-                    📅 Día 4 del Festival: (09 de noviembre)
+                    📅 Día 3 del Festival: (09 de noviembre)
                   </h4>
                   <p className='text-gray-700 mb-2'>
                     <strong>Show de Gala.</strong>
@@ -1234,7 +1234,7 @@ export default function ConvocatoriaContent() {
                 <div className='p-4 bg-blue-50 border-l-4 border-blue-500 rounded'>
                   <p>
                     <strong>Horario general de ensayos:</strong> 9:00 a 14:00 de
-                    los días <strong>6, 7 y 8 de octubre.</strong>
+                    los días <strong>7, 8 y 9 de octubre.</strong>
                   </p>
                 </div>
               </div>
@@ -2183,7 +2183,7 @@ export default function ConvocatoriaContent() {
                   </div>
                   <div className='border-l-4 border-indigo-500 pl-4'>
                     <p className='font-semibold text-indigo-600'>
-                      6, 7 y 8 de Octubre
+                      7, 8 y 9 de Octubre
                     </p>
                     <p className='text-sm text-gray-600'>
                       Ensayos (9:00 a 14:00 hrs)
@@ -2191,7 +2191,7 @@ export default function ConvocatoriaContent() {
                   </div>
                   <div className='border-l-4 border-green-500 pl-4'>
                     <p className='font-semibold text-green-600'>
-                      06 de Noviembre
+                      07 de Noviembre
                     </p>
                     <p className='text-sm text-gray-600'>
                       Día 1 - Colegios y participantes locales
@@ -2199,7 +2199,7 @@ export default function ConvocatoriaContent() {
                   </div>
                   <div className='border-l-4 border-green-500 pl-4'>
                     <p className='font-semibold text-green-600'>
-                      07 de Noviembre
+                      08 de Noviembre
                     </p>
                     <p className='text-sm text-gray-600'>
                       Día 2 - Provincias e internacionales

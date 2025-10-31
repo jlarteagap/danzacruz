@@ -107,7 +107,7 @@ export default function HeroImmersive() {
                   aria-hidden='true'
                 />
                 <span className='text-lg sm:text-xl font-semibold tracking-wide'>
-                  6 - 9 de Noviembre 2025
+                  7 - 9 de Noviembre 2025
                 </span>
               </div>
 
@@ -117,7 +117,7 @@ export default function HeroImmersive() {
                   aria-hidden='true'
                 />
                 <span className='text-base sm:text-lg font-medium'>
-                  Coliseo Villa Rosita, Santa Cruz de la Sierra
+                  Coliseo Alto San Pedro, Santa Cruz de la Sierra
                 </span>
               </div>
             </div>
