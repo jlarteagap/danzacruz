@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { choreographyService } from "@/services/choreographiesService";
-import type { Registration } from "../_types";
-import type { ChoreographyEditFormValues } from "../_lib/schemas";
+import type { Registration, ChoreographyEditFormValues } from "../_types";
 import { toast } from "sonner";
 
 interface UpdateChoreographyParams {

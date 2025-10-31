@@ -25,10 +25,14 @@ export const choreographyEditSchema = Yup.object().shape({
     .max(100, "Máximo 100 caracteres"),
 
   styleDetails: Yup.string()
+    .optional()
     .min(5, "Debe tener al menos 5 caracteres")
     .max(500, "Máximo 500 caracteres"),
 
-  additionalInfo: Yup.string().nullable().max(1000, "Máximo 1000 caracteres"),
+  additionalInfo: Yup.string()
+    .optional()
+    .nullable()
+    .max(1000, "Máximo 1000 caracteres"),
 });
 
 export type ChoreographyEditFormValues = Yup.InferType<
