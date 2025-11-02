@@ -1,20 +1,23 @@
-// app/(web)/gracias/components/ChoreographyList.tsx
+// app/(web)/gracias/components/ChoreographyListWithActions.tsx
 "use client";
 
 import React, { useState } from "react";
-import { Music, ChevronRight } from "lucide-react";
+import { Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ChoreographyCard } from "./ChoreographyCard";
 import type { Choreography } from "@/types/registration.types";
 
-interface ChoreographyListProps {
+interface ChoreographyListWithActionsProps {
   choreographies: Choreography[];
   totalCoreografias: number;
+  participantName: string;
 }
 
-export function ChoreographyList({
+export function ChoreographyListWithActions({
   choreographies,
   totalCoreografias,
-}: ChoreographyListProps) {
+  participantName,
+}: ChoreographyListWithActionsProps) {
   const [expandedList, setExpandedList] = useState(totalCoreografias <= 3);
 
   const choreographiesToShow = expandedList
@@ -34,12 +37,17 @@ export function ChoreographyList({
       </h3>
 
       <div
-        className='space-y-2'
+        className='space-y-4'
         role='list'
         aria-label='Coreografías registradas'
       >
         {choreographiesToShow.map((choreo, index) => (
-          <ChoreographyItem key={choreo.id} choreo={choreo} index={index} />
+          <ChoreographyCard
+            key={choreo.id}
+            choreo={choreo}
+            index={index}
+            participantName={participantName}
+          />
         ))}
       </div>
 
@@ -57,31 +65,6 @@ export function ChoreographyList({
           )}
         </Button>
       )}
-    </div>
-  );
-}
-
-interface ChoreographyItemProps {
-  choreo: Choreography;
-  index: number;
-}
-
-function ChoreographyItem({ choreo, index }: ChoreographyItemProps) {
-  return (
-    <div
-      role='listitem'
-      className='flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200 hover:border-blue-200 hover:bg-blue-50/50 transition-all duration-200'
-    >
-      <div className='flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center'>
-        <Music className='w-4 h-4 text-blue-600' aria-hidden='true' />
-      </div>
-      <div className='flex-1 min-w-0'>
-        <p className='text-sm font-medium text-slate-900 truncate'>
-          {choreo.name}
-        </p>
-        <p className='text-xs text-slate-500'>Coreografía #{index + 1}</p>
-      </div>
-      <ChevronRight className='w-4 h-4 text-slate-400' aria-hidden='true' />
     </div>
   );
 }

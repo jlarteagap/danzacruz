@@ -1,7 +1,4 @@
 // app/(web)/gracias/GraciasPageClient.tsx
-"use client";
-
-import { useRouter } from "next/navigation";
 import { FinalizarRegistroMultiple } from "./_components/FinalizarRegistroMultiple";
 import type { Choreography } from "@/types/registration.types";
 
@@ -11,7 +8,6 @@ interface GraciasPageClientProps {
   choreographies: Choreography[];
   totalCoreografias: number;
   registrados: number;
-  shareLink?: string;
 }
 
 export function GraciasPageClient({
@@ -20,20 +16,7 @@ export function GraciasPageClient({
   choreographies,
   totalCoreografias,
   registrados,
-  shareLink,
 }: GraciasPageClientProps) {
-  const router = useRouter();
-
-  const handleVerCoreografias = () => {
-    // Navegar a la página de coreografías del participante
-    router.push(`/coreografias/${participantId}`);
-  };
-
-  const handleAgregarIntegrantes = () => {
-    // Navegar a la página para agregar integrantes
-    router.push(`/coreografias/${participantId}/integrantes`);
-  };
-
   return (
     <FinalizarRegistroMultiple
       participantId={participantId}
@@ -41,9 +24,6 @@ export function GraciasPageClient({
       choreographies={choreographies}
       totalCoreografias={totalCoreografias}
       registrados={registrados}
-      shareLink={shareLink}
-      onVerCoreografias={handleVerCoreografias}
-      onAgregarIntegrantes={handleAgregarIntegrantes}
     />
   );
 }

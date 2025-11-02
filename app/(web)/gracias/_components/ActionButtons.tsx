@@ -17,24 +17,14 @@ export function ActionButtons({
   onAgregarIntegrantes,
 }: ActionButtonsProps) {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
+    <div className='flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0'>
       <Button
         onClick={onVerCoreografias}
         size='lg'
-        className='w-full gap-2 bg-blue-600 hover:bg-blue-700 text-white shadow-sm'
+        className='w-full gap-2 bg-[#63f7df] hover:bg-teal-600 hover:text-white text-neutral shadow-sm'
       >
         <Eye className='w-5 h-5' aria-hidden='true' />
         Ver {totalCoreografias === 1 ? "coreografía" : "coreografías"}
-      </Button>
-
-      <Button
-        onClick={onAgregarIntegrantes}
-        size='lg'
-        variant='outline'
-        className='w-full gap-2 border-slate-300 hover:bg-slate-50'
-      >
-        <Users className='w-5 h-5' aria-hidden='true' />
-        Agregar integrantes
       </Button>
     </div>
   );

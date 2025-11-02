@@ -6,7 +6,7 @@ import { GraciasPageClient } from "./GraciasPageClient";
 import type { PageSearchParams } from "@/types/registration.types";
 
 export const metadata = {
-  title: "Registro Completado | Mi App de Danza",
+  title: "Registro Completado | Danzacruz 2025",
   description: "Tus coreografías han sido registradas exitosamente",
   robots: "noindex",
 };
@@ -39,16 +39,16 @@ export default async function GraciasPage({ searchParams }: PageProps) {
   const choreographies = idsArray.map((id, index) => ({
     id: id.trim(),
     name: namesArray[index]?.trim() || "Sin nombre",
+    // Generar enlace único por coreografía
+    shareLink: process.env.NEXT_PUBLIC_APP_URL
+      ? `${process.env.NEXT_PUBLIC_APP_URL}/coreografias/${encodeURIComponent(
+          id.trim()
+        )}`
+      : undefined,
   }));
 
   const totalCoreografias = parseInt(params.totalCoreografias || "1", 10);
   const registrados = parseInt(params.registrados || "1", 10);
-
-  const shareLink = process.env.NEXT_PUBLIC_APP_URL
-    ? `${process.env.NEXT_PUBLIC_APP_URL}/coreografias/${encodeURIComponent(
-        participantId
-      )}`
-    : undefined;
 
   return (
     <Suspense fallback={<LoadingSkeleton />}>
@@ -58,7 +58,6 @@ export default async function GraciasPage({ searchParams }: PageProps) {
         choreographies={choreographies}
         totalCoreografias={totalCoreografias}
         registrados={registrados}
-        shareLink={shareLink}
       />
     </Suspense>
   );

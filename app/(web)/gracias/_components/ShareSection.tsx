@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 interface ShareSectionProps {
   shareLink: string;
   participantName: string;
-  totalCoreografias: number;
+  choreographyName: string;
   onCopy: (text: string) => void;
   copied: boolean;
 }
@@ -17,24 +17,23 @@ interface ShareSectionProps {
 export function ShareSection({
   shareLink,
   participantName,
-  totalCoreografias,
+  choreographyName,
   onCopy,
   copied,
 }: ShareSectionProps) {
-  const shareMessage = `¡${participantName} ha registrado ${totalCoreografias} ${
-    totalCoreografias === 1 ? "coreografía" : "coreografías"
-  }! 🎭\n\nRevisa los detalles aquí:\n${shareLink}`;
+  const shareMessage = `¡${participantName} ha registrado la coreografía "${choreographyName}"! 🎭\n\nMira los detalles aquí:\n${shareLink}`;
 
   return (
     <Card className='border-slate-200 bg-slate-50'>
       <CardContent className='p-4 space-y-3'>
         <div className='flex items-center gap-2 text-slate-700'>
           <Share2 className='w-4 h-4' aria-hidden='true' />
-          <h3 className='text-sm font-semibold'>Compartir registro</h3>
+          <h3 className='text-sm font-semibold'>Compartir coreografía</h3>
         </div>
 
         <p className='text-xs text-slate-600 leading-relaxed'>
-          Comparte este enlace para que otros vean las coreografías registradas
+          Comparte este enlace para que otros vean la coreografía "
+          {choreographyName}"
         </p>
 
         <div className='flex gap-2'>

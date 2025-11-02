@@ -3,6 +3,7 @@
 export interface Choreography {
   id: string;
   name: string;
+  shareLink?: string;
 }
 
 export interface FinalizarRegistroMultipleProps {
@@ -11,9 +12,6 @@ export interface FinalizarRegistroMultipleProps {
   choreographies: Choreography[];
   totalCoreografias: number;
   registrados: number;
-  shareLink?: string;
-  onVerCoreografias?: () => void;
-  onAgregarIntegrantes?: () => void;
 }
 
 export interface PageSearchParams {
