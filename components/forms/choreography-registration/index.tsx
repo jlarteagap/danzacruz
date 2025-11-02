@@ -3,6 +3,8 @@
 
 import { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
+import { useRouter } from "next/navigation";
+
 import { AlertCircle, CheckCircle2, Loader2, Save } from "lucide-react";
 import {
   registrationFormSchema,
@@ -27,6 +29,7 @@ export function ChoreographyRegistrationForm() {
   const { register, isLoading, isSuccess, isError, error, data, reset } =
     useChoreographyRegistration();
   const { loadDraft, clearDraft } = useDraftRecovery(initialFormValues);
+  const router = useRouter();
 
   // Verificar draft al montar
   useEffect(() => {
@@ -56,6 +59,35 @@ export function ChoreographyRegistrationForm() {
   ) => {
     try {
       await register(values); // tu función que envía los datos a la API
+      // Usar el `data` provisto por el hook después de ejecutar la acción
+      const response = data;
+      if (!response) {
+        // Si no hay respuesta disponible, limpiar y salir
+        formikHelpers.resetForm();
+        return;
+      }
+
+      // Mapear las coreografías registradas para obtener los IDs
+      // Asumiendo que tu API retorna algo como:
+      // { participantId: "123", choreographies: [{ id: "c1", name: "..." }, { id: "c2", name: "..." }] }
+      const choreographyIds = (response.choreographies || [])
+        .map((c: any) => c.id)
+        .join(",");
+      const choreographyNames = (response.choreographies || [])
+        .map((c: any) => c.choreographyName || c.name)
+        .join(" | ");
+
+      const params = new URLSearchParams({
+        participantId: response.id,
+        participantName: values.participantName,
+        choreographyIds: choreographyIds,
+        choreographyNames: encodeURIComponent(choreographyNames),
+        totalCoreografias: (response.choreographies || []).length.toString(),
+        registrados: "1", // Por ahora es solo el participante que se registró
+      });
+
+      router.push(`/gracias?${params.toString()}`);
+
       formikHelpers.resetForm(); // limpia el formulario
     } catch (error) {
       console.error("Error al registrar:", error);

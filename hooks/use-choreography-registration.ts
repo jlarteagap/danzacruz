@@ -1,6 +1,8 @@
 // lib/hooks/use-choreography-registration.ts
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+
 import {
   choreographyApi,
   CATEGORY_OPTIONS,
@@ -10,6 +12,10 @@ import {
 import type { RegistrationFormValues } from "@/lib/validation/choreography-schema";
 import { toast } from "sonner"; // o tu sistema de notificaciones preferido
 
+interface UseChoreographyRegistrationOptions {
+  onSuccessCallback?: (data: any) => void;
+  redirectOnSuccess?: boolean;
+}
 /**
  * Query Keys para React Query
  * Facilita la invalidación y gestión de caché
@@ -111,30 +117,14 @@ export function useAvailability(
 /**
  * Hook principal para el registro
  */
-export function useChoreographyRegistration() {
+export function useChoreographyRegistration(
+  options: UseChoreographyRegistrationOptions = { redirectOnSuccess: true }
+) {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   const mutation = useMutation({
     mutationFn: async (data: RegistrationFormValues) => {
-      // Simular delay de red en desarrollo
-      // if (process.env.NODE_ENV === "development") {
-      //   await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      //   // Simular respuesta exitosa
-      //   return {
-      //     registrationId: `REG-${Date.now()}`,
-      //     participantId: `PART-${Date.now()}`,
-      //     choreographyIds: data.choreographies.map(
-      //       (_, i) => `CHOREO-${Date.now()}-${i}`
-      //     ),
-      //     confirmationCode: `CONF-${Math.random()
-      //       .toString(36)
-      //       .substring(2, 8)
-      //       .toUpperCase()}`,
-      //     timestamp: new Date().toISOString(),
-      //   };
-      // }
-
       return choreographyApi.registerParticipant(data);
     },
     onSuccess: (data, variables) => {
@@ -158,6 +148,13 @@ export function useChoreographyRegistration() {
         participant: variables.participantName,
         choreographies: variables.choreographies.length,
       });
+
+      options.onSuccessCallback?.(data);
+
+      if (options.redirectOnSuccess) {
+        const params = buildRegistrationParams(data, variables);
+        router.push(`/gracias?${params.toString()}`);
+      }
     },
     onError: (error: Error) => {
       console.error("Error en registro:", error);
@@ -247,4 +244,57 @@ export function useDraftRecovery(values: RegistrationFormValues) {
   };
 
   return { saveDraft, loadDraft, clearDraft };
+}
+
+function buildRegistrationParams(
+  apiResponse: any,
+  formValues: RegistrationFormValues
+): URLSearchParams {
+  const params = new URLSearchParams();
+
+  const participantId =
+    apiResponse.participantId || apiResponse.id || `TEMP-${Date.now()}`;
+  params.append("participantId", participantId);
+  params.append("participantName", formValues.participantName);
+
+  const choreographies =
+    apiResponse.choreographies || apiResponse.coreografias || [];
+
+  if (choreographies.length > 0) {
+    const choreographyIds = choreographies
+      .map((c: any) => c.id || c.choreographyId)
+      .filter(Boolean)
+      .join(",");
+
+    if (choreographyIds) {
+      params.append("choreographyIds", choreographyIds);
+    }
+
+    const choreographyNames = choreographies
+      .map((c: any) => c.choreographyName || c.name || c.nombre || "Sin nombre")
+      .join(" | ");
+
+    params.append("choreographyNames", encodeURIComponent(choreographyNames));
+    params.append("totalCoreografias", choreographies.length.toString());
+  } else {
+    // Fallback: usar datos del formulario
+    const formChoreographies = formValues.choreographies.filter(
+      (c) => c.choreographyName
+    );
+
+    if (formChoreographies.length > 0) {
+      const ids = formChoreographies.map((c) => c.id).join(",");
+      const names = formChoreographies
+        .map((c) => c.choreographyName)
+        .join(" | ");
+
+      params.append("choreographyIds", ids);
+      params.append("choreographyNames", encodeURIComponent(names));
+      params.append("totalCoreografias", formChoreographies.length.toString());
+    }
+  }
+
+  params.append("registrados", "1");
+
+  return params;
 }
