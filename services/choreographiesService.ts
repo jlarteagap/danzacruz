@@ -3,6 +3,8 @@
 // Servicio adaptado para usar Fetch API nativo
 // ============================================================================
 
+import { Dancer } from "./dancersService";
+
 /**
  * Tipos de datos del servicio
  */
@@ -27,6 +29,7 @@ export interface Choreography {
   choreographer: string;
   styleDetails: string;
   additionalInfo: string | null;
+  dancers?: Dancer[];
 }
 
 // Alias para compatibilidad con el código existente
