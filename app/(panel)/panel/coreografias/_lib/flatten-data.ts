@@ -33,6 +33,10 @@ export const flattenChoreographies = (
       choreographer: choreography.choreographer,
       styleDetails: choreography.styleDetails,
       additionalInfo: choreography.additionalInfo,
+
+      //dancers
+
+      dancers: choreography.dancers ?? [],
     }))
   );
 };

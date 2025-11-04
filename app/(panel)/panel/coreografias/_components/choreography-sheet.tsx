@@ -7,7 +7,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import {
   User,
@@ -20,11 +19,15 @@ import {
   Grid,
   Sparkles,
   FileText,
+  Link as LinkIcon,
 } from "lucide-react";
+import { toast } from "sonner";
 import type { FlattenedChoreography } from "../_types";
 
 interface ChoreographySheetProps {
-  choreography: FlattenedChoreography;
+  choreography: FlattenedChoreography & {
+    dancers?: { fullName: string; document: string }[];
+  };
   isOpen: boolean;
   onClose: () => void;
 }
@@ -34,6 +37,16 @@ export const ChoreographySheet = ({
   isOpen,
   onClose,
 }: ChoreographySheetProps) => {
+  console.log("Choreography data in Sheet:", choreography);
+  const dancerCount = choreography.dancers?.length ?? 0;
+  const shareLink = `${
+    process.env.NEXT_PUBLIC_APP_URL
+  }/coreografias/${encodeURIComponent(choreography.choreographyId)}`;
+
+  const handleCopyLink = async () => {
+    await navigator.clipboard.writeText(shareLink);
+    toast.success("Coreografía copiada al portapapeles");
+  };
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className='w-full sm:max-w-xl overflow-y-auto bg-white p-10'>
@@ -141,7 +154,49 @@ export const ChoreographySheet = ({
                   value={choreography.choreographer}
                 />
               </div>
+              <div className='rounded-lg border border-slate-200 bg-slate-50 p-4 flex items-center justify-between'>
+                <div className='flex items-center gap-3'>
+                  <div className='flex h-8 w-8 items-center justify-center rounded-md bg-white text-slate-600'>
+                    <Users className='h-4 w-4' />
+                  </div>
+                  <div>
+                    <p className='text-xs font-medium text-slate-500 mb-0.5'>
+                      Cantidad de bailarines
+                    </p>
+                    <p className='text-sm font-semibold text-slate-900'>
+                      {dancerCount}
+                    </p>
+                  </div>
+                </div>
+              </div>
 
+              {/* 🔗 Enlace público */}
+              <div className='rounded-lg border border-blue-200 bg-blue-50 p-4'>
+                <div className='flex items-start gap-3'>
+                  <div className='flex h-8 w-8 items-center justify-center rounded-md bg-white text-blue-600'>
+                    <LinkIcon className='h-4 w-4' />
+                  </div>
+                  <div className='flex-1 min-w-0'>
+                    <p className='text-xs font-medium text-blue-700 mb-1'>
+                      Enlace público de la coreografía
+                    </p>
+                    <a
+                      href={shareLink}
+                      target='_blank'
+                      className='text-sm text-blue-800 break-all'
+                    >
+                      {shareLink}
+                    </a>
+                  </div>
+                  <button
+                    onClick={handleCopyLink}
+                    className='ml-2 text-xs font-medium text-blue-700 hover:text-blue-800 transition-colors cursor-pointer'
+                    aria-label='Copiar enlace'
+                  >
+                    Copiar
+                  </button>
+                </div>
+              </div>
               {/* Detalles del estilo */}
               <div className='rounded-lg border border-slate-200 bg-white p-4'>
                 <p className='text-sm font-medium text-slate-500 mb-2'>
@@ -186,7 +241,7 @@ interface DetailRowProps {
 const DetailRow = ({ icon, label, value, copyable }: DetailRowProps) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(value);
-    // Podrías agregar un toast aquí
+    toast.success("Copiado al portapapeles");
   };
 
   return (

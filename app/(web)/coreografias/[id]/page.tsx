@@ -53,15 +53,6 @@ const ChoreographyHeader: React.FC<{ choreography: ChoreographyData }> = ({
   choreography,
 }) => (
   <div className='space-y-4'>
-    {/* Navegación */}
-    <Link
-      href='/coreografias'
-      className='inline-flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors group'
-    >
-      <ArrowLeft className='h-4 w-4 transition-transform group-hover:-translate-x-1' />
-      Volver a coreografías
-    </Link>
-
     {/* Título */}
     <div className='space-y-3'>
       <div className='flex items-start gap-3'>
@@ -180,13 +171,6 @@ const NotFoundState: React.FC = () => (
       <p className='text-neutral-600'>
         La coreografía que buscas no existe o ha sido eliminada.
       </p>
-      <Link
-        href='/coreografias'
-        className='inline-flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white font-medium hover:bg-neutral-800 transition-colors mt-4'
-      >
-        <ArrowLeft className='h-4 w-4' />
-        Volver a coreografías
-      </Link>
     </div>
   </div>
 );

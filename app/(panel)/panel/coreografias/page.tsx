@@ -6,7 +6,6 @@ import { PageHeader } from "./_components/page-header";
 import { StatsCards } from "./_components/stats-cards";
 import { FiltersBar } from "./_components/filters-bar";
 import { GlobalSearchCommand } from "./_components/global-search-command";
-import { TableWrapper } from "./_components/table-wrapper";
 import { ChoreographiesTable } from "./_components/choreographies-table";
 import { ChoreographySheet } from "./_components/choreography-sheet";
 import { ChoreographyEditSheet } from "./_components/choreography-edit-sheet";
@@ -51,6 +50,8 @@ export default function ChoreographiesPage() {
     stats,
     hasActiveFilters,
   } = useFlatChoreographies();
+
+  console.log("Rendered ChoreographiesPage with data:", data);
 
   // Estados de los modales/sheets
   const [viewSheet, setViewSheet] = useState<{

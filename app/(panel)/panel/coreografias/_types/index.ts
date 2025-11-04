@@ -20,6 +20,11 @@ export interface FlattenedChoreography {
   choreographer: string;
   styleDetails: string;
   additionalInfo: string | null;
+
+  dancers?: Array<{
+    fullName: string;
+    document: string;
+  }>;
 }
 export interface ChoreographyFilters {
   category: string[];
