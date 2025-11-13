@@ -126,7 +126,7 @@ export default function HeroImmersive() {
             <div className='w-20 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mb-8' />
 
             {/* Primary CTA - WhatsApp */}
-            <div className='space-y-4 mb-8'>
+            {/* <div className='space-y-4 mb-8'>
               <p className='text-white/80 font-medium tracking-wide'>
                 Reserva tus entradas
               </p>
@@ -145,7 +145,7 @@ export default function HeroImmersive() {
                     className='group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold rounded-2xl shadow-xl shadow-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/50 hover:-translate-y-1 transition-all duration-300 ease-out overflow-hidden min-w-[220px]'
                   >
                     {/* Shine effect */}
-                    <div className='absolute inset-0 -top-1 -left-1 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:left-full transition-all duration-700' />
+                    {/*<div className='absolute inset-0 -top-1 -left-1 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:left-full transition-all duration-700' />
 
                     <div className='relative flex items-center gap-3'>
                       <MessageSquare className='w-5 h-5' aria-hidden='true' />
@@ -154,7 +154,7 @@ export default function HeroImmersive() {
                   </a>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Secondary CTA - Social Media */}
             <div className='pt-6 border-t border-white/20'>

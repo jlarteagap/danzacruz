@@ -26,6 +26,8 @@ export function ChoreographyRegistrationForm() {
   const [recoveredDraft, setRecoveredDraft] =
     useState<RegistrationFormValues | null>(null);
 
+  const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
+
   const { register, isLoading, isSuccess, isError, error, data, reset } =
     useChoreographyRegistration();
   const { loadDraft, clearDraft } = useDraftRecovery(initialFormValues);
@@ -109,12 +111,17 @@ export function ChoreographyRegistrationForm() {
         {/* Header */}
         <header className='mb-12 text-center animate-fade-in'>
           <h1 className='text-4xl font-semibold text-apple-gray-900 mb-3 tracking-tight'>
-            Registro de Participantes
-          </h1>
-          <p className='text-lg text-apple-gray-600 max-w-2xl mx-auto'>
+🎉 ¡El Festival Danzacruz 2025 ha finalizado!          </h1>
+          {/* <p className='text-lg text-apple-gray-600 max-w-2xl mx-auto'>
             Completa el formulario para registrar al participante y sus
             coreografías en el festival
-          </p>
+          </p> */}
+
+          <p>Gracias por tu interés en participar. </p>
+          <p>El periodo de inscripciones ha concluido oficialmente y los registros ya no están disponibles.</p>
+          <p>Agradecemos a todos los bailarines, academias y coreógrafos que formaron parte de esta edición.
+          Muy pronto compartiremos las fotos, resultados y momentos destacados del festival.</p>
+          <p>👉 Síguenos en nuestras redes sociales para no perderte las próximas convocatorias y novedades.</p>
         </header>
 
         {/* Draft Recovery Alert */}
@@ -235,6 +242,7 @@ export function ChoreographyRegistrationForm() {
         )}
 
         {/* Main Form */}
+        {isRegistrationOpen && (
         <Formik<RegistrationFormValues>
           initialValues={recoveredDraft || initialFormValues}
           validationSchema={registrationFormSchema}
@@ -291,6 +299,7 @@ export function ChoreographyRegistrationForm() {
             </Form>
           )}
         </Formik>
+      )}
       </div>
     </div>
   );

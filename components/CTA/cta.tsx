@@ -56,7 +56,7 @@ export default function Cta() {
               {/* Buttons - Rediseñados con paleta corporativa */}
               <div className='flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center lg:justify-start pt-4 sm:pt-6'>
                 {/* Botón Principal - Reemplazado slate por gradiente corporativo */}
-                <Link href='/registrarse'>
+                {/* <Link href='/registro'>
                   <button
                     className='group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-500 to-cyan-600 text-neutral-900 font-bold rounded-2xl shadow-lg shadow-teal-500/30 hover:shadow-xl hover:shadow-teal-500/50 hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-out border border-teal-400/50'
                     style={{
@@ -70,7 +70,7 @@ export default function Cta() {
                       <ArrowUpRight className='w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300' />
                     </span>
                   </button>
-                </Link>
+                </Link> */}
                 {/* Botón Secundario - Ajustado con acento amarillo */}
                 <Link
                   href='/convocatoria'

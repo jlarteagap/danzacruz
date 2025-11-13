@@ -220,7 +220,9 @@ export default function DancerForm({ choreographyId }: DancerFormProps) {
         {/* Botón submit */}
         <Button
           type='submit'
-          disabled={!isFormValid || isSubmitting}
+          // volver a activar cuando vayamos a enviar los enlaces para el 2026
+          // disabled={!isFormValid || isSubmitting}
+          disabled
           className={`
             min-w-[160px] h-11 rounded-xl font-semibold
             transition-all duration-200

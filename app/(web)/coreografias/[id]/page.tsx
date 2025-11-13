@@ -221,6 +221,7 @@ export default function ChoreographyPage({
           </div>
 
           {/* Sección: Agregar bailarín */}
+          
           <div className='bg-gradient-to-br from-white to-neutral-50 rounded-3xl border border-neutral-100 p-6 shadow-sm'>
             <Section
               icon={<UserPlus className='h-5 w-5' />}

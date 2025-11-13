@@ -111,7 +111,7 @@ export default function InfoData() {
 
           {/* CTA - Reemplazado slate por gradiente corporativo */}
           <div className='text-center mt-12 sm:mt-16'>
-            <Link href='/registrarse'>
+            <Link href='/registro'>
               <button
                 className='inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full text-neutral-900 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-teal-400/50'
                 style={{
