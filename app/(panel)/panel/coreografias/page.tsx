@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { PageHeader } from "./_components/page-header";
 import { StatsCards } from "./_components/stats-cards";
+import { StatsDistributionCards } from "./_components/StatsDistributionCards";
+
 import { FiltersBar } from "./_components/filters-bar";
 import { GlobalSearchCommand } from "./_components/global-search-command";
 import { ChoreographiesTable } from "./_components/choreographies-table";
@@ -13,8 +15,16 @@ import { DeleteAlertDialog } from "./_components/delete-alert-dialog";
 import { createColumns } from "./_components/table-columns";
 import { useFlatChoreographies } from "./_hooks/use-flat-choreographies";
 import { exportToCSV } from "./_lib/export-excel";
-import type { FlattenedChoreography } from "./_types";
+import type { ChoreographyStats, FlattenedChoreography } from "./_types";
 import { Separator } from "@/components/ui/separator";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Card, CardContent } from "@/components/ui/card";
 
 /**
  * Página principal de gestión de coreografías
@@ -33,6 +43,11 @@ import { Separator } from "@/components/ui/separator";
  * ✅ Exportación a CSV
  * ✅ Optimistic updates con React Query
  */
+
+interface DistributionAccordionProps {
+  stats: ChoreographyStats;
+  isLoading?: boolean;
+}
 export default function ChoreographiesPage() {
   const queryClient = useQueryClient();
 
@@ -118,6 +133,13 @@ export default function ChoreographiesPage() {
 
       {/* Stats Cards */}
       <StatsCards stats={stats} isLoading={isLoading} />
+      <div className="hidden sm:block">
+        <StatsDistributionCards stats={stats} isLoading={isLoading} />
+      </div>
+
+      <div className="sm:hidden">
+        <DistributionAccordion stats={stats} isLoading={isLoading} />
+      </div>
 
       {/* Búsqueda global + Filtros */}
       <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-4'>
@@ -170,3 +192,29 @@ export default function ChoreographiesPage() {
     </div>
   );
 }
+
+
+const DistributionAccordion = ({ stats, isLoading }: DistributionAccordionProps) => {
+  if (isLoading) {
+    return (
+      <Card>
+        <CardContent className="pt-6">
+          <div className="h-10 w-full animate-pulse rounded bg-slate-200" />
+        </CardContent>
+      </Card>
+    );
+  }
+
+  return (
+    <Accordion type="single" collapsible className="w-full">
+      <AccordionItem value="distributions" className="border rounded-lg px-4">
+        <AccordionTrigger className="text-sm font-medium text-slate-700 hover:no-underline">
+          Ver análisis detallado
+        </AccordionTrigger>
+        <AccordionContent className="space-y-6 pt-4">
+          <StatsDistributionCards stats={stats} isLoading={false} />
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+};

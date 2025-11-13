@@ -2,12 +2,33 @@ import type {
   Registration,
   FlattenedChoreography,
   ChoreographyStats,
+  DistributionItem
 } from "../_types";
 
 /**
  * Transforma la estructura anidada de registrations a un array plano
  * Cada coreografía se convierte en una fila independiente con datos del participante
  */
+
+/**
+ * Convierte un objeto de conteo a un array de distribución con porcentajes
+ * @param count - Objeto con conteos por categoría
+ * @param total - Total de items para calcular porcentaje
+ * @returns Array ordenado de mayor a menor por count
+ */
+const toDistribution = (
+  count: Record<string, number>,
+  total: number
+): DistributionItem[] => {
+  return Object.entries(count)
+    .map(([label, count]) => ({
+      label,
+      count,
+      percentage: total > 0 ? (count / total) * 100 : 0,
+    }))
+    .sort((a, b) => b.count - a.count);
+};
+
 
 export const flattenChoreographies = (
   registrations: Registration[]
@@ -68,10 +89,11 @@ export const getUniqueFilterValues = (
 export const calculateStats = (
   choreographies: FlattenedChoreography[]
 ): ChoreographyStats => {
+  const total = choreographies.length;
   const uniqueParticipants = new Set(
     choreographies.map((c) => c.participantId)
   );
-
+  
   // Conteo por categoría
   const categoriesCount = choreographies.reduce((acc, c) => {
     acc[c.category] = (acc[c.category] || 0) + 1;
@@ -98,19 +120,30 @@ export const calculateStats = (
   const topDivision =
     Object.entries(divisionsCount).sort(([, a], [, b]) => b - a)[0]?.[0] ||
     "N/A";
-
+// Conteo por subdivisión
+  const subdivisionsCount = choreographies.reduce((acc, c) => {
+    acc[c.subdivision] = (acc[c.subdivision] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
   const topModality =
     Object.entries(modalitiesCount).sort(([, a], [, b]) => b - a)[0]?.[0] ||
     "N/A";
 
+    const divisionDistribution = toDistribution(divisionsCount, total);
+    const subdivisionDistribution = toDistribution(subdivisionsCount, total);
+    const topModalities = toDistribution(modalitiesCount, total).slice(0, 5);
+
   return {
     totalParticipants: uniqueParticipants.size,
-    totalChoreographies: choreographies.length,
+    totalChoreographies: total,
     categoriesCount,
     divisionsCount,
     modalitiesCount,
     topCategory,
     topDivision,
     topModality,
+    divisionDistribution,
+    subdivisionDistribution,
+    topModalities,
   };
 };

@@ -40,6 +40,15 @@ export interface ChoreographyStats {
   topCategory: string;
   topDivision: string;
   topModality: string;
+  divisionDistribution: DistributionItem[];
+  subdivisionDistribution: DistributionItem[];
+  topModalities: DistributionItem[];
+}
+
+export interface DistributionItem {
+  label: string;
+  count: number;
+  percentage: number;
 }
 
 export interface ChoreographyEditFormValues {
@@ -53,3 +62,12 @@ export interface ChoreographyEditFormValues {
   styleDetails: string;
   additionalInfo?: string;
 }
+// Tipos para las divisiones estáticas
+export type Division = "Mayores" | "Juvenil" | "Infantil" | "Pre-Infantil";
+
+export const DIVISIONS: readonly Division[] = [
+  "Mayores",
+  "Juvenil", 
+  "Infantil",
+  "Pre-Infantil"
+] as const;
