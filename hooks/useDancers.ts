@@ -9,7 +9,6 @@ import {
   Dancer,
 } from "@/services/dancersService";
 import { toast } from "sonner"; // asumiendo hook shadcn
-import { v4 as uuidv4 } from "uuid";
 
 export const dancersKeys = {
   all: ["dancers"] as const,

@@ -22,7 +22,7 @@ export default function NewChoreographyPage() {
 
 function LoadingState() {
   return (
-    <div className='min-h-screen bg-gradient-to-br from-apple-gray-50 via-white to-apple-gray-50 flex items-center justify-center'>
+    <div className='min-h-screen bg-linear-to-br from-apple-gray-50 via-white to-apple-gray-50 flex items-center justify-center'>
       <div
         className='flex flex-col items-center gap-4'
         aria-label='Cargando formulario'

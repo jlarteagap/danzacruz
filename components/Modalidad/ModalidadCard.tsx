@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Music, Heart, Sparkles, Globe, Zap, Crown } from "lucide-react";
-import { modalidad } from "../AddParticipant/utils";
 
 // Datos expandidos con información detallada para cada modalidad
 // ACTUALIZADO: Todos los colores fuchsia/purple/pink/violet reemplazados por teal/cyan/yellow

@@ -1,4 +1,4 @@
-import { User } from "types/user.types";
+import { User } from "@/types/user.types";
 
 /**
  * Genera etiqueta ARIA para el menú de usuario

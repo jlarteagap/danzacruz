@@ -42,7 +42,7 @@ export const MenuItem: React.FC<MenuItemProps> = React.memo(
         role='menuitem'
         tabIndex={0}
       >
-        <span className='mr-3 flex-shrink-0' aria-hidden='true'>
+        <span className='mr-3 shrink-0' aria-hidden='true'>
           {icon}
         </span>
         <span className='truncate'>{label}</span>

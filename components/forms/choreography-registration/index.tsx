@@ -111,17 +111,27 @@ export function ChoreographyRegistrationForm() {
         {/* Header */}
         <header className='mb-12 text-center animate-fade-in'>
           <h1 className='text-4xl font-semibold text-apple-gray-900 mb-3 tracking-tight'>
-🎉 ¡El Festival Danzacruz 2025 ha finalizado!          </h1>
+            🎉 ¡El Festival Danzacruz 2025 ha finalizado!{" "}
+          </h1>
           {/* <p className='text-lg text-apple-gray-600 max-w-2xl mx-auto'>
             Completa el formulario para registrar al participante y sus
             coreografías en el festival
           </p> */}
 
           <p>Gracias por tu interés en participar. </p>
-          <p>El periodo de inscripciones ha concluido oficialmente y los registros ya no están disponibles.</p>
-          <p>Agradecemos a todos los bailarines, academias y coreógrafos que formaron parte de esta edición.
-          Muy pronto compartiremos las fotos, resultados y momentos destacados del festival.</p>
-          <p>👉 Síguenos en nuestras redes sociales para no perderte las próximas convocatorias y novedades.</p>
+          <p>
+            El periodo de inscripciones ha concluido oficialmente y los
+            registros ya no están disponibles.
+          </p>
+          <p>
+            Agradecemos a todos los bailarines, academias y coreógrafos que
+            formaron parte de esta edición. Muy pronto compartiremos las fotos,
+            resultados y momentos destacados del festival.
+          </p>
+          <p>
+            👉 Síguenos en nuestras redes sociales para no perderte las próximas
+            convocatorias y novedades.
+          </p>
         </header>
 
         {/* Draft Recovery Alert */}
@@ -243,63 +253,63 @@ export function ChoreographyRegistrationForm() {
 
         {/* Main Form */}
         {isRegistrationOpen && (
-        <Formik<RegistrationFormValues>
-          initialValues={recoveredDraft || initialFormValues}
-          validationSchema={registrationFormSchema}
-          onSubmit={handleSubmit}
-          validateOnChange={true}
-          validateOnBlur={true}
-          enableReinitialize
-        >
-          {(formikProps) => (
-            <Form className='space-y-8'>
-              {/* Participant Section */}
-              <div className='bg-white rounded-2xl shadow-apple-lg p-8 border border-apple-gray-200 animate-slide-up'>
-                <div className='flex items-center gap-3 mb-6'>
-                  <div className='w-1 h-8 bg-brand-teal rounded-full' />
-                  <h2 className='text-2xl font-semibold text-apple-gray-900'>
-                    Datos del Participante
-                  </h2>
-                </div>
-                <ParticipantSection />
-              </div>
-
-              {/* Choreographies Section */}
-              <div className='bg-white rounded-2xl shadow-apple-lg p-8 border border-apple-gray-200 animate-slide-up'>
-                <div className='flex items-center gap-3 mb-6'>
-                  <div className='w-1 h-8 bg-brand-yellow rounded-full' />
-                  <h2 className='text-2xl font-semibold text-apple-gray-900'>
-                    Coreografías
-                  </h2>
-                </div>
-                <ChoreographyList formik={formikProps} />
-              </div>
-
-              {/* Form Actions */}
-              <FormActions
-                isLoading={isLoading}
-                isSuccess={isSuccess}
-                formik={formikProps}
-              />
-
-              {/* Loading Overlay */}
-              {isLoading && (
-                <div className='fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in'>
-                  <div className='bg-white rounded-2xl shadow-apple-lg p-8 flex flex-col items-center gap-4'>
-                    <Loader2 className='h-12 w-12 animate-spin text-brand-teal' />
-                    <p className='text-lg font-medium text-apple-gray-900'>
-                      Procesando registro...
-                    </p>
-                    <p className='text-sm text-apple-gray-600'>
-                      Por favor, no cierres esta ventana
-                    </p>
+          <Formik<RegistrationFormValues>
+            initialValues={recoveredDraft || initialFormValues}
+            validationSchema={registrationFormSchema}
+            onSubmit={handleSubmit}
+            validateOnChange={true}
+            validateOnBlur={true}
+            enableReinitialize
+          >
+            {(formikProps) => (
+              <Form className='space-y-8'>
+                {/* Participant Section */}
+                <div className='bg-white rounded-2xl shadow-apple-lg p-8 border border-apple-gray-200 animate-slide-up'>
+                  <div className='flex items-center gap-3 mb-6'>
+                    <div className='w-1 h-8 bg-brand-teal rounded-full' />
+                    <h2 className='text-2xl font-semibold text-apple-gray-900'>
+                      Datos del Participante
+                    </h2>
                   </div>
+                  <ParticipantSection />
                 </div>
-              )}
-            </Form>
-          )}
-        </Formik>
-      )}
+
+                {/* Choreographies Section */}
+                <div className='bg-white rounded-2xl shadow-apple-lg p-8 border border-apple-gray-200 animate-slide-up'>
+                  <div className='flex items-center gap-3 mb-6'>
+                    <div className='w-1 h-8 bg-brand-yellow rounded-full' />
+                    <h2 className='text-2xl font-semibold text-apple-gray-900'>
+                      Coreografías
+                    </h2>
+                  </div>
+                  <ChoreographyList formik={formikProps} />
+                </div>
+
+                {/* Form Actions */}
+                <FormActions
+                  isLoading={isLoading}
+                  isSuccess={isSuccess}
+                  formik={formikProps}
+                />
+
+                {/* Loading Overlay */}
+                {isLoading && (
+                  <div className='fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in'>
+                    <div className='bg-white rounded-2xl shadow-apple-lg p-8 flex flex-col items-center gap-4'>
+                      <Loader2 className='h-12 w-12 animate-spin text-brand-teal' />
+                      <p className='text-lg font-medium text-apple-gray-900'>
+                        Procesando registro...
+                      </p>
+                      <p className='text-sm text-apple-gray-600'>
+                        Por favor, no cierres esta ventana
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </Form>
+            )}
+          </Formik>
+        )}
       </div>
     </div>
   );

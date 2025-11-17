@@ -1,13 +1,11 @@
 import React from "react";
 import { monserrat } from "../ui/fonts";
 import "../ui/global.css";
-import { Footer } from "./components/Layout/Footer";
-import { Header } from "./components/Layout/Header";
+import { Footer } from "@/components/Layout/Footer";
+import { Header } from "@/components/Layout/Header";
 
 import { Analytics } from "@vercel/analytics/react";
-
-import { Providers } from "../provides";
-import { Providers as Prov } from "./providers";
+import { Providers } from "../providers";
 import { auth } from "@/auth";
 
 import { Toaster } from "@/components/ui/sonner";
@@ -42,13 +40,11 @@ export default async function DashboardLayout({
     <html lang='es'>
       <body className={`${monserrat.className} antialiased`}>
         <Providers session={session}>
-          <Prov>
-            <Header />
-            {children}
-            <Footer />
-            <Toaster />
-            <Analytics />
-          </Prov>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster />
+          <Analytics />
         </Providers>
       </body>
     </html>

@@ -1,0 +1,166 @@
+{
+  "orphanRoutes": [],
+  "usedRoutes": [
+    {
+      "path": "/(web)",
+      "type": "page",
+      "fullPath": "app/(web)/page.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(web)/registro",
+      "type": "page",
+      "fullPath": "app/(web)/registro/page.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(web)/profile",
+      "type": "page",
+      "fullPath": "app/(web)/profile/page.js",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(web)/inscripciones",
+      "type": "page",
+      "fullPath": "app/(web)/inscripciones/page.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(web)/gracias",
+      "type": "page",
+      "fullPath": "app/(web)/gracias/page.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(web)/coreografias/[id]",
+      "type": "page",
+      "fullPath": "app/(web)/coreografias/[id]/page.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(web)/convocatoria",
+      "type": "page",
+      "fullPath": "app/(web)/convocatoria/page.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(web)/auth/signin",
+      "type": "page",
+      "fullPath": "app/(web)/auth/signin/page.js",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(panel)/panel",
+      "type": "page",
+      "fullPath": "app/(panel)/panel/page.jsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(panel)/panel/usuarios",
+      "type": "page",
+      "fullPath": "app/(panel)/panel/usuarios/page.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(panel)/panel/participantes",
+      "type": "page",
+      "fullPath": "app/(panel)/panel/participantes/page.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(panel)/panel/coreografias",
+      "type": "page",
+      "fullPath": "app/(panel)/panel/coreografias/page.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(web)",
+      "type": "layout",
+      "fullPath": "app/(web)/layout.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(panel)/panel",
+      "type": "layout",
+      "fullPath": "app/(panel)/panel/layout.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/(panel)/panel/coreografias",
+      "type": "layout",
+      "fullPath": "app/(panel)/panel/coreografias/layout.tsx",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/api/users/[userId]/role",
+      "type": "api",
+      "fullPath": "app/api/users/[userId]/role/route.ts",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/api/user/complete-profile",
+      "type": "api",
+      "fullPath": "app/api/user/complete-profile/route.js",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/api/dashboard-data",
+      "type": "api",
+      "fullPath": "app/api/dashboard-data/route.ts",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/api/auth/[...nextauth]",
+      "type": "api",
+      "fullPath": "app/api/auth/[...nextauth]/route.ts",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/api/admin/users",
+      "type": "api",
+      "fullPath": "app/api/admin/users/route.js",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/api/admin/users/[userId]/role",
+      "type": "api",
+      "fullPath": "app/api/admin/users/[userId]/role/route.js",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/api/[collection]",
+      "type": "api",
+      "fullPath": "app/api/[collection]/route.ts",
+      "linkedFrom": [],
+      "isOrphan": false
+    },
+    {
+      "path": "/api/[collection]/[id]",
+      "type": "api",
+      "fullPath": "app/api/[collection]/[id]/route.ts",
+      "linkedFrom": [],
+      "isOrphan": false
+    }
+  ]
+}

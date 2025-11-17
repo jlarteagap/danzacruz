@@ -3,12 +3,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
-import {
-  choreographyApi,
-  CATEGORY_OPTIONS,
-  DIVISION_OPTIONS,
-  SUBDIVISION_OPTIONS,
-} from "@/services/api/choreography.service";
+import { choreographyApi } from "@/services/api/choreography.service";
 import type { RegistrationFormValues } from "@/lib/validation/choreography-schema";
 import { toast } from "sonner"; // o tu sistema de notificaciones preferido
 
@@ -29,74 +24,8 @@ export const QUERY_KEYS = {
 };
 
 /**
- * Hook para obtener categorías
- */
-export function useCategories() {
-  return useQuery({
-    queryKey: QUERY_KEYS.categories,
-    queryFn: async () => {
-      // En desarrollo, usar mock data
-      if (process.env.NODE_ENV === "development") {
-        return new Promise((resolve) => {
-          setTimeout(() => resolve(CATEGORY_OPTIONS), 500);
-        });
-      }
-      return choreographyApi.getCategories();
-    },
-    staleTime: 5 * 60 * 1000, // 5 minutos - las categorías no cambian frecuentemente
-    gcTime: 10 * 60 * 1000, // 10 minutos
-  });
-}
-
-/**
- * Hook para obtener divisiones por categoría
- */
-export function useDivisions(categoryId: string | null) {
-  return useQuery({
-    queryKey: QUERY_KEYS.divisions(categoryId || ""),
-    queryFn: async () => {
-      if (!categoryId) return [];
-
-      // Mock data en desarrollo
-      if (process.env.NODE_ENV === "development") {
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            resolve(DIVISION_OPTIONS[categoryId] || []);
-          }, 400);
-        });
-      }
-
-      return choreographyApi.getDivisionsByCategory(categoryId);
-    },
-    enabled: !!categoryId, // Solo ejecutar si hay categoryId
-    staleTime: 5 * 60 * 1000,
-  });
-}
-
-/**
  * Hook para obtener subdivisiones por división
  */
-export function useSubdivisions(divisionId: string | null) {
-  return useQuery({
-    queryKey: QUERY_KEYS.subdivisions(divisionId || ""),
-    queryFn: async () => {
-      if (!divisionId) return [];
-
-      // Mock data en desarrollo
-      if (process.env.NODE_ENV === "development") {
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            resolve(SUBDIVISION_OPTIONS[divisionId] || []);
-          }, 400);
-        });
-      }
-
-      return choreographyApi.getSubdivisionsByDivision(divisionId);
-    },
-    enabled: !!divisionId,
-    staleTime: 5 * 60 * 1000,
-  });
-}
 
 /**
  * Hook para verificar disponibilidad
