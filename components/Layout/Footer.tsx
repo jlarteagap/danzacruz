@@ -1,4 +1,5 @@
-import { Facebook, Phone, MessageCircle, Instagram } from "lucide-react";
+import { Facebook, MessageCircle, Instagram, ArrowRight } from "lucide-react";
+import Link from 'next/link';
 
 export function Footer() {
   return (
@@ -23,7 +24,23 @@ export function Footer() {
                 excelencia.
               </p>
             </div>
+
+            <div className='pt-2'>
+               <h3 className='text-sm font-semibold text-neutral-900 mb-4 uppercase tracking-wider'>
+                  Enlaces Rápidos
+               </h3>
+               <div className='flex flex-wrap gap-3'>
+                  <Link
+                    href='/afiche'
+                    className='inline-flex items-center gap-2 px-5 py-2.5 bg-transparent border-2 border-neutral-300 rounded-xl text-neutral-700 font-medium hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 group'
+                  >
+                    <span>Afiches</span>
+                    <ArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform' />
+                  </Link>
+               </div>
+            </div>
           </div>
+
 
           {/* Contact & Social Section */}
           <div className='space-y-8'>

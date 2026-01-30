@@ -10,7 +10,7 @@ theme: {
         light: '#FFF7A0';
         red: '#E03131';
         aqua: '#4FF1CE';
-      },
-    },
-  },
+      }
+    }
+  }
 }
