@@ -1,17 +1,36 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"],
-      "@/hooks/*": ["hooks/*"],
-
-      "@/types/*": ["types/*"],
-      "@/services/*": ["services/*"],
-      "@/utils/*": ["utils/*"],
-      "@/auth": ["auth.js"],
-      "@/contexts/*": ["contexts/*"]
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ],
+      "@/types/*": [
+        "types/*"
+      ],
+      "@/services/*": [
+        "services/*"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ],
+      "@/auth": [
+        "auth.js"
+      ],
+      "@/contexts/*": [
+        "contexts/*"
+      ]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -24,7 +43,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "plugins": [
       {
         "name": "next"
@@ -33,6 +52,14 @@
     "strictNullChecks": true,
     "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

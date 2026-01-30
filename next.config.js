@@ -11,7 +11,7 @@ const nextConfig = {
     domains: ["firebasestorage.googleapis.com", "lh3.googleusercontent.com"],
     minimumCacheTTL: 6000000,
   },
-  webpack: (config, { isServer }) => {
+  turbopack: (config, { isServer }) => {
     if (!isServer) {
       // Excluir completamente firebase-admin y sus dependencias del cliente
       config.resolve.fallback = {
