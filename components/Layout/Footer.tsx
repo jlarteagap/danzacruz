@@ -31,7 +31,7 @@ export function Footer() {
                </h3>
                <div className='flex flex-wrap gap-3'>
                   <Link
-                    href='/afiche'
+                    href='/afiches'
                     className='inline-flex items-center gap-2 px-5 py-2.5 bg-transparent border-2 border-neutral-300 rounded-xl text-neutral-700 font-medium hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 group'
                   >
                     <span>Afiches</span>
