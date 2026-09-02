@@ -12,10 +12,9 @@ export default function SignIn() {
         <form
           action={async () => {
             "use server";
-            await signIn("google"),
-              {
-                redirect: true,
-              };
+            await signIn("google", {
+              redirect: true,
+            });
           }}
         >
           <button

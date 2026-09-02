@@ -9,7 +9,30 @@ import {
   Music,
   Sparkles,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+
+const PARTICLE_CONFIGS = [
+  { left: 12, top: 8, delay: 0.3, duration: 7 },
+  { left: 45, top: 22, delay: 1.2, duration: 9 },
+  { left: 78, top: 55, delay: 2.5, duration: 11 },
+  { left: 23, top: 80, delay: 0.8, duration: 8 },
+  { left: 67, top: 35, delay: 3.1, duration: 12 },
+  { left: 91, top: 15, delay: 1.7, duration: 6 },
+  { left: 5, top: 60, delay: 4.0, duration: 10 },
+  { left: 33, top: 45, delay: 2.0, duration: 7 },
+  { left: 56, top: 70, delay: 0.5, duration: 9 },
+  { left: 82, top: 90, delay: 3.5, duration: 8 },
+  { left: 18, top: 30, delay: 1.0, duration: 11 },
+  { left: 40, top: 10, delay: 2.8, duration: 6 },
+  { left: 70, top: 65, delay: 0.2, duration: 10 },
+  { left: 88, top: 40, delay: 4.2, duration: 7 },
+  { left: 10, top: 95, delay: 1.5, duration: 12 },
+  { left: 50, top: 50, delay: 3.8, duration: 9 },
+  { left: 25, top: 75, delay: 0.7, duration: 8 },
+  { left: 62, top: 20, delay: 2.3, duration: 11 },
+  { left: 37, top: 85, delay: 1.8, duration: 6 },
+  { left: 95, top: 5, delay: 3.3, duration: 10 },
+];
 
 export default function HeroImmersive() {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,6 +40,8 @@ export default function HeroImmersive() {
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const particles = useMemo(() => PARTICLE_CONFIGS, []);
 
   return (
     <section
@@ -26,16 +51,7 @@ export default function HeroImmersive() {
     >
       {/* Fullscreen Background Image with Overlay */}
       <div className='absolute inset-0' aria-hidden='true'>
-        {/* Background Image */}
-        <div className='absolute inset-0 bg-gradient-to-br from-emerald-100 via-teal-50 to-cyan-100'>
-          {/* <img
-            src='/api/placeholder/1920/1080'
-            alt=''
-            className='w-full h-full object-cover'
-          /> */}
-        </div>
-
-        {/* Gradient Overlay for readability */}
+        <div className='absolute inset-0 bg-gradient-to-br from-emerald-100 via-teal-50 to-cyan-100' />
         <div className='absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60' />
         <div className='absolute inset-0 bg-gradient-to-r from-emerald-900/40 via-transparent to-teal-900/40' />
       </div>
@@ -45,15 +61,15 @@ export default function HeroImmersive() {
         className='absolute inset-0 overflow-hidden pointer-events-none'
         aria-hidden='true'
       >
-        {[...Array(20)].map((_, i) => (
+        {particles.map((p, i) => (
           <div
             key={i}
             className='absolute w-2 h-2 bg-gradient-to-br from-emerald-400 to-teal-400 rounded-full opacity-60 animate-float-particle'
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${5 + Math.random() * 10}s`,
+              left: `${p.left}%`,
+              top: `${p.top}%`,
+              animationDelay: `${p.delay}s`,
+              animationDuration: `${p.duration}s`,
             }}
           />
         ))}

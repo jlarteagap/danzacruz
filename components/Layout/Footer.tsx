@@ -4,7 +4,7 @@ import Link from 'next/link';
 export function Footer() {
   return (
     <footer className='relative bg-gradient-to-b from-neutral-50 to-neutral-100 border-t border-neutral-200'>
-      <div className='absolute inset-0 bg-gradient-to-r from-blue-50/30 to-purple-50/30'></div>
+      <div className='absolute inset-0 bg-gradient-to-r from-teal-50/30 to-cyan-50/30'></div>
 
       <div className='relative container mx-auto px-6 py-16'>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16'>
@@ -15,7 +15,7 @@ export function Footer() {
                 <h2 className='text-3xl font-semibold text-neutral-900 tracking-tight'>
                   Festival Danzacruz
                 </h2>
-                <div className='h-1 w-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-3'></div>
+                <div className='h-1 w-16 bg-gradient-to-r from-[#63f7df] to-[#2dd4bf] rounded-full mt-3'></div>
               </div>
 
               <p className='text-lg text-neutral-600 leading-relaxed max-w-2xl'>
@@ -50,12 +50,12 @@ export function Footer() {
                 Síguenos
               </h4>
               <a
-                href='https://www.facebook.com/festivaldanzacruz'
+                href='https://www.instagram.com/festivaldanzacruz'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='inline-flex items-center gap-3 px-4 py-3 bg-white/60 backdrop-blur-sm border border-neutral-200/60 rounded-xl hover:bg-white/80 hover:border-neutral-300 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 group'
               >
-                <div className='p-1.5 bg-orange-500 rounded-lg group-hover:bg-orange-600 transition-colors'>
+                <div className='p-1.5 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg group-hover:from-pink-600 group-hover:to-purple-600 transition-colors'>
                   <Instagram className='w-4 h-4 text-white' />
                 </div>
                 <span className='font-medium text-neutral-700 group-hover:text-neutral-900'>

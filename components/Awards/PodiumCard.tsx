@@ -161,12 +161,12 @@ function CategoryCard({ category, index, isActive, onHover, onLeave }) {
         <div
           className={`p-4 rounded-xl mb-6 transition-all duration-300 ${
             isActive
-              ? "bg-gradient-to-r from-fuchsia-50 to-purple-50"
+              ? "bg-gradient-to-r from-teal-50 to-cyan-50"
               : "bg-gray-50"
           }`}
         >
           <h4 className='font-semibold text-gray-900 mb-2 flex items-center gap-2'>
-            <Ticket size={16} className='text-fuchsia-600' />
+            <Ticket size={16} className='text-teal-600' />
             Premio Principal
           </h4>
           <p className='text-gray-700 text-sm'>{category.award}</p>

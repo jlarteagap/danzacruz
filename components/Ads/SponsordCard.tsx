@@ -10,7 +10,7 @@ export default function SponsorCard({
     <div
       className={`group relative overflow-hidden rounded-2xl transition-all duration-500 cursor-pointer ${
         isActive
-          ? "bg-white shadow-2xl scale-110 border-2 border-fuchsia-200/50"
+          ? "bg-white shadow-2xl scale-110 border-2 border-teal-200/50"
           : "bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl border border-white/20"
       }`}
       onMouseEnter={() => onHover(index)}
@@ -25,7 +25,7 @@ export default function SponsorCard({
           isActive ? "opacity-10" : "group-hover:opacity-5"
         } ${
           type === "sponsor"
-            ? "bg-gradient-to-br from-fuchsia-500 to-purple-600"
+            ? "bg-gradient-to-br from-teal-500 to-cyan-600"
             : "bg-gradient-to-br from-green-500 to-blue-600"
         }`}
       />
@@ -77,8 +77,8 @@ export default function SponsorCard({
         className={`absolute top-3 right-3 w-3 h-3 rounded-full transition-all duration-300 ${
           type === "sponsor"
             ? isActive
-              ? "bg-fuchsia-500 shadow-lg shadow-fuchsia-500/50"
-              : "bg-fuchsia-200"
+              ? "bg-teal-500 shadow-lg shadow-teal-500/50"
+              : "bg-teal-200"
             : isActive
             ? "bg-green-500 shadow-lg shadow-green-500/50"
             : "bg-green-200"

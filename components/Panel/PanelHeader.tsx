@@ -15,7 +15,7 @@ export function PanelHeader() {
         <Button variant='ghost' size='icon' className='md:hidden'>
           <Menu className='h-5 w-5' />
         </Button>
-        <Link href='/dashboard' className='text-lg font-bold text-primary'>
+        <Link href='/panel' className='text-lg font-bold text-primary'>
           Danzacruz
         </Link>
       </div>

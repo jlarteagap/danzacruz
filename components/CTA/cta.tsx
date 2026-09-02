@@ -35,7 +35,7 @@ export default function Cta() {
 
               <div className='space-y-3 sm:space-y-4'>
                 <h3 className='text-base sm:text-lg text-neutral-600 font-medium leading-relaxed'>
-                  4 días de talleres, competencias y exhibiciones
+                  3 días de talleres, competencias y exhibiciones
                 </h3>
                 {/* Título - Reemplazado blue-purple gradient -> teal-yellow gradient (#63f7df, #fdf770) */}
                 <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-900 leading-tight tracking-tight'>

@@ -8,20 +8,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { Providers } from "../providers";
 import { auth } from "@/auth";
 
-import { Toaster } from "@/components/ui/sonner";
-
-export function RootLayout({ children }) {
-  return (
-    <html lang='en'>
-      <head />
-      <body>
-        <main>{children}</main>
-        <Toaster position='bottom-center' richColors />
-      </body>
-    </html>
-  );
-}
-
 export const metadata = {
   title: {
     default: "Danzacruz 2025",
@@ -43,7 +29,6 @@ export default async function DashboardLayout({
           <Header />
           {children}
           <Footer />
-          <Toaster />
           <Analytics />
         </Providers>
       </body>

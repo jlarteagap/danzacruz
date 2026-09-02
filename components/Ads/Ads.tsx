@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { AdsList, SupportList } from "./Ads..data";
+import { AdsList, SupportList } from "./Ads.data";
 import { Heart, Handshake, Star, Sparkles, Award, Users } from "lucide-react";
 import SponsorCard from "./SponsordCard";
 import Link from "next/link";
@@ -32,11 +32,11 @@ export const Ads = () => {
         @keyframes pulse-glow {
           0%,
           100% {
-            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+            box-shadow: 0 0 20px rgba(99, 247, 223, 0.3);
           }
           50% {
-            box-shadow: 0 0 40px rgba(236, 72, 153, 0.6),
-              0 0 60px rgba(236, 72, 153, 0.4);
+            box-shadow: 0 0 40px rgba(99, 247, 223, 0.6),
+              0 0 60px rgba(99, 247, 223, 0.4);
           }
         }
         .float {
@@ -49,27 +49,27 @@ export const Ads = () => {
 
       <section className='py-20 lg:py-32 relative overflow-hidden'>
         {/* Fondo elegante */}
-        <div className='absolute inset-0 bg-gradient-to-br from-slate-50 via-purple-50/50 to-fuchsia-50' />
-        <div className='absolute inset-0 bg-gradient-to-tr from-white via-transparent to-purple-100/30' />
+        <div className='absolute inset-0 bg-gradient-to-br from-slate-50 via-teal-50/50 to-cyan-50' />
+        <div className='absolute inset-0 bg-gradient-to-tr from-white via-transparent to-teal-100/30' />
 
         {/* Elementos decorativos de fondo */}
-        <div className='absolute top-20 left-10 w-64 h-64 bg-fuchsia-200/20 rounded-full blur-3xl float' />
+        <div className='absolute top-20 left-10 w-64 h-64 bg-teal-200/20 rounded-full blur-3xl float' />
         <div
-          className='absolute bottom-20 right-10 w-80 h-80 bg-purple-200/20 rounded-full blur-3xl float'
+          className='absolute bottom-20 right-10 w-80 h-80 bg-cyan-200/20 rounded-full blur-3xl float'
           style={{ animationDelay: "2s" }}
         />
-        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-radial from-fuchsia-100/30 to-transparent rounded-full' />
+        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-radial from-teal-100/30 to-transparent rounded-full' />
 
         <div className='container relative z-10 px-6 lg:px-8 m-auto'>
           {/* Header principal */}
           <div className='text-center mb-20'>
-            <div className='inline-flex items-center gap-3 px-6 py-3 rounded-full bg-fuchsia-100/50 backdrop-blur-md text-fuchsia-700 text-sm font-medium mb-8 border border-fuchsia-200/50'>
-              <Handshake size={20} className='text-fuchsia-600' />
+            <div className='inline-flex items-center gap-3 px-6 py-3 rounded-full bg-teal-100/50 backdrop-blur-md text-teal-700 text-sm font-medium mb-8 border border-teal-200/50'>
+              <Handshake size={20} className='text-teal-600' />
               <span>Aliados Estratégicos</span>
             </div>
             <h2 className='text-4xl lg:text-5xl font-bold text-gray-900 mb-6'>
               Nuestros
-              <span className='bg-gradient-to-r from-fuchsia-600 to-purple-600 bg-clip-text text-transparent'>
+              <span className='bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent'>
                 {" "}
                 Patrocinadores
               </span>
@@ -84,7 +84,7 @@ export const Ads = () => {
           <div className='mb-24'>
             {/* Header de auspiciadores */}
             <div className='text-center mb-12'>
-              <div className='inline-flex items-center gap-3 px-5 py-2 rounded-full bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white font-semibold shadow-xl mb-6 pulse-glow'>
+              <div className='inline-flex items-center gap-3 px-5 py-2 rounded-full bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-semibold shadow-xl mb-6 pulse-glow'>
                 <Award size={20} />
                 <span>Auspiciadores Principales</span>
                 <Star size={16} className='text-yellow-200' />
@@ -114,7 +114,7 @@ export const Ads = () => {
               <div className='flex items-center gap-4'>
                 <div className='h-px bg-gradient-to-r from-transparent to-gray-300 w-20'></div>
                 <div className='flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full shadow-md border border-gray-200/50'>
-                  <Heart size={16} className='text-fuchsia-500' />
+                  <Heart size={16} className='text-teal-500' />
                   <span className='text-gray-600 font-medium text-sm'>
                     Con el apoyo de
                   </span>
@@ -125,7 +125,7 @@ export const Ads = () => {
 
             {/* Header de apoyo */}
             <div className='text-center mb-12'>
-              <div className='inline-flex items-center gap-3 px-5 py-2 rounded-full bg-gradient-to-r from-green-500 to-blue-600 text-white font-semibold shadow-xl mb-6'>
+              <div className='inline-flex items-center gap-3 px-5 py-2 rounded-full bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-semibold shadow-xl mb-6'>
                 <Users size={20} />
                 <span>Instituciones de Apoyo</span>
                 <Heart size={16} className='text-pink-200' />
@@ -153,8 +153,8 @@ export const Ads = () => {
             <div className='mt-20 text-center'>
               <div className='max-w-2xl mx-auto p-8 bg-white/60 backdrop-blur-md rounded-3xl shadow-xl border border-white/20'>
                 <div className='mb-6'>
-                  <div className='inline-flex items-center gap-2 p-3 bg-fuchsia-100 rounded-2xl mb-4'>
-                    <Sparkles size={24} className='text-fuchsia-600' />
+                  <div className='inline-flex items-center gap-2 p-3 bg-teal-100 rounded-2xl mb-4'>
+                    <Sparkles size={24} className='text-teal-600' />
                   </div>
                   <h3 className='text-2xl font-bold text-gray-900 mb-4'>
                     ¿Quieres ser parte?
@@ -169,7 +169,7 @@ export const Ads = () => {
                   <a
                     href='http://wa.me/59175553576'
                     target='_blank'
-                    className='inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300'
+                    className='inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300'
                   >
                     <span>Ser Patrocinador</span>
                     <Award size={16} />
@@ -177,7 +177,7 @@ export const Ads = () => {
                   <a
                     href='http://wa.me/59175553576'
                     target='_blank'
-                    className='inline-flex items-center gap-3 px-6 py-3 bg-white border-2 border-gray-300 rounded-full text-gray-700 font-semibold hover:border-fuchsia-300 hover:text-fuchsia-700 transform hover:scale-105 transition-all duration-300'
+                    className='inline-flex items-center gap-3 px-6 py-3 bg-white border-2 border-gray-300 rounded-full text-gray-700 font-semibold hover:border-teal-300 hover:text-teal-700 transform hover:scale-105 transition-all duration-300'
                   >
                     <span>Más Información</span>
                     <Heart size={16} />

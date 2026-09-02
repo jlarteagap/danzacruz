@@ -99,14 +99,6 @@ export default function ConvocatoriaContent() {
 
     window.addEventListener("scroll", handleScroll);
 
-    const toggleMenu = (menuId: string) => {
-      setExpandedMenus((prev) =>
-        prev.includes(menuId)
-          ? prev.filter((id) => id !== menuId)
-          : [...prev, menuId]
-      );
-    };
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   const toggleMenu = (menuId: string) => {
